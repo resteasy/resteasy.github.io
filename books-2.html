@@ -1,0 +1,676 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from resteasy.jboss.org/books.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2018 12:55:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<meta name="keywords" content="books" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="robots" content="all" />
+<meta name="generator" content="Magnolia Community Edition 4.4.6" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+<title>books - JBoss Community</title>
+
+<link rel="icon" type="image/png" href="dms/content/common/icons/favicons/resteasy_icon_16x.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/common/org_common.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/magnolia/styles.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/jquery-ui.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/project.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/clearspace_common.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/wide.css" media="only screen and (min-width: 1200px)" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/small.css" media="only screen and (max-width: 980px)" />
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/print.css" media="print" />
+
+    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/jbossdeveloper-thin.css" media="screen, projection" />
+    <link rel="stylesheet" type="text/css" href="http://static.jboss.org/css/rhbar.css" media="screen, projection" />
+
+
+         <script src="resources/templating-kit/js/jbossorg.2011-07-27-15-42-03-383.cache.js" type="text/javascript"></script>
+         <script src="http://w.sharethis.com/button/buttons.js" type="text/javascript"></script>
+         <script src="https://static.jboss.org/theme/js/magnolia/allinone.js" type="text/javascript"></script>
+         <script src="resources/templating-kit/js/all.2011-01-19-09-23-54-917.cache.js" type="text/javascript"></script>
+         <script src="https://static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
+         <script src=".resources/jbossorg-downloads2/sorttable.js" type="text/javascript"></script>
+
+ 
+
+<script type="text/javascript">
+
+function correctVhostProjectUrl() {
+   
+   var ctxPath = location.protocol+'//'+location.hostname;
+   var projectId = 'resteasy';
+   var projectUlr= '';
+  
+  if (projectId=='jbossas6') {
+    projectUrl=ctxPath+'/jbossas';
+    ctxPath= location.protocol+'//jbossas.jboss.org';
+  } else {
+    projectUrl= ctxPath+'/'+projectId; 
+  }
+  
+  if (projectId=='mod_cluster') {
+    projectId='mod-cluster';
+  }
+  
+  if (location.hostname!= (projectId+'.jboss.org')) {
+      return;
+  }
+      
+   var anchors=document.getElementsByTagName('a');
+
+   for (var i=0; i<anchors.length ; i++) {
+
+      if ( anchors[i].href.search(projectUrl)==0 ) {
+        if ( anchors[i].href.search(projectUrl+".html")==0 ) {
+            anchors[i].href = anchors[i].href.replace(projectUrl+".html",ctxPath);
+        } else {
+            anchors[i].href = anchors[i].href.replace(projectUrl,ctxPath);
+        }
+      }
+
+   }
+}
+  
+  $(document).ready(function () {correctVhostProjectUrl();});
+  
+</script>
+
+ 
+
+<!-- Add admin fix -->
+<style type="text/css">
+<!-- 
+  .mgnlControlBar td { padding: 4px 100px 4px 2px !important; }
+  -->
+</style>
+
+<!-- custom page javascript -->
+
+<!-- added below js -->
+<!--[if  lt IE 7]><script type="text/javascript"  src="http://static.jboss.org/theme/js/magnolia/maxWidthFixForIE6.js"></script><![endif]-->  
+<script type="text/javascript">         
+   stLight.options({
+      publisher:'0c0850b9-23f0-4286-b05a-7593cc190675', doNotHash: true, doNotCopy: true, hashAddressBar: false
+   });
+</script>
+
+<!-- Syntax Highlighter -->
+<script src="docroot/jbossorg/js/common/syntaxhighlighter/XRegExp.js" type="text/javascript"></script>
+<script src="docroot/jbossorg/js/common/syntaxhighlighter/shCore.js" type="text/javascript"></script>
+<script src="docroot/jbossorg/js/common/syntaxhighlighter/shAutoloader.js" type="text/javascript"></script>
+<link href="docroot/jbossorg/css/common/syntaxhighlighter/shCore.css" rel="stylesheet" type="text/css" />
+<link href="docroot/jbossorg/css/common/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript">
+     // initialise Superfish
+     $(document).ready(function() {
+       <!-- loading of necessary brushes -->
+        SyntaxHighlighter.autoloader(
+          'applescript/docroot/jbossorg/js/common/syntaxhighlighter/shBrushAppleScript.html',
+          'as3/docroot/jbossorg/js/common/syntaxhighlighter/shBrushAS3.html',
+          'bash/docroot/jbossorg/js/common/syntaxhighlighter/shBrushBash.html',
+          'cf/docroot/jbossorg/js/common/syntaxhighlighter/shBrushColdFusion.html',
+          'cpp/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCpp.html',
+          'c-sharp/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCSharp.html',
+          'css/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCss.html',
+          'pas/docroot/jbossorg/js/common/syntaxhighlighter/shBrushDelphi.html',
+          'diff/docroot/jbossorg/js/common/syntaxhighlighter/shBrushDiff.html',
+          'erlang/docroot/jbossorg/js/common/syntaxhighlighter/shBrushErlang.html',
+          'groovy/docroot/jbossorg/js/common/syntaxhighlighter/shBrushGroovy.html',
+          'javafx/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJavaFX.html',
+          'java/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJava.html',
+          'js/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJScript.html',
+          'pl/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPerl.html',
+          'php/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPhp.html',
+          'plain%20docroot/jbossorg/js/common/syntaxhighlighter/shBrushPlain.html',
+          'ps/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPowerShell.html',
+          'python/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPython.html',
+          'ruby/docroot/jbossorg/js/common/syntaxhighlighter/shBrushRuby.html',
+          'sass/docroot/jbossorg/js/common/syntaxhighlighter/shBrushSass.html',
+          'scala/docroot/jbossorg/js/common/syntaxhighlighter/shBrushScala.html',
+          'sql/docroot/jbossorg/js/common/syntaxhighlighter/shBrushSql.html',
+          'vb/docroot/jbossorg/js/common/syntaxhighlighter/shBrushVb.html',
+          'xml/docroot/jbossorg/js/common/syntaxhighlighter/shBrushXml.html'
+       );
+       SyntaxHighlighter.all();       
+       <!-- ^^ syntax highlighting end -->
+
+         $('ul.sf-menu').superfish({
+             delay:       300,                            // one second delay on mouseout
+             animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
+             speed:       'fast',                          // faster animation speed
+             autoArrows:  false,                           // disable generation of arrow mark-up
+             dropShadows: false                            // disable drop shadows
+         });         
+     }); 
+</script>
+<!-- added above js --></head>
+
+
+  
+  
+  <body id="project" class="col-float3 rightcol-layout"  >
+    
+<script>dataLayer = [{'channel' : 'resteasy'}];</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-NJWS5L"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'http://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJWS5L');</script>
+<!-- End Google Tag Manager -->
+    
+      <div id="rhbar">
+        <a class="jbdevlogo" href="http://developers.redhat.com/"></a>
+        <a class="rhlogo" href="http://www.redhat.com/"></a>
+      </div>
+    
+
+    <div id="wrapper">
+        <div id="maincontent-wrapper">
+          
+
+
+
+
+
+
+
+<!-- JBoss.org SSO login info. It needs span or div with 'jbssologininfo' id to fill it with info -->
+<script type="text/javascript">
+  var jbssoserverbase = "https://sso.jboss.org/";
+    var jbssobackurl = document.location.href;
+    if (document.location.hash.length > 0) {
+      jbssobackurl = jbssobackurl.replace(document.location.hash, "");
+    }
+  
+  var jbssologouturl = "";
+
+
+</script>
+
+        
+          
+            <div id="top_subnav_branding">
+<div id="banner">
+  
+  
+          <img src="http://www.jboss.org/dms/resteasy/images/resteasy-banner-1180px.png" onError="this.style.display='none'" />
+  
+  
+  <div style="z-index: 999; position: absolute; top: 0px; height:15px;" >
+  </div>
+  
+  <div id="projectname">
+    RESTEasy
+  </div>
+    
+      <div id="tagline">&nbsp;</div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <div id="proj_announce-whole"><img alt="RestEASY" src="https://www.jboss.org/dms/resteasy/images/resteasy-banner.png" /> <div id="proj_logo-neg"> <h2>RestEASY</h2> </div> <div id="proj_tagline-neg">Distributed Peace of Mind.</div> </div>
+
+
+
+
+         
+
+
+
+
+
+<div id="proj_nav" class="" >
+<ul class="sf-menu" >
+
+
+    
+    
+    <li class="current">
+        
+        <span class="notch">&nbsp;</span>
+
+        <a href="index.html" class="menu-title">Overview</a>
+            
+                <ul class="level1" >
+           <li class="leaf"><a href="books.html">        books
+</a></li>
+                </ul>
+    </li>
+
+
+
+
+    
+    
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="downloads.html" class="menu-title">Downloads</a>
+        
+        
+     </li>
+    
+
+    
+
+    
+    
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="docs.html" class="menu-title">Documentation</a>
+        
+        
+    </li>
+    
+
+    
+
+    
+      
+    <li class="open">
+    
+        <span class="notch">&nbsp;</span>
+
+        <a class="unlinked">Community</a>
+            
+          
+            <ul class="level1">
+
+            <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
+            <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
+            <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
+            <li class="leaf"><a href="http://twitter.com/resteasy">Twitter</a></li>
+                
+
+            </ul>
+                
+            
+    </li>
+            
+        
+
+
+
+        
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="http://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
+
+            
+    </li>
+
+
+    
+
+
+
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
+
+            
+            <ul class="level1">
+                
+            <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
+
+
+            </ul>
+                
+        
+    </li>
+
+    
+
+
+
+        
+    <li id="buildmenu" class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="build.html" class="menu-title">Build</a>
+            
+    
+    </li>
+
+
+</ul>
+</div>
+
+         
+            </div>
+        
+        <div id="wrapper-2">
+            <div id="wrap-content">
+
+            <div id="wrapper-3">
+                
+                <div id="main-wrapper">
+                <div id="main">
+ <div id="breadcrumb">
+  <span>
+    
+         <a href="resteasy.html">RESTEasy</a>
+           &gt;
+         <a href="books-2.html">books</a>
+
+  </span>
+ </div><!-- end breadcrumb -->
+                  
+                  
+                  
+                       <!-- content title -->
+                    
+  
+
+
+
+
+
+
+
+
+
+
+    <table>
+        <tr>
+                <td>
+  
+      
+          <img width="180" alt="" height="236" src="books/mainColumnParagraphs/0/imageBinary/restful_java.gif" style="margin:0 auto;" />
+      
+
+</td>
+                <td>
+                        <p><a href="http://oreilly.com/catalog/9780596158040/">RESTful Java with JAX-RS</a> by Bill Burke.  RESTful Java with JAX-RS includes a technical guide that explains REST and JAX-RS, how they work, and when to use them. With the RESTEasy workbook that follows, you get step-by-step instructions for installing, configuring, and running several working JAX-RS examples, using the JBoss RESTEasy implementation of JAX-RS.</p>
+                </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <table>
+        <tr>
+                <td>
+  
+      
+          <img width="180" alt="" height="236" src="books/mainColumnParagraphs/00/imageBinary/rest.gif" style="margin:0 auto;" />
+      
+
+</td>
+                <td>
+                        <p><a href="http://oreilly.com/catalog/9780596529260/">RESTful Web Services</a> by Leonard Richardson and Sam Ruby.  A great introduction  to REST, RESTful techniques, and designing RESTful Web Services.&nbsp; Its how I learned about REST initially.</p>
+                </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <table>
+        <tr>
+                <td>
+  
+      
+          <img width="180" alt="" height="236" src="books/mainColumnParagraphs/01/imageBinary/cookbook.gif" style="margin:0 auto;" />
+      
+
+</td>
+                <td>
+                        <p><a href="http://oreilly.com/catalog/9780596808679/">RESTful Web Services Cookbook</a> by Subbu Allamaraju and Mike Amundsen.  Detailed  cookbook on how to design RESTful services.&nbsp; Subbu has an <a href="http://www.subbu.org/">incredible blog</a> on REST and finally he's taken a lot of his ideas and experiences along with Mike Amundsen and incorporated them into a book.</p>
+                </td>
+        </tr>
+    </table>
+
+
+
+
+
+                    
+                </div><!-- end main -->
+                </div>
+               
+                     <div id="rightcolumn" class="column">
+  
+  <div class="projectpage-socialmedia" >
+    <span class="st_sharethis_large">&nbsp;</span>
+    <span class="st_facebook_large">&nbsp;</span>
+    <span class="st_twitter_large">&nbsp;</span>
+    <span class="st_linkedin_large">&nbsp;</span>
+    <span class="st_email_large">&nbsp;</span>
+  </div>
+
+
+
+
+<div  id="proj_quick-start"  >
+<h3>Useful Links</h3><ul><li><a href="http://www.jboss.org/resteasy/downloads.html">Download</a></li><li><a href="http://www.jboss.org/resteasy/docs.html">Documentation</a></li><li><a href="http://www.jboss.org/resteasy/books.html">Books</a></li><li><a href="https://www.jboss.org/author/resteasy/mailinglists">Mailing Lists</a></li><li><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li><li><a href="https://github.com/resteasy/Resteasy">Git Repository</a></li><li><a href="https://github.com/resteasy/Resteasy/graphs/contributors">Contributors</a></li><li><a href="https://jira.jboss.org/jira/secure/ConfigureReleaseNote.jspa?projectId=12310560">Release Notes</a></li><li><a href="http://jira.jboss.org/jira/browse/RESTEASY">JIRA Issue Tracker</a></li></ul></div>
+<div id="badges"><ul><li class="license-asl"><a href="http://www.apache.org/licenses/LICENSE-2.0"><em>Apache License, Version 2.0</em></a></li></ul><div style="clear: both; height:1px;"> </div></div><br/>
+<div>
+    <a href="http://www.jboss.org/security.html"><div class="projectpage-sprite projectpage-sprite-securityimage">&nbsp;</div></a>
+</div>
+                     </div>
+                
+
+            </div><!-- end wrapper-3 -->
+
+
+              
+            </div><!-- end wrapper-content -->
+          
+  
+
+
+
+
+         
+
+
+
+
+
+<div id="projsubnav_footer" class="clearfix" >
+<ul class="" >
+
+
+    
+    
+    <li class="current">
+        
+        <span class="notch">&nbsp;</span>
+
+        <a href="index.html" class="menu-title">Overview</a>
+            
+                <ul class="level1" >
+           <li class="leaf"><a href="books.html">        books
+</a></li>
+                </ul>
+    </li>
+
+
+
+
+    
+    
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="downloads.html" class="menu-title">Downloads</a>
+        
+        
+     </li>
+    
+
+    
+
+    
+    
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="docs.html" class="menu-title">Documentation</a>
+        
+        
+    </li>
+    
+
+    
+
+    
+      
+    <li class="open">
+    
+        <span class="notch">&nbsp;</span>
+
+        <a class="unlinked">Community</a>
+            
+          
+            <ul class="level1">
+
+            <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
+            <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
+            <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
+            <li class="leaf"><a href="http://twitter.com/resteasy">Twitter</a></li>
+                
+
+            </ul>
+                
+            
+    </li>
+            
+        
+
+
+
+        
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="http://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
+
+            
+    </li>
+
+
+    
+
+
+
+    <li class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
+
+            
+            <ul class="level1">
+                
+            <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
+
+
+            </ul>
+                
+        
+    </li>
+
+    
+
+
+
+        
+    <li id="buildmenu" class="open">
+
+        <span class="notch">&nbsp;</span>
+
+        <a href="build.html" class="menu-title">Build</a>
+            
+    
+    </li>
+
+
+</ul>
+</div>
+
+         
+          
+            <div style="clear: both;"></div>
+        </div><!-- end wrapper-2 -->
+        </div>
+<div id="site-info">
+  <div>
+
+
+  </div>
+  
+<div class="footer">
+    <div class="container" id="companyfooter">
+      <div class="redhatlogo" style="text-align:center;">
+        <div id="logospacer"></div>
+        <a href="http://www.redhat.com/">
+          <img src="http://static.jboss.org/images/rhbar/redhatlogo.png">
+        </a>
+      </div>
+    </div>
+</div>    </div><!-- end wrapper -->  
+   
+<!-- Google Code for Remarketing tag -->
+<img height="1" width="1" style="border-style:none;" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/990030321/?value=0&amp;label=rxV4CN_35QQQ8dOK2AM&amp;guid=ON&amp;script=0" /> 
+<!-- End: Google Code for Remarketing tag -->
+    
+</body>
+
+<!-- Mirrored from resteasy.jboss.org/books.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2018 12:55:36 GMT -->
+</html>
