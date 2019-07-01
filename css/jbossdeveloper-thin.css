@@ -2,7 +2,7 @@
 
 /********** Layout Styles ***********/
 body {
-  background: url("bg.png") repeat-x scroll 0 0 #F3F3F3;
+  background: url("./bg.png") repeat-x scroll 0 0 #F3F3F3;
 }
 #wrapper {
   padding-top: 0px;
