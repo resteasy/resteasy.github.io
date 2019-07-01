@@ -1,276 +1,151 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<!-- Mirrored from resteasy.jboss.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2018 12:53:34 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="RESTEasy"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <meta name="robots" content="all"/>
-    <meta name="generator" content="Magnolia Community Edition 4.4.6"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
-    <title>RESTEasy - JBoss Community</title>
-    <link rel="icon" type="image/png" href="orgLayoutBody/favicon/resteasy_icon_16x.png"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/common/org_common.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/magnolia/styles.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/jquery-ui.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/project.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/clearspace_common.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/wide.css"
-          media="only screen and (min-width: 1200px)"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/small.css"
-          media="only screen and (max-width: 980px)"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/print.css" media="print"/>
-    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/jbossdeveloper-thin.css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="http://static.jboss.org/css/rhbar.css" media="screen, projection"/>
-    <script src="resources/templating-kit/js/jbossorg.2011-07-27-15-42-03-383.cache.js" type="text/javascript"></script>
-    <script src="http://w.sharethis.com/button/buttons.js" type="text/javascript"></script>
-    <script src="https://static.jboss.org/theme/js/magnolia/allinone.js" type="text/javascript"></script>
-    <script src="resources/templating-kit/js/all.2011-01-19-09-23-54-917.cache.js" type="text/javascript"></script>
-    <script src="https://static.jboss.org/js/_jbossorg-tabzilla.js" type="text/javascript"></script>
-    <script src=".resources/jbossorg-downloads2/sorttable.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        function correctVhostProjectUrl() {
-            var ctxPath = location.protocol + '//' + location.hostname;
-            var projectId = 'resteasy';
-            var projectUlr = '';
-            if (projectId == 'jbossas6') {
-                projectUrl = ctxPath + '/jbossas';
-                ctxPath = location.protocol + '//jbossas.jboss.org';
-            } else {
-                projectUrl = ctxPath + '/' + projectId;
-            }
-            if (projectId == 'mod_cluster') {
-                projectId = 'mod-cluster';
-            }
-            if (location.hostname != (projectId + '.jboss.org')) {
-                return;
-            }
-            var anchors = document.getElementsByTagName('a');
-            for (var i = 0; i < anchors.length; i++) {
-                if (anchors[i].href.search(projectUrl) == 0) {
-                    if (anchors[i].href.search(projectUrl + ".html") == 0) {
-                        anchors[i].href = anchors[i].href.replace(projectUrl + ".html", ctxPath);
-                    } else {
-                        anchors[i].href = anchors[i].href.replace(projectUrl, ctxPath);
-                    }
-                }
-            }
-        }
+   <META HTTP-EQUIV='Content-Security-Policy'
+         CONTENT="style-src 'self' https://static.jboss.org 'unsafe-inline' ; script-src 'self' 'unsafe-inline'; "/>
 
-        $(document).ready(function () {
-            correctVhostProjectUrl();
-        });
-    </script>
-    <!-- Add admin fix -->
-    <style type="text/css">
-        <!--
-        .mgnlControlBar td {
-            padding: 4px 100px 4px 2px !important;
-        }
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="keywords" content="RESTEasy"/>
+   <meta name="description" content=""/>
+   <meta name="author" content=""/>
+   <meta name="robots" content="all"/>
+   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+   <title>RESTEasy - JBoss Community</title>
+   <link rel="icon" type="image/png" href="orgLayoutBody/favicon/resteasy_icon_16x.png"/>
 
-        -->
-    </style>
-    <!-- custom page javascript -->
-    <!-- added below js -->
-    <!--[if  lt IE 7]>
-    <script type="text/javascript" src="http://static.jboss.org/theme/js/magnolia/maxWidthFixForIE6.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-        stLight.options({
-            publisher: '0c0850b9-23f0-4286-b05a-7593cc190675', doNotHash: true, doNotCopy: true, hashAddressBar: false
-        });
-    </script>
-    <!-- Syntax Highlighter -->
-    <script src="docroot/jbossorg/js/common/syntaxhighlighter/XRegExp.js" type="text/javascript"></script>
-    <script src="docroot/jbossorg/js/common/syntaxhighlighter/shCore.js" type="text/javascript"></script>
-    <script src="docroot/jbossorg/js/common/syntaxhighlighter/shAutoloader.js" type="text/javascript"></script>
-    <link href="docroot/jbossorg/css/common/syntaxhighlighter/shCore.css" rel="stylesheet" type="text/css"/>
-    <link href="docroot/jbossorg/css/common/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript">
-        // initialise Superfish
-        $(document).ready(function () {
-            <!-- loading of necessary brushes -->
-            SyntaxHighlighter.autoloader(
-                'applescript/docroot/jbossorg/js/common/syntaxhighlighter/shBrushAppleScript.html',
-                'as3/docroot/jbossorg/js/common/syntaxhighlighter/shBrushAS3.html',
-                'bash/docroot/jbossorg/js/common/syntaxhighlighter/shBrushBash.html',
-                'cf/docroot/jbossorg/js/common/syntaxhighlighter/shBrushColdFusion.html',
-                'cpp/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCpp.html',
-                'c-sharp/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCSharp.html',
-                'css/docroot/jbossorg/js/common/syntaxhighlighter/shBrushCss.html',
-                'pas/docroot/jbossorg/js/common/syntaxhighlighter/shBrushDelphi.html',
-                'diff/docroot/jbossorg/js/common/syntaxhighlighter/shBrushDiff.html',
-                'erlang/docroot/jbossorg/js/common/syntaxhighlighter/shBrushErlang.html',
-                'groovy/docroot/jbossorg/js/common/syntaxhighlighter/shBrushGroovy.html',
-                'javafx/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJavaFX.html',
-                'java/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJava.html',
-                'js/docroot/jbossorg/js/common/syntaxhighlighter/shBrushJScript.html',
-                'pl/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPerl.html',
-                'php/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPhp.html',
-                'plain%20docroot/jbossorg/js/common/syntaxhighlighter/shBrushPlain.html',
-                'ps/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPowerShell.html',
-                'python/docroot/jbossorg/js/common/syntaxhighlighter/shBrushPython.html',
-                'ruby/docroot/jbossorg/js/common/syntaxhighlighter/shBrushRuby.html',
-                'sass/docroot/jbossorg/js/common/syntaxhighlighter/shBrushSass.html',
-                'scala/docroot/jbossorg/js/common/syntaxhighlighter/shBrushScala.html',
-                'sql/docroot/jbossorg/js/common/syntaxhighlighter/shBrushSql.html',
-                'vb/docroot/jbossorg/js/common/syntaxhighlighter/shBrushVb.html',
-                'xml/docroot/jbossorg/js/common/syntaxhighlighter/shBrushXml.html'
-            );
-            SyntaxHighlighter.all();
-            <!-- ^^ syntax highlighting end -->
-            $('ul.sf-menu').superfish({
-                delay: 300,                            // one second delay on mouseout
-                animation: {opacity: 'show', height: 'show'},  // fade-in and slide-down animation
-                speed: 'fast',                          // faster animation speed
-                autoArrows: false,                           // disable generation of arrow mark-up
-                dropShadows: false                            // disable drop shadows
-            });
-        });
-    </script>
-    <!-- added above js --></head>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/clearspace_common.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/common/org_common.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/magnolia/styles.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/jquery-ui.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/project.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/wide.css"
+         media="only screen and (min-width: 1200px)"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/jbossdeveloper-thin.css"
+         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/rhbar.css" media="screen, projection"/>
+
+   <script src="resources/templating-kit/js/jbossorg.2011-07-27-15-42-03-383.cache.js" type="text/javascript"></script>
+
+   <!-- Syntax Highlighter -->
+   <script src="docroot/jbossorg/js/common/syntaxhighlighter/XRegExp.js" type="text/javascript"></script>
+   <script src="docroot/jbossorg/js/common/syntaxhighlighter/shCore.js" type="text/javascript"></script>
+   <script src="docroot/jbossorg/js/common/syntaxhighlighter/shAutoloader.js" type="text/javascript"></script>
+   <link href="docroot/jbossorg/css/common/syntaxhighlighter/shCore.css" rel="stylesheet" type="text/css"/>
+   <link href="docroot/jbossorg/css/common/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" type="text/css"/>
+
+</head>
 <body id="project" class="col-float3 rightcol-layout">
-<script>dataLayer = [{'channel': 'resteasy'}];</script>
-<!-- Google Tag Manager -->
-<noscript>
-    <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-NJWS5L"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({
-        'gtm.start':
-            new Date().getTime(), event: 'gtm.js'
-    });
-    var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src =
-        'http://www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-NJWS5L');</script>
-<!-- End Google Tag Manager -->
+
 <div id="rhbar">
-    <a class="jbdevlogo" href="http://developers.redhat.com/"></a>
-    <a class="rhlogo" href="http://www.redhat.com/"></a>
+   <a class="jbdevlogo" href="https://developers.redhat.com/"></a>
+   <a class="rhlogo" href="https://www.redhat.com/"></a>
 </div>
 <div id="wrapper">
-    <div id="maincontent-wrapper">
-        <!-- JBoss.org SSO login info. It needs span or div with 'jbssologininfo' id to fill it with info -->
-        <script type="text/javascript">
-            var jbssoserverbase = "https://sso.jboss.org/";
-            var jbssobackurl = document.location.href;
-            if (document.location.hash.length > 0) {
-                jbssobackurl = jbssobackurl.replace(document.location.hash, "");
-            }
-            var jbssologouturl = "";
-        </script>
-        <div id="top_subnav_branding">
-            <div id="banner">
-                <img src="http://www.jboss.org/dms/resteasy/images/resteasy-banner-1180px.png"
-                     onError="this.style.display='none'"/>
-                <div style="z-index: 999; position: absolute; top: 0px; height:15px;">
-                </div>
-                <div id="projectname">
-                    RESTEasy
-                </div>
-                <div id="tagline">Distributed peace of mind.</div>
+   <div id="maincontent-wrapper">
+
+      <div id="top_subnav_branding">
+         <div id="banner">
+            <img src="https://www.jboss.org/dms/resteasy/images/resteasy-banner-1180px.png"
+                 onError="this.style.display='none'"/>
+            <div style="z-index: 999; position: absolute; top: 0px; height:15px;">
             </div>
-            <div id="proj_announce-whole"><img alt="RestEASY"
-                                               src="https://www.jboss.org/dms/resteasy/images/resteasy-banner.png"/>
-                <div id="proj_logo-neg"><h2>RESTEasy</h2></div>
-                <div id="proj_tagline-neg">Distributed Peace of Mind.</div>
+            <div id="projectname">
+               RESTEasy
             </div>
-            <div id="proj_nav" class="">
-                <ul class="sf-menu">
-                    <li class="current">
-                        <span class="notch">&nbsp;</span>
-                        <a href="index.html" class="menu-title">Overview</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="books.html"> books
-                            </a></li>
-                        </ul>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="downloads.html" class="menu-title">Downloads</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="docs.html" class="menu-title">Documentation</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a class="unlinked">Community</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
-                            <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
-                            <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
-                            <li class="leaf"><a href="http://twitter.com/resteasy">Twitter</a></li>
-                        </ul>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="http://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
-                        </ul>
-                    </li>
-                    <li id="buildmenu" class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="build.html" class="menu-title">Build</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="wrapper-2">
-            <div id="wrap-content">
-                <div id="wrapper-3">
-                    <div id="main-wrapper">
-                        <div id="main">
-                            <div id="breadcrumb" style="display:none"></div>
-                            <!-- content title -->
-                            <div class="clearfix2" id="alert">
-                                <div id="alert-1" class="alert-type alert-announcement">
-                                    <div class="alert-header"><h5 class="alert-title"><span
-                                            class="alert-label alert-announcement-label">Announcement:</span><a
-                                            onclick="if (document.getElementById('alert-content-1-1251661198').style.display=='block'){hideAlertContent1251661198();}else{showAlertContent1251661198();} return false;"
-                                            href="#">RESTEasy 3.8.0.Final / 4.1.0.Final</a></h5>
-                                        <ul>
-                                            <li style="" id="alert-details-show-1-1251661198"
-                                                class="alert-details-show"><a
-                                                    onclick="showAlertContent1251661198(); return false;" href="#">Show
-                                                Details</a></li>
-                                            <li style="display: none;" id="alert-details-hide-1-1251661198"
-                                                class="alert-details-hide"><a
-                                                    onclick="hideAlertContent1251661198(); return false;" href="#">Hide
-                                                Details</a></li>
-                                        </ul>
-                                    </div>
-                                    <div style="display: none;" id="alert-content-1-1251661198" class="alert-content">
-                                        <div class="rendered-content"><p><strong>RESTEasy 3.8.0.Final and 4.1.0.Final
-                                            have been released!</strong></p>
-                                            <p></div>
-                                        <div class="alert-details">Tue June 18 13:53 EDT 2019 / Wed June 26 05:00 EDT 2019</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript">
+            <div id="tagline">Distributed peace of mind.</div>
+         </div>
+         <div id="proj_announce-whole"><img alt="RestEASY"
+                                            src="https://www.jboss.org/dms/resteasy/images/resteasy-banner.png"/>
+            <div id="proj_logo-neg"><h2>RESTEasy</h2></div>
+            <div id="proj_tagline-neg">Distributed Peace of Mind.</div>
+         </div>
+         <div id="proj_nav" class="">
+            <ul class="sf-menu">
+               <li class="current">
+                  <span class="notch">&nbsp;</span>
+                  <a href="index.html" class="menu-title">Overview</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="books.html"> books
+                     </a></li>
+                  </ul>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="downloads.html" class="menu-title">Downloads</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="docs.html" class="menu-title">Documentation</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a class="unlinked">Community</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
+                     <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
+                     <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
+                     <li class="leaf"><a href="https://twitter.com/resteasy">Twitter</a></li>
+                  </ul>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="https://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
+                  </ul>
+               </li>
+               <li id="buildmenu" class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="build.html" class="menu-title">Build</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div id="wrapper-2">
+         <div id="wrap-content">
+            <div id="wrapper-3">
+               <div id="main-wrapper">
+                  <div id="main">
+                     <div id="breadcrumb" style="display:none"></div>
+                     <!-- content title -->
+                     <div class="clearfix2" id="alert">
+                        <div id="alert-1" class="alert-type alert-announcement">
+                           <div class="alert-header"><h5 class="alert-title"><span
+                                 class="alert-label alert-announcement-label">Announcement:</span><a
+                                 onclick="if (document.getElementById('alert-content-1-1251661198').style.display=='block'){hideAlertContent1251661198();}else{showAlertContent1251661198();} return false;"
+                                 href="#">RESTEasy 3.8.0.Final / 4.1.0.Final</a></h5>
+                              <ul>
+                                 <li style="" id="alert-details-show-1-1251661198"
+                                     class="alert-details-show"><a
+                                       onclick="showAlertContent1251661198(); return false;" href="#">Show
+                                    Details</a></li>
+                                 <li style="display: none;" id="alert-details-hide-1-1251661198"
+                                     class="alert-details-hide"><a
+                                       onclick="hideAlertContent1251661198(); return false;" href="#">Hide
+                                    Details</a></li>
+                              </ul>
+                           </div>
+                           <div style="display: none;" id="alert-content-1-1251661198" class="alert-content">
+                              <div class="rendered-content"><p><strong>RESTEasy 3.8.0.Final and 4.1.0.Final
+                                 have been released!</strong></p>
+                                 <p></div>
+                              <div class="alert-details">Tue June 18 13:53 EDT 2019 / Wed June 26 05:00 EDT 2019</div>
+                           </div>
+                        </div>
+                     </div>
+                     <script type="text/javascript">
                                 function showAlertContent1251661198() {
                                     document.getElementById('alert-details-show-1-1251661198').style.display = 'none';
                                     document.getElementById('alert-details-hide-1-1251661198').style.display = 'block';
@@ -282,361 +157,364 @@
                                     document.getElementById('alert-details-hide-1-1251661198').style.display = 'none';
                                     document.getElementById('alert-content-1-1251661198').style.display = 'none';
                                 }
-                            </script>
-                            <h3>RESTEasy</h3>
-                            <div class="proj_define">RESTEasy is a JBoss project that provides various frameworks to
-                                help you build RESTful Web Services and RESTful Java applications. It is a <strong>fully
-                                    certified</strong> and portable implementation of the <a
-                                        href="https://jax-rs-spec.java.net/">JAX-RS 2.1</a> specification, a JCP
-                                specification that provides a Java API for RESTful Web Services over the HTTP protocol.
-                            </div>
-                            <p>RESTEasy can run in any Servlet container, but tighter integration with WildFly
-                                Application Server is also available to make the user experience nicer in that
-                                environment.</p>
-                            <div id="proj_checklist"><h3>Features</h3>
-                                <ul>
-                                    <li>Portable to Tomcat and many other app-server</li>
-                                    <li>Embeddedable server implementation for JUnit testing</li>
-                                    <li>Enhanced client framework</li>
-                                    <li>Client &quot;Browser&quot; cache. Supports HTTP 1.1 caching semantics including
-                                        cache revalidation
-                                    </li>
-                                    <li>Server in-memory cache. Local response cache. Automatically handles ETag
-                                        generation and cache revalidation
-                                    </li>
-                                    <li>Rich set of providers for: XML, JSON, YAML, Fastinfoset, Multipart, XOP, Atom,
-                                        etc.
-                                    </li>
-                                    <li>JAXB marshalling into XML, JSON, Jackson, Fastinfoset, and Atom as well as
-                                        wrappers for maps, arrays, lists, and sets of JAXB Objects.
-                                    </li>
-                                    <li>GZIP content-encoding</li>
-                                    <li>Asynchronous HTTP (Comet) abstractions for JBoss Web, Tomcat 6, and Servlet
-                                        3.0
-                                    </li>
-                                    <li>Asynchronous Job Service.</li>
-                                    <li>Rich interceptor model.</li>
-                                    <li>OAuth2 and Distributed&nbsp;SSO with JBoss AS7</li>
-                                    <li>Digital Signature and encryption support with S/MIME and DOSETA</li>
-                                    <li>EJB, Seam, Guice, Spring, Spring MVC and Spring&nbsp;Boot integration</li>
-                                </ul>
-                            </div>
-                            <h3>News</h3>
-                            <ul>
-                                <li>06/26/2019: 4.1.0.Final release: MicroProfile Client 1.3, maintenance, bug fixes</li>
-                                <li>06/18/2019: 3.8.0.Final release: MicroProfile Client 1.3, maintenance, bug fixes</li>
-                                <li>05/13/2019: 3.7.0.Final release: Maintenance, bug fixes</li>
-                                <li>05/07/2019: 4.0.0.Final release: Major cleanup, performance improvements, component
-                                    upgrades, tracing feature, MP Config support.
-                                </li>
-                                <li>02/15/2019: 3.6.3.Final release: Maintenance, bug fixes</li>
-                                <li>10/31/2018: 3.6.2.Final / 4.0.0.Beta6 releases: Maintenance, JDK11 compatibility,
-                                    core and client SPI/implementation classes split on 4.0.0.Beta6
-                                </li>
-                                <li>08/06/2018: 3.6.1.Final / 4.0.0.Beta5 releases: Maintenance, cleanup of deprecated
-                                    classes on 4.0.0.Beta5
-                                </li>
-                                <li>06/29/2018: 3.6.0.Final / 4.0.0.Beta4 releases: Reactive improvements</li>
-                                <li>04/16/2018: 3.5.1.Final / 4.0.0.Beta3 releases: Maintenance</li>
-                                <li>02/22/2018: 3.5.0.Final / 4.0.0.Beta2 releases: JAX-RS 2.1 completed</li>
-                                <li>11/11/2017: 4.0.0.Beta1 release: JAX-RS 2.1, many improvements around asynch</li>
-                                <li>07/24/2017: 3.1.4.Final and 3.0.24.Final releases: Maintenance</li>
-                                <li>05/22/2017: 3.1.3.Final and 3.0.23.Final releases: Maintenance</li>
-                                <li>03/30/2017: 3.1.2.Final and 3.0.22.Final releases: Maintenance</li>
-                                <li>02/27/2017: 3.1.1.Final and 3.0.21.Final releases: Maintenance</li>
-                                <li>12/14/2016: 3.1.0.Final Release: Major cleanup, performance improvements, lots of
-                                    dependencies upgrades, Vert.X adapter, improved testsuite.
-                                </li>
-                                <li>08/19/2016: 3.0.19.Final Release: Maintenance</li>
-                                <li>07/12/2016: 3.0.18.Final Release: Maintenance</li>
-                                <li>05/23/2016: 3.0.17.Final Release: Maintenance</li>
-                                <li>08/06/2015: 3.0.12.Final Release: Maintenance</li>
-                                <li>03/20/2015: 3.0.11.Final Release:&nbsp;Maintenance</li>
-                                <li>10/23/2014: 3.0.10.Final Release: Maintenance</li>
-                                <li>09/17/2014: 3.0.9.Final Release: Maintenance</li>
-                                <li>03/31/2014: 3.0.7.Final Release: Maintenance</li>
-                                <li>12/11/2013: 3.0.6.Final Release: Maintenance</li>
-                                <li>10/31/2013 3.0.5.Final Release: Maintenance</li>
-                                <li>9/5/2013 3.0.4.Final Feature release:&nbsp; Netty4, JWE, and other stuff</li>
-                                <li>8/6/2013 3.0.3.Final Maintenance release</li>
-                                <li>7/17/2013 3.0.2.Final, 2.3.7.Final.&nbsp; Maintenance</li>
-                                <li>6/19/2013 3.0.1.Final Released.&nbsp; Quick bugfix.</li>
-                                <li>6/18/2013 Resteasy 3.0.0.Final Released!&nbsp; JAX-RS 2.0, OAuth2, and other new
-                                    features
-                                </li>
-                                <li>5/30/2013 Resteasy 3.0-beta-6, JAX-RS 2.0 Preview, heading towards certification
-                                </li>
-                                <li>5/7/2013 Resteasy 3.0-beta-5, JAX-RS 2.0 Preview, final spec update</li>
-                                <li>4/10/2013 Resteasy 3.0-beta-4, JAX-RS 2.0 Preview, latest spec update</li>
-                                <li>4/10/2013 Resteasy 2.3.6, maintenance</li>
-                                <li>2/7/2013 Resteasy 3.0-beta-3, JAX-RS 2.0 Preview, latest spec update</li>
-                                <li>1/24/2013 Resteasy 3.0-beta-2, JAX-RS 2.0 Preview, New OAuth2 Support</li>
-                                <li>10/30/2012 Resteasy 3.0-beta-1, JAX-RS 2.0 Preview</li>
-                                <li>10/22/2012 Restasy 2.3.5.Final Released, maintenance</li>
-                                <li>5/29/2012 Resteasy 2.3.4.Final Released, maintenance plus some new features</li>
-                                <li>4/30/2012 RESTEasy 2.3.3.Final Maintenance Release</li>
-                                <li>1/18/2012 RESTEasy 2.3.1.GA Maintenance Release</li>
-                                <li>12/5/2011 RESTEasy 2.3.0.GA Released with new security features</li>
-                                <li>10/24/2011 RESTEasy 2.2.3.GA Maintenance Release</li>
-                                <li>8/3/2011 RESTEasy 2.2.2.GA Maintenance Release</li>
-                                <li>6/23/2011 RESTEasy 2.2.1.GA Maintenance Release</li>
-                                <li>5/31/2011 RESTEasy 2.2.0.GA Released with new Signature framework</li>
-                                <li>3/31/2011 Hornet 2.2.2 Released with REST interface</li>
-                                <li>12/15/2010 RESTEasy 2.1.0.GA&nbsp;Released</li>
-                                <li>8/10/2010. RESTEasy 2.0.1.GA&nbsp;Released</li>
-                                <li>8/9/2010. <a href="hornetq/rest.html">HornetQ REST&nbsp;Interface</a> built on top
-                                    of RESTEasy Released
-                                </li>
-                                <li>July 20th, 2010. RESTEasy 2.0.0.GA released!</li>
-                                <li>November 3, 2009. RESTEasy 1.2.GA, lots of bug fixes</li>
-                                <li>June 17, 2009. RESTEasy 1.1.GA, lots of bug fixes and features</li>
-                                <li>February 12, 2009. RESTEasy 1.0.2.GA, another quick bug patch</li>
-                                <li>January 30, 2009. RESTEasy 1.0.1.GA, quick bug patch</li>
-                                <li>January 27, 2009. <a
-                                        href="http://www.eweek.com/c/a/Application-Development/JBoss-Helps-Developers-RESTEasy-Writing-RESTbased-Java-Web-Services/">eWeek
-                                    article</a> on RESTEasy
-                                </li>
-                                <li>January 21, 2009. RESTEasy 1.0.0.GA released and certified</li>
-                            </ul>
-                            <p>&nbsp;</p>
-                        </div><!-- end main -->
-                    </div>
-                    <div id="rightcolumn" class="column">
-                        <div class="projectpage-socialmedia">
-                            <span class="st_sharethis_large">&nbsp;</span>
-                            <span class="st_facebook_large">&nbsp;</span>
-                            <span class="st_twitter_large">&nbsp;</span>
-                            <span class="st_linkedin_large">&nbsp;</span>
-                            <span class="st_email_large">&nbsp;</span>
-                        </div>
-                        <div id="proj_quick-start">
-                            <h3>Useful Links</h3>
-                            <ul>
-                                <li><a href="downloads.html">Download</a></li>
-                                <li><a href="docs.html">Documentation</a></li>
-                                <li><a href="books.html">Books</a></li>
-                                <li><a href="mailinglists.html">Mailing Lists</a></li>
-                                <li><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
-                                <li><a href="https://github.com/resteasy/Resteasy">Git Repository</a></li>
-                                <li><a href="https://github.com/resteasy/Resteasy/graphs/contributors">Contributors</a>
-                                </li>
-                                <li>
-                                    <a href="https://jira.jboss.org/jira/secure/ConfigureReleaseNote.jspa?projectId=12310560">Release
-                                        Notes</a></li>
-                                <li><a href="http://jira.jboss.org/jira/browse/RESTEASY">JIRA Issue Tracker</a></li>
-                            </ul>
-                        </div>
-                        <div class="interviews-rss ">
-                            <h3>RESTEasy</h3>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/06/27/resteasy-410final-is-available">RESTEasy 4.1.0.Final is available!</a></dt>
-                                <dd class="date">June 27, 2019 by Alessio Soldano</dd>
-                                <dd>Folks, as previously anticipated, RESTEasy 4.1.0.Final has been released! It brings the new MicroProfile REST Client&#8230;</dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt><a href="https://developer.jboss.org/en/resteasy/blog/2019/06/19/resteasy-380final-and-microprofile-3">RESTEasy 3.8.0.Final and MicroProfile 3</a></dt>
-                                <dd class="date">June 19, 2019 by Alessio Soldano</dd>
-                                <dd>Last week the release of MicroProfile 3.0 was announced. It comes with few additions and updates in some of its &#8230;</dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/06/03/resteasy-spring-boot-starter-310final-released">RESTEasy
-                                        Spring Boot Starter 3.1.0.Final released</a></dt>
-                                <dd class="date">Jun 3, 2019 by Wei Nan Li
-                                </dd>
-                                <dd>RESTEasy Spring Boot Starter 3.1.0.Final is ready to be used.
-                                </dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/05/07/resteasy-400final-is-here">RESTEasy
-                                        4.0.0.Final is here!</a></dt>
-                                <dd class="date">May 7, 2019 by Alessio Soldano</dd>
-                                <dd>At the end of March I was announcing RESTEasy 4 CR1 and telling the final was coming
-                                    soon. Unfortunately &#8230;
-                                </dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/03/28/resteasy-4-is-coming-soon">RESTEasy
-                                        4 is coming soon</a></dt>
-                                <dd class="date">Mar 28, 2019 by Alessio Soldano</dd>
-                                <dd>Earlier this week a release candidate version (4.0.0.CR1) of RESTEasy has been
-                                    tagged. The artifact&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/03/13/the-undertowjaxrsspringserver">The
-                                        UndertowJaxrsSpringServer</a></dt>
-                                <dd class="date">Mar 13, 2019 by Wei Nan Li
-                                </dd>
-                                <dd>As resteasy-tjws container is deprecated in master, so there is some work to be done
-                                    to make undert&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/02/12/jettison-has-been-removed-on-master-branch">Jettison
-                                        has been removed on master branch</a></dt>
-                                <dd class="date">Feb 12, 2019 by Wei Nan Li</dd>
-                                <dd>We have removed resteasy-jettison-provider from master branch, and the major affect
-                                    is that the res&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2018/10/31/resteasy-wadl-grammar-support">RESTEasy
-                                        WADL Grammar Support.</a></dt>
-                                <dd class="date">Oct 31, 2018 5:24 PM by Weinan Li
-                                </dd>
-                                <dd>RESTEasy has added WADL grammar support. This article shows its design and usages.
-                                </dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2018/09/05/resteasy-tracing-feature-now-supports-json-formatted-information">RESTEasy
-                                        Tracing Feature Now Supports JSON formatted information</a></dt>
-                                <dd class="date">Sep 5, 2018 5:01:00 AM by Weinan Li
-                                </dd>
-                                <dd>We added the feature to let tracing info to be returned in JSON format. To use this
-                                    feature, you ne&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2018/08/09/resteasy-release-week">RESTEasy
-                                        release week</a></dt>
-                                <dd class="date">Aug 10, 2018 0:52 AM by Alessio Soldano
-                                </dd>
-                                <dd>It's been a busy week... but before leaving for the week-end I owe you an update ;-)
-                                    Three new rel &#8230;
-                                </dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2018/07/31/resteasy-spring-boot-starter-200final">RESTEasy
-                                        Spring Boot starter 2.0.0.Final</a></dt>
-                                <dd class="date">Jul 31, 2018 4:20 PM by Alessio Soldano
-                                </dd>
-                                <dd>A couple of months ago, we announced the move of the RESTEasy Spring Boot starter to
-                                    RESTEasy organ&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="oddrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2018/07/19/asynchronous-injection-in-resteasy">Asynchronous
-                                        injection in RESTEasy</a></dt>
-                                <dd class="date">Jul 19, 2018 9:00 AM by Stephane Epardaud
-                                </dd>
-                                <dd>Now that we've seen RxJava support in RESTEasy, we're ready to build on more
-                                    reactive applications &#8230;
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dd class="more">View <a
-                                        href="https://developer.jboss.org/en/resteasy/blog/feeds/posts">more
-                                    resteasy</a></dd>
-                            </dl>
-                        </div>
-                        <div class="clear"></div>
-                        <div id="badges">
-                            <ul>
-                                <li class="license-asl"><a href="http://www.apache.org/licenses/LICENSE-2.0"><em>Apache
-                                    License, Version 2.0</em></a></li>
-                            </ul>
-                            <div style="clear: both; height:1px;"> </div>
-                        </div>
-                        <br/>
-                        <table>
-                            <tr>
-                                <td>
-                                    <p style="margin-top: 2px; margin-bottom: 0px; margin-right: 10px; text-align: right;">
-                                        <a href="coolstuff/desktopwallpapers/resteasy.html">Desktop wallpaper</a>&nbsp;|&nbsp;<a
-                                            href="http://www.cafepress.com/jbossorg/7097895">Project Swag</a></p>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="uploaded-img">
-                            <img width="225" alt="RESTEasy" height="110"
-                                 src="rightColumnParagraphs/0/imageBinary/resteasy_coolstuff_makerfile.png"
-                                 style="margin:0 auto;"/>
-                        </div>
-                        <div>
-                            <a href="http://www.jboss.org/security.html">
-                                <div class="projectpage-sprite projectpage-sprite-securityimage">&nbsp;</div>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- end wrapper-3 -->
-            </div><!-- end wrapper-content -->
-            <div id="projsubnav_footer" class="clearfix">
-                <ul class="">
-                    <li class="current">
-                        <span class="notch">&nbsp;</span>
-                        <a href="index.html" class="menu-title">Overview</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="books.html"> books
-                            </a></li>
+                     </script>
+                     <h3>RESTEasy</h3>
+                     <div class="proj_define">RESTEasy is a JBoss project that provides various frameworks to
+                        help you build RESTful Web Services and RESTful Java applications. It is a <strong>fully
+                           certified</strong> and portable implementation of the <a
+                              href="https://jax-rs-spec.java.net/">JAX-RS 2.1</a> specification, a JCP
+                        specification that provides a Java API for RESTful Web Services over the HTTP protocol.
+                     </div>
+                     <p>RESTEasy can run in any Servlet container, but tighter integration with WildFly
+                        Application Server is also available to make the user experience nicer in that
+                        environment.</p>
+                     <div id="proj_checklist"><h3>Features</h3>
+                        <ul>
+                           <li>Portable to Tomcat and many other app-server</li>
+                           <li>Embeddedable server implementation for JUnit testing</li>
+                           <li>Enhanced client framework</li>
+                           <li>Client &quot;Browser&quot; cache. Supports HTTP 1.1 caching semantics including
+                              cache revalidation
+                           </li>
+                           <li>Server in-memory cache. Local response cache. Automatically handles ETag
+                              generation and cache revalidation
+                           </li>
+                           <li>Rich set of providers for: XML, JSON, YAML, Fastinfoset, Multipart, XOP, Atom,
+                              etc.
+                           </li>
+                           <li>JAXB marshalling into XML, JSON, Jackson, Fastinfoset, and Atom as well as
+                              wrappers for maps, arrays, lists, and sets of JAXB Objects.
+                           </li>
+                           <li>GZIP content-encoding</li>
+                           <li>Asynchronous HTTP (Comet) abstractions for JBoss Web, Tomcat 6, and Servlet
+                              3.0
+                           </li>
+                           <li>Asynchronous Job Service.</li>
+                           <li>Rich interceptor model.</li>
+                           <li>OAuth2 and Distributed&nbsp;SSO with JBoss AS7</li>
+                           <li>Digital Signature and encryption support with S/MIME and DOSETA</li>
+                           <li>EJB, Seam, Guice, Spring, Spring MVC and Spring&nbsp;Boot integration</li>
                         </ul>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="downloads.html" class="menu-title">Downloads</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="docs.html" class="menu-title">Documentation</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a class="unlinked">Community</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
-                            <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
-                            <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
-                            <li class="leaf"><a href="http://twitter.com/resteasy">Twitter</a></li>
-                        </ul>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="http://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
-                    </li>
-                    <li class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
-                        <ul class="level1">
-                            <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
-                        </ul>
-                    </li>
-                    <li id="buildmenu" class="open">
-                        <span class="notch">&nbsp;</span>
-                        <a href="build.html" class="menu-title">Build</a>
-                    </li>
-                </ul>
+                     </div>
+                     <h3>News</h3>
+                     <ul>
+                        <li>06/26/2019: 4.1.0.Final release: MicroProfile Client 1.3, maintenance, bug fixes</li>
+                        <li>06/18/2019: 3.8.0.Final release: MicroProfile Client 1.3, maintenance, bug fixes</li>
+                        <li>05/13/2019: 3.7.0.Final release: Maintenance, bug fixes</li>
+                        <li>05/07/2019: 4.0.0.Final release: Major cleanup, performance improvements, component
+                           upgrades, tracing feature, MP Config support.
+                        </li>
+                        <li>02/15/2019: 3.6.3.Final release: Maintenance, bug fixes</li>
+                        <li>10/31/2018: 3.6.2.Final / 4.0.0.Beta6 releases: Maintenance, JDK11 compatibility,
+                           core and client SPI/implementation classes split on 4.0.0.Beta6
+                        </li>
+                        <li>08/06/2018: 3.6.1.Final / 4.0.0.Beta5 releases: Maintenance, cleanup of deprecated
+                           classes on 4.0.0.Beta5
+                        </li>
+                        <li>06/29/2018: 3.6.0.Final / 4.0.0.Beta4 releases: Reactive improvements</li>
+                        <li>04/16/2018: 3.5.1.Final / 4.0.0.Beta3 releases: Maintenance</li>
+                        <li>02/22/2018: 3.5.0.Final / 4.0.0.Beta2 releases: JAX-RS 2.1 completed</li>
+                        <li>11/11/2017: 4.0.0.Beta1 release: JAX-RS 2.1, many improvements around asynch</li>
+                        <li>07/24/2017: 3.1.4.Final and 3.0.24.Final releases: Maintenance</li>
+                        <li>05/22/2017: 3.1.3.Final and 3.0.23.Final releases: Maintenance</li>
+                        <li>03/30/2017: 3.1.2.Final and 3.0.22.Final releases: Maintenance</li>
+                        <li>02/27/2017: 3.1.1.Final and 3.0.21.Final releases: Maintenance</li>
+                        <li>12/14/2016: 3.1.0.Final Release: Major cleanup, performance improvements, lots of
+                           dependencies upgrades, Vert.X adapter, improved testsuite.
+                        </li>
+                        <li>08/19/2016: 3.0.19.Final Release: Maintenance</li>
+                        <li>07/12/2016: 3.0.18.Final Release: Maintenance</li>
+                        <li>05/23/2016: 3.0.17.Final Release: Maintenance</li>
+                        <li>08/06/2015: 3.0.12.Final Release: Maintenance</li>
+                        <li>03/20/2015: 3.0.11.Final Release:&nbsp;Maintenance</li>
+                        <li>10/23/2014: 3.0.10.Final Release: Maintenance</li>
+                        <li>09/17/2014: 3.0.9.Final Release: Maintenance</li>
+                        <li>03/31/2014: 3.0.7.Final Release: Maintenance</li>
+                        <li>12/11/2013: 3.0.6.Final Release: Maintenance</li>
+                        <li>10/31/2013 3.0.5.Final Release: Maintenance</li>
+                        <li>9/5/2013 3.0.4.Final Feature release:&nbsp; Netty4, JWE, and other stuff</li>
+                        <li>8/6/2013 3.0.3.Final Maintenance release</li>
+                        <li>7/17/2013 3.0.2.Final, 2.3.7.Final.&nbsp; Maintenance</li>
+                        <li>6/19/2013 3.0.1.Final Released.&nbsp; Quick bugfix.</li>
+                        <li>6/18/2013 Resteasy 3.0.0.Final Released!&nbsp; JAX-RS 2.0, OAuth2, and other new
+                           features
+                        </li>
+                        <li>5/30/2013 Resteasy 3.0-beta-6, JAX-RS 2.0 Preview, heading towards certification
+                        </li>
+                        <li>5/7/2013 Resteasy 3.0-beta-5, JAX-RS 2.0 Preview, final spec update</li>
+                        <li>4/10/2013 Resteasy 3.0-beta-4, JAX-RS 2.0 Preview, latest spec update</li>
+                        <li>4/10/2013 Resteasy 2.3.6, maintenance</li>
+                        <li>2/7/2013 Resteasy 3.0-beta-3, JAX-RS 2.0 Preview, latest spec update</li>
+                        <li>1/24/2013 Resteasy 3.0-beta-2, JAX-RS 2.0 Preview, New OAuth2 Support</li>
+                        <li>10/30/2012 Resteasy 3.0-beta-1, JAX-RS 2.0 Preview</li>
+                        <li>10/22/2012 Restasy 2.3.5.Final Released, maintenance</li>
+                        <li>5/29/2012 Resteasy 2.3.4.Final Released, maintenance plus some new features</li>
+                        <li>4/30/2012 RESTEasy 2.3.3.Final Maintenance Release</li>
+                        <li>1/18/2012 RESTEasy 2.3.1.GA Maintenance Release</li>
+                        <li>12/5/2011 RESTEasy 2.3.0.GA Released with new security features</li>
+                        <li>10/24/2011 RESTEasy 2.2.3.GA Maintenance Release</li>
+                        <li>8/3/2011 RESTEasy 2.2.2.GA Maintenance Release</li>
+                        <li>6/23/2011 RESTEasy 2.2.1.GA Maintenance Release</li>
+                        <li>5/31/2011 RESTEasy 2.2.0.GA Released with new Signature framework</li>
+                        <li>3/31/2011 Hornet 2.2.2 Released with REST interface</li>
+                        <li>12/15/2010 RESTEasy 2.1.0.GA&nbsp;Released</li>
+                        <li>8/10/2010. RESTEasy 2.0.1.GA&nbsp;Released</li>
+                        <li>8/9/2010. <a href="hornetq/rest.html">HornetQ REST&nbsp;Interface</a> built on top
+                           of RESTEasy Released
+                        </li>
+                        <li>July 20th, 2010. RESTEasy 2.0.0.GA released!</li>
+                        <li>November 3, 2009. RESTEasy 1.2.GA, lots of bug fixes</li>
+                        <li>June 17, 2009. RESTEasy 1.1.GA, lots of bug fixes and features</li>
+                        <li>February 12, 2009. RESTEasy 1.0.2.GA, another quick bug patch</li>
+                        <li>January 30, 2009. RESTEasy 1.0.1.GA, quick bug patch</li>
+                        <li>January 27, 2009. <a
+                              href="https://www.eweek.com/c/a/Application-Development/JBoss-Helps-Developers-RESTEasy-Writing-RESTbased-Java-Web-Services/">eWeek
+                           article</a> on RESTEasy
+                        </li>
+                        <li>January 21, 2009. RESTEasy 1.0.0.GA released and certified</li>
+                     </ul>
+                     <p>&nbsp;</p>
+                  </div><!-- end main -->
+               </div>
+               <div id="rightcolumn" class="column">
+                  <div class="projectpage-socialmedia">
+                     <span class="st_sharethis_large">&nbsp;</span>
+                     <span class="st_facebook_large">&nbsp;</span>
+                     <span class="st_twitter_large">&nbsp;</span>
+                     <span class="st_linkedin_large">&nbsp;</span>
+                     <span class="st_email_large">&nbsp;</span>
+                  </div>
+                  <div id="proj_quick-start">
+                     <h3>Useful Links</h3>
+                     <ul>
+                        <li><a href="downloads.html">Download</a></li>
+                        <li><a href="docs.html">Documentation</a></li>
+                        <li><a href="books.html">Books</a></li>
+                        <li><a href="mailinglists.html">Mailing Lists</a></li>
+                        <li><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
+                        <li><a href="https://github.com/resteasy/Resteasy">Git Repository</a></li>
+                        <li><a href="https://github.com/resteasy/Resteasy/graphs/contributors">Contributors</a>
+                        </li>
+                        <li>
+                           <a href="https://jira.jboss.org/jira/secure/ConfigureReleaseNote.jspa?projectId=12310560">Release
+                              Notes</a></li>
+                        <li><a href="https://jira.jboss.org/jira/browse/RESTEASY">JIRA Issue Tracker</a></li>
+                     </ul>
+                  </div>
+                  <div class="interviews-rss ">
+                     <h3>RESTEasy</h3>
+                     <dl class="evenrow">
+                       <dt>
+                          <a href="https://developer.jboss.org/en/resteasy/blog/2019/06/27/resteasy-410final-is-available">RESTEasy 4.1.0.Final is available!</a></dt>
+                          <dd class="date">June 27, 2019 by Alessio Soldano</dd>
+                          <dd>Folks, as previously anticipated, RESTEasy 4.1.0.Final has been released! It brings the new MicroProfile REST Client&#8230;</dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt><a href="https://developer.jboss.org/en/resteasy/blog/2019/06/19/resteasy-380final-and-microprofile-3">RESTEasy 3.8.0.Final and MicroProfile 3</a></dt>
+                         <dd class="date">June 19, 2019 by Alessio Soldano</dd>
+                         <dd>Last week the release of MicroProfile 3.0 was announced. It comes with few additions and updates in some of its &#8230;</dd>
+                     </dl>
+                     <dl class="evenrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2019/06/03/resteasy-spring-boot-starter-310final-released">RESTEasy
+                              Spring Boot Starter 3.1.0.Final released</a></dt>
+                        <dd class="date">Jun 3, 2019 by Wei Nan Li
+                        </dd>
+                        <dd>
+                           RESTEasy Spring Boot Starter 3.1.0.Final is ready to be used.
+                        </dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2019/05/07/resteasy-400final-is-here">RESTEasy
+                              4.0.0.Final is here!</a></dt>
+                        <dd class="date">May 7, 2019 by Alessio Soldano</dd>
+                        <dd>
+                           At the end of March I was announcing RESTEasy 4 CR1 and telling the final was coming
+                           soon. Unfortunately &#8230;
+                        </dd>
+                     </dl>
+                     <dl class="evenrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2019/03/28/resteasy-4-is-coming-soon">RESTEasy
+                              4 is coming soon</a></dt>
+                        <dd class="date">Mar 28, 2019 by Alessio Soldano</dd>
+                        <dd>Earlier this week a release candidate version (4.0.0.CR1) of RESTEasy has been
+                           tagged. The artifact&#8230;
+                        </dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2019/03/13/the-undertowjaxrsspringserver">The
+                              UndertowJaxrsSpringServer</a></dt>
+                        <dd class="date">Mar 13, 2019 by Wei Nan Li
+                        </dd>
+                        <dd>As resteasy-tjws container is deprecated in master, so there is some work to be done
+                           to make undert&#8230;
+                        </dd>
+                     </dl>
+                     <dl class="evenrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2019/02/12/jettison-has-been-removed-on-master-branch">Jettison
+                              has been removed on master branch</a></dt>
+                        <dd class="date">Feb 12, 2019 by Wei Nan Li</dd>
+                        <dd>We have removed resteasy-jettison-provider from master branch, and the major affect
+                           is that the res&#8230;
+                        </dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2018/10/31/resteasy-wadl-grammar-support">RESTEasy
+                              WADL Grammar Support.</a></dt>
+                        <dd class="date">Oct 31, 2018 5:24 PM by Weinan Li
+                        </dd>
+                        <dd>RESTEasy has added WADL grammar support. This article shows its design and usages.
+                        </dd>
+                     </dl>
+                     <dl class="evenrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2018/09/05/resteasy-tracing-feature-now-supports-json-formatted-information">RESTEasy
+                              Tracing Feature Now Supports JSON formatted information</a></dt>
+                        <dd class="date">Sep 5, 2018 5:01:00 AM by Weinan Li
+                        </dd>
+                        <dd>We added the feature to let tracing info to be returned in JSON format. To use this
+                           feature, you ne&#8230;
+                        </dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2018/08/09/resteasy-release-week">RESTEasy
+                              release week</a></dt>
+                        <dd class="date">Aug 10, 2018 0:52 AM by Alessio Soldano
+                        </dd>
+                        <dd>It's been a busy week... but before leaving for the week-end I owe you an update ;-)
+                           Three new rel &#8230;
+                        </dd>
+                     </dl>
+                     <dl class="evenrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2018/07/31/resteasy-spring-boot-starter-200final">RESTEasy
+                              Spring Boot starter 2.0.0.Final</a></dt>
+                        <dd class="date">Jul 31, 2018 4:20 PM by Alessio Soldano
+                        </dd>
+                        <dd>A couple of months ago, we announced the move of the RESTEasy Spring Boot starter to
+                           RESTEasy organ&#8230;
+                        </dd>
+                     </dl>
+                     <dl class="oddrow">
+                        <dt>
+                           <a href="https://developer.jboss.org/en/resteasy/blog/2018/07/19/asynchronous-injection-in-resteasy">Asynchronous
+                              injection in RESTEasy</a></dt>
+                        <dd class="date">Jul 19, 2018 9:00 AM by Stephane Epardaud
+                        </dd>
+                        <dd>Now that we've seen RxJava support in RESTEasy, we're ready to build on more
+                           reactive applications &#8230;
+                        </dd>
+                     </dl>
+                     <dl>
+                        <dd class="more">View <a
+                              href="https://developer.jboss.org/en/resteasy/blog/feeds/posts">more
+                           resteasy</a></dd>
+                     </dl>
+                  </div>
+                  <div class="clear"></div>
+                  <div id="badges">
+                     <ul>
+                        <li class="license-asl"><a href="https://www.apache.org/licenses/LICENSE-2.0"><em>Apache
+                           License, Version 2.0</em></a></li>
+                     </ul>
+                     <div style="clear: both; height:1px;"> </div>
+                  </div>
+                  <br/>
+                  <table>
+                     <tr>
+                        <td>
+                           <p style="margin-top: 2px; margin-bottom: 0px; margin-right: 10px; text-align: right;">
+                              <a href="coolstuff/desktopwallpapers/resteasy.html">Desktop wallpaper</a>&nbsp;|&nbsp;<a
+                                 href="https://www.cafepress.com/jbossorg/7097895">Project Swag</a></p>
+                        </td>
+                     </tr>
+                  </table>
+                  <div class="uploaded-img">
+                     <img width="225" alt="RESTEasy" height="110"
+                          src="rightColumnParagraphs/0/imageBinary/resteasy_coolstuff_makerfile.png"
+                          style="margin:0 auto;"/>
+                  </div>
+                  <div>
+                     <a href="https://www.jboss.org/security.html">
+                        <div class="projectpage-sprite projectpage-sprite-securityimage">&nbsp;</div>
+                     </a>
+                  </div>
+               </div>
+            </div><!-- end wrapper-3 -->
+         </div><!-- end wrapper-content -->
+         <div id="projsubnav_footer" class="clearfix">
+            <ul class="">
+               <li class="current">
+                  <span class="notch">&nbsp;</span>
+                  <a href="index.html" class="menu-title">Overview</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="books.html"> books
+                     </a></li>
+                  </ul>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="downloads.html" class="menu-title">Downloads</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="docs.html" class="menu-title">Documentation</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a class="unlinked">Community</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="https://www.jboss.org/community/docs/DOC-12837">Wiki</a></li>
+                     <li class="leaf"><a href="mailinglists.html">Mailing Lists</a></li>
+                     <li class="leaf"><a href="https://developer.jboss.org/en/resteasy/blog">Blog</a></li>
+                     <li class="leaf"><a href="https://twitter.com/resteasy">Twitter</a></li>
+                  </ul>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="https://jira.jboss.org/jira/browse/RESTEASY" class="menu-title">Issue Tracker</a>
+               </li>
+               <li class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="https://github.com/resteasy/Resteasy" class="menu-title">Source Code</a>
+                  <ul class="level1">
+                     <li class="leaf"><a href="https://github.com/resteasy/Resteasy">GitHub</a></li>
+                  </ul>
+               </li>
+               <li id="buildmenu" class="open">
+                  <span class="notch">&nbsp;</span>
+                  <a href="build.html" class="menu-title">Build</a>
+               </li>
+            </ul>
+         </div>
+         <div style="clear: both;"></div>
+      </div><!-- end wrapper-2 -->
+   </div>
+   <div id="site-info">
+      <div>
+      </div>
+      <div class="footer">
+         <div class="container" id="companyfooter">
+            <div class="redhatlogo" style="text-align:center;">
+               <div id="logospacer"></div>
+               <a href="https://www.redhat.com/">
+                  <img src="https://static.jboss.org/images/rhbar/redhatlogo.png">
+               </a>
             </div>
-            <div style="clear: both;"></div>
-        </div><!-- end wrapper-2 -->
-    </div>
-    <div id="site-info">
-        <div>
-        </div>
-        <div class="footer">
-            <div class="container" id="companyfooter">
-                <div class="redhatlogo" style="text-align:center;">
-                    <div id="logospacer"></div>
-                    <a href="http://www.redhat.com/">
-                        <img src="http://static.jboss.org/images/rhbar/redhatlogo.png">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div><!-- end wrapper -->
-    <!-- Google Code for Remarketing tag -->
-    <img height="1" width="1" style="border-style:none;" alt=""
-         src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/990030321/?value=0&amp;label=rxV4CN_35QQQ8dOK2AM&amp;guid=ON&amp;script=0"/>
-    <!-- End: Google Code for Remarketing tag -->
+         </div>
+      </div>
+   </div><!-- site-info -->
+</div><!-- end wrapper -->
+<!-- Google Code for Remarketing tag -->
+<img height="1" width="1" style="border-style:none;" alt=""
+     src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/990030321/?value=0&amp;label=rxV4CN_35QQQ8dOK2AM&amp;guid=ON&amp;script=0"/>
+<!-- End: Google Code for Remarketing tag -->
 </div>
 </body>
 <!-- Mirrored from resteasy.jboss.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2018 12:54:25 GMT -->
