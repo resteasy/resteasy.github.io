@@ -4,8 +4,10 @@
 
 <head>
    <META HTTP-EQUIV='Content-Security-Policy'
-         CONTENT="style-src 'self' https://static.jboss.org ; script-src 'self' ; "/>
-
+         CONTENT="default-src 'none'; font-src 'none'; img-src 'self' https://static.jboss.org; object-src 'none'; script-src 'self'; style-src 'self' https://static.jboss.org; base-uri 'none'; form-action 'none'; frame-ancestors 'none' "/>
+<!--   <META HTTP-EQUIV='X-Frame-Options' CONTENT="DENY"> -->
+   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
+   <META HTTP-EQUIV='X-Content-Type-Options' CONTENT="nosniff">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
    <meta name="keywords" content="Documentation"/>
    <meta name="description" content=""/>
@@ -18,8 +20,8 @@
 
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/clearspace_common.css"
          media="screen, projection"/>
-   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
-         media="screen, projection"/>
+<!--   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
+         media="screen, projection"/> -->
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/common/org_common.css"
          media="screen, projection"/>
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/magnolia/styles.css"
@@ -28,8 +30,7 @@
          media="screen, projection"/>
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/wide.css"
          media="only screen and (min-width: 1200px)"/>
-   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/jbossdeveloper-thin.css"
-         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="css/jbossdeveloper-thin.css" media="screen, projection"/> <!-- https://static.jboss.org/css/jbossdeveloper-thin.css -->
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/rhbar.css" media="screen, projection"/>
 
 </head>
@@ -46,18 +47,12 @@
 
       <div id="top_subnav_branding">
          <div id="banner">
-            <img src="https://www.jboss.org/dms/resteasy/images/resteasy-banner-1180px.png"
+            <img src="orgLayoutBody/resteasy-banner-1180px.png"
                  onError="this.style.display='none'"/>
-            <div style="z-index: 999; position: absolute; top: 0px; height:15px;">
+            <div id="projectname">
+               RESTEasy
             </div>
-
-            <div id="projectname">RESTEasy</div>
-            <div id="tagline">&nbsp;</div>
-         </div>
-
-         <div id="proj_announce-whole"><img alt="RestEASY" src="https://www.jboss.org/dms/resteasy/images/resteasy-banner.png"/>
-            <div id="proj_logo-neg"><h2>RestEASY</h2></div>
-            <div id="proj_tagline-neg">Distributed Peace of Mind.</div>
+            <div id="tagline">Distributed peace of mind.</div>
          </div>
 
          <div id="proj_nav" class="">
@@ -1052,7 +1047,6 @@
                         <li class="license-asl"><a href="https://www.apache.org/licenses/LICENSE-2.0"><em>Apache License,
                            Version 2.0</em></a></li>
                      </ul>
-                     <div style="clear: both; height:1px;"> </div>
                   </div>
                   <br/>
                   <div>
@@ -1119,7 +1113,6 @@
             </ul>
          </div>
 
-         <div style="clear: both;"></div>
       </div><!-- end wrapper-2 -->
    </div>
    <div id="site-info">
@@ -1128,7 +1121,7 @@
 
       <div class="footer">
          <div class="container" id="companyfooter">
-            <div class="redhatlogo" style="text-align:center;">
+            <div class="redhatlogo">
                <div id="logospacer"></div>
                <a href="https://www.redhat.com/">
                   <img src="https://static.jboss.org/images/rhbar/redhatlogo.png">

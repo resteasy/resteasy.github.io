@@ -4,8 +4,10 @@
 
 <head>
    <META HTTP-EQUIV='Content-Security-Policy'
-         CONTENT="style-src 'self' https://static.jboss.org ; script-src 'self' ; "/>
-
+         CONTENT="default-src 'none'; font-src 'none'; img-src 'self' https://static.jboss.org; object-src 'none'; script-src 'self'; style-src 'self' https://static.jboss.org; base-uri 'none'; form-action 'none'; frame-ancestors 'none' "/>
+<!--   <META HTTP-EQUIV='X-Frame-Options' CONTENT="DENY"> -->
+   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
+   <META HTTP-EQUIV='X-Content-Type-Options' CONTENT="nosniff">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
    <meta name="keywords" content="Downloads"/>
    <meta name="description" content=""/>
@@ -16,11 +18,10 @@
 
    <link rel="icon" type="image/png" href="dms/content/common/icons/favicons/resteasy_icon_16x.png"/>
 
-
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/clearspace_common.css"
          media="screen, projection"/>
-   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
-         media="screen, projection"/>
+<!--   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/stkdefault-styles.css"
+         media="screen, projection"/> -->
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/common/org_common.css"
          media="screen, projection"/>
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/magnolia/styles.css"
@@ -29,8 +30,7 @@
          media="screen, projection"/>
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/theme/css/magnolia/wide.css"
          media="only screen and (min-width: 1200px)"/>
-   <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/jbossdeveloper-thin.css"
-         media="screen, projection"/>
+   <link rel="stylesheet" type="text/css" href="css/jbossdeveloper-thin.css" media="screen, projection"/> <!-- https://static.jboss.org/css/jbossdeveloper-thin.css -->
    <link rel="stylesheet" type="text/css" href="https://static.jboss.org/css/rhbar.css" media="screen, projection"/>
 
 </head>
@@ -47,23 +47,12 @@
 
       <div id="top_subnav_branding">
          <div id="banner">
-            <img src="https://www.jboss.org/dms/resteasy/images/resteasy-banner-1180px.png"
+            <img src="orgLayoutBody/resteasy-banner-1180px.png"
                  onError="this.style.display='none'"/>
-            <div style="z-index: 999; position: absolute; top: 0px; height:15px;">
-            </div>
-
             <div id="projectname">
                RESTEasy
             </div>
-
-            <div id="tagline">&nbsp;</div>
-
-         </div>
-
-         <div id="proj_announce-whole"><img alt="RESTEasy"
-                                            src="https://www.jboss.org/dms/resteasy/images/resteasy-banner.png"/>
-            <div id="proj_logo-neg"><h2>RESTEasy</h2></div>
-            <div id="proj_tagline-neg">Distributed Peace of Mind.</div>
+            <div id="tagline">Distributed peace of mind.</div>
          </div>
 
          <div id="proj_nav" class="">
@@ -1140,7 +1129,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.4.Final/resteasy-jaxrs-2.3.4.Final-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.4.Final/resteasy-jaxrs-2.3.4.Final-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.4.Final-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1153,7 +1143,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.4.Final/resteasy-jaxrs-2.3.4.Final-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.4.Final/resteasy-jaxrs-2.3.4.Final-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.4.Final-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1166,7 +1157,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.3.Final/resteasy-jaxrs-2.3.3.Final-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.3.Final/resteasy-jaxrs-2.3.3.Final-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.3.Final-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1179,7 +1171,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.3.Final/resteasy-jaxrs-2.3.3.Final-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.3.Final/resteasy-jaxrs-2.3.3.Final-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.3.Final-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1192,7 +1185,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.2.Final/resteasy-jaxrs-2.3.2.Final-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.2.Final/resteasy-jaxrs-2.3.2.Final-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.2.Final-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1205,7 +1199,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.2.Final/resteasy-jaxrs-2.3.2.Final-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.2.Final/resteasy-jaxrs-2.3.2.Final-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.2.Final-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1218,7 +1213,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.1.GA/resteasy-jaxrs-2.3.1.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.1.GA/resteasy-jaxrs-2.3.1.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.1.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1231,7 +1227,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.1.GA/resteasy-jaxrs-2.3.1.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.1.GA/resteasy-jaxrs-2.3.1.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.1.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1244,7 +1241,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.0.GA/resteasy-jaxrs-2.3.0.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.0.GA/resteasy-jaxrs-2.3.0.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.0.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1257,7 +1255,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.0.GA/resteasy-jaxrs-2.3.0.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.3.0.GA/resteasy-jaxrs-2.3.0.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.3.0.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1270,7 +1269,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.3.GA/resteasy-jaxrs-2.2.3.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.3.GA/resteasy-jaxrs-2.2.3.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.3.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1283,7 +1283,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.3.GA/resteasy-jaxrs-2.2.3.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.3.GA/resteasy-jaxrs-2.2.3.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.3.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1296,7 +1297,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.2.GA/resteasy-jaxrs-2.2.2.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.2.GA/resteasy-jaxrs-2.2.2.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.2.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1309,7 +1311,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.2.GA/resteasy-jaxrs-2.2.2.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.2.GA/resteasy-jaxrs-2.2.2.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.2.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1322,7 +1325,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.1.GA/resteasy-jaxrs-2.2.1.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.1.GA/resteasy-jaxrs-2.2.1.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.1.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1335,7 +1339,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.1.GA/resteasy-jaxrs-2.2.1.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.1.GA/resteasy-jaxrs-2.2.1.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.1.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1348,7 +1353,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.0.GA/resteasy-jaxrs-2.2.0.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.0.GA/resteasy-jaxrs-2.2.0.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.0.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1361,7 +1367,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.0.GA/resteasy-jaxrs-2.2.0.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.2.0.GA/resteasy-jaxrs-2.2.0.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.2.0.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1374,7 +1381,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.1.0.GA/resteasy-jaxrs-2.1.0.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.1.0.GA/resteasy-jaxrs-2.1.0.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.1.0.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1387,7 +1395,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.1.0.GA/resteasy-jaxrs-2.1.0.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.1.0.GA/resteasy-jaxrs-2.1.0.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.1.0.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1400,7 +1409,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.0.0.GA/resteasy-jaxrs-2.0.0.GA-all.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.0.0.GA/resteasy-jaxrs-2.0.0.GA-all.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.0.0.GA-all.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1413,7 +1423,8 @@
                            <td>ASL v2</td>
                            <td></td>
                            <td><a
-                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.0.0.GA/resteasy-jaxrs-2.0.0.GA-src.zip/download"
+                                 href="https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.0.0.GA/resteasy-jaxrs-2.0.0.GA-src.zip/download"
+
                                  class="td-download">resteasy-jaxrs-2.0.0.GA-src.zip</a><br/>
                               <small>Downloads: <b>0</b></small>
                            </td>
@@ -1484,7 +1495,6 @@
             </ul>
          </div> <!-- projsubnav_footer -->
 
-         <div style="clear: both;"></div>
       </div><!-- end wrapper-2 -->
    </div>
    <div id="site-info">
@@ -1493,7 +1503,7 @@
 
       <div class="footer">
          <div class="container" id="companyfooter">
-            <div class="redhatlogo" style="text-align:center;">
+            <div class="redhatlogo">
                <div id="logospacer"></div>
                <a href="https://www.redhat.com/">
                   <img src="https://static.jboss.org/images/rhbar/redhatlogo.png">

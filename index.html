@@ -3,8 +3,10 @@
 
 <head>
    <META HTTP-EQUIV='Content-Security-Policy'
-         CONTENT="style-src 'self' https://static.jboss.org 'unsafe-inline' ; script-src 'self' 'unsafe-inline'; "/>
-
+         CONTENT="default-src 'none'; font-src 'none'; img-src 'self' https://static.jboss.org; object-src 'none'; script-src 'self'; style-src 'self' https://static.jboss.org; base-uri 'none'; form-action 'none'; frame-ancestors 'none' "/>
+<!--   <META HTTP-EQUIV='X-Frame-Options' CONTENT="DENY"> -->
+   <META HTTP-EQUIV='X-XSS-Protection' CONTENT="1; mode=block">
+   <META HTTP-EQUIV='X-Content-Type-Options' CONTENT="nosniff">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
    <meta name="keywords" content="RESTEasy"/>
    <meta name="description" content=""/>
@@ -43,8 +45,6 @@
          <div id="banner">
             <img src="orgLayoutBody/resteasy-banner-1180px.png"
                  onError="this.style.display='none'"/>
-            <div style="z-index: 999; position: absolute; top: 0px; height:15px;">
-            </div>
             <div id="projectname">
                RESTEasy
             </div>
@@ -101,46 +101,7 @@
             <div id="wrapper-3">
                <div id="main-wrapper">
                   <div id="main">
-                     <div id="breadcrumb" style="display:none"></div>
                      <!-- content title -->
-                     <div class="clearfix2" id="alert">
-                        <div id="alert-1" class="alert-type alert-announcement">
-                           <div class="alert-header"><h5 class="alert-title"><span
-                                 class="alert-label alert-announcement-label">Announcement:</span><a
-                                 onclick="if (document.getElementById('alert-content-1-1251661198').style.display=='block'){hideAlertContent1251661198();}else{showAlertContent1251661198();} return false;"
-                                 href="#">RESTEasy 3.8.0.Final / 4.1.0.Final</a></h5>
-                              <ul>
-                                 <li style="" id="alert-details-show-1-1251661198"
-                                     class="alert-details-show"><a
-                                       onclick="showAlertContent1251661198(); return false;" href="#">Show
-                                    Details</a></li>
-                                 <li style="display: none;" id="alert-details-hide-1-1251661198"
-                                     class="alert-details-hide"><a
-                                       onclick="hideAlertContent1251661198(); return false;" href="#">Hide
-                                    Details</a></li>
-                              </ul>
-                           </div>
-                           <div style="display: none;" id="alert-content-1-1251661198" class="alert-content">
-                              <div class="rendered-content"><p><strong>RESTEasy 3.8.0.Final and 4.1.0.Final
-                                 have been released!</strong></p>
-                                 <p></div>
-                              <div class="alert-details">Tue June 18 13:53 EDT 2019 / Wed June 26 05:00 EDT 2019</div>
-                           </div>
-                        </div>
-                     </div>
-                     <script type="text/javascript">
-                                function showAlertContent1251661198() {
-                                    document.getElementById('alert-details-show-1-1251661198').style.display = 'none';
-                                    document.getElementById('alert-details-hide-1-1251661198').style.display = 'block';
-                                    document.getElementById('alert-content-1-1251661198').style.display = 'block';
-                                }
-
-                                function hideAlertContent1251661198() {
-                                    document.getElementById('alert-details-show-1-1251661198').style.display = 'block';
-                                    document.getElementById('alert-details-hide-1-1251661198').style.display = 'none';
-                                    document.getElementById('alert-content-1-1251661198').style.display = 'none';
-                                }
-                     </script>
                      <h3>RESTEasy</h3>
                      <div class="proj_define">RESTEasy is a JBoss project that provides various frameworks to
                         help you build RESTful Web Services and RESTful Java applications. It is a <strong>fully
@@ -406,14 +367,12 @@
                         <li class="license-asl"><a href="https://www.apache.org/licenses/LICENSE-2.0"><em>Apache
                            License, Version 2.0</em></a></li>
                      </ul>
-                     <div style="clear: both; height:1px;"> </div>
                   </div>
                   <br/>
                   <div class="uploaded-img">
                      <a href="https://www.cafepress.com/jbossorg/7097895">
                      <img width="225" alt="RESTEasy - Project Swag" height="110"
-                          src="rightColumnParagraphs/0/imageBinary/resteasy_coolstuff_makerfile.png"
-                          style="margin:0 auto;"/>
+                          src="rightColumnParagraphs/0/imageBinary/resteasy_coolstuff_makerfile.png"/>
                      </a>
                   </div>
                   <div>
@@ -469,7 +428,6 @@
                </li>
             </ul>
          </div>
-         <div style="clear: both;"></div>
       </div><!-- end wrapper-2 -->
    </div>
    <div id="site-info">
@@ -477,7 +435,7 @@
       </div>
       <div class="footer">
          <div class="container" id="companyfooter">
-            <div class="redhatlogo" style="text-align:center;">
+            <div class="redhatlogo">
                <div id="logospacer"></div>
                <a href="https://www.redhat.com/">
                   <img src="https://static.jboss.org/images/rhbar/redhatlogo.png">
