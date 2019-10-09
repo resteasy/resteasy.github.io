@@ -104,15 +104,16 @@
                         <div id="main">
                             <!-- content title -->
                             <h3>RESTEasy</h3>
-                            <div class="proj_define">RESTEasy is a JBoss project that provides various frameworks to
-                                help you build RESTful Web Services and RESTful Java applications. It is a <strong>fully
-                                    certified</strong> and portable implementation of the <a
-                                        href="https://jax-rs-spec.java.net/">JAX-RS 2.1</a> specification, a JCP
-                                specification that provides a Java API for RESTful Web Services over the HTTP protocol.
+                            <div class="proj_define">RESTEasy is a JBoss / Red Hat project that provides various frameworks to
+                                help you build RESTful Web Services and RESTful Java applications. It is an implementation of the
+                                <a href="https://github.com/eclipse-ee4j/jaxrs-api">Jakarta RESTful Web Services</a>, an Eclipse
+                                Foundation specification that provides a Java API for RESTful Web Services over the HTTP protocol.
+                                <br/>Moreover, RESTEasy also implements the
+                                <a href="https://github.com/eclipse/microprofile-rest-client">MicroProfile REST Client</a> specification API.
                             </div>
-                            <p>RESTEasy can run in any Servlet container, but tighter integration with WildFly
-                                Application Server is also available to make the user experience nicer in that
-                                environment.</p>
+                            <p>RESTEasy can run in any Servlet container, but tighter integration with <a href="https://wildfly.org/">WildFly</a>
+                               Application Server and <a href="https://quarkus.io/">Quarkus</a> is also available to make the
+                               user experience nicer in those environments.</p>
                             <div id="proj_checklist"><h3>Features</h3>
                                 <ul>
                                     <li>Portable to Tomcat and many other app-server</li>
@@ -131,9 +132,8 @@
                                         wrappers for maps, arrays, lists, and sets of JAXB Objects.
                                     </li>
                                     <li>GZIP content-encoding</li>
-                                    <li>Asynchronous HTTP (Comet) abstractions for JBoss Web, Tomcat 6, and Servlet
-                                        3.0
-                                    </li>
+                                    <li>Asynchronous HTTP abstractions for Servlet 3</li>
+                                    <li>Reactive support</li>
                                     <li>Asynchronous Job Service.</li>
                                     <li>Rich interceptor model.</li>
                                     <li>OAuth2 and Distributed&nbsp;SSO with JBoss AS7</li>
@@ -264,6 +264,14 @@
                         </div>
                         <div class="interviews-rss ">
                             <h3>RESTEasy</h3>
+                            <dl class="evenrow">
+                                <dt>
+                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/10/08/looking-to-the-future">Looking to the future...</a></dt>
+                                <dd class="date">October 9th, 2019 by Alessio Soldano</dd>
+                                <dd>If you look at the download page, you might notice that so far 2019 has been a
+                                    year rich of RESTEasy releases. We've made 11 &#8230;
+                                </dd>
+                            </dl>
                             <dl class="oddrow">
                                 <dt>
                                     <a href="https://developer.jboss.org/en/resteasy/blog/2019/10/08/resteasy-spring-boot-starter-411final-released">RESTEasy Spring Boot Starter 4.1.1.Final released</a></dt>
@@ -362,15 +370,6 @@
                                 </dd>
                                 <dd>As resteasy-tjws container is deprecated in master, so there is some work to be done
                                     to make undert&#8230;
-                                </dd>
-                            </dl>
-                            <dl class="evenrow">
-                                <dt>
-                                    <a href="https://developer.jboss.org/en/resteasy/blog/2019/02/12/jettison-has-been-removed-on-master-branch">Jettison
-                                        has been removed on master branch</a></dt>
-                                <dd class="date">Feb 12, 2019 by Wei Nan Li</dd>
-                                <dd>We have removed resteasy-jettison-provider from master branch, and the major affect
-                                    is that the res&#8230;
                                 </dd>
                             </dl>
                             <dl>
