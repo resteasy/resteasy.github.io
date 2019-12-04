@@ -1,0 +1,16 @@
+# Site settings
+title: Resteasy
+email: your-email@domain.com
+url: https://jimma.github.io/project
+description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+skills: "RESTEasy is a fully certified and portable implementation of the JAX-RS 2.0 specification, a JCP specification that provides a Java API for RESTful Web Services over the HTTP protocol. It is a JBoss project that provides various frameworks to help you build RESTful Web Services and RESTful Java applications.It can run in any Servlet container, but tighter integration with the JBoss Application Server is also available to make the user experience nicer in that environment."
+news: "Resteasy 3.0.19.Final is available." 
+meta_author: Resteasy
+# Build settings
+markdown: kramdown
+parse_block_html: true
+permalink: pretty
+paginate: 5
+paginate_path: "blogs/page:num"
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+gems: [jekyll-paginate, jekyll-feed]
