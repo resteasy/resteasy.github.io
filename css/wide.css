@@ -1,0 +1,229 @@
+/* 
+wide viewport 
+bigger than 1200 px 
+*/       
+
+#stage,
+#top_subnav_branding,
+#section-header,
+#branding,
+#proj_nav,
+#sub_nav, 
+#wrapper-2,
+#nav-global,
+#nav-global ul,
+#nav-global ul ul {
+	max-width: 1180px;
+}
+.col-subcol #wrapper-3 {
+	max-width:1170px;
+}
+
+/* 2 column layout: no nav | main | sidebar */
+.col-subcol-equal #wrapper-3 {
+	max-width:1170px;
+}  
+
+/* 3 column layout: | main | sidebar | sidebar */
+.col-subcol-subcol #wrapper-3 {
+	max-width:1170px;
+} 
+.col-subcol-subcol #main {
+	width: 460px;
+}
+
+/* 1 column layout: no nav | main | sidebar */
+
+.col-float2 #wrapper-3,
+.col-float2 #main,
+.col-float3 #wrapper-3,
+.col-float3 #main {
+	max-width:1170px;
+}
+
+
+
+/* 2 column layout: | main (floating teasers) | subcol */
+.col-float2-subcol #wrapper-3,
+.col-float2-subcol #main {
+	width: 700px;
+}
+/* 2 column layout: | main (floating teasers) | subcol */
+.nav-col-float2 #wrapper-3,
+.nav-col-float2 #main {
+	width: 700px;
+}
+
+
+/* 2 col Project Page layout */
+#wrapper-3 #main {
+/*max-width:813px; temp remove - liquid */	
+}
+
+
+/* PROMOS 
+---------- */
+
+#promos {
+	clear: none;     
+	float: right;
+	margin: 0;
+	padding: 0 0 20px 0;
+	width: 220px;
+}               
+.promo {       
+	float: left;
+	display: inline; /* IE 6 */
+	margin: 0 0 20px 0;
+	background: #ede39e; 
+}
+#promo-3 {
+	margin-right: 0;
+}  
+
+
+
+
+/* TeaserWrapper in Different Contexts 
+----------------------------- */
+
+/* ###################   TW-SWITCHER ################### */
+/* #####################
+Inside #Stage */
+#stage div.tw-switcher {
+	width: 1178px;
+}
+.js-on #stage div.tw-switcher .rack {
+	width: 1126px;
+}
+/* #####################
+Inside #wrapper-2 -> Base Element */
+#wrapper-2 div.tw-switcher {
+	width: 1178px;
+} 
+.js-on #wrapper-2 div.tw-switcher .rack {
+	width: 1126px;
+}
+
+
+
+
+
+/* ###################   TW-IMAGES ################### */
+/* #####################
+Inside #Stage */
+#stage div.tw-images {
+	width: 1178px;
+}
+.js-on #stage div.tw-images .rack {
+	width: 1140px;
+}
+/* #####################
+Inside #wrapper-2 -> Base Element */
+#wrapper-2 div.tw-images {
+	/*width: 1178px;*/
+width:1130px;
+}
+.js-on #wrapper-2 div.tw-images .rack {
+	width: 1140px;
+}
+
+
+
+
+
+
+/* ###################   TW-PAGING ################### */
+/* #####################
+Inside #Stage */
+#stage div.tw-paging {
+	width: 1178px;
+}
+.js-on #stage div.tw-paging .rack {
+	width: 1172px;
+	height: 350px;
+}
+.js-on #stage div.tw-paging .rack-teaser {
+	width: 1172px;
+	height: 350px;
+	padding: 0;
+}
+#stage div.tw-paging .rack-teaser img {
+	width: 1172px;
+	height: 399px;
+}
+/* #####################
+Inside #wrapper-2 -> Base Element */
+#wrapper-2 div.tw-paging {
+	width: 1178px;
+}
+.js-on #wrapper-2 div.tw-paging .rack {
+	width: 1155px;
+}
+#wrapper-2 div.tw-paging .rack-teaser {
+	width: 1155px;
+}
+#wrapper-2 div.tw-paging .rack-teaser h2 {
+	width: 765px;
+}  
+#wrapper-2 div.tw-paging .mod h2 {
+	width: 100%;
+}   
+#wrapper-2 div.tw-paging .rack-teaser p {
+	width: 750px; 
+}
+#wrapper-2 div.tw-paging .mod p {
+	width: 100%; 
+}
+
+
+
+
+
+
+/* ###################   TW-SLIDER ################### */
+/* #####################
+Inside #Stage */
+#stage div.tw-slider {
+	width: 1178px;
+}
+.js-on #stage div.tw-slider .rack {
+	width: 1138px;
+}
+#stage div.tw-slider .slider-bar {
+	background: #000 url(../../images/bgs/scrollbar-wide.png) 0 0 no-repeat;
+	width: 966px;
+}
+/* #####################
+Inside #wrapper-2 -> Base Element */
+#wrapper-2 div.tw-slider {
+	width: 1178px;
+}
+.js-on #wrapper-2 div.tw-slider .rack {
+	width: 1138px;
+}
+#wrapper-2 div.tw-slider .slider-bar {
+	background: #000 url(../../images/bgs/scrollbar-wide.png) 0 0 no-repeat;
+	width: 966px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

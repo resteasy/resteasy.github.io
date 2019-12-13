@@ -1,0 +1,1139 @@
+@charset "UTF-8";
+/*
+
+**********************************************************************************
+**********************************************************************************
+
+These are the common css styles for the JBoss.org site.
+
+**********************************************************************************
+**********************************************************************************
+
+*/
+
+
+/* =Base styles for container */
+
+
+/*------------- =Announcement banner --------------*/
+
+#proj_announce {
+	overflow:hidden;
+	/*height:106px;
+	display:block;
+	background:url(../../images/magnolia/bkgproj_announce.png) no-repeat;  not needed for liquid */
+}
+
+#proj_announce-whole {
+	overflow:hidden;
+	/*height:106px;
+	display:block;
+	z-index:0;
+	position:relative;  removed for liquid  */
+}
+
+#projpage_announce {
+	overflow:hidden;
+	/*height:106px;
+	display:block;
+	background:url(../../images/magnolia/projectpage-banner2.png) no-repeat; not needed for liquid */
+}
+
+#proj_logo {
+}
+#proj_announe-whole #proj_logo {
+	text-indent:-9999px;
+	display:block;
+}
+#proj_announce h2 {
+	padding:49px 0 0 20px;
+	font-size:30px;
+	margin:0px;
+	color:#4b5767;
+	text-shadow:0 1px 1px #CCC;
+}
+#proj_announce-whole h2 {
+	display:none;
+}
+
+#proj_tagline {
+	float:right;
+	padding-right:60px;
+}
+#proj_announce-whole #proj_tagline {
+	text-indent:-9999px;
+	display:block;
+}
+
+
+#proj_announce h3 {
+	color:#4b5767;
+	font-size:22px;
+	/*font-weight:100;*/
+	margin:0;
+	padding:53px 40px 0 0;
+	letter-spacing:-0.03em;
+	text-shadow:0 1px 1px #CCC;
+}
+#proj_announce-whole #proj_tagline-neg {
+	/*display:none;*/
+}
+#proj_container h1{
+	margin-left:15px;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-weight:100;
+	color:#FFFFFF;
+	font-size:28px;
+	margin-top:20px;
+	margin-bottom:8px;
+}
+
+
+
+
+
+/* = Common tags and elements  */
+
+pre {
+  margin: 0px;
+  padding: 10px;
+  overflow:auto;
+  border: 1px solid #e6e7e8;
+ }
+
+.min-height {
+	min-height:300px;
+}
+
+/*  = Standard Links and Specialized links  */
+
+
+a {
+	color:#336699;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+
+
+/*  = Base Single Column layout   */
+
+
+.OneColumnContent {
+	margin: 0px 20px 15px 20px;
+}
+
+/*  = Base Two Column layout  */
+
+
+.TwoColumnContent {
+	padding: 0px 25px 15px 200px;
+}
+
+/* ------------ = Header Tags -------------- */
+
+h1, h2, h3, h4, h5, h6, h7 {
+	letter-spacing: -.06em;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	/*letter-spacing: 0px;*/
+	/*font-family: 'PT Sans', "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;*/
+	display:block;
+	font-weight: normal;
+}
+
+h1 {
+	color:#CC0000;
+	font-size:27px;
+	margin:6px 0;
+}
+h2 {
+	color:#424242;
+	font-size:25px;
+	margin:5px 0;
+}
+h3 {
+	color:#88201B;
+	font-size:23px;
+	margin:4px 0;
+}
+h4 {
+	color:#494949;
+	font-size:21px;
+	margin:3px 0;
+}
+h5 {
+	color:#005E8F;
+	font-size:17px;
+	margin:2px 0
+}
+h6 {
+	color:#545353;
+	font-size:15px;
+	margin:1px 0;
+}
+h7 {
+	color:#666666;
+	font-size:13px;
+	margin: 0px;
+}
+
+
+/* = Floats, Clears, Margins and HRs   */
+
+.clear {
+	clear:both;
+}
+
+.floatright {
+	float:right;
+}
+
+.floatleft {
+	float:left;
+}
+
+.nomargin {
+	margin: 0px;
+}
+
+.greyHR {
+	border-top:1px solid #a1a1a1;
+	background-color:#ffffff;
+	border-bottom:0px;
+	border-left:0px;
+	border-right:0px;
+}
+
+.dashedHR {
+   border-top: 1px dashed #d5d5d5;
+   border-bottom: 0px;
+   border-left: 0px;
+   border-right: 0px;
+}
+
+.page-space { /*    <div class="page-space">&nbsp;</div>    */
+	margin-bottom:400px;
+	}
+
+
+.notfound-links li{
+	list-style:none;
+	font-size:13px;
+	}
+
+/*
+
+**********************************************************************************
+**********************************************************************************
+
+Content Specific Styles: These are styles the affect the content of the pages.
+
+**********************************************************************************
+**********************************************************************************
+
+*/
+
+/*  = Simple Table style (black header, grey/white stripes  */
+
+.simpletablestyle {
+	background-color:#E6E7E8;
+	clear:both;
+}
+
+.simpletablestyle img {
+	border:0px;
+}
+
+.simpletablestyle td {
+	height:3em;
+	padding-left: 6px;
+	font-size:11px;
+	padding:5px 5px;
+}
+
+.simpletablestyle th {
+	font-size:12px;
+	font-weight:normal;
+	padding:0 10px 0 5px;
+	border-bottom:#999999 dotted 1px;
+}
+
+.simpletablestyle .header {
+	background:url(../../images/magnolia/bkg-blkheader.png)  #000000 repeat-x top left;
+	height:31px;
+	font-size:10px;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-align:left;
+}
+
+.simpletablestyle .header a {
+	color:#94aebd;
+}
+
+
+.simpletablestyle tr.header td {
+	padding: 0px 10px 0px 5px;
+}
+
+
+.simpletablestyle .subheader {
+	background-color: #e6e7e8;
+	font-size:10px;
+	font-weight:bold;
+	color:#000000;
+	text-align:left;
+}
+
+.simpletablestyle .oddRow {
+    background-color: #f4f3f3;
+	padding-left: 6px;
+}
+
+.simpletablestyle .evenRow {
+    background-color: #ffffff;
+}
+
+.simpletablestyle .categoryRow { /* need this? */
+	color:#333333;
+	font-weight:bold;
+	font-size:13px;
+	font-family:Helvetica,sans-serif;
+}
+
+
+.simpletablestyle td a.td-download {
+	display:inline;
+	padding: 3px 30px 3px 0px;
+	min-width:80px;
+	height:20px;
+	background: transparent url(../../images/common/download-arrw_sml.gif) no-repeat right top;
+	}
+
+
+
+/*--  =Default Table style (black header, grey/white stripes   --*/
+
+.basetablestyle, .bodyTable {
+	margin:0px;
+}
+
+.basetablestyle img {
+	border:0px;
+}
+
+.basetablestyle td {
+	height:3em;
+	padding-left: 6px;
+	padding-right: 15px;
+}
+
+.basetablestyle .header {
+	background-color: #233345;
+	font-size:10px;
+	font-weight:bold;
+	color:#94aebd;
+	text-align:left;
+}
+
+.basetablestyle .header a {
+	color:#94aebd;
+}
+
+.basetablestyle .tableheaderfirst {
+	border-bottom:1px solid #233345;
+	height:2em;
+}
+
+.basetablestyle .tableheader {
+	border-left:1px solid #94aebd;
+	border-bottom:1px solid #233345;
+	height:2em;
+}
+
+.basetablestyle .subheader {
+	background-color: #e6e7e8;
+	font-size:10px;
+	font-weight:bold;
+	color:#000000;
+	text-align:left;
+}
+
+.basetablestyle .subheader .tableheaderfirst {
+	height:2em;
+	border-bottom: 0px;
+}
+
+.basetablestyle .subheader .tableheader {
+	height:2em;
+	border-left:1px solid #e6e7e8;
+	border-bottom:0px;
+}
+
+.basetablestyle .rowlinefirst {
+	border-bottom:1px solid #e6e7e8;
+	padding:10px;
+}
+
+.basetablestyle .rowline {
+	border-left:1px solid #e6e7e8;
+	border-bottom:1px solid #e6e7e8;
+	padding:10px;
+}
+
+.basetablestyle .categoryRow {
+    background-color: #dcdedf;
+	font-weight:bold;
+	padding-left: 6px;
+	color:#333333;
+	font-size:13px;
+	font-family:Helvetica,sans-serif;
+}
+
+
+.basetablestyle .oddRow, .a {
+    background-color: #f4f3f3;
+	padding-left: 6px;
+}
+
+.basetablestyle .evenRow, .b {
+    background-color: #ffffff;
+}
+
+.basetablestyle .footerrow {
+	background-color:#656565;
+}
+
+.basetablestyle .bottomline {
+	border-bottom:1px solid #E6E7E8;
+}
+
+.basetablestyle .topline {
+	border-top:1px solid #E6E7E8;
+}
+
+
+.basetablestyle td.rowline a.td-download {
+	display:inline;
+	padding: 3px 30px 3px 0px;
+	min-width:80px;
+	height:20px;
+	background: transparent url(../../images/common/download-arrw_sml.gif) no-repeat right top;
+	}
+
+
+.basetablestyle, .bodyTable {
+	border:#EFEFEF 1px solid;
+	border-bottom:none;
+	border-top:none;
+}
+
+.basetablestyle .header {
+	background:url(../../images/magnolia/bkg-blkheader.png)  #000000 repeat-x top left;
+	height:31px;
+}
+
+.basetablestyle .header {
+	color:#FFFFFF;
+}
+
+.basetablestyle td {
+	font-size:11px;
+}
+
+.basetablestyle .tableheader,
+.basetablestyle .tableheaderfirst {
+	font-size:12px;
+	font-weight:normal;
+}
+
+.basetablestyle .tableheader,
+.basetablestyle .tableheaderfirst {
+	border:1px solid #999999;
+	border-bottom: 1px dotted #999999;
+}
+.basetablestyle .tableheader {
+	border-left:none;
+}
+
+.basetablestyle .categoryRow {
+	color:#333333;
+	font-size:13px;
+	font-family:Helvetica,sans-serif;
+}
+
+
+
+
+
+/* = Admin forms & Inputs  */
+
+.adminforms {
+	margin:0px 20px 10px 20px;
+	display:block;
+}
+
+.adminforms h4 {
+	font-weight:bold;
+	font-size:12px;
+	margin:20px auto 20px auto;
+	border-bottom:1px solid #e6e7e8;
+}
+
+.adminforms label{
+ 	float: left;
+	margin: 0px auto 3px auto;
+	padding-right:10px;
+	white-space:nowrap;
+}
+
+.adminforms input, textarea, select {
+	margin-bottom: 8px;
+}
+
+.adminforms .radios {
+	width: 14px;
+	margin-bottom: -1px;
+}
+.adminforms .selectnarrow {
+	width:80px;
+	margin-bottom: 8px;
+}
+.adminforms .selectmedium {
+	width:160px;
+	margin-bottom: 8px;
+}
+
+.adminforms br {
+	clear: both;
+}
+
+.adminforms hr {
+	border-top:1px dashed #d5d5d5;
+	border-bottom:0px;
+	color: #ffffff;
+	border-left:0px;
+	border-right:0px;
+}
+
+.adminforms .submit {
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #4a5d75;
+	border-top: 1px solid #94aebd;
+	border-left: 1px solid #94aebd;
+	border-right: 1px solid #233345;
+	border-bottom: 1px solid #233345;
+	height:20px;
+	padding:0px 10px 0px 10px;
+}
+
+.adminforms .contentarrows ul {
+	padding-left: 0px;
+	margin-left: 0px;
+	display: block;
+}
+
+.adminforms .contentarrows ul li {
+	list-style: none;
+	display: block;
+	padding: 0px 16px 6px 16px;
+	margin-top: 30px;
+
+}
+.adminforms .contentarrows ul li.last {
+	margin-top: 0px;
+}
+
+#propertiesbox {
+	margin-top: 20px;
+	padding: 0px 10px 10px 10px;
+	background-color: #ececec;
+	border: 1px solid #d5d5d5;
+}
+
+/*  = Form buttons   */
+
+.formbuttons {
+	margin: 10px auto 15px auto;
+	padding-top: 5px ;
+	border-top: 1px solid #4a5d75;
+}
+
+.formbuttons ul {
+	padding-left: 0px;
+	margin-left: 0px;
+	display: inline;
+}
+
+.formbuttons ul li {
+	list-style: none;
+	display: inline;
+	padding-right: 4px;
+}
+
+.formbuttons .submit {
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #4a5d75;
+	border-top: 1px solid #94aebd;
+	border-left: 1px solid #94aebd;
+	border-right: 1px solid #233345;
+	border-bottom: 1px solid #233345;
+	height:20px;
+	cursor: pointer;
+}
+
+/* = Single column submit & label  */
+
+.singlecolumn .submit {
+ 	width:80px;
+}
+.singlecolumn label {
+	width: 170px;
+}
+
+.singlecolumn input, select {
+	width: 300px;
+}
+
+/*  = Bootstrap Buttons (these are copied from bootstrap-community.css, so once we have boostrap working we can delete the styles here and use that stylesheet) */
+.btn {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  padding: 4px 14px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  *line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #656565;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f6f6f6;
+  background-image: -moz-linear-gradient(top, #f9f9f9, #f3f3f3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#f3f3f3));
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #f3f3f3);
+  background-image: -o-linear-gradient(top, #f9f9f9, #f3f3f3);
+  background-image: linear-gradient(to bottom, #f9f9f9, #f3f3f3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF9F9F9', endColorstr='#FFF3F3F3', GradientType=0);
+  border-color: #f3f3f3 #f3f3f3 #cdcdcd;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%);
+  *background-color: #f3f3f3;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn:hover {
+  color: #656565;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.btn-large {
+  padding: 9px 14px;
+  font-size: 16px;
+  line-height: normal;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn-large [class^="icon-"] {
+  margin-top: 2px;
+}
+
+
+/* = Epic Custom Bootstrap Btn (don't erase) */
+.btn-epic {
+  background-image: linear-gradient(to bottom, #54af64, #4da45c);
+  color:#FFF;
+  text-shadow:1px 1px 1px #387242;
+  border: 1px solid #5f9969;
+}
+.btn-epic:hover {
+  background-color: #4d9b5a;
+  color: #FFF;
+  text-shadow:1px 1px 1px #387242;
+  background-position: 0 -80px;
+}
+.btn-epic h1, .btn-epic h2, .btn-epic h3 {
+  color:#FFF;
+  padding:0 5px;
+}
+.btn-epic h1 {
+  color:#dffdbe;
+}
+.btn-epic .download-file {
+  float:right;
+}
+.btn-epic .download-text {
+  float:left;
+}
+
+
+
+/*  = Default Buttons  */
+
+.buttonMed {
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #4a5d75;
+	border-top: 1px solid #94aebd;
+	border-left: 1px solid #94aebd;
+	border-right: 1px solid #233345;
+	border-bottom: 1px solid #233345;
+	height: 20px;
+	cursor: pointer;
+}
+
+/* = Anchor tag fix for most browsers except Safari  */
+
+.anchorfix {
+	position:absolute; /* this lifts the anchor out of the content area */
+	width:1px; /* this is to fix it in IE 5.5 and 6.0 or it will disappear the anchor entirely */
+	}
+
+
+/* = Docbook document navigation  */
+
+.docnav a, .docnav strong{text-decoration:none;font-weight:normal;}
+.docnav{list-style:none;margin:0em;padding:0em;position:relative;width:100%;padding-bottom:2em;padding-top:1em;border-top:1px dotted #ccc;}
+.docnav li{list-style:none;margin:0em;padding:0em;display:inline;font-size:.8em;}
+.docnav li:before{content:" ";}
+.docnav li.previous, .docnav li.next{position:absolute;top:1em;}
+.docnav li.up, .docnav li.home{margin:0em 1.5em;}
+.docnav li.previous{left:0px;text-align:left;}
+.docnav li.next{right:0px;text-align:right;}
+.docnav li.previous strong, .docnav li.next strong{display:block;height:22px;}
+.docnav{margin:0 auto;text-align:center;}
+.docnav li.next a strong{background:  url(../../images/common/docsnav-sprite.gif) 23px -90px no-repeat;padding-top:10px; padding-bottom: 15px; height:40px; padding-right:40px;font-size:1.2em; width:17px;}
+.docnav li.previous a strong{background: url(../../images/common/docsnav-sprite.gif) 0 0 no-repeat;padding-top:10px; padding-bottom: 15px; height:40px; padding-left:40px;font-size:1.2em;}
+.docnav li.home a strong{background: url(../../images/common/docsnav-sprite.gif) 0 -275px no-repeat;padding-top:10px; padding-bottom: 15px;height:40px; padding-left:50px;font-size:1.2em;}
+.docnav li.up a strong{background: url(../../images/common/docsnav-sprite.gif) 0 -180px no-repeat;padding-top:10px; padding-bottom: 15px;height:40px; padding-left:40px;font-size:1.2em;}
+
+.docnav a:link, .docnav a:visited {color:#666 !important;}
+.docnav a:hover,.docnav a:focus, .docnav a:active{color:black !important;}
+.docnav a{max-width: 10em;overflow:hidden;}
+.docnav a:link strong{text-decoration:none;}
+
+.docnav{margin:0 auto;text-align:center;}
+
+.docnav { margin-bottom:16px;}
+
+
+
+
+/* = Downloads modal dialog styles (this has replaced stylesheet: modal.css) */
+
+#modallayer {
+	background-color: transparent;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+   	text-align: left;
+	background-image: url(../../images/common/background_trans.png);
+}
+
+#dialog {
+	width: 440px;
+	min-height: 100px;
+	display: none;
+  	border:1px solid #94aebd;
+	background-color: #f3f3f3;
+	background-image: url(../../images/common/modaldialog_infoicon.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 25px;
+  	ext-align: left;
+}
+
+#modallayer h4,
+.ui-dialog-content h4 {
+        background-image: url(../../images/common/modaldialog_hdrbkg.gif);
+        background-repeat:repeat-x;
+        background-color: #d5d5d5;
+        font-weight:bold;
+        font-size:15px;
+        color:#243446;
+        height:28px;
+        text-indent: 20px;
+        margin:0px;
+        padding-top: 15px;
+}
+
+#modallayer p {
+        padding: 2px 10px 2px 110px;
+
+}
+
+#modallayer #buttonrow {
+        background-image: url(../../images/common/modaldialog_footrbkg.gif);
+        background-repeat:repeat-x;
+        background-color: #d5d5d5;
+        color:#243446;
+        height:33px;
+        padding-left: 110px;
+        padding-top: 10px;
+        margin:0px;
+        border-top: none;
+}
+
+#modallayer #buttonrow ul {
+        padding-left: 0px;
+        margin-left: 0px;
+        display: inline;
+}
+
+#modallayer #buttonrow ul li {
+        list-style: none;
+        display: inline;
+        padding-right: 4px;
+}
+
+#modallayer #buttonrow .hrefbuttons {
+        background-color:#4A5D75;
+        border-color:#94AEBD #233345 #233345 #94AEBD;
+        border-style:solid;
+        border-width:1px;
+        color:#FFFFFF;
+        cursor:pointer;
+        font-size:10px;
+        font-weight:bold;
+        padding: 4px 10px;
+        text-decoration:none;
+}
+
+
+
+
+/* = SLIMBOX */
+
+#lbOverlay {
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	cursor: pointer;
+}
+
+#lbCenter, #lbBottomContainer {
+	position: absolute;
+	z-index: 9999;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.lbLoading {
+	background: #fff url(../../images/common/loading.gif) no-repeat center;
+}
+
+#lbImage {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 10px solid #fff;
+	background-repeat: no-repeat;
+}
+
+#lbPrevLink, #lbNextLink {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 50%;
+	outline: none;
+}
+
+#lbPrevLink {
+	left: 0;
+}
+
+#lbPrevLink:hover {
+	background: transparent url(../../images/common/common/prevlabel.gif) no-repeat 0 15%;
+}
+
+#lbNextLink {
+	right: 0;
+}
+
+#lbNextLink:hover {
+	background: transparent url(../../images/common/nextlabel.gif) no-repeat 100% 15%;
+}
+
+#lbBottom {
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666;
+	line-height: 1.4em;
+	text-align: left;
+	border: 10px solid #fff;
+	border-top-style: none;
+}
+
+#lbCloseLink {
+	display: block;
+	float: right;
+	width: 66px;
+	height: 22px;
+	background: transparent url(../../images/common/closelabel.gif) no-repeat center;
+	margin: 5px 0;
+	outline: none;
+}
+
+#lbCaption, #lbNumber {
+	margin-right: 71px;
+}
+
+#lbCaption {
+	font-weight: bold;
+}
+
+
+/* =Looped Slider slideshow */
+.container {
+	width:500px;
+	height:375px;
+	overflow:hidden;
+	position:relative;
+	cursor:pointer;
+}
+
+.slides {
+	position:absolute;
+	top:0; left:0;
+}
+
+.slides div {
+	position:absolute;
+	top:0; width:500px;
+	display:none;
+}
+
+ /*  Optional  */
+:focus { outline: 0; }
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+#loopedSlider { margin:18px auto; width:500px; position:relative; clear:both; }
+ul.pagination { list-style-type:none; margin:0; padding:0; margin:9px auto; width:90px; }
+ul.pagination li { float:left; margin:0 5px; }
+ul.pagination a { display:block; width:12px; padding-top:12px; height:0; overflow:hidden; background-image:url(https://www.jboss.org/dms/testimages/images/pagination.png); background-position:0 0; background-repeat:no-repeat;}
+ul.pagination li.active a {background-position:0 -12px}
+a.previous { position:absolute; top:200px; left:-32px; }
+a.next { position:absolute; top:200px; right:-32px; }
+
+
+
+/* =Simple jQuery Slideshow by John Raasch */
+
+ /*** set the width and height to match your images **/
+ #slideshow {     position:relative;     height:350px; }
+ #slideshow .slide {     position:absolute;     top:0;     left:0;     z-index:8;     opacity:0.0; }
+ #slideshow div.active {     z-index:10;     opacity:1.0; }
+ #slideshow div.last-active {     z-index:9; }
+
+
+/*  =Read More link */
+.read-more a{
+	background: transparent url(../../images/common/arrow-leftnav.png) no-repeat left top scroll;
+	margin-left:5px;
+	padding:3px 10px 3px 20px;
+	list-style:none;
+}
+
+
+/*
+**********************************************************************************
+**********************************************************************************
+
+Sprites
+
+**********************************************************************************
+**********************************************************************************
+/*
+
+/* ---------------- Project icons ------------------------------------ */
+/* Generated by
+http://spritegen.website-performance.org/
+with these settings:
+  Horizontal Offset: 5
+  Vertical Offset: 5
+  Class Prefix (optional): nothing
+*/
+.project-icon-med {
+  background: url(../../images/icons/sprite-project-icons-all.png) no-repeat top left;
+  float:left;
+  margin:-1px 4px 0 0;
+  display:block;
+  height:16px;
+  width:16px;
+}
+
+.blank_icon_16x{ background-position:0 0; width: 16px; height: 16px; }
+
+.aerogear_icon_16x { background-position: 0 -1176px; width: 16px; height: 16px; }
+.ashiaro_icon_16x{ background-position: 0 -1316px; width: 16px; height: 16px;}/* last one */
+.apiviz_icon_16x{ background-position: 0 -1077px; width: 16px; height: 16px; }
+.arquillian_icon_16x{ background-position: 0 -42px; width: 16px; height: 16px; }
+.blacktie_icon_16x{ background-position: 0 -21px; width: 16px; height: 16px; }
+.boxgrinder_icon_16x{ background-position: 0 -63px; width: 16px; height: 16px; }
+.byteman_icon_16x{ background-position: 0 -1017px; width: 16px; height: 16px; }
+.capedwarf_icon_16x{ background-position: 0 -1136px; width: 16px; height: 16px;  }
+.ceylon_icon_16x{ background-position: 0 -1156px; width: 16px; height: 16px;  }
+.cirras_icon_16x{ background-position: 0 -84px; width: 16px; height: 16px; }
+.dna_icon_16x{ background-position: 0 -105px; width: 15px; height: 15px; }
+.drools_icon_16x{ background-position: 0 -125px; width: 16px; height: 16px; }
+.embeddedjopr_icon_16x{ background-position: 0 -146px; width: 16px; height: 16px; }
+.errai_icon_16x{ background-position: 0 -167px; width: 16px; height: 16px; }
+.escalante_icon_16x{ background-position: 0 -1256px; width: 16px; height: 16px;}
+.forge_icon_16x { background-position: 0 -1196px; width: 16px; height: 16px; }
+.gatein_icon_16x{ background-position: 0 -188px; width: 16px; height: 16px; }
+.guvnor_icon_16x{ background-position: 0 -209px; width: 15px; height: 14px; }
+.hibernate_icon_16x{ background-position: 0 -228px; width: 16px; height: 16px; }
+.hornetQ_icon_16x{ background-position: 0 -249px; width: 16px; height: 16px; }
+.infinispan_icon_16x{ background-position: 0 -270px; width: 16px; height: 16px; }
+.ironjacamar_icon_16x{ background-position: 0 -291px; width: 16px; height: 16px; }
+.jbossas7_icon_16x, .jbossas_icon_16x { background-position: 0 -1096px; width: 16px; height: 16px; }
+.jbossmc_icon_16x{ background-position: 0 -312px; width: 16px; height: 16px; }
+.jbossportal_icon_16x{ background-position: 0 -333px; width: 16px; height: 16px; }
+.jbpm_icon_16x{ background-position: 0 -354px; width: 16px; height: 16px; }
+.jdf_icon_16x{ background-position: 0 -1216px; width: 16px; height: 16px;}
+.jgroups_icon_16x{ background-position: 0 -375px; width: 16px; height: 16px; }
+.jopr_icon_16x{ background-position: 0 -396px; width: 16px; height: 14px; }
+.jsfunit_icon_16x{ background-position: 0 -1116px; width: 16px; height: 16px; }
+.mass_icon_16x{ background-position: 0 -415px; width: 17px; height: 15px; }
+.mobicents_icon_16x{ background-position: 0 -435px; width: 16px; height: 16px; }
+.modcluster_icon_16x{ background-position: 0 -996px; width: 16px; height: 16px; }
+.modeshape_icon_16x{ background-position: 0 -456px; width: 16px; height: 16px; }
+.narayana_icon_16x{ background-position: 0 -1037px; width: 16px; height: 16px; }
+.netty_icon_16x{ background-position: 0 -1057px; width: 16px; height: 16px; }
+.optaplanner_icon_16x{ background-position: 0 -1236px; width: 16px; height: 16px;}
+.overlord_icon_16x{ background-position: 0 -477px; width: 16px; height: 16px; }
+.papaki_icon_16x{ background-position: 0 -498px; width: 16px; height: 16px; }
+.picketbox_icon_16x{ background-position: 0 -519px; width: 16px; height: 16px; }
+.picketlink_icon_16x{ background-position: 0 -540px; width: 16px; height: 16px; }
+.pressgang_icon_16x{ background-position: 0 -561px; width: 16px; height: 16px; }
+.railo_icon_16x{ background-position: 0 -582px; width: 16px; height: 16px; }
+.resteasy_icon_16x{ background-position: 0 -603px; width: 16px; height: 16px; }
+.reststar_icon_16x{ background-position: 0 -624px; width: 16px; height: 16px; }
+.richfaces_icon_16x{ background-position: 0 -645px; width: 16px; height: 16px; }
+.riftsaw_icon_16x{ background-position: 0 -666px; width: 16px; height: 16px; }
+.sam_icon_16x{ background-position: 0 -687px; width: 16px; height: 16px; }
+.savara_icon_16x{ background-position: 0 -708px; width: 16px; height: 16px; }
+.scribble_icon_16x{ background-position: 0 -729px; width: 16px; height: 16px; }
+.seam_icon_16x{ background-position: 0 -750px; width: 16px; height: 16px; }
+.shrinkwrap_icon_16x{ background-position: 0 -771px; width: 16px; height: 16px; }
+.snowdrop_icon_16x{ background-position: 0 -792px; width: 16px; height: 16px; }
+.switchyard_icon_16x{ background-position: 0 -813px; width: 16px; height: 16px; }
+.tattletale_icon_16x{ background-position: 0 -834px; width: 16px; height: 16px; }
+.teiid_icon_16x{ background-position: 0 -855px; width: 16px; height: 16px; }
+.thermostat_icon_16x{ background-position: 0 -1296px; width: 16px; height: 16px;}
+.tohu_icon_16x{ background-position: 0 -876px; width: 16px; height: 16px; }
+.tools_icon_16x{ background-position: 0 -897px; width: 16px; height: 16px; }
+.torquebox_icon_16x{ background-position: 0 -918px; width: 16px; height: 11px; }
+.weld_icon_16x{ background-position: 0 -934px; width: 16px; height: 15px; }
+.wildfly_icon_16x{ background-position: 0 -1276px; width: 16px; height: 16px;}
+.wise_icon_16x{ background-position: 0 -954px; width: 16px; height: 16px; }
+.xnio_icon_16x{ background-position: 0 -975px; width: 16px; height: 16px; }
+
+
+
+/* ---------------- JIRA icons ------------------------------------ */
+
+/* JIRA Icons Sprite */
+/* Generated by http://spritegen.website-performance.org/ with these settings:
+     Horizontal Offset: 5
+     Vertical Offset: 5
+     Class Prefix (optional): jira-
+     Display width and height (optional): unchecked
+*/
+
+.jira-icon {
+  background: url(../../images/common/jira-icons-sprite.png) no-repeat top left;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  float: left;
+}
+
+.jira-issuetype-1{ background-position: 0 0;  }
+.jira-issuetype-10{ background-position: 0 -21px;  }
+.jira-issuetype-11{ background-position: 0 -42px;  }
+.jira-issuetype-12{ background-position: 0 -71px;  }
+.jira-issuetype-13{ background-position: 0 -100px;  }
+.jira-issuetype-14{ background-position: 0 -121px;  }
+.jira-issuetype-15{ background-position: 0 -142px;  }
+.jira-issuetype-2{ background-position: 0 -163px;  }
+.jira-issuetype-3{ background-position: 0 -184px;  }
+.jira-issuetype-4{ background-position: 0 -205px;  }
+.jira-issuetype-5{ background-position: 0 -226px;  }
+.jira-issuetype-7{ background-position: 0 -247px;  }
+.jira-issuetype-8{ background-position: 0 -268px;  }
+.jira-issuetype-9{ background-position: 0 -289px;  }
+.jira-status-1{ background-position: 0 -310px;  }
+.jira-status-3{ background-position: 0 -331px;  }
+.jira-status-4{ background-position: 0 -352px;  }
+.jira-status-5{ background-position: 0 -373px;  }
+.jira-status-6{ background-position: 0 -394px;  }
+.jira-status-10011{ background-position: 0 -416px;  }
+
+
+
+/* ---------------- Project page specific sprites ------------------------------ */
+
+.projectpage-sprite {
+   background: url(../../images/common/projectpage_sprite.png) no-repeat top left;
+}
+
+.projectpage-sprite-jive-icon-announcement-16x16{ background-position: 0 0; width: 17px; height: 17px; }
+.projectpage-sprite-nextlabel{ background-position: 0 -67px; width: 63px; height: 32px; }
+.projectpage-sprite-prevlabel{ background-position: 0 -149px; width: 63px; height: 32px; }
+.projectpage-sprite-securityimage{ background-position: 0 -231px; width: 244px; height: 75px; clear:both; margin-top: 15px; margin-bottom: 15px; }
+
+
+/* ----------------- Social Media buttons from ShareThis ------------------------- */
+
+.projectpage-socialmedia {
+	margin-bottom: 15px;
+}
+
+
+
+
+/*
+**********************************************************************************
+**********************************************************************************
+
+Depreciated Styles  (thise were moved to archive.css to cut down on http requests)
+
+**********************************************************************************
+**********************************************************************************
+*/

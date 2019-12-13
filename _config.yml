@@ -1,0 +1,15 @@
+# Site settings
+title: Resteasy
+email:
+url: https://resteasy.jboss.org
+description: "RESTEasy is a fully certified and portable implementation of the JAX-RS specification"
+news: "Resteasy 3.0.19.Final is available." 
+meta_author: Resteasy
+# Build settings
+markdown: kramdown
+parse_block_html: true
+permalink: pretty
+paginate: 15
+paginate_path: "blogs/page:num"
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+gems: [jekyll-paginate, jekyll-feed]

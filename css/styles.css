@@ -1,0 +1,1544 @@
+/*
+theme: JBoss Community 4.0
+author: JBoss Community Team
+---  liquid  ---
+*/
+
+body {
+    font: 12px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color:#BAC3CD;
+	color: #555;
+	margin:0px;
+	padding:0px;
+}
+
+/*------------- =Layout Cheats --------------*/
+img {
+	border:none;
+}
+.clearfix {
+    clear: both;
+    font-size: 1px;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.tabnavclearfix {
+    clear: both;
+    font-size: 1px;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.clearfix2 {
+	min-height:0;
+}
+
+br.clearfix {
+	clear:both;
+	line-height:0px;
+}
+
+.spacer {
+	background:url(../../images/common/spacer.png) no-repeat top left transparent;
+}
+a:hover .spacer  {
+	text-decoration:none;
+}
+
+
+
+
+
+/* =Layout
+--------------------- */
+#wrapper {
+	background: #f3f3f3 url(../../images/bgs/bg.png) repeat-x 0 0;
+	padding-top:3px;
+	position: relative;
+	overflow:hidden;
+}
+#maincontent-wrapper {
+	margin:0 10px;
+}
+#branding {
+	position: relative;
+	margin: 0 auto 0px auto;
+	background: transparent url(../../images/bgs/branding-stkv2.png) repeat-x 0 0;
+	height:57px;
+}
+#top_subnav_branding {
+	position: relative;
+	margin: 0 auto 0px auto;
+	/*box-shadow:3px 3px 3px #ccc;
+	height:131px;  need this to help Opera
+	background-color:#bcbcbc;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius: 5px 5px 0 0; border-radius:5px 5px 0 0; */
+
+}
+#project #top_subnav_branding {
+	background-color:transparent;
+}
+#top_subnav_branding img {/* this targets the community template micro-site banners */
+	padding:0 5px;
+}
+#community #top_subnav_branding #banner img {/* this targets the community template micro-site banners */
+	padding:0;
+}
+#project #top_subnav_branding #banner img {  /* this targets the project template banners */
+	position: relative;
+    z-index: 99;
+	padding:0px;
+}
+.community-banner { 	/* this is to be used for community banners that must be added in by html rather than uploaded */
+	max-width:1175px;
+	overflow:hidden;
+	margin:5px 5px 0 0;
+	padding-top:5px;
+}
+#proj_announce-whole,
+#proj_announce        {
+	display:none; 		/* this is to remove the old banner and show the new banner beneath it */
+	overflow:hidden;
+	margin-top: -110px; /* this is negatively indented to cover up the 1180px project-banner or default-banner below it */
+	height:110px;       /* this is to give it a height to keep the proj_nav from coming up when the image isn't used */
+}
+#proj_announce h3,
+#proj_announce h2  {
+	display:none; 		/* hides old html logo and tagline */
+}
+#banner {
+	overflow:hidden;
+}
+#wrapper-2 {
+	background: #a8a8a8 url(../../images/bgs/wrapper2.png) repeat-x 0 0;
+	margin: 0px auto 0;
+	/*-webkit-border-radius:4px; -moz-border-radius: 4px; border-radius:4px;*/
+	/*box-shadow:0 2px 3px #7B8185;*/
+    position: relative;
+    z-index: 1;
+	padding-bottom:5px;
+}
+#wrap-content {
+	background-color:#FFF;
+	padding:0px;
+	margin:0 5px 0px;
+	-webkit-border-bottom-left-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius: 0px 0px 4px 4px; border-radius:0px 0px 4px 4px;
+}
+#wrapper-3 {
+	float: left;
+	display: inline; /* IE 6 */
+	margin:0px;
+	width: 700px;
+	width: 100%;
+	/*overflow:hidden; this is making anchors get hidden in overflow */
+	-webkit-border-radius:4px; -moz-border-radius: 4px; border-radius:4px;
+	line-height:1.5;
+	background-color:#FFF;
+	}
+#subnav_footer,
+#projsubnav_footer,
+#nav-footer,
+#tabnav {
+	margin:0px auto;
+	font-weight:bold;
+	display:block;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:100%;
+	max-width:1180px;
+	min-width:768px;
+	text-align:left;
+}
+#subnav_footer li.current .notch,
+#projsubnav_footer li.current .notch,
+#nav-footer li.current .notch,
+#tabnav li.current .notch  {
+	display:none;
+}
+#subnav_footer {
+	display:none;	/* hides footer until Rysiek can remove by script */
+}
+
+#site-info {
+	clear: both;
+	overflow: hidden;
+	height: 1%; /* IE 6 */
+	margin:0 auto;    /* to center the footer div */
+	text-align:center;/* to center the footer div */
+}
+
+
+/* =right col layout ----------------------------*/
+.rightcol-layout #rightcolumn{
+	float:right;
+	margin-left:-300px;
+	background:url(../../images/magnolia/bkg_dogearhang.png) no-repeat scroll right top #EFEFEF;
+}
+.rightcol-layout #main-wrapper{
+	float:left;
+	width:100%;
+	background-color: #EFEFEF;
+}
+.rightcol-layout #main {
+	margin:0 300px 0 0;
+}
+
+/* =left col layout ----------------------------*/
+.leftcol-layout #leftcolumn{
+	float:left;
+	margin-right:-300px;
+	background-color: #FAFAFA; /* light grey */
+   	background-image: -webkit-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:    -moz-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:     -ms-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:      -o-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	padding-bottom: 40px;
+}
+.leftcol-layout #main-wrapper{
+	width:100%;
+	background-color: #FAFAFA;
+	overflow: hidden; /* without this the main column drops below the left column */
+}
+.leftcol-layout #main {
+	margin:0 0 0 300px;
+	background:url(../../images/magnolia/bkg_dogearhangwhite.png) no-repeat scroll right top #FFF;
+}
+
+/* =both col layout ----------------------------*/
+.bothcol-layout #rightcolumn{
+	float:right;
+	margin-left:-300px;
+	background:url(../../images/magnolia/bkg_dogearhang.png) no-repeat scroll right top #EFEFEF;
+	padding-bottom: 40px;
+}
+.bothcol-layout #leftcolumn{
+	float:left;
+	margin-right:-300px;
+	background-color:#FAFAFA; /* light grey */
+   	background-image: -webkit-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:    -moz-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:     -ms-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	background-image:      -o-linear-gradient(top, #FFF, #FAFAFA 60px);
+   	padding-bottom: 40px;
+   	position: relative ; /* this fixes issue with left column links being unclickable */
+}
+.bothcol-layout #main-wrapper {
+	float:left;
+	width:100%;
+}
+.bothcol-layout #main {
+	margin:0 300px 0 300px;
+}
+
+/* =no col layout ----------------------------*/
+.nocol-layout #main-wrapper {
+	background:url(../../images/magnolia/bkg_dogearhangwhite.png) no-repeat scroll right top #FFFFFF;
+}
+#community #main-wrapper{
+	background-image:none; /* removes the dogear */
+	/*overflow:hidden;  this is messing up anchors */
+	-webkit-border-radius:4px; -moz-border-radius: 4px; border-radius:4px;
+}
+#home .nocol-layout #main-wrapper {
+	background:url(../../images/bgs/wrapper2bg-crosshatch.png) repeat scroll 0 0 #A8A8A8;
+}
+
+.nocol-layout #main {
+	background:none;
+}
+
+#main {
+	/*background:url(../../images/magnolia/deckled-edge.png) repeat-y scroll right top #FFFFFF;*/
+	background-color:#FFF;
+	/*overflow: hidden;  IE 6 */
+	padding:30px;
+	margin-bottom:5px;
+	min-height:650px; /* long enough to keep the primary nav dropdowns from getting cropped off */
+}
+.column {
+	/*display: inline; temp remove IE 6 */
+	width: 270px;
+	padding:30px 15px 0px;/* brings grey column down to the bottom of the wrapper */
+	/*margin-bottom: -32747px; /* brings grey column down to the bottom of the wrapper */
+	margin-top:0px;
+}
+
+#community #main-wrapper #main {
+	background-image:none; /* removes the dogear */
+}
+
+
+
+
+
+/* =Branding
+------------------ */
+.skip {
+    margin: 0;
+    padding: 0;
+}
+.aural, .skip a, #search-box label, #search-results .new-search label, #search-box h6, #nav-global span em, #nav li strong em, #nav-global li.on em, #nav-box li.on em, #primarynav h6, #nav-box li h3 em, #nav h6, .column h6, em.more span, #promos .more, .pager li em, .pager h3, #search-results .form-wrapper label span, #main .vcard div h3, .column .vcard div h3, #glossary-index h3, .day span, form div label em, #nav-content strong em, p#copyright-magnolia span, #event-pager h5, div.superpromos .superpromo-section p.more a span {
+    display: block;
+    height: 1px;
+    left: -9999px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+#branding {
+	color: #fff;
+}
+#logo {
+	background: transparent url(../../images/bgs/corners-branding-right-stkv2.png) no-repeat top right; /* rounded corners and shadow */
+	overflow: hidden;
+	position: relative;
+	height: 65px;
+}
+#logo span {
+	background: transparent url(../../images/bgs/jbosscommunity-logo-stacked.png) no-repeat 0 0;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	z-index: 10;
+	display: block;
+	top: 0;
+	left: 0;
+	height: 57px;
+	width: 233px;
+}
+#logo span:hover {
+	background: transparent url(../../images/bgs/jbosscommunity-logo-stacked.png) no-repeat 0 -57px;
+}
+#logo strong,
+#logo em {
+	overflow: hidden;
+	position: relative;
+	color: #000;
+	margin-left:-9999px;
+}
+#logo em {
+	position: absolute;
+	z-index: 11;
+	left: 80px;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	color: #336699;
+	font-size: 130%;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 1.2em;
+	white-space: nowrap;
+}
+#logo a {
+	position: absolute;
+	display: block;
+	left: 0;
+	width: 233px;
+	height: 40px;
+	padding: 10px 0;
+	cursor: pointer;
+}
+#logo a:hover {
+	text-decoration: none;
+}
+#logo a img {
+	display: none;
+}
+
+
+/* =Searach */
+
+#search-box {
+	position: absolute;
+	top: 15px;
+	right: 0;
+	padding-right:5px;
+	z-index:103; /* this is higher than the dropmenudiv */
+}
+#search-box input {
+	margin: 0 0px 8px 0;
+	border: 0px;
+	width: 150px;
+	padding: 3px 0 3px 5px;
+	-webkit-border-radius:10px;-moz-border-radius: 10px; border-radius:10px;
+}
+#search-box input:focus,
+#search-box input.a11y-focus {
+	background: #fff;
+	border: 1px solid #abc4d5;
+}
+#search-box input#searchbar {
+	background: url(../../images/common/ico_searcharrow-dark.png) no-repeat top right #6b7c86;
+}
+#search-box input.search-arrow {
+	position:absolute;
+	right: 8px;
+    top: -1px;
+	width: 16px;
+	height: 16px;
+}
+#search-box .button {
+	background: transparent url(../../images/icons/searcharrow.png) 0 0 no-repeat;
+	width: auto;
+	margin: 0;
+	color: #fff;
+	cursor: pointer;
+}
+#search-box .button:hover,
+#search-box .button:active,
+#search-box .button:focus {
+	background: #333;
+	color: #fff;
+	border: 1px solid #abc4d5;
+	border-right: 1px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
+}
+#search-box a.button {
+	width: 100px;
+	display: inline;
+	border: none;
+	padding: 3px 10px 2px 10px;
+}
+
+
+
+/* =nav meta */
+
+#nav-meta {
+	position: absolute;
+	right: 100px;
+	top: 19px;
+}
+#nav-meta ul {
+	margin:0px;
+}
+#nav-meta ul li {
+	float: left;
+	margin: 0 2px 0 0;
+	list-style: none;
+	font-size: 10px;
+	height: 17px;
+	color: #8C8F91;
+}
+
+#nav-meta ul #jbssologininfo1 a img {
+	margin-top:-6px;
+}
+
+#nav-meta ul li a {
+	color: #ececec;
+	color: #C9D4E4;
+	margin: 0 4px;
+	padding: 0;
+	text-decoration: none;
+	font-size:11px;
+	vertical-align: top;
+}
+#nav-meta ul li a:hover,
+#nav-meta ul li a:active,
+#nav-meta ul li a:focus {
+	color: #FFF;
+	/*border-bottom: 1px dotted #6A8EA4 ;*/
+	outline:0 none;
+}
+
+
+#dropmenudiv {
+	margin:-10px 0 0 0px;
+	background:#6b7c86 url(../../images/bgs/dropmenudiv.png) bottom left no-repeat;
+	/*border:1px solid #243447;
+	border-top:none;     */
+    color: #fff;
+	position: absolute;
+	z-index: 1;  /* this now lower than proj_nav or sub_nav and the #search-box (was 102 to be higher than the proj_nav and sub_nav) */
+	padding: 14px 0px 4px 5px;
+	text-decoration:none;
+	text-align: left;
+	width:auto; /* this isn't working with new percentages */
+	-webkit-border-radius:5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	border-radius:0px 0px 5px 5px;
+	overflow:hidden;
+	}
+
+#dropmenudiv a {
+	width: 146px;  /* matches the inline width of the #dropmenudiv inline  */
+	display: block;
+	text-indent: 6px;
+	margin:2px 0px 2px -5px;
+	padding: 2px 0px ;
+	text-decoration: none;
+	color: #c0c8d1;
+	white-space:nowrap;
+	font-size: 10px;
+	font-weight:bold;
+	text-shadow:1px 1px 1px #454646;
+	text-decoration: none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	}
+
+
+#dropmenudiv a:hover {
+	color: #fff;
+	/*background-color:#6b7c86; */
+	display:block !important;
+	font-style:normal;
+	white-space:nowrap;
+	font-size: 10px;
+	}
+
+
+/*  =Primary Nav  */
+
+#primarynav {
+	display:block;
+	width:100%;
+	/*height:37px;*/
+	/*font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;*/
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:13px;
+	position:absolute;
+	top:0px;
+	left:168px;
+	z-index:9999; 	/* this is HIGHER than #sub_nav and #proj_nav AND #jive-userbar in CS to keep dropdowns order (was 13 before 5/14/10) */
+	}
+
+#primarynav ul{
+	position:absolute;   /* this makes the ul lists overlap */
+	}
+
+#primarynav ul li{
+	/*background: url(../../images/bgs/common-sprite.png) no-repeat scroll 0 -398px ;*/
+	text-align:center;
+	list-style:none;
+	padding:0;
+	height:53px;
+	margin:0;
+	_margin-top:-1px; /* hack for IE 6 */
+	}
+#primarynav ul li.current  {
+	background-color:#232E3C;
+	}
+#primarynav ul li.current .notch {
+	display:none;
+	}
+#primarynav ul li.enterprise  {
+	/*background: url(../../images/bgs/common-sprite.png) no-repeat scroll 0 -318px  ; */
+	}
+#primarynav ul li a {
+	background:url(../../images/bgs/branding-stkv2.png) repeat-x scroll 0 0 transparent;  /* this is to keep the metanav from running over the primarynav with long login names */
+	color:#C9D4E4;/* lightest blue */
+	text-decoration: none;
+	font-size:12px;
+	padding: 19px 15px; /* also in small.css */
+	overflow:hidden;
+	text-shadow:0 1px 1px #000;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	text-transform:uppercase;
+	}
+#primarynav ul li.current a {
+	background:url(../../images/common/primarynav-current-notchup.png) no-repeat bottom center transparent;
+	padding-bottom:20px;
+	}
+#primarynav ul li li.current a {
+	margin-left:-1px;
+}
+#primarynav ul li li:hover {
+	background-image:none;    /* removes above background image above on dropdowns */
+	background-color:#6F7885; /* med blue-grey */
+}
+#primarynav ul li:hover a {
+	color:#FFF;
+	text-shadow:1px 1px 1px #667A8E;
+	text-decoration:none;
+}
+
+
+/* =Sub navigation and Project navigation  (merge these all into sub_nav when we have time, because they are exacly the same below the first div class) -------------------- */
+
+#sub_nav {
+	margin:5px 0 0 0;
+	background: #bebebe;
+	font-weight:bold;
+	font-size:12px;
+	font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	position:relative;
+	z-index:101; /* was 11 - higher than proj_nav (might need to make jive-userbar higher to keep dropdown order */
+	height:26px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius: 5px 5px 0px 0px; border-radius:5px 5px 0px 0px;
+	}
+
+.sub_nav_empty {
+  height: 5px !important;
+  }
+
+#proj_nav {
+	margin:-12px 0 0 0;/* this brings proj_nav up over stage to show banner behind rounded corners and bring dropshadow on stage behind proj_nav */
+	background: #bebebe;
+	font-weight:bold;
+	font-size:12px;
+	font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	position:relative;
+	z-index:100; /* this is LOWER than #primary_nav (but NOT (need to make searchbar 111higher than #jive-userbar to keep dropdowns order)  IT USED TO BE 10  */
+	height:26px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius: 5px 5px 0px 0px; border-radius:5px 5px 0px 0px;
+	}
+
+#proj_nav ul,
+#sub_nav ul{
+	position:absolute;   /* this makes the ul lists overlap the content area */
+	padding-left:7px;    /* needs be the same width as the projnav-shadow.png */
+	width:100%;
+	height:26px;
+	}
+
+#proj_nav ul li,
+#sub_nav ul li{
+	float:left;
+	list-style:none;
+	height:26px;
+	}
+
+#proj_nav ul li.current,
+#proj_nav ul li:hover,
+#sub_nav ul li.current,
+#sub_nav ul li:hover {
+	background:url(../../images/bgs/subnav-right.png) no-repeat scroll top right transparent;
+	padding-bottom:7px;
+	_width:74px;/* hack for IE 6 */
+	margin-top:-2px;
+	text-align:center;
+	margin:-2px auto 0px;
+	}
+#proj_nav ul li ul li:hover,
+#sub_nav ul li ul li:hover { /* undoes above styles for children */
+	background-image:none;
+	margin-top:0px;
+	padding-bottom:0px;
+}
+#proj_nav ul li.disabled:hover,
+#sub_nav ul li.disabled:hover {
+	background-image:none;
+}
+li .notch {
+	display:none;
+}
+li.current .notch {
+	background:url(../../images/bgs/subnav-notch.png) no-repeat scroll center bottom transparent;
+	position:absolute;
+	height:10px;
+	width:100%;
+	top:29px;
+	z-index:2;
+	margin-left:0px;
+	display:block;
+}
+
+.notch .none { /* this is to avoid the issue Magnolia has with displaying &nbsp; */
+	display:none;
+}
+
+#proj_nav ul li a,
+#sub_nav ul li a {
+	color:#FFFFFF;
+	text-decoration: none;
+	font-size:12px;
+	font-weight:bold;
+	overflow:hidden;
+	padding:3px 3px 0px 8px;
+	margin:2px 5px 0 5px;
+ 	/*-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;*/
+	height:15px;
+	text-shadow:1px 1px 1px #818181;
+	}
+#proj_nav ul li a:hover,
+#sub_nav ul li a:hover {
+	text-decoration:none;
+	color:#545454;
+	text-shadow:1px 1px 1px #e2e1e1;
+	}
+#proj_nav ul li a.unlinked:hover,
+#sub_nav ul li a.unlinked:hover {
+	text-decoration:none;
+}
+#proj_nav ul li.disabled a,
+#sub_nav ul li.disabled a,
+#proj_nav ul li.disabled:hover a,
+#sub_nav ul li.disabled:hover a   {
+	background-image: none;
+    color: #E3E3E3;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #818181;
+}
+
+#proj_nav ul li.current a,
+#proj_nav ul li:hover a,
+#sub_nav ul li.current a,
+#sub_nav ul li:hover a {
+	background: url(../../images/bgs/common-sprite.png) no-repeat 0 -57px ;
+	height:26px;
+	margin-top:0px;
+	color:#545454;
+	text-shadow:0 1px 1px #FFF;
+	padding-top:7px;
+	}
+
+#proj_nav ul li.disabled a:hover,
+#sub_nav ul li.disabled a:hover {
+	color:#E3E3E3;
+	text-decoration:none;
+	text-shadow:1px 1px 1px #818181;
+	background:none;
+	box-shadow:none;
+}
+
+#proj_nav ul li.current ul li a,
+#sub_nav ul li.current ul li a  {
+	box-shadow:none;
+}
+
+/* =Dropdown */
+#proj_nav ul li ul,
+#sub_nav ul li ul {
+	width:175px;
+	margin-left:5px;
+	margin-top:-5px;
+	padding:0 0 5px 0;/* this defaults the 20px padding inherited from above */
+	background:#DDDEDF /*url(../../images/bgs/subnav-drop.png) top repeat-x*/;
+	-webkit-border-bottom-left-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius: 0px 0px 4px 4px; border-radius:0px 0px 4px 4px;
+	height:auto;
+	box-shadow:1px 2px 2px #666666;
+	border:1px solid #CCC;
+	border-top:none;
+	z-index:9;
+	}
+
+#proj_nav ul li ul li,
+#sub_nav ul li ul li {
+	padding:0px; /* this defaults the padding above */
+	background-image:none;
+	text-align:left;
+	float:none;
+	list-style:none;
+	border:none;
+	height:auto;
+	}
+
+#proj_nav ul li.current ul li a,
+#sub_nav ul li.current ul li a  {
+	background:none;
+	}
+
+#proj_nav ul li ul li a,
+#proj_nav ul li:hover ul li a,
+#proj_nav ul li.current ul li a,
+#proj_nav ul li ul li a:hover,
+#sub_nav ul li ul li a,
+#sub_nav ul li:hover ul li a,
+#sub_nav ul li.current ul li a,
+#sub_nav ul li ul li a:hover {
+	color:#545454;
+	font-weight:bold;
+	padding: 6px 14px 6px 11px;
+	margin-top:0px; /* this removes the inherited -3px from the .current */
+	width:150px;
+	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
+	height:auto;
+	border-top:1px solid #c8c8c8;
+	background-image:none;
+	text-shadow:0 1px 1px #fff;
+	box-shadow:none;
+	margin-left:0px;
+	}
+#proj_nav ul li:hover ul li a,
+#sub_nav ul li:hover ul li a {
+	background-color:transparent;
+}
+#proj_nav ul li ul li a:hover,
+#sub_nav ul li ul li a:hover {
+	background-color:#c8c8c8;
+	box-shadow:none;
+	}
+
+#proj_nav ul li.current ul li a:hover,
+#sub_nav ul li.current ul li a:hover {
+	}
+
+#proj_nav ul li ul li ul,
+#sub_nav ul li ul li ul {
+	margin-left:55px;
+	margin-top:0px; /* this includes -1px to account for the 1px border */
+	border:1px solid #CCC;
+	border-top:none;
+	}
+
+#proj_nav ul li ul li ul li a.current,
+#proj_nav ul li ul li a.current,
+#proj_nav ul li a.current,
+#sub_nav ul li ul li ul li a.current,
+#sub_nav ul li ul li a.current,
+#sub_nav ul li a.current {
+	/*background-color:#e6e6e6;  this was messing up the corner radii */
+	}
+
+
+
+
+/* =Essential Styles  common to primarynav, proj_nav and sub_nav  ---------------------------------- */
+
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu ul {
+	position:relative; /*if "absolute" this makes the flyout cover the first ul */
+	top:-999em; /* this makes the dropdowns negatively offset and therefore invisible */
+	-webkit-border-bottom-left-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius: 0px 0px 4px 4px; border-radius:0px 0px 4px 4px;
+}
+
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+#primarynav .sf-menu li {
+	float:			left;
+	position:		relative;
+	background: url(../../images/bgs/primarynav-lines.png) no-repeat top right ;
+	padding-right:2px;
+
+}
+#proj_nav .sf-menu li,
+#sub_nav .sf-menu li {
+	float:			left;
+	position:		relative;
+	z-index: 9999;
+	text-align:center;
+	display:block;
+}
+#proj_nav .sf-menu li ul li,
+#sub_nav .sf-menu li ul li{
+	text-align:left;
+}
+
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			32px; /*  match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+#sub_nav ul li ul.lastul {
+	margin-left:-53px;
+
+}
+
+ul.sf-shadow ul {
+    background: url(../../images/bgs/shadow.png) no-repeat scroll right bottom transparent;
+    border-bottom-left-radius: 17px;
+    border-top-right-radius: 17px;
+    padding: 0 8px 9px 0;
+}
+
+
+/*** Arrows **/
+#primarynav ul li ul li.open a,
+/*#proj_nav ul li ul li.open a,*/
+/*#sub_nav ul li ul li.open a*/ {
+	width:185px;
+}
+
+#primarynav ul li ul li.open a {
+	background:transparent url(../../images/bgs/arrownav-sprite.png) no-repeat 190px 6px;
+	}
+#primarynav ul li ul li.open a:hover {
+	background:#6F7885 url(../../images/bgs/arrownav-sprite.png) no-repeat 190px -53px;
+	}
+
+#proj_nav ul li ul li.open a,
+#sub_nav ul li ul li.open a {
+	background:transparent url(../../images/bgs/arrownav-sprite.png) no-repeat 160px 6px;/* this is a thinner positioning */
+	}
+#proj_nav ul li ul li.open a:hover,
+#sub_nav ul li ul li.open a:hover {
+	background:#C8C8C8 url(../../images/bgs/arrownav-sprite.png) no-repeat 160px -53px;/* this is a thinner positioning */
+	}
+
+
+
+#primarynav ul li ul li ul li.leaf a,
+#primarynav ul li ul li ul li.leaf a:hover,
+#primarynav ul li ul li.leaf a,
+#primarynav ul li ul li.leaf a:hover,
+#primarynav ul li.leaf a,
+#primarynav ul li.leaf a:hover,
+/*
+#proj_nav ul li ul li ul li.leaf a, #sub_nav ul li ul li ul li.leaf a,
+#proj_nav ul li ul li ul li.leaf a:hover, #sub_nav ul li ul li ul li.leaf a:hover,
+*/
+#proj_nav ul li ul li.leaf a, #sub_nav ul li ul li.leaf a,
+#proj_nav ul li ul li.leaf a:hover, #sub_nav ul li ul li.leaf a:hover
+/*
+#proj_nav ul li.leaf a, #sub_nav ul li.leaf a,
+#proj_nav ul li.leaf a, #sub_nav ul li.leaf a:hover */
+{
+	background-image:none;
+}
+
+
+/** Arrows for .current **/
+#primarynav ul li ul li ul li.open a.current,
+#primarynav ul li ul li.open a.current,
+#primarynav ul li.open a.current,
+#proj_nav ul li ul li ul li.open a.current, #sub_nav ul li ul li ul li.open a.current,
+#proj_nav ul li ul li.open a.current, #sub_nav ul li ul li.open a.current,
+#proj_nav ul li.open a.current, #sub_nav ul li.open a.current {
+	width:185px; /* was 150 until icons were added on 11/29/10 */
+}
+#primarynav ul li ul li ul li ul li.leaf a.current,
+#primarynav ul li ul li ul li ul li.leaf a.current:hover,
+#primarynav ul li ul li ul li.leaf a.current,
+#primarynav ul li ul li ul li.leaf a.current:hover,
+#primarynav ul li ul li.leaf a.current,
+#primarynav ul li ul li.leaf a.current:hover,
+#primarynav ul li.leaf a.current,
+#proj_nav ul li ul li ul li.leaf a.current, #sub_nav ul li ul li ul li.leaf a.current,
+#proj_nav ul li ul li.leaf a.current, #sub_nav ul li ul li.leaf a.current,
+#proj_nav ul li.leaf a.current, #proj_nav ul li.leaf a.current {
+	background-image:none;
+}
+#primarynav ul li ul li ul li.open a.current,
+#primarynav ul li ul li.open a.current,
+#primarynav ul li.open a.current,
+#primarynav ul li ul li ul li.leaf a.current,
+#primarynav ul li ul li.leaf a.current,
+#primarynav ul li.leaf a.current {
+	background:#C0C8D1 url(../../images/bgs/arrownav-sprite.png) no-repeat 190px 6px;
+	color:#FFF;
+}
+#primarynav ul li ul li ul li.leaf a.current,
+#primarynav ul li ul li.leaf a.current,
+#primarynav ul li.leaf a.current {
+	background-image:none;
+
+}
+#primarynav ul li ul li ul li.open a.current:hover,
+#primarynav ul li ul li.open a.current:hover,
+#primarynav ul li.open a.current:hover {
+	background:url(../../images/bgs/arrownav-sprite.png) no-repeat 190px -53px #6F7885;
+	color:#FFF;
+}
+
+#proj_nav ul li ul li ul li.open a.current, #sub_nav ul li ul li ul li.open a.current,
+#proj_nav ul li ul li.open a.current, #sub_nav ul li ul li.open a.current,
+#proj_nav ul li.open a.current, #sub_nav ul li.open a.current {
+	background: url(../../images/bgs/arrownav-sprite.png) no-repeat 0 -60px;
+	}
+
+
+
+
+
+
+
+/* =Top Subnav Branding - includes sub_nav and project banner
+-------------------------- */
+#top_subnav_branding h1 {
+	margin: 0 0 10px 0;
+}
+#top_subnav_branding img {
+	display: block;
+	line-height: 1;
+}
+#top_subnav_branding a img {
+	border: none;
+}
+#stage-box {
+	position: absolute;
+	top: 53px;
+	left: 20px;
+	padding: 10px;
+	background: #0D0D0D;
+	border-radius: 8px; /* CSS3 */
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+#top_subnav_branding h1 {
+	float: left;
+	margin: 0;
+	padding: 10px 10px 0 10px;
+	font-weight: bold;
+	color: #fff;
+}
+#top_subnav_branding p {
+	clear: left;
+	float: left;
+	width: 300px;
+	padding: 10px 10px;
+	line-height: 1.3em;
+	color: #fff;
+}
+
+#proj_logo-neg,   /* for branded banners */
+#proj_logo      { /* for default banners */
+	background:url(../../images/bgs/corners-banner-left.png) no-repeat scroll 0 0 transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+	height: 111px;
+    width: 5px;
+}
+#proj_logo-neg h2, /* for branded banners */
+#proj_logo h2,     /* for default banners */
+#proj_tagline-neg {
+	display:none;
+}
+
+#top_subnav_branding #banner {
+	background:	url(../../images/singular/default_banner-1180px.png) no-repeat scroll top right transparent;
+	height:110px;
+	-webkit-border-top-left-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-radius: 4px 4px 0px 0px; border-radius:4px 4px 0px 0px;
+}
+
+#top_subnav_branding #tagline {
+	/*background:url(../../images/bgs/corners-banner-right.png) no-repeat scroll top right transparent;*/
+	height:111px;
+	font-size:21px;
+	letter-spacing:-1px;
+	position:absolute;
+	right:0px;/* must be 0 to align the corner to top right */
+	top:0px;  /* must be 0 to align the corner to top right */
+	padding:60px 40px 0 0 ;
+	text-shadow:2px 2px 2px #666;
+	color:#FFF;
+	height:50px;
+	z-index:100; /* this is higher than the banner img that should override it */
+}
+
+#top_subnav_branding #projectname {
+	height:111px;
+	font-size:27px;
+	letter-spacing:-1px;
+	position:absolute;
+	left:0px;/* must be 0 to align the corner to top right */
+	top:0px;  /* must be 0 to align the corner to top right */
+	padding:50px 0px 0 40px ;
+	text-shadow:2px 2px 2px #666;
+	color:#FFF;
+	height:50px;
+	z-index:98; /* this is lower than the banner img that should override it */
+}
+
+
+
+
+/*------------- =Tabnav - Multi-tiered Navigation Tab above the Header --------------*/
+
+
+#tabnav ul {
+	clear:both;
+	margin:0px;
+	padding:10px 0 ;
+}
+
+#tabnav ul li {
+	float:left;
+	list-style:none;
+	padding:0px;
+	width:16.5%; /* this is for 6 columns */
+}
+
+#tabnav ul li a {
+	color:#394B62;
+	text-decoration:none;
+	text-shadow:0 1px 1px #e4eaf1;
+	padding-left:10px;
+}
+
+#tabnav ul li a:hover {
+	color:#586f8c;
+	text-shadow:1px 1px 1px #e4eaf1;
+	text-decoration:none;
+}
+
+#tabnav ul li.disabled a, #tabnav ul li.disabled a:hover {
+	color:#EAEAEA;
+	text-decoration:none;
+}
+#tabnav ul li.disabled:hover {
+	background:none;
+}
+
+
+#tabnav ul li li {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:-0.04em;
+	font-weight:normal;
+	font-size:11px;
+	float:none;
+	padding:1px 0 2px 10px;
+	list-style:none;
+	width:100%;
+	border-left:1px dotted #cbd5e0;
+}
+
+#tabnav ul li ul {
+	padding-top:8px;
+	margin-left:0px;
+}
+#tabnav ul li ul li ul {
+	padding-top:0px;
+	}
+
+#tabnav ul li li li {
+	color:#666666;
+}
+
+#tabnav ul li li a {
+	color:#3e3e3e;
+	text-shadow:0px 1px 1px #e4eaf1;
+	padding-left:0px;
+}
+
+#tabnav ul li li a:hover {
+	text-decoration:none;
+	color:#777777;
+	text-shadow:0px 1px 1px #e4eaf1;
+}
+
+#tabnav ul li li li  {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:-0.04em;
+	font-weight:normal;
+	font-size:11px;
+	padding:0px 0 0px 15px;
+}
+#tabnav ul li li li a {
+	color:#D8D8D8;
+	}
+
+/*
+#tabnav ul li li.viewmore a,
+#tabnav ul li li li.viewmore a,
+#tabnav .alpha {
+	text-shadow: none;
+}
+#tabnav ul li li.viewmore a:hover,
+#tabnav ul li li li.viewmore a:hover {
+}*/
+
+
+
+
+/* I renamed all tabzilla to tabnav here... */
+#tabnav-panel.tabnav-opened {
+	height:260px;
+}
+#tabnav-panel {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #484848;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: normal;
+    height: 0;
+    line-height: 1.3;
+    overflow: hidden;
+    position: relative;
+	background-color: #bbc3cc;
+}
+
+
+#tabnav-contents {
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    text-align: left;
+}
+* html #tabnav-contents             { zoom: 1; } /* IE6 */
+*:first-child+html #tabnav-contents { zoom: 1; } /* IE7 */
+
+#tabnav-contents:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+#tabnav-promo .snippet h4, #tabnav-panel #tabnav-nav, #tabnav-panel #tabnav-nav h2 {
+    color: #484848;
+    font-family: 'Open Sans',sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+#tabnav-panel #tabnav-nav ul {
+    margin: 0;
+    padding: 0;
+}
+#tabnav-panel #tabnav-nav h2 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 20px 0.4em;
+    white-space: nowrap;
+}
+
+#tabnav-panel #tabnav-nav ul li ul li {
+    border-right: 0 none;
+    float: none;
+    height: auto;
+    margin: 0;
+}
+#tabnav-panel #tabnav-nav a {
+    color: #484848;
+    display: block;
+    outline: 0 none;
+    padding: 0.1em 8px 0.2em 20px;
+}
+/**/
+
+#tabnav ul li#tabnav-search {
+    border-right: 0 none;
+}
+#tabnav #tabnav-search ul li {
+    background: none repeat scroll 0 0 transparent;
+    border-right: 1px dotted #D6D6D6;
+    display: inline;
+    float: left;
+    height: 95px;
+    line-height: 1.1;
+    list-style-type: none;
+    margin: 20px 0 0;
+    padding: 0;
+    width: 16.5%;
+}
+#tabnav ul li#tabnav-search a {
+    padding-top: 0;
+}
+#tabnav ul li#tabnav-search form {
+    margin: 0.4em 10px;
+}
+#tabnav ul li#tabnav-search input:-moz-placeholder {
+    color: #173444;
+}
+
+#tabnav ul li#tabnav-search input {
+    -moz-transition: all 0.2s linear 0s;
+    background: none repeat scroll 0 0 #6B7C86;
+    border: 1px solid #5C6C75;
+    border-radius: 15px 15px 15px 15px;
+	-webkit-border-radius:15px 15px 15px 15px;
+	-moz-border-radius: 15px 15px 15px 15px;
+	border-radius:15px 15px 15px 15px;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02) inset;
+    color: #484848;
+    padding: 2px 4px;
+    width: 100%;
+	z-index:103; /* this is higher then the dropmenudiv */
+	position:relative;
+	background: url(../../images/common/ico_searcharrow-dark.png) no-repeat top right #6b7c86;
+}
+
+
+
+/* =Dropup Tab */
+#tab.tabnav-opened:after {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);}
+
+#tab:after {
+
+	-moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    order-radius: 8px;
+
+    background: url(../../images/common/arrow-tabnav-down.png) repeat scroll 0 0 #bbc3cd;
+    content: "x";
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    width: 16px;
+}
+#tab.tabnav-opened, .darkbg #tab.tabnav-opened {
+    background-position: 0 -47px;
+}
+
+#tab {
+    background: url(../../images/common/tabnav-search.png) repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 47px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -2000px;
+    width: 88px;
+    z-index: 999;
+	top:0px;
+	right:4px;
+}
+
+
+
+
+/* Old footer styles */
+
+#subnav_footer {
+	margin:0 13px 0 0px;
+	font-weight:bold;
+	display:block;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:14px;
+}
+
+#projsubnav_footer {
+	margin:0px;
+	font-weight:bold;
+	display:block;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:100%;
+}
+
+#subnav_footer ul,
+#projsubnav_footer ul {
+	clear:both;
+	margin:0px;
+	padding-left:20px;
+}
+
+#subnav_footer ul li,
+#projsubnav_footer ul li {
+	float:left;
+	list-style:none;
+	padding:15px 10px 20px;
+	width:11.5%;
+}
+
+#subnav_footer ul li a,
+#projsubnav_footer ul li a {
+	color:#FFFFFF;
+	text-decoration:none;
+	text-shadow:0 1px 1px #AAA;
+}
+
+#subnav_footer ul li a:hover,
+#projsubnav_footer ul li a:hover {
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+
+#subnav_footer ul li a.disabled, #subnav_footer ul li a.disabled:hover,
+#projsubnav_footer ul li a.disabled, #projsubnav_footer ul li a.disabled:hover {
+	color:#EAEAEA;
+	text-decoration:none;
+}
+
+
+#subnav_footer ul li li,
+#projsubnav_footer ul li li {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:-0.04em;
+	font-weight:normal;
+	font-size:11px;
+	float:none;
+	padding:0px 0 0px 5px;
+	list-style:none;
+	width:100%;
+}
+
+#subnav_footer ul li ul,
+#projsubnav_footer ul li ul {
+	padding-top:8px;
+	margin-left:-25px;
+}
+#subnav_footer ul li ul li ul,
+#projsubnav_footer ul li ul li ul {
+	padding-top:0px;
+	}
+
+#subnav_footer ul li li li,
+#projsubnav_footer ul li li li {
+	color:#666666;
+}
+
+#subnav_footer ul li li a,
+#projsubnav_footer ul li li a {
+	color:#E9E9EB;
+	text-shadow:none;
+}
+
+#subnav_footer ul li li a:hover,
+#projsubnav_footer ul li li a:hover {
+	text-decoration:underline;
+}
+
+#subnav_footer ul li li li,
+#projsubnav_footer ul li li li {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:-0.04em;
+	font-weight:normal;
+	font-size:11px;
+	padding:0px 0 0px 15px;
+}
+#subnav_footer ul li li li a,
+#projsubnav_footer ul li li li a {
+	color:#D8D8D8;
+	}
+
+
+
+
+
+
+/*  =Footer  */
+.footer {
+	clear:both;
+	text-align:center;
+	color:#7C7C7C;
+	font-size:9.5px;
+	/*background:transparent url(../../images/common/common-sprite.gif) no-repeat 5px 0;   */
+	padding:10px 0px;
+	/*width: 979px;*/
+	height:25px;
+	width:400px; /* (needs be at least 400px wide for browser issues) */
+	margin:0 auto;
+}
+.footer a {
+	color:#7C7C7C;
+	margin:0 2px;
+}
+.footer p {
+	padding:8px 0 0 0;
+	margin:0px;
+	float:left;
+}
+
+
+#footerlogo {
+	float: left;
+	text-align: center;
+	width: 75px;
+	height:25px;
+	display:inline;
+	padding:0 15px 0 10px;
+}
+
+#footerlogo a {
+	display: block;
+	text-align: center;
+	margin: 0pt auto;
+	width: 75px;
+	height:25px;
+}
+
+#footerlogo h6 {
+	padding:0px;
+	margin:0px;
+	background: transparent url(../../images/bgs/common-sprite.png) no-repeat 0 -478px;/* red hat logo in footer */
+	width:75px;
+	height:25px;
+	text-indent:-9999px;
+	display:block;
+}
+
+
+/* ---------------- Magnolia Template Dialog Styles ------------------------------------ */
+.layout_settings_bar {
+	background-color:#903;
+	clear:both;
+	margin-bottom:3px;
+}
+
+
+
+
+/* ---------------- Project icons ------------------------------------ */
+/* Generated by
+http://spritegen.website-performance.org/
+with these settings:
+  Horizontal Offset: 5
+  Vertical Offset: 5
+  Class Prefix (optional): nothing
+*/
+
+.project-icon-med {
+  float:left;
+  margin:-1px 4px 0 -7px;
+  display:block;
+  padding-left:5px;
+}
+
+.simpletablestyle .project-icon-med {   /* targets the project matrix page */
+	margin:0px;
+}
+
+
+#container li {
+   background: url(../../images/icons/sharethis-sprite.png) no-repeat top left;
+}
+.st-facebook-sprite-on{ background-position: 0 0; width: 22px; height: 22px; }
+.st-facebook-sprite{ background-position: 0 -32px; width: 22px; height: 22px; }
+.st-linkedin-sprite-on{ background-position: 0 -64px; width: 22px; height: 22px; }
+.st-linkedin-sprite{ background-position: 0 -96px; width: 22px; height: 22px; }
+.st-mail-sprite-on{ background-position: 0 -128px; width: 22px; height: 22px; }
+.st-mail-sprite{ background-position: 0 -160px; width: 22px; height: 22px; }
+.st-sharethis-sprite-on{ background-position: 0 -192px; width: 22px; height: 22px; }
+.st-sharethis-sprite{ background-position: 0 -224px; width: 22px; height: 22px; }
+.st-twitter-sprite-on{ background-position: 0 -256px; width: 22px; height: 22px; }
+.st-twitter-sprite{ background-position: 0 -288px; width: 22px; height: 22px; }
