@@ -6,35 +6,17 @@ date:       Jun 18, 2018 12:03:55 A
 author:     Stephane Epardaud
 ---
 
-
-                    
-
-
-
-                    
-
-
-
-
 JAX-RS 2.0 shipped with support for filtering [requests](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerRequestFilter.html) and [responses](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerResponseFilter.html), which enabled a lot of great use-cases for delegating duplicated code away from resources and into filters that would do the same processing for every resource method.
-
- 
 
 Request filters work by overriding the [ContainerRequestFilter.filter](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerRequestFilter.html#filter-javax.ws.rs.container.ContainerRequestContext-) method and observe or modify the given [context](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerRequestContext.html) object, or [abort the filter chain](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerRequestContext.html#abortWith-javax.ws.rs.core.Response-) with a response if the filter already has a response and the other filters and resource method are not required. Simply returning from the filter method will cause the next filter to be called, or when we have run all the filters, it will invoke the resource method.
 
- 
-
 Response filters are very similar, but [execute](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerResponseFilter.html) after the resource method has been executed and [produced an entity, status code, headers](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerResponseContext.html), which the filter can then modify if required, or simply return to let the next filters run, or the response be sent to the client.
 
- 
 
-This is all great, but how does it work in an asynchronous ecosystem ? It doesn&#39;t, really, because even though JAX-RS supports [suspending the request](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/Suspended.html), it only supports it within the resource method: filters are too early (for request filters), or too late (for response filters).
-
- 
+This is all great, but how does it work in an asynchronous ecosystem ? It doesn&#39;t, really, because even though JAX-RS supports [suspending the request](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/Suspended.html), it only supports it within the resource method: filters are too early (for request filters), or too late (for response filters). 
 
 In RESTEasy 3.5 and 4.0.0, we introduced the ability to [suspend the request in filters](http://docs.jboss.org/resteasy/docs/3.5.0.Final/userguide/html/Interceptors.html#d4e1819). To do that, write your request or response filter as usual, but then cast your context object down to [SuspendableContainerRequestContext](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html) or [SuspendableContainerResponseContext](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html) (for response filters), and you can then:
 
- 
 
 - suspend the request with [SuspendableContainerRequestContext.suspend()](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#suspend--)
 
@@ -78,8 +60,6 @@ The fact that filters may turn requests asynchronous has no impact at all on the
 
 ### Asynchronous rate-limiter example with Redis
 
-### 
-
 Asynchronous filters are useful for plugging in anything that requires asynchrony, such as reactive security frameworks, async response processing or async caching. We will illustrate how to use asynchronous filters with a rate-limiter example.
 
  
@@ -92,12 +72,13 @@ We will first import the right Maven dependency for RateLimitJ:
 
  
 
-`&lt;dependency&gt;
-  &lt;groupId&gt;es.moki.ratelimitj&lt;/groupId&gt;
-  &lt;artifactId&gt;ratelimitj-redis&lt;/artifactId&gt;
-  &lt;version&gt;0.4.2&lt;/version&gt;
-&lt;/dependency&gt;
-`
+```
+<dependency>
+  <groupId>es.moki.ratelimitj</groupId>
+  <artifactId>ratelimitj-redis</artifactId>
+  <version>0.4.2</version>
+</dependency>
+```
 
 
 
@@ -110,11 +91,10 @@ And let&#39;s not forget to [install and run a local Redis cluster](https://redi
 
 We will start by declaring a 
 @RateLimit
- annotation that we can use on our resource methods or classes to indicate we want rate limiting:
+ annotation that we can use on our resource methods or classes to indicate we want rate limiting: 
 
- 
-
-`@Documented
+```
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface RateLimit {
@@ -130,27 +110,24 @@ public @interface RateLimit {
  * Maximum number of requests to allow during our sliding window.
  */
  int maxRequest();
-}`
+}
+```
 
-
-
-
- 
 
 And we have to declare a 
 DynamicFeature
  that enables the filter on annotated methods and classes:
 
- 
 
-`@Provider
+```
+@Provider
 public class RateLimitFeature implements DynamicFeature {
 
-  private StatefulRedisConnection&lt;string,string&gt; connection;
+  private StatefulRedisConnection<string,string> connection;
 
   public RateLimitFeature(){
     // connect to the local Redis
-    connection = RedisClient.create(&#34;redis://localhost&#34;).connect();
+    connection = RedisClient.create("redis://localhost").connect();
   } 
 
   public void configure(ResourceInfo resourceInfo, FeatureContext context) {
@@ -160,24 +137,21 @@ public class RateLimitFeature implements DynamicFeature {
     limit = resourceInfo.getResourceClass().getAnnotation(RateLimit.class);
     if(limit != null) {
       // add the rate-limiting filter
-      Set rules = new HashSet&lt;&gt;();
+      Set rules = new HashSet<>();
       rules.add(RequestLimitRule.of(limit.duration(), limit.unit(), limit.maxRequest()));
       
       context.register(new RateLimitFilter(new RedisSlidingWindowRequestRateLimiter(connection, rules)));
     }
   }
-}`
-
-
-
-
+}
+```
  
 
 And this is how we implement our asynchronous filter:
 
- 
 
-`public class RateLimitFilter implements ContainerRequestFilter {
+```
+public class RateLimitFilter implements ContainerRequestFilter {
 
   private RedisSlidingWindowRequestRateLimiter requestRateLimiter;
 
@@ -194,8 +168,8 @@ And this is how we implement our asynchronous filter:
     suspendableRequestContext.suspend();
 
     // Query and increment by remote IP
-    requestRateLimiter.overLimitAsync(&#34;ip:&#34;+servletRequestContext.getRemoteAddr())
-      .whenComplete((overlimit, error) -&gt; {
+    requestRateLimiter.overLimitAsync("ip:"+servletRequestContext.getRemoteAddr())
+      .whenComplete((overlimit, error) -> {
         // Error case
         if(error != null)
           suspendableRequestContext.resume(error);
@@ -207,44 +181,37 @@ And this is how we implement our asynchronous filter:
           suspendableRequestContext.resume();
       });
   }
-}`
-
-
-
+}
+```
 
 Now all we have left to do is to implement a resource with rate-limiting:
 
- 
 
-`@Path(&#34;/&#34;)
+```
+@Path("/")
 public class Resource {
 
-  @Path(&#34;free&#34;)
+  @Path("free")
   @GET
   public String free() {
-    return &#34;Hello Free World&#34;;
+    return "Hello Free World";
   }
 
   @RateLimit(duration = 10, unit = TimeUnit.SECONDS, maxRequest = 2)
-  @Path(&#34;limited&#34;)
+  @Path("limited")
   @GET
   public String limited() {
-    return &#34;Hello Limited World&#34;;
+    return "Hello Limited World";
   }
-}`
+}
+```
 
-
-
-
- 
 
 If you go to 
 /free
  you will get an unlimited number of requests, while if you go to 
 /limited
  you will get two requests allowed every 10 seconds. The rest of the time you will get an HTTP response of [Too Many Requests (429)](https://tools.ietf.org/html/rfc6585#section-4).
-
- 
 
 If you have the need for [asynchronous request or response filters](http://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Interceptors.html#d4e1831), don&#39;t hesitate to give RESTEasy 
 3.5.1.Final

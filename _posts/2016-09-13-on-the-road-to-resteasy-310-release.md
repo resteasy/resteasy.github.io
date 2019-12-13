@@ -6,16 +6,6 @@ date:       Sep 13, 2016 12:06:00 P
 author:     Alessio Soldano
 ---
 
-
-                    
-
-
-
-                    
-
-
-
-
 As you might have noticed on [github](https://github.com/resteasy/Resteasy), the team has been quite active on master during last months; after almost twenty 3.0.x bug fix releases, we&#39;re eventually working on a new minor, 3.1.0.
 
 Among the most relevant changes that are coming in the new minor there are default Java 8 target, revisited project structure / testsuite and a major cleanup of old and deprecated APIs. On the last topic, Ron has been preparing a very good [document](http://docs.jboss.org/resteasy/docs/resteasy-upgrade-guide-en-US.pdf) you might want to read for easy migration of old (RESTEasy 2.3 style) code.

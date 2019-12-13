@@ -7,15 +7,6 @@ author:     Alessio Soldano
 ---
 
 
-                    
-
-
-
-                    
-
-
-
-
 Last week the release of **MicroProfile 3.0** was [announced](https://microprofile.io/2019/06/11/eclipse-microprofile-3-0-is-now-available/). It comes with few additions and updates in some of its specifications, one of them being the MP REST Client which has been upgraded to version 1.3.
 
 RESTEasy used to implement an old version (1.0) of MP REST Client, while more recent versions have been provided as part of the [SmallRye](https://smallrye.io/) project. Starting from MP 3, we decided to join the efforts of the two teams and provide the most up to date version of that spec in RESTEasy.
