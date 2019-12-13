@@ -1,0 +1,37 @@
+/***************** To Make Consistent with Developer *********************/
+
+/********** Layout Styles ***********/
+body {
+  background: url("./bg.png") repeat-x scroll 0 0 #F3F3F3;
+}
+#wrapper {
+  padding-top: 0px;
+  background: none;
+}
+#maincontent-wrapper {
+  margin: 0px;
+}
+#wrap-content {
+  margin:0px;
+}
+.col-float2 #wrapper-3, .col-float2 #main, .col-float3 #wrapper-3, .col-float3 #main {
+  max-width: 11710px;
+}
+#wrapper-2 {
+  box-shadow:none;
+}
+#top_subnav_branding {
+  box-shadow:none;
+}
+
+.footer {
+  width: 500px;
+}
+
+/********** Content Styles ***********/
+body {
+    color: #656565;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
