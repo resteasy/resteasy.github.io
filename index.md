@@ -2,8 +2,9 @@
 layout: main
 ---
 ### News
--   12/19/2019: 4.4.2.Final releases: Jackson 2.10 upgrade, bug fixes
--   11/22/2019: 3.9.3.Final releases: Jackson 2.10 upgrade
+-   1/14/2020: 3.10.0.Final release: JakartaEE specs, "resteasy.disable.providers" parameter, bug fixes
+-   12/19/2019: 4.4.2.Final release: Jackson 2.10 upgrade, bug fixes
+-   11/22/2019: 3.9.3.Final release: Jackson 2.10 upgrade
 -   11/19/2019: RESTEasy Spring Boot Starter 3.3.1.Final release:
     Includes RESTEasy 3.9.1.Final
 -   11/18/2019: RESTEasy Spring Boot Starter 4.3.1.Final release:
