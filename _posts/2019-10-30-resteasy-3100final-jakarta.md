@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "RESTEasy 3.9.0.Final: Jakarta artifacts, new configuration parameter"
+title:      "RESTEasy 3.10.0.Final: Jakarta artifacts, new configuration parameter"
 subtitle:   ""
 date:       Jan 15, 2020 19:04:00
 author:     Ron Sigal
@@ -11,7 +11,7 @@ RESTEasy [3.10.0.Final](https://issues.redhat.com/secure/ReleaseNote.jspa?versio
 which will ship with Wildfly 19, is the first release in the 3.x line to support the **Jakarta EE** APIs. For more discussion on that topic, see the blog post
 ["RESTEasy 4.4.0.Final: moving to Jakarta artifacts and much more"](https://resteasy.github.io/2019/10/30/resteasy-440final-moving-to-jakarta-artifacts-and-much-more/).
 
-Besides a number of bug fixes, it comes with a new configuration paramter, "resteasy.disable.providers", which, together with
+Besides a number of bug fixes, it comes with a new configuration parameter, "resteasy.disable.providers", which, together with
 the parameters "resteasy.providers" and "resteasy.use.builtin.providers", gives a way of configuring the set of enabled
 RESTEasy builtin providers.
 
@@ -29,7 +29,7 @@ Wildfly management model. For example, the jaxrs subsystem in standalone.xml can
             <entry key="es">es</entry>
         </resteasy-media-type-mappings>
     </subsystem>
-    
+
 These values can be accessed from the Command Line Interface as well:
 
     [standalone@localhost:9990 /] cd subsystem=jaxrs
