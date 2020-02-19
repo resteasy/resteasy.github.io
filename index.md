@@ -2,7 +2,7 @@
 layout: main
 ---
 ### News
--   2/18/2020: 3.11.0.Final: Upgrade to supporting Update to MicroProfile REST Client 1.4; memory improvements
+-   2/18/2020: 3.11.0.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements
 -   1/14/2020: 3.10.0.Final release: JakartaEE specs, "resteasy.disable.providers" parameter, bug fixes
 -   12/19/2019: 4.4.2.Final release: Jackson 2.10 upgrade, bug fixes
 -   11/22/2019: 3.9.3.Final release: Jackson 2.10 upgrade
