@@ -2,9 +2,10 @@
 layout: main
 ---
 ### News
--   2/26/2020: 4.5.1.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements; server-side async-IO support
--   2/18/2020: 3.11.0.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements
--   1/14/2020: 3.10.0.Final release: JakartaEE specs, "resteasy.disable.providers" parameter, bug fixes
+-   03/04/2020: 4.5.2.Final release: bug fixes
+-   02/26/2020: 4.5.1.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements; server-side async-IO support
+-   02/18/2020: 3.11.0.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements
+-   01/14/2020: 3.10.0.Final release: JakartaEE specs, "resteasy.disable.providers" parameter, bug fixes
 -   12/19/2019: 4.4.2.Final release: Jackson 2.10 upgrade, bug fixes
 -   11/22/2019: 3.9.3.Final release: Jackson 2.10 upgrade
 -   11/19/2019: RESTEasy Spring Boot Starter 3.3.1.Final release:
