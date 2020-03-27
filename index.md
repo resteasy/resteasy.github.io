@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   03/27/2020: 4.5.3.Final release: Bug fixes
 -   03/25/2020: 3.11.1.Final release: Bug fixes
 -   03/04/2020: 4.5.2.Final release: bug fixes
 -   02/26/2020: 4.5.1.Final release: Upgrade to supporting MicroProfile REST Client 1.4; memory improvements; server-side async-IO support
