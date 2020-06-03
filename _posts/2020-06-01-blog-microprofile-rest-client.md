@@ -2,7 +2,7 @@
 layout:     post
 title:      "MicroProfile REST Client 1.4; Examination of a MicroProfile REST Client Application"
 subtitle:   ""
-date:       Jun 3, 2020 
+date:       Jun 1, 2020 
 author:     Rebecca Searls
 ---
 In this article I will create a simple MicroProfile Rest Client that calls a 
@@ -164,7 +164,7 @@ public interface CartoonServiceIntf {
   converter.  If no parsable value is provided for the baseUri an exception will
   be thrown. 
 
->  ##### Side Note:
+>  Side Note:
 >> The specification also states that RestClientBuilder's baseUrl method
 >> can set the baseUri for the interface class, but this is not overriding
 >> the RegisterRestClient's baseUri or properties file value.  It is creating a 
