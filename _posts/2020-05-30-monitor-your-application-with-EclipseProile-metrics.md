@@ -106,7 +106,9 @@ docker run -p 9090:9090 -v /path/to/prometheus.yml:/etc/prometheus/prometheus.ym
 ```
 
 Please note the **:Z** is required for mount volume for docker in a Selinux enabled environment. Flag **--network host**  to connect container to host network, it allows the container can pull metrics data from url **http://localhost:9990/metrics/**.  After Prometheus docker container is started, the metrics data will be collected and displayed in Prometheus console at **http://localhost:9090**
+
 ![prometheus console](/img/blog/20200530/prometheus.png)
+
 To better visualize the metrics data, Grafana dashboard is commonly used to pari with Prometheus. Like start prometheus , start Grafana with docker run is very convenient:
 
 ```
