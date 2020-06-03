@@ -2,7 +2,7 @@
 layout:     post
 title:      "MicroProfile REST Client 1.4; Examination of a MicroProfile REST Client Application"
 subtitle:   ""
-date:       Jun 1, 2020 
+date:       Jun 3, 2020 
 author:     Rebecca Searls
 ---
 In this article I will create a simple MicroProfile Rest Client that calls a 
@@ -12,7 +12,7 @@ REST client endpoint.  What is unique about @RegisterRestClient.  Why both
 endpoint and the rules in setting the baseUri on that class.
     
 
-###Requriements
+### Requriements
 * Source code: [microprofile-rest-client](https://github.com/rsearls/blog-posts/tree/master/microprofile-rest-client)
 * WildFly 19 or newer
 * maven
@@ -20,7 +20,7 @@ endpoint and the rules in setting the baseUri on that class.
 
 
  
-###The REST (Remote) Service
+### The REST (Remote) Service
 I've created a REST service that mocks a DB of cartoons organized into
 categories and provides several endpoints for data retrieval.
 
@@ -107,7 +107,7 @@ public class ServiceActivator extends Application {
 ```
 
 
-###The REST Client Interface 
+### The REST Client Interface 
 To create a MicroProfile REST Client one needs to create an interface 
 using JAX-RS and MicroProfile annotations which represents the remote service.
 The interface must duplicate the method signature for each method to be accessed,
@@ -150,7 +150,7 @@ public interface CartoonServiceIntf {
     
 }
 ```
-###
+
 + RegisterRestClient is a required annotation.  It indicates to CDI that
   at runtime it must create a CDI bean for this interface and it must add
   the qualifier @RestClient to the bean.
@@ -163,8 +163,8 @@ public interface CartoonServiceIntf {
   not be a valid address but it must be a value that can be parsed by the URL/URI 
   converter.  If no parsable value is provided for the baseUri an exception will
   be thrown. 
-##
->  #####Side Note:
+
+>  ##### Side Note:
 >> The specification also states that RestClientBuilder's baseUrl method
 >> can set the baseUri for the interface class, but this is not overriding
 >> the RegisterRestClient's baseUri or properties file value.  It is creating a 
@@ -172,7 +172,7 @@ public interface CartoonServiceIntf {
 >> RegisterRestClient and the properties file come into play when CDI creates 
 >> the bean and used when the bean is injected into a class.
 >
-##
+
 #### Setting "base URL" Order of Precedence
 The Microprofile Configuration specification defines this in detail.  Here are the general rules.
   - The value of baseUri in annotation RegisterRestClient has the lowest priority.
@@ -184,8 +184,8 @@ The Microprofile Configuration specification defines this in detail.  Here are t
     (e.g. -Dorg.jboss.rest.comics.patron.CartoonServiceIntf/mp-rest/url=http://localhost:8080/microprofile-rest-client-service)
     ```
   - An appropriate system property overrides the environment variable.       
-##
-#####Examples of valid and invalid baseUri settings
+
+##### Examples of valid and invalid baseUri settings
 >  The default value, "" for baseUri is overridden by the 
      properties file setting.
      The url is a valid uri string and a valid (functioning) address.
@@ -197,7 +197,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>org.jboss.rest.comics.patron.CartoonServiceIntf/mp-rest/url=http://localhost:8080/microprofile-rest-client-service
 >>```
 >
-###
+
 >BaseUri is set to a dummy but parsable uri.  The property in the 
    properties file overrides baseUri setting.  This is a valid setting.
 >>```
@@ -207,7 +207,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>org.jboss.rest.comics.patron.CartoonServiceIntf/mp-rest/url=http://localhost:8080/microprofile-rest-client-service
 >>```
 >
-###
+
 >BaseUri is set to a dummy parsable uri however the property in the
    properties file is not a parsable uri.  The character, ''\\'' is illegal.   
    Wildfly will throw an exception when the client calls the endpoint.
@@ -218,7 +218,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>org.jboss.rest.comics.patron.CartoonServiceIntf/mp-rest/url=http://localhost:8080\microprofile-rest-client-service
 >>```
 >
-###
+
 >Both baseUri and mp-rest/url are parsable uris, however the url in the properties
    file is not a reachable address and it overrides the baseUri value.  Wildfly will throw
    an exception when the client calls the endpoint because the service can not
@@ -230,7 +230,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>org.jboss.rest.comics.patron.CartoonServiceIntf/mp-rest/url=http://localhost:8888/some-root-context
 >>```
 >
-###
+
 >  The default value of baseUri is "".  It is not a parsable uri. No url is
    provided in the properties file to override it.  Wildfly will throw an
    exception.
@@ -241,8 +241,8 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >># file intentionally empty
 >>```
 >
-#
->####Best Practices
+
+>#### Best Practices
 >>+ When the base URL of the remote service is static and known, define the 
         default base URL in the RegisterRestClient annotation or in the
         properties file.
@@ -253,14 +253,14 @@ The Microprofile Configuration specification defines this in detail.  Here are t
      RegisterRestClient annotation or leave it unset.  Both indicate to the 
      knowledgeable user to declare it in the property file. 
 >
-###
+
 
 * Path is a required annotation on the interface.  The value of @Path is the 
   combined values of the service's ApplicationPath or (url-pattern) and the 
   service class' Path.
 
-# 
-#####Examples of Path settings   
+ 
+##### Examples of Path settings   
 > If the service's settings are
 >>```
 >>@ApplicationPath("/theService")
@@ -275,7 +275,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>public interface CartoonServiceIntf { ....
 >>```
 >
-###
+
 >If the service's settings are
 >>```
 >>@ApplicationPath("/")
@@ -290,7 +290,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>public interface CartoonServiceIntf { ....
 >>```
 >
-###
+
 >If the service's settings are
 >>```
 >>@ApplicationPath("/")
@@ -305,7 +305,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>public interface CartoonServiceIntf { ....
 >>```
 >
-###
+
 >If the service's settings are
 >>```
 >>@ApplicationPath("")
@@ -321,7 +321,7 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 >>```
 >
 
-> ###Side Note
+> ### Side Note
 >One might think it is easier to just added the Path value in the
 >baseUri but this will not work.  The under laying code requires these be set 
 >separately.
@@ -347,8 +347,8 @@ The Microprofile Configuration specification defines this in detail.  Here are t
 + For CartoonServiceIntf I am choosing not to duplicate the whole remote service.
   This application is using just two of the service's APIs.
   
-#  
-###The REST Client Resource
+ 
+### The REST Client Resource
 Next a JAX-RS Resource is created.  It is just a wrapper class for accessing
 the methods defined in CartoonServiceIntf.  Access to the service is provided 
 by injection.
@@ -444,7 +444,7 @@ public class PatronActivator extends Application {
 ```
 
 
-###Build and Deploy
+### Build and Deploy
 ```
 mvn clean package
 ``` 
@@ -454,7 +454,7 @@ cp ./client/target/microprofile-rest-client-client.war ${WILDFLY_HOME}/standalon
 ${WILDFLY_HOME}/bin/standalone.sh
 ``` 
 
-####Test the Service
+#### Test the Service
 Using cURL check that the remote service is accessible.
 
 ```
@@ -469,7 +469,7 @@ curl -v http://localhost:8080/microprofile-rest-client-service/theService/get/co
 ```
 
 
-####Test the Client
+#### Test the Client
 Using cURL check that the client is working.
 ```
 curl -v http://localhost:8080/microprofile-rest-client-client/thePatron/hello
