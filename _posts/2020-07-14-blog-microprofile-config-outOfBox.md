@@ -24,12 +24,12 @@ APIs to retrieve the information Wildfly's implementation of this specification 
 * WildFly 19 or newer
 * maven
 * JDK 1.8 or newer
->> Note
->>
->>I am using a unix environment.  This has not been tested on Windows.
->>I will be running Wildfly and executing cURL commands in a terminal 
->>window.
->>
+> Note
+>````
+>I am using a unix environment.  This has not been tested on Windows.
+>I will be running Wildfly and executing cURL commands in a terminal 
+>window.
+>````
 
 The source code for this blog creates four nearly identical WAR files.
 Each WAR file has a small addition which will show different ConfigSources.
@@ -160,14 +160,15 @@ There is no required format for ConfigSource names.
 SmallRye chooses to use the class name.  RESTEasy uses a naming pattern.
 
 > Side Note
->>As of this writing there is an implementation issue being addressed for
->>RESTEsay ConfigSource names.  The pattern is as follows. 
->>The first "null" will be the "display-name" declared within element
->>"web-app" in the web.xml.  When no "display-name" is declared the
->>text "unnamed" will be used.  The second "null" is the "servlet-name"
->>for ServletConfigSources and "filter-name" for FilterConfigSource.
->>If no name is found "unnamed" will be used.
->
+>````
+>As of this writing there is an implementation issue being addressed for
+>RESTEsay ConfigSource names.  The pattern is as follows. 
+>The first "null" will be the "display-name" declared within element
+>"web-app" in the web.xml.  When no "display-name" is declared the
+>text "unnamed" will be used.  The second "null" is the "servlet-name"
+>for ServletConfigSources and "filter-name" for FilterConfigSource.
+>If no name is found "unnamed" will be used.
+>````
 
 The first 2 ConfigSources, SysPropConfigSource and EnvConfigSource are required
 by the specification. SysPropConfigSource is for retrieving system properties. Its ordinal 
@@ -189,14 +190,15 @@ is always assigned to a running servlet.  When there is no configuration data
 for one of these ConfigSources, the instance is present but empty.
 
 > Side Note
->>The Servlet specification does not define an order of precedence among these three
->>elements.  It defines three classes that implementations use to access the data in
->>these elements.  This means there is no chance of confusion when there are duplicate
->>"param-names" declared in any of these elements. This is not true for
->>Microprofile-Configuration particularly when handling legacy EE applications.  For
->>RESTEasy there is some potential for "param-name" collision between servlet, filter
->>and context elements.
->
+>````
+>The Servlet specification does not define an order of precedence among these three
+>elements.  It defines three classes that implementations use to access the data in
+>these elements.  This means there is no chance of confusion when there are duplicate
+>"param-names" declared in any of these elements. This is not true for
+>Microprofile-Configuration particularly when handling legacy EE applications.  For
+>RESTEasy there is some potential for "param-name" collision between servlet, filter
+>and context elements.
+>````
 
 
 
@@ -211,13 +213,14 @@ curl http://localhost:8080/microprofile-config-one/one/EnvConfigSource/propertie
 ```` 
 
 >Historical Note
->>When the Servlet specification was created one of the objectives was to define
->>a mechanism to declare the specific configuration requirements of the application
->>external to the source code, thus making it easier for the programmer to modify
->>configuration settings. Web.xml is the result of that effort. The
->>Microprofile-Configuration specification is a new layer of externalization
->>of configuration data from the code and web.xml.
->
+>````
+>When the Servlet specification was created one of the objectives was to define
+>a mechanism to declare the specific configuration requirements of the application
+>external to the source code, thus making it easier for the programmer to modify
+>configuration settings. Web.xml is the result of that effort. The
+>Microprofile-Configuration specification is a new layer of externalization
+>of configuration data from the code and web.xml.
+>````
 
 microprofile-config-one.war is a simple REST application.
 The web.xml is empty; no configuration data is provided there.  The application
@@ -358,10 +361,11 @@ JAR file, childJar.JAR, to the archive.  childJar only contains a
 microprofile-config.properties file with property, "resteasy.preferJacksonOverJsonB=MayBe"
 
 >Note
->>The specification states "an ..  implementation must provide ... A
->>ConfigSource for each property file META-INF/microprofile-config.properties
->>found on the classpath."
->>
+>````
+>The specification states "an ..  implementation must provide ... A
+>ConfigSource for each property file META-INF/microprofile-config.properties
+>found on the classpath."
+>````
 
 Lets confirm that a PropertiesConfigSource instance
 is provided for each microprofile-config.properties file found
@@ -479,7 +483,7 @@ Lets run one last test.  I want to set a system variable and environment
 variable for filter parameter, aquarium, to show the properties are registered
 in ConfigSources, SysPropConfigSource and EnvConfigSource.
 
-Stop Wildfly 
+Stop Wildfly.  
 Set the environment variable.
 ````
 export aquarium="tank equipment"
