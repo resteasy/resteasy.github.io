@@ -8,7 +8,7 @@ author:     Jim Ma
 ![MicroProfile](/img/blog/20200530/microprofile.jpeg)
 
 When Restful service is created and running in production environment, it's always required to expose some metrics data for devops team to collect to know if this application is running in good and healthy mode.
-Microprofile Metrics provides standard way to expose metrics with java Annotation and developer API to build their own metrics. Expose metrics data is very easy with Microprofile Metrics. Adding an annotation to a resource method will be the all thing thing to do like:
+MicroProfile Metrics provides standard way to expose metrics with java Annotation and developer API to build their own metrics. Expose metrics data is very easy with MicroProfile Metrics. Adding an annotation to a resource method will be the all thing thing to do like:
 
 ```
   @Counted(description = "counter of the Hello call", absolute = true)
@@ -17,7 +17,7 @@ Microprofile Metrics provides standard way to expose metrics with java Annotatio
   }
 ```
 
-Microprofile metrics provides these annotations to expose different types of metrics:
+MicroProfile Metrics provides these annotations to expose different types of metrics:
 
 - @Metered:  the frequency of invocations of the annotated object with default unit: "per second"
 - @Timed: tracks duration of the annotated object with default unit "nanoseconds"
@@ -26,14 +26,14 @@ Microprofile metrics provides these annotations to expose different types of met
 - @Gauge:  tracks the annotated object, it just returns a value
 - @ConcurrentGauge: Gauge the number of parallel invocations of the marked methods or constructors.
 
-The target class, method,  field with above annotation(s) will be scanned and register these metrics to MetricsRegistry automatically. And these metrics data will be exposed from MetricRegistry with REST API like : `http://localhost:8080/metrics/application`. Microprofile metrics provides another approach to manually register metrics to MetricsRegistry. Here we only focus on the annotation way to automatically register metrics.
+The target class, method,  field with above annotation(s) will be scanned and register these metrics to MetricsRegistry automatically. And these metrics data will be exposed from MetricRegistry with REST API like : `http://localhost:8080/metrics/application`. MicroProfile Metrics provides another approach to manually register metrics to MetricsRegistry. Here we only focus on the annotation way to automatically register metrics.
 
 After registering, Metrics data value will be available with JSON or [OpenMetrics](https://openmetrics.io/) format. The OpenMetrics format can be directly consumed by [Prometheus](https://prometheus.io) to store data, create alerts or better visualize.
-In this blog, we go through some practical steps to expose the metrics data for your existing application with Microprofile metrics and collect data with Prometheus and visualize data with Grafana.
+In this blog, we go through some practical steps to expose the metrics data for your existing application with MicroProfile Metrics and collect data with Prometheus and visualize data with Grafana.
 
-### Add Microprofile metrics dependency and annotate your resource method
+### Add MicroProfile Metrics dependency and annotate your resource method
  
-To annotate your resource method, Micropprofile metrics dependency is required to add to your maven or gradle project.
+To annotate your resource method, MicroProfile Metrics dependency is required to add to your maven or gradle project.
  
 ```
 <dependency>
@@ -65,7 +65,7 @@ public class MetricsEndpoint
 
 ### Deploy to Container with MicroProfile Metrics implementation
 
-If a container has MicroProfile Metrics implementation, it will automatically detect and handle metrics register job as MicroProfile spec says. The only thing you need to check if this works by access "/metrics/base" or  "metrics/application". WFLY15 and above has already shipped MicroProfile Metrics implementation smalley-metrics. But we suggest to try this with latest wildfly release 19.1.0.Final, because it includes many upgrades and bug fix about Microprofile implementation.
+If a container has MicroProfile Metrics implementation, it will automatically detect and handle metrics register job as MicroProfile spec says. The only thing you need to check if this works by access "/metrics/base" or  "metrics/application". WFLY15 and above has already shipped MicroProfile Metrics implementation smalley-metrics. But we suggest to try this with latest WildFly release 19.1.0.Final, because it includes many upgrades and bug fix about MicroProfile implementation.
 
 To expose metrics, there isn't extra thing to configure or change. Redeploy the application with these new annotation will be enough.Once the deployment is deployed successfully, run curl command
 to test if this application's metrics is exposed.
