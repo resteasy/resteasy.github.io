@@ -13,9 +13,9 @@ ConfigSources RESTEasy provides for each servlet and filter. I will show how the
 ConfigSources are used to customize the configuration of a simple REST
 application that runs in Wildlfy, and discuss some of the nuances in their use.
 
-I have created a REST application whose endpoints use Microprofile-Configuration's
-APIs to retrieve the information Wildfly's implementation of this specification provides.
-[SmallRye Config](https://smallrye.io/) is Wildfly's implementation of 
+I have created a REST application whose endpoints use MicroProfile-Configuration's
+APIs to retrieve the information WildFly's implementation of this specification provides.
+[SmallRye Config](https://smallrye.io/) is WildFly's implementation of 
 [Eclipse MicroProfile Config](https://github.com/eclipse/microprofile-config/).
 
 
@@ -27,7 +27,7 @@ APIs to retrieve the information Wildfly's implementation of this specification 
 > Note
 >````
 >I am using a unix environment.  This has not been tested on Windows.
->I will be running Wildfly and executing cURL commands in a terminal 
+>I will be running WildFly and executing cURL commands in a terminal 
 >window.
 >````
 
@@ -195,7 +195,7 @@ for one of these ConfigSources, the instance is present but empty.
 >elements.  It defines three classes that implementations use to access the data in
 >these elements.  This means there is no chance of confusion when there are duplicate
 >"param-names" declared in any of these elements. This is not true for
->Microprofile-Configuration particularly when handling legacy EE applications.  For
+>MicroProfile Configuration particularly when handling legacy EE applications.  For
 >RESTEasy there is some potential for "param-name" collision between servlet, filter
 >and context elements.
 >````
@@ -218,7 +218,7 @@ curl http://localhost:8080/microprofile-config-one/one/EnvConfigSource/propertie
 >a mechanism to declare the specific configuration requirements of the application
 >external to the source code, thus making it easier for the programmer to modify
 >configuration settings. Web.xml is the result of that effort. The
->Microprofile-Configuration specification is a new layer of externalization
+>MicroProfile Configuration specification is a new layer of externalization
 >of configuration data from the code and web.xml.
 >````
 
@@ -245,29 +245,29 @@ Ordinal   Name
 This is the minimum set of configuration data RESTEasy requires.  All the properties
 which start with "resteasy." are [RESTEasy configuration switches](https://docs.jboss.org/resteasy/docs/3.12.1.Final/userguide/html/Installation_Configuration.html#configuration_switches).
 No configuration data is declared in the web.xml for this applications.  These
-settings were added by Wildfly during the deployment process.  Notice property
+settings were added by WildFly during the deployment process.  Notice property
 javax.ws.rs.Application in ServletConfigSource.  It's not a RESTEasy switch.
 RESTEasy will not perform a (configuration) lookup for it.  For all
 intents and purposes it is a ready-only value.  There is no filter in the
 application, so FilterConfigSource is empty.
 
-According to Microprofile-Configuration rules I should be able to declare a higher precedent
+According to MicroProfile Configuration rules I should be able to declare a higher precedent
 property for any of the properties in the RESTEasy ConfigSources.  Lets test it out.
 
 I'm picking property resteasy.preferJacksonOverJsonB to change because
 it will not impact the running of this application.
 
 ````
-Stop Wildfly running.
+Stop WildFly running.
 
-In the terminal window where Wildfly was running define the environment variable.
+In the terminal window where WildFly was running define the environment variable.
 export resteasy.preferJacksonOverJsonB=TRUE
 ````
 Well that didn't work.  Unix Bash does not allow the "." character in
 the property key.  Execution of the command reports error, "not a valid identifier".
  
 Moving on to testing with a system variable.  On the command line to
-run Wildfly add this, -Dresteasy.preferJacksonOverJsonB=TRUE
+run WildFly add this, -Dresteasy.preferJacksonOverJsonB=TRUE
 
 ````
 ./bin/standalone.sh  -Dresteasy.preferJacksonOverJsonB=TRUE
@@ -287,7 +287,7 @@ Ordinal   Name
 ````
 Hmmm.  The property in SysPropConfigSource is expected.
 The value of resteasy.preferJacksonOverJsonB in ServletContextConfigSource is
-not.  Turns out Wildfly checks the system properties for some 
+not.  Turns out WildFly checks the system properties for some 
 (but not all) of RESTEasy's switches during the deployment process.  In this
 case the value is set before ServletContextConfigSource references it.
 
@@ -296,7 +296,7 @@ I'll try this again later with a more conventional property.
  
 Before we continue, remove the system variable from WildFly's command line.
 ````
-Stop Wildfly
+Stop WildFly
 ./bin/standalone.sh
 ````
  
@@ -448,7 +448,7 @@ Farewell-Filter using the farewell message provided in PropertiesConfigSource?
 Traditionally, (i.e. as defined in the Servlet specification), a filter gets its
 configuration data by calling FilterConfig's getInitParameter and
 getInitParameterNames methods.  I would need to change the code to use
-Microprofile-Configuration's API to get the value from the ConfigSources.
+MicroProfile Configuration's API to get the value from the ConfigSources.
 Easily done.  I just chose to go old-school here.  
 
 
@@ -483,12 +483,12 @@ Lets run one last test.  I want to set a system variable and environment
 variable for filter parameter, aquarium, to show the properties are registered
 in ConfigSources, SysPropConfigSource and EnvConfigSource.
 
-Stop Wildfly.  
+Stop WildFly.  
 Set the environment variable.
 ````
 export aquarium="tank equipment"
 ````
-Start Wildfly using a system variable.
+Start WildFly using a system variable.
 ````
 ./bin/standalone.sh -Daquarium="Tropical Pets"
 ````
@@ -508,11 +508,3 @@ Ordinal   Name
 SUCCESS!!  "Tropical Pets" is in SysPropConfigSource.
 "tank equipment" in EnvConfigSource and the initial value, "fish-filter"
 is in FilterConfigSource.
-
-
-
-
-
-
-
-
