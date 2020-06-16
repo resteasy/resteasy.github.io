@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   06/16/2020: 4.5.5.Final release: MicroProfile REST Client feature, bug fixes, component upgrades
 -   06/05/2020: 3.12.1.Final release: Bug fixes
 -   05/17/2020: 3.12.0.Final release: MicroProfile Config incorporated; bug fixes
 -   04/01/2020: 3.11.2.Final release: MicroProfile REST Client bug fix; Jackson2 upgrade
