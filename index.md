@@ -2,6 +2,8 @@
 layout: main
 ---
 ### News
+-   07/21/2020: 4.5.6.Final release: Bug fixes
+-   07/19/2020: 3.13.0.Final release: Bug fixes; Elytron client integration
 -   06/16/2020: 4.5.5.Final release: MicroProfile REST Client feature, bug fixes, component upgrades
 -   06/05/2020: 3.12.1.Final release: Bug fixes
 -   05/17/2020: 3.12.0.Final release: MicroProfile Config incorporated; bug fixes
