@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   09/30/2020: 3.13.2.Final release: deprecated Infinispan code replaced in ServerCacheFeature, component upgrades
 -   09/24/2020: 4.5.8.Final release: HTTP automatic retries can be disabled, bug fixes, component upgrades
 -   09/13/2020: 3.13.1.Final release: Bug fixes
 -   07/21/2020: 4.5.6.Final release: Bug fixes
