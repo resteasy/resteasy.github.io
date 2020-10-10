@@ -10,11 +10,11 @@ WildFly provides another very easy to use tool to package your application and w
 ```
    java -jar myapp-bootable.jar
 ```
-The WildFly sever packaged in this bootable jar file is not a big size one which contains a lot of things your application doesn't need. Thanks for [Galleon](https://docs.wildfly.org/galleon/), it brings the capability to customize the WildFly server installation with different [layers](https://docs.wildfly.org/20/Admin_Guide.html#defined-galleon-layers). In this blog, we'll introduce how to use this new tool[wildfly-jar-maven-plugin](https://github.com/wildfly-extras/wildfly-jar-maven-plugin) to package all things in a bootable jar.
+The WildFly sever packaged in this bootable jar file is not a big size one which contains a lot of things your application doesn't need. Thanks for [Galleon](https://docs.wildfly.org/galleon/), it brings the capability to customize the WildFly server installation with different [layers](https://docs.wildfly.org/20/Admin_Guide.html#defined-galleon-layers). In this post, we'll introduce how to use this new tool [wildfly-jar-maven-plugin](https://github.com/wildfly-extras/wildfly-jar-maven-plugin) to package all things in a bootable jar.
 
 ### wildfly-jar-plugin Configuration
 
-The Wildfly jar plugin tool is developed to work with WildFly since version 20.0.0.Final and the latest WildFly jar plugin version is 2.0.0.Beta9 and tested with WildFly 21.0.0.Beta2. The goal of this maven plugin is package the Jakarta EE application in a bootable jar. WildFly server arguments can be passed to this bootable jar to define the binding address or other property. Below is the whole support arguments list:
+The Wildfly jar plugin tool is developed to work with WildFly since version 20.0.0.Final and the latest WildFly jar plugin version is 2.0.0.Beta9 and tested with WildFly 21.0.0.Beta2. The goal of this maven plugin is package the Jakarta EE application with server installation with galleon layer provisioning in a bootable jar. WildFly server arguments can be passed to this bootable jar to define the binding address or other property to start WildFly server. Below is the whole support arguments list:
 ```
 java -jar helloworld-bootable.jar --help
 
@@ -56,14 +56,14 @@ where args include:
 
     --version                           Print version and exit
 ```
-From the argument list, the ```--install-dir``` defines the location the packaged WildFly server will be unzipped. When starts the bootable jar, the packaged server will be unzipped to /tmp(Linux) first. There will be temp folder like :
+From the argument list, the ```--install-dir``` defines the location the unzipped WildFly server from this bootable jar file. By default, directory /tmp(on Linux) is the place where WildFly server unzipped:
 ```
  wildfly-bootable-server6990124907254246716
  wildfly-bootable-server7488244112163926076
  wildfly-bootable-server8368048731434793592
 ```
 
-wildfly-jar-plugin supports WildFLY CLI script to do more customization/configuration work for your server during package. If your application needs to configure the security or logging subsystem, the ```<cli-session>``` is the item to configure for the wildfly-jar-plugin:
+wildfly-jar-plugin supports WildFLY CLI script to do more customization/configuration work for your server during package. If your application needs to configure the security or logging subsystem, the ```<cli-session>``` is the item to configure:
 ```
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-jar-maven-plugin</artifactId>
@@ -79,8 +79,7 @@ wildfly-jar-plugin supports WildFLY CLI script to do more customization/configur
                     </cli-sessions>
 ``` 
 
-To trim the server installation size and package into bootable jar, galleon layer can be defined to include different WildFly server subsystem and relevant jboss modules. To deploy and start Restful service, it only needs ```jaxrs``` layer, ```management``` is the plus layer to support server management with CLI or GUI.
-This is the configuration example to only package jaxrs layer and its dependents:
+To trim the server installation size and package into bootable jar, galleon layer can be defined to include different WildFly server subsystem and relevant jboss modules. In this example, we only need to deploy and start Restful service, so ```jaxrs``` layer is required and ```management``` is the plus layer to support server management with CLI or GUI. Put all configuration items, this is the configuration to create the bootable jar for restful service:
 ```
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -107,9 +106,9 @@ This is the configuration example to only package jaxrs layer and its dependents
 ```
 ```deployment-scanner``` is excluded because the server doesn't need to scan the deployment with bootable jar start approach.  
 
-### Package your application with wildfly-jar-plugin
+### Package the application with wildfly-jar-plugin
 
-Package application to bootable jar is very simple with wildfly-jar-plugin. The only thing need to do is adding this plugin to maven or gradle project and properly configure it. But you make sure your project build output is a war or ear file. We have an maven example project and build output is war deployment. 
+Package application to bootable jar is very simple with wildfly-jar-plugin. The only thing need to do is adding this plugin to maven or gradle project and properly configure it. But the first, make sure your project build output is a war or ear file. We have an maven example project and build output is war deployment. 
 The maven pom.xml before add the wildfly-jar-plugin is something like:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -149,7 +148,7 @@ The maven pom.xml before add the wildfly-jar-plugin is something like:
     </build>
 </project>
 ```
-In this project there is simple product resource class to generate json result for products query request:
+In this example, there is simple product resource class to generate json result for products query request:
 ```
 package org.resteasy.bootablejar;
 import javax.ws.rs.Path;
@@ -169,7 +168,7 @@ public class Jackson2Resource {
 ```
 More details please visit [resteasy-bootable-jar-example](https://github.com/jimma/resteasy-bootable-jar)
 
-After the wildfly-jar-plugin is added and configured, it generates the bootable jar file along with this war deployment. 
+After the wildfly-jar-plugin is added and configured, it will have all things to generates the bootable jar file along with this war deployment. 
 
 ### Run bootable jar
 
@@ -183,7 +182,7 @@ After the sever is started, prouducts json result will be returned for http GET 
 ```
 ### Conclusion
 
-wildfly-jar-plugin is the another good tool WildFly team created after galleon layer. With this tool, create the bootable jar file with small size for the old JakartaEE or JEE application is much easier. If you want to evolve your old JaxRS application to MicroService or cloud, please add this plugin to your current maven or gradle project and give it a tree. 
+wildfly-jar-plugin is the another good tool WildFly team created after galleon layer. With this tool, create the bootable jar file with small size for the old JakartaEE or JEE application is much easier. If you want to evolve your old JaxRS application to MicroService or move to the cloud or container, please add this plugin to your current maven or gradle project and give it a try.
 
 ### Resources
 
