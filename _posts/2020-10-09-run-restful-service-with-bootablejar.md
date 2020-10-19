@@ -14,7 +14,7 @@ The WildFly sever packaged in this bootable jar file is not a big size one which
 
 ### wildfly-jar-plugin Configuration
 
-The Wildfly jar plugin tool is developed to work with WildFly since version 20.0.0.Final and the latest WildFly jar plugin version is 2.0.0.Beta9 and tested with WildFly 21.0.0.Beta2. The goal of this maven plugin is package the Jakarta EE application with server installation with galleon layer provisioning in a bootable jar. WildFly server arguments can be passed to this bootable jar to define the binding address or other property to start WildFly server. Below is the whole support arguments list:
+The WildFly jar plugin tool is developed to work with WildFly since version 20.0.0.Final. Now the latest WildFly jar plugin version is 2.0.0.Final. It's just released alone with WildFly 21.0.0.Final. The goal of this maven plugin is package the Jakarta EE application with server installation with galleon layer provisioning in a bootable jar. WildFly server arguments can be passed to this bootable jar to define the binding address or other property to start WildFly server. Below is the whole support arguments list:
 ```
 java -jar helloworld-bootable.jar --help
 
@@ -148,7 +148,7 @@ The maven pom.xml before add the wildfly-jar-plugin is something like:
     </build>
 </project>
 ```
-In this example, there is simple product resource class to generate json result for products query request:
+Here we have an simple example to demonstrate start service with a bootable jar. In this service, there is simple product resource class to generate json result for products query request:
 ```
 package org.resteasy.bootablejar;
 import javax.ws.rs.Path;
@@ -166,13 +166,13 @@ public class Jackson2Resource {
    }
 }
 ```
-More details please visit [resteasy-bootable-jar-example](https://github.com/jimma/resteasy-bootable-jar)
+More details please visit [resteasy-bootable-jar-example]https://github.com/resteasy/resteasy-examples/tree/master/bootable-jar)
 
 After the wildfly-jar-plugin is added and configured, it will have all things to generates the bootable jar file along with this war deployment. 
 
 ### Run bootable jar
 
-Besides the ```java -jar target/helloworld-bootable.jar``` to start this product service server,  there are another two wildfly-jar-plugin goals to start: 
+Besides the ```java -jar target/products-runner-bootable.jar``` to start this product service server,  there are another two wildfly-jar-plugin goals to start: 
 ```mvn wildfly-jar:run``` with blocking mode or  ```mvn wildfly-jar:start``` to start the server in background.
 
 After the sever is started, prouducts json result will be returned for http GET request ```http://localhost:8080/products``` :
@@ -186,7 +186,7 @@ wildfly-jar-plugin is the another good tool WildFly team created after galleon l
 
 ### Resources
 
-* [resetasy-bootable-jar example](https://github.com/jimma/resteasy-bootable-jar)
+* [resetasy-bootable-jar example](https://github.com/resteasy/resteasy-examples/tree/master/bootable-jar)
 
 * [wildfly-jar-plugin introduction blog](https://www.wildfly.org/news/2020/06/18/Bootable-jar-Wildfly-20/)
 
