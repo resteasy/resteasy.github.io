@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Run your Restful service with bootable jar"
+title:      "Restful service with bootable jar"
 subtitle:   ""
 date:       Oct 09, 2020
 author:     Jim Ma
