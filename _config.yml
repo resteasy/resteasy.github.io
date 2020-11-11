@@ -1,9 +1,9 @@
 # Site settings
 title: Resteasy
 email:
-url: https://resteasy.jboss.org
+url: https://resteasy.github.io
 description: "RESTEasy is a fully certified and portable implementation of the JAX-RS specification"
-news: "Resteasy 3.0.19.Final is available." 
+news: "Resteasy 3.0.19.Final is available."
 meta_author: Resteasy
 # Build settings
 markdown: kramdown
