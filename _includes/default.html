@@ -8,7 +8,11 @@
                               <a href="{{site.baseurl}}/">RESTEasy</a>
                                 &gt;
                               <a href="{{site.baseurl}}/{{page.selflink}}">{{page.title}}</a>
+                              {% if page.title == 'Blogs' %}
+                               <a href="/feed.xml"><image src="/img/blog/feed-icon.png"/></a>
+                              {% endif %}
                        </span>
+
                      </div><!-- end breadcrumb -->
                      {{content}}
 
