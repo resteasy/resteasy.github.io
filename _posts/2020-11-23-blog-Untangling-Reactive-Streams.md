@@ -356,8 +356,7 @@ NewsPublisher.  Below is my code for that.  The lambda for ```FlowableOnSubscrib
 (line 96) is a enum.  There are 5 strategy types.  I am choosing BackpressureStrategy.BUFFER
 for no particular reason.
 
-To subscribe to FlowableCreate one must call method ```subscribeActual``` not method 
-```subscribe```.
+To subscribe to FlowableCreate one must call method ```subscribeActual``` not method ```subscribe```.
 Method ```subscribeActual``` is defined as an abstract method in Flowable and implemented
 in FlowableCreate, which you will remember is a subclass of Flowable.  When
 ```Flowable.subscribe``` is called it in turn calls ```FlowableCreate.subscribeActual```
@@ -593,8 +592,8 @@ Executing line 14755 above drops us into method, ```subscribe```, below.
 The value of the input parameter, **s**, is the StrictSubscriber object.
 At line 14801 the call to ```RxJavaPlugins.onSubscribe(this, s)``` does nothing
 but cast StrictSubscriber to Subscriber.  The call to ```subscribeActual``` is made at
-line 14805.  **z**, the unchanged value of StrictSubscriber, is passed in to 
-```subscribeActual```.
+line 14805.  **z**, the unchanged value of StrictSubscriber, is passed in to ```subscribeActual```.
+
 
 ````
   14798     public final void subscribe(FlowableSubscriber<? super T> s) {
