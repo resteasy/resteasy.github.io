@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   01/13/2021: 4.6.0.Final release: MicroProfile and other upgrades, integration with Elytron, bug fixes
 -   12/08/2020: 3.14.0.Final release: security fix, bug fixes, component upgrades
 -   09/30/2020: 3.13.2.Final release: deprecated Infinispan code replaced in ServerCacheFeature, component upgrades
 -   09/24/2020: 4.5.8.Final release: HTTP automatic retries can be disabled, bug fixes, component upgrades
