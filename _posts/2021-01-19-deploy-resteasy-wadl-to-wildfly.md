@@ -31,13 +31,13 @@ resteasy-tracing-api-1.0.0.Final.jar
 $
 ```
 
-From the above output, we can see the WildFly on my machine is using RESTEasy `3.14.0.Final` by default. So the `resteasy-wadl` module you used better to keey sync with it, or there *may* have incompatible issues.
+From the above output, we can see WildFly on my machine is using RESTEasy `3.14.0.Final` by default. So the `resteasy-wadl` module you used better to keep in sync with it, or there *may* have incompatible issues.
 
 Another possible solution is to upgrade the RESTEasy modules inside WildFly, this way you can use the newest RESTEasy releases, and here is the document describing how to do it:
 
 * [Upgrading RESTEasy within WildFly](https://docs.jboss.org/resteasy/docs/4.5.8.Final/userguide/html_single/index.html#upgrading-wildfly)
 
-Please note the above solution maybe *unsafe*, because the resteasy-module version may not be integrated and tested by WildFly team yet.
+Please note the above solution may be *unsafe*, because the resteasy-module version may not be integrated and tested by WildFly team yet.
 
 Above is the WildFly side that needs to be noted. Coming back to the project side, here is the sample code to enable the `resteasy-wadl` module:
 
