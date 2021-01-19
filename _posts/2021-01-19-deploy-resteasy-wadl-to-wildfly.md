@@ -6,9 +6,9 @@ date:       Jan 18th, 2021
 author:     Wei Nan
 ---
 
-There was [request](https://issues.redhat.com/browse/WFLY-7419) to include RESTEasy WADL module into Wildfly by default. While the issue is under discussion, we can have an example showing how to deploy the RESTEasy WADL module by yourself into Wildfly.
+There was [request](https://issues.redhat.com/browse/WFLY-7419) to include RESTEasy WADL module into WildFly by default. While the issue is under discussion, we can have an example showing how to deploy the RESTEasy WADL module by yourself into WildFly.
 
-To achieve the goal, firstly we need to add the `resteasy-wadl` as the dependency of the project we want to deploy to Wildfly. And if the project is using Maven, here is the configuration need be put into `pom.xml`:
+To achieve the goal, firstly we need to add the `resteasy-wadl` as the dependency of the project we want to deploy to WildFly. And if the project is using Maven, here is the configuration need be put into `pom.xml`:
 
 ```xml
 <dependency>
@@ -18,9 +18,9 @@ To achieve the goal, firstly we need to add the `resteasy-wadl` as the dependenc
 </dependency>
 ```
 
-In above config, the `${resteasy.ver}` is the RESTEasy version you used in your project. Because Wildfly has its own RESTEasy module, so I recommend that the project to use the same RESTEasy version used by your Wildfly server.
+In above config, the `${resteasy.ver}` is the RESTEasy version you used in your project. Because WildFly has its own RESTEasy module, so I recommend that the project to use the same RESTEasy version used by your WildFly server.
 
-To check the RESTEasy version used by your Wildfly, you can check your Wildfly's `module` directory like this:
+To check the RESTEasy version used by your WildFly, you can check your WildFly's `module` directory like this:
 
 ```bash
 $ ls modules/system/layers/base/org/jboss/resteasy/resteasy-jaxrs/main/
@@ -31,15 +31,15 @@ resteasy-tracing-api-1.0.0.Final.jar
 $
 ```
 
-From the above output, we can see the Wildfly on my machine is using RESTEasy `3.14.0.Final` by default. So the `resteasy-wadl` module you used better to keey sync with it, or there *may* have incompatible issues.
+From the above output, we can see the WildFly on my machine is using RESTEasy `3.14.0.Final` by default. So the `resteasy-wadl` module you used better to keey sync with it, or there *may* have incompatible issues.
 
-Another possible solution is to upgrade the RESTEasy modules inside Wildfly, this way you can use the newest RESTEasy releases, and here is the document describing how to do it:
+Another possible solution is to upgrade the RESTEasy modules inside WildFly, this way you can use the newest RESTEasy releases, and here is the document describing how to do it:
 
 * [Upgrading RESTEasy within WildFly](https://docs.jboss.org/resteasy/docs/4.5.8.Final/userguide/html_single/index.html#upgrading-wildfly)
 
-Please note the above solution maybe *unsafe*, because the resteasy-module version may not be integrated and tested by Wildfly team yet.
+Please note the above solution maybe *unsafe*, because the resteasy-module version may not be integrated and tested by WildFly team yet.
 
-Above is the Wildfly side that needs to be noted. Coming back to the project side, here is the sample code to enable the `resteasy-wadl` module:
+Above is the WildFly side that needs to be noted. Coming back to the project side, here is the sample code to enable the `resteasy-wadl` module:
 
 ```java
 import org.jboss.resteasy.wadl.ResteasyWadlDefaultResource;
@@ -63,7 +63,7 @@ The above sample class will enable the `resteasy-wadl` module and register its s
 
 To see the detail usage and source code of the example, please check the sample here inside the `resteasy-examples` project:
 
-* [An example showing how to deploy resteasy-wadl based project to Wildfly](https://github.com/resteasy/resteasy-examples/blob/master/resteasy-wadl-wildfly/README.md)
+* [An example showing how to deploy resteasy-wadl based project to WildFly](https://github.com/resteasy/resteasy-examples/blob/master/resteasy-wadl-wildfly/README.md)
 
 If you've met any problems during its usage, please feel free to submit issue report at: 
 
