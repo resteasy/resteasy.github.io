@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   03/04/2021: 3.15.1.Final release: bug fixes
 -   02/18/2021: 3.15.0.Final release: support for MicroProfile REST Client 2.0
 -   02/06/2021: 4.5.9.Final release: security fix
 -   01/13/2021: 4.6.0.Final release: MicroProfile and other upgrades, integration with Elytron, bug fixes
