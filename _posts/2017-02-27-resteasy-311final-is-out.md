@@ -20,7 +20,7 @@ Here we are a couple of months later with the first bug fix release of RESTEasy 
 
 Those monitoring the website and/or the development on GithHub might have noticed that during the past weeks we&#39;ve also continued merging fixes into the 3.0 branch. The result of that effort is in the 3.0.20.Final and 3.0.21.Final releases which are also available for users that still need some time before switching to 3.1. We are likely going on actively working on 3.0 for some more time, but we really encourage you to migrate to 3.1 as soon as possible.
 
-Enjoy the [new releases](http://resteasy.jboss.org/downloads) and please provide feedback!
+Enjoy the [new releases](https://resteasy.jboss.org/downloads) and please provide feedback!
 
 
 

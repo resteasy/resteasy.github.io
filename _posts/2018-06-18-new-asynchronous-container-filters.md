@@ -15,16 +15,16 @@ Response filters are very similar, but [execute](https://docs.oracle.com/javaee/
 
 This is all great, but how does it work in an asynchronous ecosystem ? It doesn&#39;t, really, because even though JAX-RS supports [suspending the request](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/Suspended.html), it only supports it within the resource method: filters are too early (for request filters), or too late (for response filters). 
 
-In RESTEasy 3.5 and 4.0.0, we introduced the ability to [suspend the request in filters](http://docs.jboss.org/resteasy/docs/3.5.0.Final/userguide/html/Interceptors.html#d4e1819). To do that, write your request or response filter as usual, but then cast your context object down to [SuspendableContainerRequestContext](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html) or [SuspendableContainerResponseContext](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html) (for response filters), and you can then:
+In RESTEasy 3.5 and 4.0.0, we introduced the ability to [suspend the request in filters](https://docs.jboss.org/resteasy/docs/3.5.0.Final/userguide/html/Interceptors.html#d4e1819). To do that, write your request or response filter as usual, but then cast your context object down to [SuspendableContainerRequestContext](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html) or [SuspendableContainerResponseContext](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html) (for response filters), and you can then:
 
 
-- suspend the request with [SuspendableContainerRequestContext.suspend()](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#suspend--)
+- suspend the request with [SuspendableContainerRequestContext.suspend()](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#suspend--)
 
-- resume it normally with [SuspendableContainerRequestContext.resume()](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#resume--), to proceed to the next filter or resource method
+- resume it normally with [SuspendableContainerRequestContext.resume()](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#resume--), to proceed to the next filter or resource method
 
 - resume it with a response with the standard [ContainerRequestContext.abortWith()](https://docs.oracle.com/javaee/7/api/javax/ws/rs/container/ContainerRequestContext.html#abortWith-javax.ws.rs.core.Response-), to directly send that response to the client
 
-- resume it with an exception with [SuspendableContainerRequestContext.resume(Throwable)](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#resume-java.lang.Throwable-)
+- resume it with an exception with [SuspendableContainerRequestContext.resume(Throwable)](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerRequestContext.html#resume-java.lang.Throwable-)
 
  
 
@@ -32,11 +32,11 @@ Similarly, for response filters, you can:
 
  
 
-- suspend the request with [SuspendableContainerResponseContext.suspend()](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#suspend--)
+- suspend the request with [SuspendableContainerResponseContext.suspend()](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#suspend--)
 
-- resume it normally with [SuspendableContainerResponseContext.resume()](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#resume--), to proceed to the next filter or return the response to the client
+- resume it normally with [SuspendableContainerResponseContext.resume()](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#resume--), to proceed to the next filter or return the response to the client
 
-- resume it with an exception with [SuspendableContainerResponseContext.resume(Throwable)](http://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#resume-java.lang.Throwable-)
+- resume it with an exception with [SuspendableContainerResponseContext.resume(Throwable)](https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/org/jboss/resteasy/core/interception/jaxrs/SuspendableContainerResponseContext.html#resume-java.lang.Throwable-)
 
  
 
@@ -213,7 +213,7 @@ If you go to
 /limited
  you will get two requests allowed every 10 seconds. The rest of the time you will get an HTTP response of [Too Many Requests (429)](https://tools.ietf.org/html/rfc6585#section-4).
 
-If you have the need for [asynchronous request or response filters](http://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Interceptors.html#d4e1831), don&#39;t hesitate to give RESTEasy 
+If you have the need for [asynchronous request or response filters](https://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Interceptors.html#d4e1831), don&#39;t hesitate to give RESTEasy 
 3.5.1.Final
  or 
 4.0.0.Beta2
