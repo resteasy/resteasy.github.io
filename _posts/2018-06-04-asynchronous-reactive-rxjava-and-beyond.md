@@ -180,7 +180,7 @@ Here we really see the benefits of using reactive: we can provide a pipeline of 
 
 It may have sounded like we were at the end of the adventure and had solved every issue, but in reality 
 CompletionStage
- is great, but not that rich: libraries such as [Reactive Streams](http://www.reactive-streams.org/) and [RxJava](https://github.com/ReactiveX/RxJava) 1 and 2 provide types that are much richer than 
+ is great, but not that rich: libraries such as [Reactive Streams](https://www.reactive-streams.org/) and [RxJava](https://github.com/ReactiveX/RxJava) 1 and 2 provide types that are much richer than 
 CompletionStage
 , which allow you to compose many more operations in an easier manner.
 

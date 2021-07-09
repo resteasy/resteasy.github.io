@@ -21,7 +21,7 @@ Christmas... here we are with the long-awaited final release of our rest project
 
 
 
-Seriously, **RESTEasy 3.1.0.Final** is out; we&#39;ve gone through ~20 additional bug fixes and misc tasks on top of the latest candidate release, but finally it&#39;s available on the [download page](http://resteasy.jboss.org/downloads), on the Maven repository and together with current [WildFly master](https://github.com/wildfly/wildfly).
+Seriously, **RESTEasy 3.1.0.Final** is out; we&#39;ve gone through ~20 additional bug fixes and misc tasks on top of the latest candidate release, but finally it&#39;s available on the [download page](https://resteasy.jboss.org/downloads), on the Maven repository and together with current [WildFly master](https://github.com/wildfly/wildfly).
 
 
 
@@ -57,7 +57,7 @@ A detailed list of the changes is available on [JIRA](https://issues.jboss.org/i
  
 
 
-I really invite everybody to take a look at the [documentation](http://docs.jboss.org/resteasy/docs/3.1.0.Final/userguide/html_single/index.html), especially the sections concerning the migration from older versions, try the new release and let us know if anything needs changes.
+I really invite everybody to take a look at the [documentation](https://docs.jboss.org/resteasy/docs/3.1.0.Final/userguide/html_single/index.html), especially the sections concerning the migration from older versions, try the new release and let us know if anything needs changes.
 
 
 
