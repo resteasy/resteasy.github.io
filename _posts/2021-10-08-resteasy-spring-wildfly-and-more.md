@@ -8,8 +8,8 @@ author:     Wei Nan Li
 
 I have written two blogs about deploying `resteasy-spring` projects into WildFly in before:
 
-- ({% post_url 2020-04-10-spring %})
-- ({% post_url 2020-04-27-wildfly-deploy %})
+- [Deploy RESTEasy-Spring project into WildFly Servlet-Only Container]({% post_url 2020-04-10-spring %})
+- [Deploy resteasy-spring-boot project into WildFly Java EE Full & Web Distribution]({% post_url 2020-04-27-wildfly-deploy %})
 
 Nevertheless, none of them describing how to deploy `resteasy-spring` based project into WildFly Full Distribution. In this article I’d like to briefly describing how to do this.
 
@@ -143,7 +143,7 @@ bar
 
 As the result shown above, we can access the service provided by sample project now.
 
-Nevertheless, instead of downloading WildFly server described above, the `resteasy-example` provides `wildfly-plugin` to allow you start WildFly server with Maven command and deploy the example automatically to start the service. Here is the command to do so:
+In addition, from resteasy-example [5.0.0.Alpha2](https://github.com/resteasy/resteasy-examples/releases/tag/5.0.0.Alpha2), it provides `wildfly-plugin` to allow you to start WildFly server with Maven command and deploy the example automatically to start the service. Here is the command to do so:
 
 ```bash
 $ mvn wildfly:run
