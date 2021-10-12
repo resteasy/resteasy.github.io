@@ -8,8 +8,8 @@ author:     Wei Nan Li
 
 I have written two blogs about deploying `resteasy-spring` projects into WildFly in before:
 
-- [Deploy RESTEasy-Spring project into WildFly Servlet-Only Container](https://resteasy.github.io/2020/04/10/spring/)
-- [Deploy resteasy-spring-boot project into WildFly Java EE Full & Web Distribution](https://resteasy.github.io/2020/04/27/wildfly-deploy/)
+- ({% post_url 2020-04-10-spring %})
+- ({% post_url 2020-04-27-wildfly-deploy %})
 
 Nevertheless, none of them describing how to deploy `resteasy-spring` based project into WildFly Full Distribution. In this article I’d like to briefly describing how to do this.
 
@@ -38,7 +38,7 @@ The above dependency needs to be changed to `provided` scope like this:
 </dependency>
 ```
 
-Because in WildFly Full Distribution, it already provides the `resteasy-spring` module by default, So we don’t have to bundle the above dependency into the project WAR file. Now we can package this project by Maven command:
+Because in WildFly Full Distribution, it already provides the `resteasy-spring` module by default, so we don’t have to bundle the above dependency into the project WAR file. Now we can package this project by Maven command:
 
 ```bash
 $ mvn package
@@ -143,6 +143,14 @@ bar
 
 As the result shown above, we can access the service provided by sample project now.
 
+Nevertheless, instead of downloading WildFly server described above, the `resteasy-example` provides `wildfly-plugin` to allow you start WildFly server with Maven command and deploy the example automatically to start the service. Here is the command to do so:
+
+```bash
+$ mvn wildfly:run
+```
+
+And a WildFly server will be downloaded and run, and the example project will be automatically deployed, which is convenient for testing.
+
 Above is a brief introduction on how to deploy `resteasy-spring` based project into WildFly Full Distribution. Nevertheless, there are several things need to be noted:
 
 Firstly, the `resteasy-spring` project is moved out of the `resteasy` main project, and here is its repository:
@@ -170,8 +178,3 @@ At last, because `resteasy-spring` becomes a separate project now, so we decide 
 After the above commit is done, I’ll do a `2.0.0.Beta1` release of the `resteasy-spring` project.
 
 That all about the topics I’d like to share with you in this blog.
-
-
-
-
-
