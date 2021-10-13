@@ -2,7 +2,7 @@
 layout:     post
 title:      "Deploying `resteasy-spring` based Project Into WildFly Full Distribution"
 subtitle:   ""
-date:       October 08th, 2021
+date:       Oct 13, 2021
 author:     Wei Nan Li
 ---
 
