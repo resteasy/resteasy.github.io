@@ -2,6 +2,7 @@
 layout: main
 ---
 ### News
+-   11/04/2021: 5.0.0.Final release: Component cleanup, Jakarta RESTful Web Services 2.1 tested, Java 17 support, container installation through a new Galleon Feature Pack
 -   07/08/2021: 4.7.0.Final release: Reactor-Netty; Java 16+
 -   07/06/2021: 4.6.2.Final release: bug fix
 -   03/23/2021: 3.11.4.Final release: bug fix
