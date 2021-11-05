@@ -49,7 +49,23 @@ final String resp = client.get();
 assertTrue(resp.contains("nghttp2.org"));
 ```
 
-The difference with `resteasy-client` is that `RestClientBuilder` should be used instead of `ClientBuilder`.
+The difference with `resteasy-client` is that `RestClientBuilder` should be used instead of `ClientBuilder`. In addition, the `NgHTTP2` in above code is a MicroProfile Client based client proxy interface:
+
+```java
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@RegisterRestClient
+public interface NgHTTP2 {
+    @GET
+    @Path("httpbin/get")
+    String get();
+}
+```
+
+With above interface we can make call to the URL address.
 
 Hope this new feature is useful to you :D
 
