@@ -6,7 +6,7 @@ date:       Nov 22, 2021
 author:     Wei Nan Li
 ---
 
-For WildFly/JBoss EAP integration, RESTEasy has migrated from using `jboss-modules` to the new Galleon Feature Pack scheme. Here are the relative modules:
+For WildFly/JBoss EAP integration, RESTEasy has migrated from using a ZIP of `jboss-modules` to the new Galleon Feature Pack scheme(and currently WildFly still uses `jboss-modules`). Here are the relative modules:
 
 - [resteasy/galleon-feature-pack at main · resteasy/resteasy · GitHub](https://github.com/resteasy/resteasy/tree/main/galleon-feature-pack)
 - [resteasy-spring/galleon-feature-pack at main · resteasy/resteasy-spring · GitHub](https://github.com/resteasy/resteasy-spring/tree/main/galleon-feature-pack)
@@ -52,10 +52,18 @@ When I’m writing this blog, the newest version of RESTEasy is `5.0.0.Final`, s
 
 ```bash
 ➤ galleon.sh install org.jboss.resteasy:galleon-feature-pack:5.0.0.Final --dir=~/my-wildfly
-Feature pack installed.d.
+Feature pack installed.
 ```
 
-So the `resteasy` module inside WildFly is now replaced with the `5.0.0.Final` feature pack. And now we can install the `resteasy-spring` feature pack. Here is the command to do so:
+So the `resteasy` module inside WildFly is now replaced with the `5.0.0.Final` feature pack. 
+
+> NOTE: Please note that the above installation process will also install the `spring` feature pack transitively. 
+
+And now we can install the `resteasy-spring` feature pack. 
+
+> NOTE: Please note that if we install `resteasy-spring` feature pack, we don't have to install the `resteasy` feature pack in above separately, because the following step will install the above `resteasy` feature pack transitively. 
+
+Here is the command to do so:
 
 ```bash
 ➤ galleon.sh install org.jboss.resteasy.spring:galleon-feature-pack:2.0.0.Final --dir=~/my-wildfly
@@ -65,7 +73,7 @@ Same as previous commands, it will install the module into WildFly, and here is 
 
 ```bash
 ➤ galleon.sh install org.jboss.resteasy.spring:galleon-feature-pack:2.0.0.Final --dir=~/my-wildfly
-Feature pack installed.d.
+Feature pack installed.
 ```
 
 Until now we have prepared the WildFly with updated `resteasy` and `resteasy-spring` feature pack. Now we can start the WildFly server with standalone mode. Here is the command to do so:
