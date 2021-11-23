@@ -55,11 +55,7 @@ When I’m writing this blog, the newest version of RESTEasy is `5.0.0.Final`, s
 Feature pack installed.
 ```
 
-So the `resteasy` module inside WildFly is now replaced with the `5.0.0.Final` feature pack. 
-
-> NOTE: Please note that the above installation process will also install the `spring` feature pack transitively. 
-
-And now we can install the `resteasy-spring` feature pack. 
+So the `resteasy` module inside WildFly is now replaced with the `5.0.0.Final` feature pack. And now we can install the `resteasy-spring` feature pack. 
 
 > NOTE: Please note that if we install `resteasy-spring` feature pack, we don't have to install the `resteasy` feature pack in above separately, because the following step will install the above `resteasy` feature pack transitively. 
 
@@ -76,7 +72,11 @@ Same as previous commands, it will install the module into WildFly, and here is 
 Feature pack installed.
 ```
 
-Until now we have prepared the WildFly with updated `resteasy` and `resteasy-spring` feature pack. Now we can start the WildFly server with standalone mode. Here is the command to do so:
+Until now, we have prepared the WildFly with updated `resteasy` and `resteasy-spring` feature pack. 
+
+> NOTE: Please note that the above installation process will also install the `spring` feature pack transitively.
+
+Now we can start the WildFly server with standalone mode. Here is the command to do so:
 
 ```bash
 ➤ pwd
