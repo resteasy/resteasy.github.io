@@ -17,11 +17,11 @@ And here is the document section introducing the feature:
 
 This feature has been divided into two parts. One part is located inside the main repository:
 
-- https://github.com/resteasy/resteasy/tree/main/resteasy-core/src/main/java/org/jboss/resteasy/tracing
+- [https://github.com/resteasy/resteasy/tree/main/resteasy-core/src/main/java/org/jboss/resteasy/tracing](https://github.com/resteasy/resteasy/tree/main/resteasy-core/src/main/java/org/jboss/resteasy/tracing)
 
 It contains core parts of the feature. Because this part is located in `resteasy-core`, so it’s included in the new feature-pack descriptor:
 
-- https://github.com/resteasy/resteasy/blob/main/galleon-feature-pack/src/main/resources/modules/system/layers/base/org/jboss/resteasy/resteasy-tracing-api/main/module.xml
+- [https://github.com/resteasy/resteasy/blob/main/galleon-feature-pack/src/main/resources/modules/system/layers/base/org/jboss/resteasy/resteasy-tracing-api/main/module.xml](https://github.com/resteasy/resteasy/blob/main/galleon-feature-pack/src/main/resources/modules/system/layers/base/org/jboss/resteasy/resteasy-tracing-api/main/module.xml)
 
 So this part can be installed with Galleon command line tool. Here is the blog that describes the usage of RESTEasy Feature Pack and Galleon tool:
 
@@ -29,7 +29,7 @@ So this part can be installed with Galleon command line tool. Here is the blog t
 
 On the other side, the implementation part of the feature are mainly located in `resteasy-extension` sub-project:
 
-- https://github.com/resteasy/resteasy-extensions/tree/main/tracing
+- [https://github.com/resteasy/resteasy-extensions/tree/main/tracing](https://github.com/resteasy/resteasy-extensions/tree/main/tracing)
 
 So if you want to use the tracing feature in your project and deploy into WildFly, then you need to include the above module into your project dependency scope:
 
@@ -42,7 +42,7 @@ So if you want to use the tracing feature in your project and deploy into WildFl
 
 There is tracing sample project in the `resteasy-examples` repository:
 
-- https://github.com/resteasy/resteasy-examples/tree/main/tracing-example
+- [https://github.com/resteasy/resteasy-examples/tree/main/tracing-example](https://github.com/resteasy/resteasy-examples/tree/main/tracing-example)
 
 And it can be packaged and deployed into WildFly. To package the above example, just clone the code into your local environment and then run the Maven command to package it:
 
@@ -52,7 +52,7 @@ $ mvn package
 
 And then we can get the WAR file:
 
-![](https://user-images.githubusercontent.com/201907/145725469-77f06e4a-34a3-4319-8a51-2e3a95d1d28d.png)
+![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725469-77f06e4a-34a3-4319-8a51-2e3a95d1d28d.png)
 
 Because I cloned the `resteasy-examples` repository and used the `main` branch for packaging, so the version number is `4.2.1.Final-SNAPSHOT`, which is the main branch SNAPSHOT version when I’m writing this blog.
 
@@ -62,7 +62,7 @@ After we get the WAR file, then we can use it to deploy into WildFly server. But
 
 And then we can start the provisioned version of WildFly:
 
-![](https://user-images.githubusercontent.com/201907/145725470-b66d2bd6-9cd3-4337-93d1-5db1c3d5b550.png)
+![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725470-b66d2bd6-9cd3-4337-93d1-5db1c3d5b550.png)
 
 And then using the `jboss-cli` tool to do the sample project WAR file deployment:
 
@@ -75,7 +75,7 @@ And then using the `jboss-cli` tool to do the sample project WAR file deployment
 
 And if everything goes fine, we can see the relative server output:
 
-![](https://user-images.githubusercontent.com/201907/145725473-e8235ce3-7e69-4fd6-8444-1c653f872672.png)
+![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725473-e8235ce3-7e69-4fd6-8444-1c653f872672.png)
 
 And then we can try to access the sample project service:
 
@@ -85,11 +85,11 @@ And then we can try to access the sample project service:
 
 I’m using the `httpie` tool above instead of `curl` command because it supports color output, and here is the output of the command:
 
-![](https://user-images.githubusercontent.com/201907/145725476-6fae79c8-3408-4460-89c0-35c42cec1bfd.png)
+![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725476-6fae79c8-3408-4460-89c0-35c42cec1bfd.png)
 
 As the above screenshot shows, the tracing information is output correctly. And from server side we can also see the relative server output:
 
-![](https://user-images.githubusercontent.com/201907/145725481-74997b6c-17c5-465b-ac3f-b6bc3b2d8db2.png)
+![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725481-74997b6c-17c5-465b-ac3f-b6bc3b2d8db2.png)
 
 Until now we have make the Tracing Feature working with the provisioned WildFly which has RESTEasy Feature Pack installed.
 
