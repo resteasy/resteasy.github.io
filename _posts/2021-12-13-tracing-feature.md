@@ -52,7 +52,7 @@ $ mvn package
 
 And then we can get the WAR file:
 
-![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725469-77f06e4a-34a3-4319-8a51-2e3a95d1d28d.png)
+<img width="550" src="https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725469-77f06e4a-34a3-4319-8a51-2e3a95d1d28d.png" />
 
 Because I cloned the `resteasy-examples` repository and used the `main` branch for packaging, so the version number is `4.2.1.Final-SNAPSHOT`, which is the main branch SNAPSHOT version when I’m writing this blog.
 
@@ -62,7 +62,7 @@ After we get the WAR file, then we can use it to deploy into WildFly server. But
 
 And then we can start the provisioned version of WildFly:
 
-![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725470-b66d2bd6-9cd3-4337-93d1-5db1c3d5b550.png)
+<img width="550" src="https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725470-b66d2bd6-9cd3-4337-93d1-5db1c3d5b550.png" />
 
 And then using the `jboss-cli` tool to do the sample project WAR file deployment:
 
@@ -75,7 +75,7 @@ And then using the `jboss-cli` tool to do the sample project WAR file deployment
 
 And if everything goes fine, we can see the relative server output:
 
-![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725473-e8235ce3-7e69-4fd6-8444-1c653f872672.png)
+<img width="550" src="https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725473-e8235ce3-7e69-4fd6-8444-1c653f872672.png" />
 
 And then we can try to access the sample project service:
 
@@ -85,13 +85,11 @@ And then we can try to access the sample project service:
 
 I’m using the `httpie` tool above instead of `curl` command because it supports color output, and here is the output of the command:
 
-![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725476-6fae79c8-3408-4460-89c0-35c42cec1bfd.png)
+<img width="550" src="https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725476-6fae79c8-3408-4460-89c0-35c42cec1bfd.png" />
 
 As the above screenshot shows, the tracing information is output correctly. And from server side we can also see the relative server output:
 
-![](https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725481-74997b6c-17c5-465b-ac3f-b6bc3b2d8db2.png)
+<img width="550" src="https://raw.githubusercontent.com/liweinan/blogpic2021i/master/dec12/145725481-74997b6c-17c5-465b-ac3f-b6bc3b2d8db2.png" />
 
 Until now we have make the Tracing Feature working with the provisioned WildFly which has RESTEasy Feature Pack installed.
-
-
 
