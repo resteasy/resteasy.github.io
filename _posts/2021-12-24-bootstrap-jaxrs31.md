@@ -5,18 +5,17 @@ subtitle:   ""
 date:       Dec 24, 2021
 author:     Jim Ma
 ---
-After JavaEE is moved under Eclipse foundation, there are a lot of things happens. 
-The same things happened for Jakarta Restful Webservice specification. In previous 
-Jakarta REST releases, there is no features added. But in Jakarta REST 3.1, there 
-will be a lot of features included, Java SE Bootstrp API is one of the important 
-features. In this post, we'll go through this new api with some examples and what will 
-Resteasy do to support this new features. 
+After JavaEE was moved under Eclipse Foundation, we started seeing many changes on the specifications;
+the Jakarta Restful Webservice specification group in particular is fairly active.
+With Jakarta REST 3.1, there will be a lot of new features included and the Java SE Bootstrap API is among the most important ones.
+In this post, we'll go through this new api with some examples and explain RESTEasy will 
+do to support this new feature.
 
 ### Java SE Bootstrap API
-From this api name, this allows the restful application to start in the Java SE 
-environment. Use this api, it will internally start an embedded http server and
-get the application ready to serve the incoming restful request. The key interface
-of this feature classes is the ```SseBootStrap```.
+As the API name suggests, this allows a restful application to start in the Java SE 
+environment. When using this api, an embedded http server will be started and
+an application automatically deployed on it to serve the incoming restful request.
+The key interface of this feature classes is the ```SseBootStrap```.
 ```
 public interface SeBootstrap {
     ...
@@ -40,28 +39,26 @@ public interface SeBootstrap {
         return RuntimeDelegate.getInstance().bootstrap(clazz, configuration);
     }
 ```
-It passes the application class and other http server configuration, the implementation will take care of other
-things and start this restful application. It's very simple to start an application without packaging and deploying 
+It allows setting the application class and other http server configuration; the implementation will take care of other
+things and start the restful application. It's very simple to start an application without packaging and deploying 
 to a Jakarta EE container server like WildFly, Tomcat or Glassfish if you don't use other Jakarta EE features.
-Especially, when you want to test the functionalities of the created restful resource class, this provides much easy 
-api to do this job.
+This is very convenient especially when you want to test the functionalities of the created restful resource class.
 
 Java SE bootstrap api provides a configuration to accept the different options to configure the http server like protocol，
 host, port, ssl configuration and rootPath. Please check this [example](https://github.com/eclipse-ee4j/jaxrs-api/blob/master/examples/src/main/java/jaxrs/examples/bootstrap/ExplicitJavaSeBootstrapExample.java) for more details. 
 
-### Resteasy Bootstrap API Support
-Since Resteasy 2.3.x, there is embedded container introduced for a test environment or a simple production enviroment
-without introduces servlet dependencies. There are several embedded containers which are added with Resteasy's embedded
-server plugin api interface:
+### RESTEasy Bootstrap API Support
+Since RESTEasy 2.3.x, there is embedded container introduced for a test environment or a simple production enviroment
+without any servlet dependencies. Several embedded container implementations of the server plugin api interface are available:
  - Undertow
  - JDK HTTP Server
  - Netty
  - Reactor-Netty
  - Vert.x
 
-All these embedded container implements Resteasy's [EmbeddedJaxrsServer](https://github.com/resteasy/resteasy/blob/5.0.1.Final/resteasy-core/src/main/java/org/jboss/resteasy/plugins/server/embedded/EmbeddedJaxrsServer.java) interface. 
-Embedded container provides the implementation to start/stop container and "deploy" the deployment. Here is a Netty embedded container
-example code to demonstrate start the restful service and client sends a request with these apis:
+All these embedded container implements RESTEasy's [EmbeddedJaxrsServer](https://github.com/resteasy/resteasy/blob/5.0.1.Final/resteasy-core/src/main/java/org/jboss/resteasy/plugins/server/embedded/EmbeddedJaxrsServer.java) interface. 
+Each embedded container provides the implementation to start/stop the container and "deploy" the deployment. Here is a Netty embedded container
+example code to demonstrate how the restful service is started through these APIs and interacts with a client sending requests:
 ```
       NettyJaxrsServer server = null;
       Client client = null;
@@ -97,9 +94,8 @@ example code to demonstrate start the restful service and client sends a request
          }
       }
 ```
-You may find these apis almost provides the same functionality apis with SeBootStrap api does. What we need to do 
-is adapt Resteasy JDK HTTPServer embedded container to SeBootStrap api, and add this new api implementation in 
-ResteasyProviderFactoryImpl like:
+As you can see, these APIs basically provide the same functionality offered by the SeBootStrap API. Implementing the new Jakarta REST API is hence a matter of 
+adaptapting the RESTEasy JDK HTTPServer embedded container to the SeBootStrap API and properly modifying the ResteasyProviderFactoryImpl:
 ```
 @Override
    public CompletionStage<SeBootstrap.Instance> bootstrap(Application application,
@@ -182,8 +178,8 @@ ResteasyProviderFactoryImpl like:
 All these changes are pushed to [ee10 branch](https://github.com/resteasy/resteasy/tree/ee10）and main change happens class 
 [ResteasyProviderFactoryImpl](https://github.com/resteasy/resteasy/blob/ee10/resteasy-core/src/main/java/org/jboss/resteasy/core/providerfactory/ResteasyProviderFactoryImpl.java#L1699
 
-This is the features in development phrase and it could be changed in anytime. If you want to have a taste of what's this
-new api looks like, please check out this branch and play with this api a bit. When you get any issues or questions, please 
+This features is still in development phase and fixes / improvements might still be required. If you want to have a taste of what's coming with this
+new api, please check out this branch and play with this api a bit. When you get any issues or questions, please 
 talk with us on [Github Discussions](https://github.com/resteasy/resteasy/discussions).
 
 
