@@ -15,7 +15,7 @@ do to support this new feature.
 As the API name suggests, this allows a restful application to start in the Java SE 
 environment. When using this api, an embedded http server will be started and
 an application automatically deployed on it to serve the incoming restful request.
-The key interface of this feature classes is the ```SseBootStrap```.
+The key interface of this feature classes is the ```SeBootStrap```.
 ```
 public interface SeBootstrap {
     ...
@@ -175,8 +175,8 @@ adaptapting the RESTEasy JDK HTTPServer embedded container to the SeBootStrap AP
    }
 
 ```
-All these changes are pushed to [ee10 branch](https://github.com/resteasy/resteasy/tree/ee10）and main change happens class 
-[ResteasyProviderFactoryImpl](https://github.com/resteasy/resteasy/blob/ee10/resteasy-core/src/main/java/org/jboss/resteasy/core/providerfactory/ResteasyProviderFactoryImpl.java#L1699
+All these changes are pushed to [ee10 branch](https://github.com/resteasy/resteasy/tree/ee10) and main change happens in class 
+[ResteasyProviderFactoryImpl](https://github.com/resteasy/resteasy/blob/ee10/resteasy-core/src/main/java/org/jboss/resteasy/core/providerfactory/ResteasyProviderFactoryImpl.java#L1699).
 
 This features is still in development phase and fixes / improvements might still be required. If you want to have a taste of what's coming with this
 new api, please check out this branch and play with this api a bit. When you get any issues or questions, please 
