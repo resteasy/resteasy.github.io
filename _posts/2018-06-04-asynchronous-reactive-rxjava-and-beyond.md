@@ -176,7 +176,7 @@ public class ServiceResource {
 
 Here we really see the benefits of using reactive: we can provide a pipeline of work, on which we can register operations ([thenApply](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html#thenApply-java.util.function.Function-)) and even our finally block ([whenComplete](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html#whenComplete-java.util.function.BiConsumer-)) that we just pass along to the container without doing any manual plumbing.
 
-## New in Resteasy: pluggable support for reactive libraries 
+## New in RESTEasy: pluggable support for reactive libraries 
 
 It may have sounded like we were at the end of the adventure and had solved every issue, but in reality 
 CompletionStage
@@ -188,16 +188,16 @@ JAX-RS 2.1 added support for pluggable reactive libraries in the Reactive REST C
 CompletionStage
 . But annoyingly it is not symmetrical because there is no support for pluggable resource method return types! You can make JAX-RS 2.1 support RxJava in the Reactive REST Client, but you cannot return RxJava values from your resource methods.
 
-The latest Resteasy snapshots fix both issues:
+The latest RESTEasy snapshots fix both issues:
 
-*   You can now [plug in support for any reactive library](https://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Reactive.html) via the [AsyncResponseProvider](https://docs.jboss.org/resteasy/docs/3.5.1.Final/javadocs/org/jboss/resteasy/spi/AsyncResponseProvider.html) interface ([[RESTEASY-1701] Extend server-side async support / RxJava integration - JBoss Issue Tracker](https://issues.jboss.org/browse/RESTEASY-1701)), and
+*   You can now [plug in support for any reactive library](https://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Reactive.html) via the [AsyncResponseProvider](https://docs.jboss.org/resteasy/docs/3.5.1.Final/javadocs/org/jboss/resteasy/spi/AsyncResponseProvider.html) interface ([[RESTEASY-1701] Extend server-side async support / RxJava integration - JBoss Issue Tracker](https://issues.redhat.com/browse/RESTEASY-1701)), and
 *   We now have the (optional) modules 
 resteasy-rxjava1
  and 
 resteasy-rxjava2
  which provide [RxInvoker](https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/client/RxInvoker.html) and 
 AsyncResponseProvider
- implementations for RxJava types ([[RESTEASY-1798] Client-side (proxy) support for RxClient and CompletionStage - JBoss Issue Tracker](https://issues.jboss.org/browse/RESTEASY-1798))
+ implementations for RxJava types ([[RESTEASY-1798] Client-side (proxy) support for RxClient and CompletionStage - JBoss Issue Tracker](https://issues.redhat.com/browse/RESTEASY-1798))
 
 Those mean that you can now implement your hello resource using RxJava 2:
 
@@ -235,10 +235,10 @@ public class ServiceResource {
     }   
 }
 ```
-As you can see, it&#39;s now much easier to build Reactive pipelines in Resteasy.
+As you can see, it&#39;s now much easier to build Reactive pipelines in RESTEasy.
 
 
-Note that although the pluggable support for reactive types landed in Resteasy 
+Note that although the pluggable support for reactive types landed in RESTEasy 
 
 3.5.0.Final
  and 

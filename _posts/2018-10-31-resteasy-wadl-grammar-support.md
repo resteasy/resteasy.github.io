@@ -8,7 +8,7 @@ author:     Weinan Li
 
 RESTEasy has added WADL grammar support by this PR:
 
-- [RESTEASY-1695 Add GRAMMARS into RESTEasy WADL by liweinan · Pull Request #1649 · resteasy/Resteasy · GitHub](https://github.com/resteasy/Resteasy/pull/1649)
+- [RESTEASY-1695 Add GRAMMARS into RESTEasy WADL by liweinan · Pull Request #1649 · resteasy/resteasy · GitHub](https://github.com/resteasy/resteasy/pull/1649)
 
 The major change is that `ResteasyWadlGrammar` is added into `ResteasyWadlWriter`：
 

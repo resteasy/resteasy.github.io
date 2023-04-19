@@ -39,12 +39,12 @@ RESTEasy 4 is coming with all the features, fixes and upgrades that went into th
 
 On top of that, there&#39;re few additions that could not be backported to 3.x branches and are new in RESTEasy 4:
 
-*   [Upgrade to Mime4j 0.7.x](https://issues.jboss.org/browse/RESTEASY-754)
-*   [RESTEasy Tracing feature](https://issues.jboss.org/browse/RESTEASY-1418)
-*   [RESTEasy Spring - Undertow](https://issues.jboss.org/browse/RESTEASY-2009) server adapter integration
-*   [MicroProfile Config integration](https://issues.jboss.org/browse/RESTEASY-2131)
-*   [Builtin ParamConverter* classes for multi valued params](https://issues.jboss.org/browse/RESTEASY-1996)
-*   [Asynchronous Injection](https://issues.jboss.org/browse/RESTEASY-1905)
+*   [Upgrade to Mime4j 0.7.x](https://issues.redhat.com/browse/RESTEASY-754)
+*   [RESTEasy Tracing feature](https://issues.redhat.com/browse/RESTEASY-1418)
+*   [RESTEasy Spring - Undertow](https://issues.redhat.com/browse/RESTEASY-2009) server adapter integration
+*   [MicroProfile Config integration](https://issues.redhat.com/browse/RESTEASY-2131)
+*   [Builtin ParamConverter* classes for multi valued params](https://issues.redhat.com/browse/RESTEASY-1996)
+*   [Asynchronous Injection](https://issues.redhat.com/browse/RESTEASY-1905)
 
 ## Quarkus  ##
 
@@ -57,7 +57,7 @@ So, it&#39;s definitely time to give RESTEasy 4 CR1 a try! There&#39;re multiple
 
 *   in Quarkus, either waiting for next week release or building the latest sources from [github master](https://github.com/quarkusio/quarkus); note, there&#39;s a nice quickstart pulling RESTEasy too in the [Quarkus Getting Started Guide](https://quarkus.io/guides/getting-started-guide) ;-)
 *   standalone, by simply pulling the 4.0.0.CR1 artifacts as dependencies in your Maven project
-*   on WildFly 16, by patching its modules (if you can cope with the few API changes we did) with the contents of our jboss-modules module, after having built it from the [sources on github](https://github.com/resteasy/Resteasy/tree/4.0.0.CR1).
+*   on WildFly 16, by patching its modules (if you can cope with the few API changes we did) with the contents of our jboss-modules module, after having built it from the [sources on github](https://github.com/resteasy/resteasy/tree/4.0.0.CR1).
 
 Hopefully, unless something critical is spotted or reported, we&#39;ll be releasing Final (including proper documentation) in few weeks from now.
 

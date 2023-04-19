@@ -58,7 +58,7 @@ server.deploy(deployment);
 The above code is part of the tests in `resteasy-undertow-spring`, and the tests can be used as usage example:
 
 
-[Resteasy/BasicSpringTest.java at master · resteasy/Resteasy · GitHub](https://github.com/resteasy/Resteasy/blob/master/server-adapters/resteasy-undertow-spring/src/test/java/org/jboss/resteasy/springmvc/test/client/BasicSpringTest.java)
+[Resteasy/BasicSpringTest.java at master · resteasy/resteasy · GitHub](https://github.com/resteasy/resteasy/blob/master/server-adapters/resteasy-undertow-spring/src/test/java/org/jboss/resteasy/springmvc/test/client/BasicSpringTest.java)
 
 
 And the tests shows more advanced spring configurations that can be used as reference.

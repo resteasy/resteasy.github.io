@@ -7,7 +7,7 @@ author:     Alessio Soldano
 ---
 Just before Halloween, here is another nice release of **RESTEasy**!
 
-The [new version](https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12310560&amp;version=12342767&amp;styleName=Text) comes with:
+The [new version](https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310560&amp;version=12342767&amp;styleName=Text) comes with:
 
 *   a bunch of new features in the Spring Web integration area
 *   many enhancements, mainly aiming at improving performances

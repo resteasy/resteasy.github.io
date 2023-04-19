@@ -222,7 +222,7 @@ resteasy-rxjava2
 
 We&#39;ve removed yet another common cause of boilerplate: rejoice! 
 
-Async injection was added in the latest [4.0.0.Beta4](https://developer.jboss.org/community/resteasy/blog/2018/07/02/resteasy-360final-and-400beta4) release ([RESTEASY-1905](https://issues.jboss.org/projects/RESTEASY/issues/RESTEASY-1905?filter=allopenissues)). Go ahead and try it out while it&#39;s fresh!
+Async injection was added in the latest [4.0.0.Beta4](https://developer.jboss.org/community/resteasy/blog/2018/07/02/resteasy-360final-and-400beta4) release ([RESTEASY-1905](https://issues.redhat.com/projects/RESTEASY/issues/RESTEASY-1905?filter=allopenissues)). Go ahead and try it out while it&#39;s fresh!
 
 
 
