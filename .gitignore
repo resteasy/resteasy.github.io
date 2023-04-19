@@ -1,5 +1,16 @@
+# IDEA files
 .idea
-.DS_Store
+
+# Jekyll directories
 /.jekyll-cache/
 /_site/
+
+# Used for bundler
 .bundle
+vendor/
+
+# rbenv will use this file if "rbenv local" is used
+.ruby-version
+
+# macOS files
+.DS_Store
