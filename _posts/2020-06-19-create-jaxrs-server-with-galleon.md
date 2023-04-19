@@ -5,7 +5,7 @@ subtitle:   ""
 date:       June 19, 2020
 author:     Jim Ma
 ---
-When we deploy Restful web service to WildFly Server, you might find that WildFly includes several components/subsystem your application doesn't actually use. Even these subsystems are lazily loaded, it's still consumes some disk spaces. Especially when moving to the cloud native architecture, we need the application server small size and start fast. WildFly Galleon project is created to install, uninstall or patch product with a xml customization definition or command line flags.  With this tool, we tell Gallon we only need JAX-RS functionality in my server and it will automatically install a trimmed WildFly version with only JAX-RS subsystem and all its dependencies. In this blog, we'll go through these steps to create a slimmed WildFly Server which only include Resteasy/jaxrs subystem to run Restful web service. 
+When we deploy Restful web service to WildFly Server, you might find that WildFly includes several components/subsystem your application doesn't actually use. Even these subsystems are lazily loaded, it's still consumes some disk spaces. Especially when moving to the cloud native architecture, we need the application server small size and start fast. WildFly Galleon project is created to install, uninstall or patch product with a xml customization definition or command line flags.  With this tool, we tell Gallon we only need JAX-RS functionality in my server and it will automatically install a trimmed WildFly version with only JAX-RS subsystem and all its dependencies. In this blog, we'll go through these steps to create a slimmed WildFly Server which only include RESTEasy/jaxrs subystem to run Restful web service. 
 
 ### Install WildFly Galleon
 
@@ -140,7 +140,7 @@ When your application needs other layers or subsystems after the first installat
 
 WildFly provides rich layers for different application and purpose.The full list of layers can be found [here](https://docs.wildfly.org/20/Admin_Guide.html#wildfly-galleon-layers)
 
-As you can see, Wildfly Galleon is a easy to use tool. Download and unzip are the two steps to get it ready. If you haven't, please give galleon a try to trim your Resteasy/jaxrs installation. If you have any issues and questions about jaxrs galleon layer, please contact Resteasy team. 
+As you can see, Wildfly Galleon is a easy to use tool. Download and unzip are the two steps to get it ready. If you haven't, please give galleon a try to trim your RESTEasy/jaxrs installation. If you have any issues and questions about jaxrs galleon layer, please contact RESTEasy team. 
 
 
 

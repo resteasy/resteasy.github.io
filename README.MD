@@ -1,8 +1,8 @@
-# Resteasy Website
+# RESTEasy Website
 
 ## Getting Started
 
-These instructions will get you a copy of the Resteasy website up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the RESTEasy website up and running on your local machine for development and testing purposes.
 
 ### Installation
 

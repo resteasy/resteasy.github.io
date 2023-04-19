@@ -57,7 +57,7 @@ So, it&#39;s definitely time to give RESTEasy 4 CR1 a try! There&#39;re multiple
 
 *   in Quarkus, either waiting for next week release or building the latest sources from [github master](https://github.com/quarkusio/quarkus); note, there&#39;s a nice quickstart pulling RESTEasy too in the [Quarkus Getting Started Guide](https://quarkus.io/guides/getting-started-guide) ;-)
 *   standalone, by simply pulling the 4.0.0.CR1 artifacts as dependencies in your Maven project
-*   on WildFly 16, by patching its modules (if you can cope with the few API changes we did) with the contents of our jboss-modules module, after having built it from the [sources on github](https://github.com/resteasy/Resteasy/tree/4.0.0.CR1).
+*   on WildFly 16, by patching its modules (if you can cope with the few API changes we did) with the contents of our jboss-modules module, after having built it from the [sources on github](https://github.com/resteasy/resteasy/tree/4.0.0.CR1).
 
 Hopefully, unless something critical is spotted or reported, we&#39;ll be releasing Final (including proper documentation) in few weeks from now.
 

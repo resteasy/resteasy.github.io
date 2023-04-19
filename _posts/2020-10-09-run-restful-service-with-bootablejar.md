@@ -120,7 +120,7 @@ The maven pom.xml before add the wildfly-jar-plugin is something like:
     <version>1.0.0.Beta1</version>
     <packaging>war</packaging>
 
-    <name>Resteasy Bootable JAR Example</name>
+    <name>RESTEasy Bootable JAR Example</name>
     <description>An bootable jaxrs jar</description>
     <properties>
         <version.jakartaee>8.0.0</version.jakartaee>

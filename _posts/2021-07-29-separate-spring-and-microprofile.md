@@ -20,7 +20,7 @@ There are several reasons to do this:
 Currently the work in progress we are doing:
 
 - Created `resteasy-spring` and `resteasy-microprofile` sub-projects(link listed above).
-- `resteasy 4.7.1.Final` is released: [Release 4.7.1.Final · resteasy/Resteasy · GitHub](https://github.com/resteasy/Resteasy/releases/tag/4.7.1.Final)
+- `resteasy 4.7.1.Final` is released: [Release 4.7.1.Final · resteasy/resteasy · GitHub](https://github.com/resteasy/resteasy/releases/tag/4.7.1.Final)
 - `resteasy-spring 1.0.0.Final` is released: [Release v1.0.0.Final · resteasy/resteasy-spring · GitHub](https://github.com/resteasy/resteasy-spring/releases/tag/1.0.0.Final)
 
 There are some notes to take in above work:
@@ -34,7 +34,7 @@ The groupId for the components has changed from `org.jboss.resteasy` to `org.jbo
 A BOM file is provided for this project. It's GAV is `org.jboss.resteasy.microprofile:resteasy-microprofile-bom`.
 
 
-In addition, we are currently working on using [Galleon Feature Pack](https://docs.wildfly.org/galleon/) solution to replace the current [jboss-modules](https://github.com/resteasy/Resteasy/tree/main/jboss-modules) structure. The reason to do this is that the current `jboss-module`  solution for WildFly integration is too heavy and not flexible enough, so Galleon is a better approach for WildFly integration(more details of Galleon can see this article:  [Ship Your WildFly Additions via Galleon Feature Packs](https://www.wildfly.org/news/2019/12/17/Ship-your-WildFly-additions-via-Galleon-feature-packs/)). There some work in progress for this task:
+In addition, we are currently working on using [Galleon Feature Pack](https://docs.wildfly.org/galleon/) solution to replace the current [jboss-modules](https://github.com/resteasy/resteasy/tree/main/jboss-modules) structure. The reason to do this is that the current `jboss-module`  solution for WildFly integration is too heavy and not flexible enough, so Galleon is a better approach for WildFly integration(more details of Galleon can see this article:  [Ship Your WildFly Additions via Galleon Feature Packs](https://www.wildfly.org/news/2019/12/17/Ship-your-WildFly-additions-via-Galleon-feature-packs/)). There some work in progress for this task:
 
 - [GitHub - jamezp/resteasy-microprofile at feature-pack](https://github.com/jamezp/resteasy-microprofile/tree/feature-pack)
 - [re-enable tests by liweinan · Pull Request #5 · resteasy/resteasy-spring · GitHub](https://github.com/resteasy/resteasy-spring/pull/5)

@@ -23,7 +23,7 @@ Three months after previous announcement, here we are with _another step towards
 *   Multiple performance improvements
 *   [Upgrade to JAXB 2.3](https://issues.jboss.org/browse/RESTEASY-1796)
 
-The full release notes are available on [jira](https://issues.jboss.org/secure/ReleaseNote.jspa?version=12336052&amp;styleName=Text&amp;projectId=12310560&amp;Create=Create), the artifacts are built and published on [Maven repositories](https://repo1.maven.org/maven2/org/jboss/resteasy/resteasy-jaxrs-all/4.0.0.Beta2/) and the sources are on [GitHub](https://github.com/resteasy/Resteasy/tree/4.0.0.Beta2) as usual ;-)
+The full release notes are available on [jira](https://issues.jboss.org/secure/ReleaseNote.jspa?version=12336052&amp;styleName=Text&amp;projectId=12310560&amp;Create=Create), the artifacts are built and published on [Maven repositories](https://repo1.maven.org/maven2/org/jboss/resteasy/resteasy-jaxrs-all/4.0.0.Beta2/) and the sources are on [GitHub](https://github.com/resteasy/resteasy/tree/4.0.0.Beta2) as usual ;-)
 
  
 

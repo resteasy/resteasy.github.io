@@ -127,7 +127,7 @@ Above is some sample tracing text. Currently the tracing feature is still under 
 
 If you’d like to have a look at the tracing feature in action, you can current see the simple test case in RESTEasy master branch: 
 
-[https://github.com/resteasy/Resteasy/blob/master/testsuite/integration-tests/src/test/java/org/jboss/resteasy/test/tracing/BasicTracingTest.java](https://github.com/resteasy/Resteasy/blob/master/testsuite/integration-tests/src/test/java/org/jboss/resteasy/test/tracing/BasicTracingTest.java)
+[https://github.com/resteasy/resteasy/blob/master/testsuite/integration-tests/src/test/java/org/jboss/resteasy/test/tracing/BasicTracingTest.java](https://github.com/resteasy/resteasy/blob/master/testsuite/integration-tests/src/test/java/org/jboss/resteasy/test/tracing/BasicTracingTest.java)
 
 In above is the brief description of the RESTEasy document.
 
