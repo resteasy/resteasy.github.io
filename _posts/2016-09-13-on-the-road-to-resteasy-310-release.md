@@ -10,7 +10,7 @@ As you might have noticed on [github](https://github.com/resteasy/resteasy), the
 
 Among the most relevant changes that are coming in the new minor there are default Java 8 target, revisited project structure / testsuite and a major cleanup of old and deprecated APIs. On the last topic, Ron has been preparing a very good [document](https://docs.jboss.org/resteasy/docs/resteasy-upgrade-guide-en-US.pdf) you might want to read for easy migration of old (RESTEasy 2.3 style) code.
 
-Clearly, bug fixes and new features are coming too in 3.1.0! We&#39;re trying to deal with as much pull requests as possible (keep sending them, thanks!) and one that I&#39;d like to mention here is from Julien Viet who [contributed](https://github.com/resteasy/resteasy/pull/868) a new server adapter for [Vert.x](https://vertx.io/) [integration](https://issues.jboss.org/browse/RESTEASY-1453).
+Clearly, bug fixes and new features are coming too in 3.1.0! We&#39;re trying to deal with as much pull requests as possible (keep sending them, thanks!) and one that I&#39;d like to mention here is from Julien Viet who [contributed](https://github.com/resteasy/resteasy/pull/868) a new server adapter for [Vert.x](https://vertx.io/) [integration](https://issues.redhat.com/browse/RESTEASY-1453).
 
 We&#39;ve tagged two 3.1.0 Beta releases so far, both available as artifacts on Maven repository. I&#39;m currently waiting for the last one to be merged into WildFly master (PR [here](https://github.com/wildfly/wildfly/pull/9181)).
 

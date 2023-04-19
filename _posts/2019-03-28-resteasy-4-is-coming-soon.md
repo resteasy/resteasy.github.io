@@ -39,12 +39,12 @@ RESTEasy 4 is coming with all the features, fixes and upgrades that went into th
 
 On top of that, there&#39;re few additions that could not be backported to 3.x branches and are new in RESTEasy 4:
 
-*   [Upgrade to Mime4j 0.7.x](https://issues.jboss.org/browse/RESTEASY-754)
-*   [RESTEasy Tracing feature](https://issues.jboss.org/browse/RESTEASY-1418)
-*   [RESTEasy Spring - Undertow](https://issues.jboss.org/browse/RESTEASY-2009) server adapter integration
-*   [MicroProfile Config integration](https://issues.jboss.org/browse/RESTEASY-2131)
-*   [Builtin ParamConverter* classes for multi valued params](https://issues.jboss.org/browse/RESTEASY-1996)
-*   [Asynchronous Injection](https://issues.jboss.org/browse/RESTEASY-1905)
+*   [Upgrade to Mime4j 0.7.x](https://issues.redhat.com/browse/RESTEASY-754)
+*   [RESTEasy Tracing feature](https://issues.redhat.com/browse/RESTEASY-1418)
+*   [RESTEasy Spring - Undertow](https://issues.redhat.com/browse/RESTEASY-2009) server adapter integration
+*   [MicroProfile Config integration](https://issues.redhat.com/browse/RESTEASY-2131)
+*   [Builtin ParamConverter* classes for multi valued params](https://issues.redhat.com/browse/RESTEASY-1996)
+*   [Asynchronous Injection](https://issues.redhat.com/browse/RESTEASY-1905)
 
 ## Quarkus  ##
 

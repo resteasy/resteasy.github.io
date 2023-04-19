@@ -22,7 +22,7 @@ So here I am today,
 publicly thanking Fabio and PayPal and announcing the first final release of the rebranded RESTEasy Spring Boot starter
 .
 
-The new project sources are on GitHub under the [RESTEasy organization](https://github.com/resteasy/resteasy-spring-boot); the issue tracker is [the same](https://issues.jboss.org/projects/RESTEASY?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&amp;status=released-unreleased) as the main RESTEasy project and previously existing issues have been migrated there.
+The new project sources are on GitHub under the [RESTEasy organization](https://github.com/resteasy/resteasy-spring-boot); the issue tracker is [the same](https://issues.redhat.com/projects/RESTEASY?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&amp;status=released-unreleased) as the main RESTEasy project and previously existing issues have been migrated there.
 
 Compared to the latest release from PayPal repository, the first Red Hat release, [1.0.0.Final](https://github.com/resteasy/resteasy-spring-boot/tree/1.0.0.Final), brings an update to Spring Boot 1.5.12.RELEASE version and explicit support for Java 9 &amp; 10.
 

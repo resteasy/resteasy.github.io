@@ -52,7 +52,7 @@ improved testsuite
 many bug fixes
 
 
-A detailed list of the changes is available on [JIRA](https://issues.jboss.org/issues/?jql=project%20%3D%20RESTEASY%20AND%20fixVersion%20in%20(3.1.0.Beta1%2C%203.1.0.Beta2%2C%203.1.0.CR1%2C%203.1.0.CR2%2C%203.1.0.CR3%2C%203.1.0.Final)%20ORDER%20BY%20fixVersion%20DESC%2C%20type%20DESC).
+A detailed list of the changes is available on [JIRA](https://issues.redhat.com/issues/?jql=project%20%3D%20RESTEASY%20AND%20fixVersion%20in%20(3.1.0.Beta1%2C%203.1.0.Beta2%2C%203.1.0.CR1%2C%203.1.0.CR2%2C%203.1.0.CR3%2C%203.1.0.Final)%20ORDER%20BY%20fixVersion%20DESC%2C%20type%20DESC).
 
  
 

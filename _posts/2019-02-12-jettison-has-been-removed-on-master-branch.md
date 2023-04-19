@@ -8,7 +8,7 @@ author:     Weinan Li
 
 We have removed `resteasy-jettison-provider` from master branch, and here is the tracker bug on this change: 
 
-[https://issues.jboss.org/browse/RESTEASY-1316](https://issues.jboss.org/browse/RESTEASY-1316)
+[https://issues.redhat.com/browse/RESTEASY-1316](https://issues.redhat.com/browse/RESTEASY-1316)
 
 The major affect is that the `resteasy-link` module is now dependent on `resteasy-jackson2-provider` to replace `resteasy-jettison-provider` to support JAXB annotation -&gt; JSON data marshaling.
 

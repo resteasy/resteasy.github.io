@@ -190,14 +190,14 @@ CompletionStage
 
 The latest RESTEasy snapshots fix both issues:
 
-*   You can now [plug in support for any reactive library](https://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Reactive.html) via the [AsyncResponseProvider](https://docs.jboss.org/resteasy/docs/3.5.1.Final/javadocs/org/jboss/resteasy/spi/AsyncResponseProvider.html) interface ([[RESTEASY-1701] Extend server-side async support / RxJava integration - JBoss Issue Tracker](https://issues.jboss.org/browse/RESTEASY-1701)), and
+*   You can now [plug in support for any reactive library](https://docs.jboss.org/resteasy/docs/3.5.1.Final/userguide/html/Reactive.html) via the [AsyncResponseProvider](https://docs.jboss.org/resteasy/docs/3.5.1.Final/javadocs/org/jboss/resteasy/spi/AsyncResponseProvider.html) interface ([[RESTEASY-1701] Extend server-side async support / RxJava integration - JBoss Issue Tracker](https://issues.redhat.com/browse/RESTEASY-1701)), and
 *   We now have the (optional) modules 
 resteasy-rxjava1
  and 
 resteasy-rxjava2
  which provide [RxInvoker](https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/client/RxInvoker.html) and 
 AsyncResponseProvider
- implementations for RxJava types ([[RESTEASY-1798] Client-side (proxy) support for RxClient and CompletionStage - JBoss Issue Tracker](https://issues.jboss.org/browse/RESTEASY-1798))
+ implementations for RxJava types ([[RESTEASY-1798] Client-side (proxy) support for RxClient and CompletionStage - JBoss Issue Tracker](https://issues.redhat.com/browse/RESTEASY-1798))
 
 Those mean that you can now implement your hello resource using RxJava 2:
 
