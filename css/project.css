@@ -2086,5 +2086,17 @@ h2.el-idc3 em,
 	background:transparent url(../../images/common/dwnld-rss-on.png) no-repeat right top;
 }
 
+div.share-page {
+	float: right;
+}
+.share-page > a {
+	padding-right: 5px;
+	text-decoration: none;
+}
+.svg-icon {
+	height: 16px;
+	width: 16px;
+}
+
 
 
