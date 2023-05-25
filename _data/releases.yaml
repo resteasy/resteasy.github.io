@@ -1,5 +1,5 @@
-- name: 6.2.x
-  item:
+- group: 6.2.x
+  detail:
     - version: 6.2.4.Final
       date: 2023-05-15
       license: ASL v2
@@ -70,8 +70,8 @@
         link: https://docs.jboss.org/resteasy/docs/6.2.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/6.2.0.Final/userguide/pdf/resteasy-reference-guide.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/6.2.0.Final/javadocs/index.html
-- name: 6.1.x
-  item:
+- group: 6.1.x
+  detail:
     - version: 6.1.0.Final
       date: 2022-08-02
       license: ASL v2
@@ -86,8 +86,8 @@
         link: https://docs.jboss.org/resteasy/docs/6.1.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/6.1.0.Final/userguide/pdf/resteasy-reference-guide.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/6.1.0.Final/javadocs/index.html
-- name: 6.0.x
-  item:
+- group: 6.0.x
+  detail:
     - version: 6.0.3.Final
       date: 2022-07-21
       license: ASL v2
@@ -127,8 +127,8 @@
         link: https://docs.jboss.org/resteasy/docs/6.0.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/6.0.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/6.0.0.Final/javadocs/index.html
-- name: 5.0.x
-  item:
+- group: 5.0.x
+  detail:
     - version: 5.0.7.Final
       date: 2023-03-01
       license: ASL v2
@@ -241,8 +241,8 @@
         link: https://docs.jboss.org/resteasy/docs/5.0.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/5.0.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/5.0.0.Final/javadocs/index.html
-- name: 4.7.x
-  item:
+- group: 4.7.x
+  detail:
     - version: 4.7.9.Final
       date: 2023-03-01
       license: ASL v2
@@ -383,8 +383,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.7.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.7.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.7.0.Final/javadocs/index.html
-- name: 4.6.x
-  item:
+- group: 4.6.x
+  detail:
     - version: 4.6.2.Final
       date: 2021-07-06
       license: ASL v2
@@ -420,8 +420,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.6.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.6.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.6.0.Final/javadocs/index.html
-- name: 4.5.x
-  item:
+- group: 4.5.x
+  detail:
     - version: 4.5.9.Final
       date: 2021-02-06
       license: ASL v2
@@ -534,8 +534,8 @@
       release_notes: https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310560&version=12344069
       download_link: https://download.jboss.org/resteasy/resteasy-jaxrs-4.5.0.Final-all.zip
       download_text: resteasy-jaxrs-4.5.0.Final-all.zip
-- name: 4.4.x
-  item:
+- group: 4.4.x
+  detail:
     - version: 4.4.3.Final
       date: 2021-3-06
       license: ASL v2
@@ -592,8 +592,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.4.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.4.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.4.0.Final/javadocs/index.html
-- name: 4.3.x
-  item:
+- group: 4.3.x
+  detail:
     - version: 4.3.1.Final
       date: 2019-09-25
       license: ASL v2
@@ -622,8 +622,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.3.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.3.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.3.0.Final/javadocs/index.html
-- name: 4.2.x
-  item:
+- group: 4.2.x
+  detail:
     - version: 4.2.0.Final
       date: 2019-08-02
       license: ASL v2
@@ -638,8 +638,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.2.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.2.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.2.0.Final/javadocs/index.html
-- name: 4.1.x
-  item:
+- group: 4.1.x
+  detail:
     - version: 4.1.1.Final
       date: 2019-07-11
       license: ASL v2
@@ -668,8 +668,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.1.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.1.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.1.0.Final/javadocs/index.html
-- name: 4.0.x
-  item:
+- group: 4.0.x
+  detail:
     - version: 4.0.0.Final
       date: 2019-05-07
       license: ASL v2
@@ -684,8 +684,8 @@
         link: https://docs.jboss.org/resteasy/docs/4.0.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/4.0.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/4.0.0.Final/javadocs/index.html
-- name: 3.9.x
-  item:
+- group: 3.9.x
+  detail:
     - version: 3.9.3.Final
       date: 2019-11-22
       license: ASL v2
@@ -728,8 +728,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.9.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.9.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.9.0.Final/javadocs/index.html
-- name: 3.8.x
-  item:
+- group: 3.8.x
+  detail:
     - version: 3.8.1.Final
       date: 2019-07-15
       license: ASL v2
@@ -758,8 +758,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.8.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.8.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.8.0.Final/javadocs/index.html
-- name: 3.7.x
-  item:
+- group: 3.7.x
+  detail:
     - version: 3.7.0.Final
       date: 2019-05-13
       license: ASL v2
@@ -774,8 +774,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.7.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.7.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.7.0.Final/javadocs/index.html
-- name: 3.6.x
-  item:
+- group: 3.6.x
+  detail:
     - version: 3.6.3.Final
       date: 2019-02-15
       license: ASL v2
@@ -832,8 +832,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.6.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.6.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.6.0.Final/javadocs/index.html
-- name: 3.5.x
-  item:
+- group: 3.5.x
+  detail:
     - version: 3.5.1.Final
       date: 2018-04-16
       license: ASL v2
@@ -862,8 +862,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.5.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.5.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.5.0.Final/javadocs/index.html
-- name: 3.15.x
-  item:
+- group: 3.15.x
+  detail:
     - version: 3.15.2.Final
       date: 2021-09-23
       license: ASL v2
@@ -906,8 +906,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.15.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.15.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.15.0.Final/javadocs/index.html
-- name: 3.14.x
-  item:
+- group: 3.14.x
+  detail:
     - version: 3.14.0.Final
       date: 2020-12-08
       license: ASL v2
@@ -922,8 +922,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.14.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.14.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.14.0.Final/javadocs/index.html
-- name: 3.13.x
-  item:
+- group: 3.13.x
+  detail:
     - version: 3.13.2.Final
       date: 2020-09-30
       license: ASL v2
@@ -966,8 +966,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.13.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.13.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.13.0.Final/javadocs/index.html
-- name: 3.12.x
-  item:
+- group: 3.12.x
+  detail:
     - version: 3.12.1.Final
       date: 2020-06-05
       license: ASL v2
@@ -996,8 +996,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.12.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.12.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.12.0.Final/javadocs/index.html
-- name: 3.11.x
-  item:
+- group: 3.11.x
+  detail:
     - version: 3.11.5.Final
       date: 2021-3-23
       license: ASL v2
@@ -1082,8 +1082,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.11.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.11.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.11.0.Final/javadocs/index.html
-- name: 3.10.x
-  item:
+- group: 3.10.x
+  detail:
     - version: 3.10.0.Final
       date: 2020-1-14
       license: ASL v2
@@ -1098,8 +1098,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.10.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.10.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.10.0.Final/javadocs/index.html
-- name: 3.1.x
-  item:
+- group: 3.1.x
+  detail:
     - version: 3.1.4.Final
       date: 2017-07-24
       license: ASL v2
@@ -1170,8 +1170,8 @@
         link: https://docs.jboss.org/resteasy/docs/3.1.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/3.1.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/3.1.0.Final/javadocs/index.html
-- name: 3.0.x
-  item:
+- group: 3.0.x
+  detail:
     - version: 3.0.9.Final
       date: 2014-09-17
       license: ASL v2
@@ -1503,8 +1503,8 @@
       release_notes: https://issues.redhat.com/secure/ReleaseNote.jspa?version=12321733&styleName=Html&projectId=12310560&Create=Create&atl_token=AQZJ-FV3A-N91S-UDEU|805f3e71eb6f2d366c695fccf27b4fbf65feb7fe|lin
       download_link: https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/3.0.0.Final/resteasy-jaxrs-3.0.0.Final-all.zip/download
       download_text: resteasy-jaxrs-3.0.0.Final-all.zip
-- name: 2.x
-  item:
+- group: 2.x
+  detail:
     - version: 2.3.7.Final
       date: 2013-07-17
       license: ASL v2
@@ -1654,8 +1654,8 @@
       size: 14.7 MB
       download_link: https://sourceforge.net/projects/resteasy/files/Resteasy JAX-RS/2.0.0.GA/resteasy-jaxrs-2.0.0.GA-all.zip/download
       download_text: resteasy-jaxrs-2.0.0.GA-all.zip
-- name: 1.2.x
-  item:
+- group: 1.2.x
+  detail:
     - version: 1.2.GA
       documentation:
         examples: https://resteasy.svn.sourceforge.net/svnroot/resteasy/tags/RESTEASY_JAXRS_1_2_GA/examples/
@@ -1663,8 +1663,8 @@
         link: file-access/default/members/resteasy/freezone/docs/1.2.GA/userguide/html/index.html
         pdf: file-access/default/members/resteasy/freezone/docs/1.2.GA/userguide/pdf/RESTEasy_Reference_Guide.html
         java_doc: file-access/default/members/resteasy/freezone/docs/1.2.GA/javadocs/index.html
-- name: 1.1.x
-  item:
+- group: 1.1.x
+  detail:
     - version: 1.1.GA
       documentation:
         examples: https://resteasy.svn.sourceforge.net/svnroot/resteasy/tags/RESTEASY_JAXRS_1_1_GA/examples/
@@ -1672,8 +1672,8 @@
         link: file-access/default/members/resteasy/freezone/docs/1.1.GA/userguide/html/index.html
         pdf: file-access/default/members/resteasy/freezone/docs/1.1.GA/userguide/pdf/RESTEasy_Reference_Guide.html
         java_doc: file-access/default/members/resteasy/freezone/docs/1.1.GA/javadocs/index.html
-- name: 1.0.x
-  item:
+- group: 1.0.x
+  detail:
     - version: 1.0.2.GA
       documentation:
         examples: https://resteasy.svn.sourceforge.net/svnroot/resteasy/tags/RESTEASY_JAXRS_1_0_2_GA/examples/

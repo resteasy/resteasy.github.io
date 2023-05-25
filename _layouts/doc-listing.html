@@ -20,19 +20,19 @@ selflink:   "docs"
         <th colspan="6">Version</th>
     </tr>
     {% for release in site.data.releases %}
-    {% for item in release.item %}
-    {% if item.documentation %}
+    {% for detail in release.detail %}
+    {% if detail.documentation %}
     {% capture rowClass %}{% cycle 'oddRow', '' %}{% endcapture %}
-    <tr id="{{ item.version | replace:'.',''}}" class="{{ rowClass }}">
+    <tr id="{{ detail.version | replace:'.',''}}" class="{{ rowClass }}">
         <td>
-            <p><strong>{{ item.version }}</strong></p>
+            <p><strong>{{ detail.version }}</strong></p>
         </td>
-        <td class="rowline">{% if item.documentation.examples %} <a href="{{ item.documentation.examples }}">examples</a>{% endif %}</td>
-        <td>{% if item.documentation.single_page %}<a href="{{ item.documentation.single_page }}" target="_blank">HTML
+        <td class="rowline">{% if detail.documentation.examples %} <a href="{{ detail.documentation.examples }}">examples</a>{% endif %}</td>
+        <td>{% if detail.documentation.single_page %}<a href="{{ detail.documentation.single_page }}" target="_blank">HTML
             (single page)</a>{% endif %}</td>
-        <td>{% if item.documentation.link %}<a href="{{ item.documentation.link }}" target="_blank">HTML</a>{% endif %}</td>
-        <td>{% if item.documentation.pdf %}<a href="{{ item.documentation.pdf }}" target="_blank">PDF</a>{% endif %}</td>
-        <td>{% if item.documentation.java_doc %}<a href="{{ item.documentation.java_doc }}" target="_blank">Javadocs</a>{% endif %}</td>
+        <td>{% if detail.documentation.link %}<a href="{{ detail.documentation.link }}" target="_blank">HTML</a>{% endif %}</td>
+        <td>{% if detail.documentation.pdf %}<a href="{{ detail.documentation.pdf }}" target="_blank">PDF</a>{% endif %}</td>
+        <td>{% if detail.documentation.java_doc %}<a href="{{ detail.documentation.java_doc }}" target="_blank">Javadocs</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}

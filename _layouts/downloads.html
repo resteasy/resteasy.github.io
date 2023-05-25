@@ -5,8 +5,8 @@ selflink:   "downloads"
 ---
 
 {% for release in site.data.releases %}
-{% if release.item and release.item[0].download_link %}
-<h3 id="{{ release.name | replace:'.','' | downcase }}">RESTEasy {{ release.name }}</h3>
+{% if release.detail and release.detail[0].download_link %}
+<h3 id="{{ release.group | replace:'.','' | downcase }}">RESTEasy {{ release.group }}</h3>
 <table align="left" border="0" cellpadding="0" cellspacing="1" class="simpletablestyle" width="100%">
     <thead>
     <tr class="header">
@@ -20,20 +20,20 @@ selflink:   "downloads"
     </tr>
     </thead>
     <tbody>
-    {% for item in release.item %}
-    {% if item.download_link %}
+    {% for detail in release.detail %}
+    {% if detail.download_link %}
     {% capture rowClass %}{% cycle 'oddRow', '' %}{% endcapture %}
     <tr class="{{ rowClass }}">
-        <td id="{{ item.version | replace:'.','' | downcase }}">{{ item.version }}</td>
-        <td>{% if item.source %}<a href="{{ item.source }}">Source Code</a> {% endif %}</td>
-        <td>{{ item.size }}</td>
-        <td>{{ item.date }}</td>
-        <td>{{ item.license }}</td>
+        <td id="{{ detail.version | replace:'.','' | downcase }}">{{ detail.version }}</td>
+        <td>{% if detail.source %}<a href="{{ detail.source }}">Source Code</a> {% endif %}</td>
+        <td>{{ detail.size }}</td>
+        <td>{{ detail.date }}</td>
+        <td>{{ detail.license }}</td>
         <td>
-            {% if item.release_notes %}<a class="td-download" href="{{ item.release_notes }}">Release Notes</a>{% endif %}
+            {% if detail.release_notes %}<a class="td-download" href="{{ detail.release_notes }}">Release Notes</a>{% endif %}
         </td>
         <td>
-            {% if item.download_link %}<a class="td-download" href="{{ item.download_link }}">{{ item.download_text }}</a>{% endif %}
+            {% if detail.download_link %}<a class="td-download" href="{{ detail.download_link }}">{{ detail.download_text }}</a>{% endif %}
         </td>
     </tr>
     {% endif %}
