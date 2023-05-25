@@ -1,4 +1,5 @@
 - group: 6.2.x
+  supported: true
   detail:
     - version: 6.2.4.Final
       date: 2023-05-15
@@ -8,6 +9,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.4.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.2.4.Final/resteasy-6.2.4.Final-all.zip
       download_text: resteasy-6.2.4.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.2.4.Final/userguide/html_single/index.html
@@ -22,6 +27,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.3.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.2.3.Final/resteasy-6.2.3.Final-all.zip
       download_text: resteasy-6.2.3.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.2.3.Final/userguide/html_single/index.html
@@ -36,6 +45,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.2.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.2.2.Final/resteasy-6.2.2.Final-all.zip
       download_text: resteasy-6.2.2.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.2.2.Final/userguide/html_single/index.html
@@ -50,6 +63,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.1.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.2.1.Final/resteasy-6.2.1.Final-all.zip
       download_text: resteasy-6.2.1.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.2.1.Final/userguide/html_single/index.html
@@ -64,6 +81,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.0.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.2.0.Final/resteasy-6.2.0.Final-all.zip
       download_text: resteasy-6.2.0.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.2.0.Final/userguide/html_single/index.html
@@ -80,6 +101,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.1.0.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.1.0.Final/resteasy-6.1.0.Final-all.zip
       download_text: resteasy-6.1.0.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/
         single_page: https://docs.jboss.org/resteasy/docs/6.1.0.Final/userguide/html_single/index.html
@@ -96,6 +121,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.0.3.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.0.3.Final/resteasy-6.0.3.Final-all.zip
       download_text: resteasy-6.0.3.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.0
+        link: https://jakarta.ee/specifications/restful-ws/3.0/jakarta-restful-ws-spec-3.0.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.0/apidocs
       documentation:
         single_page: https://docs.jboss.org/resteasy/docs/6.0.3.Final/userguide/html_single/index.html
         link: https://docs.jboss.org/resteasy/docs/6.0.3.Final/userguide/html/index.html
@@ -109,6 +138,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/6.0.1.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/6.0.1.Final/resteasy-6.0.1.Final-all.zip
       download_text: resteasy-6.0.1.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.0
+        link: https://jakarta.ee/specifications/restful-ws/3.0/jakarta-restful-ws-spec-3.0.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.0/apidocs
       documentation:
         single_page: https://docs.jboss.org/resteasy/docs/6.0.1.Final/userguide/html_single/index.html
         link: https://docs.jboss.org/resteasy/docs/6.0.1.Final/userguide/html/index.html
@@ -122,21 +155,30 @@
       release_notes: https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310560&version=12378531
       download_link: https://github.com/resteasy/resteasy/releases/download/6.0.0.Final/resteasy-6.0.0.Final-all.zip
       download_text: resteasy-6.0.0.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.0
+        link: https://jakarta.ee/specifications/restful-ws/3.0/jakarta-restful-ws-spec-3.0.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.0/apidocs
       documentation:
         single_page: https://docs.jboss.org/resteasy/docs/6.0.0.Final/userguide/html_single/index.html
         link: https://docs.jboss.org/resteasy/docs/6.0.0.Final/userguide/html/index.html
         pdf: https://docs.jboss.org/resteasy/docs/6.0.0.Final/userguide/pdf/resteasy-reference-guide-en-US.pdf
         java_doc: https://docs.jboss.org/resteasy/docs/6.0.0.Final/javadocs/index.html
 - group: 5.0.x
+  supported: true
   detail:
     - version: 5.0.7.Final
-      date: 2023-03-01
+      date: 2023-05-15
       license: ASL v2
       source: https://github.com/resteasy/resteasy/releases/download/5.0.7.Final/resteasy-jaxrs-5.0.7.Final-src.zip
       size: 31.8 MB
       release_notes: https://github.com/resteasy/resteasy/releases/tag/5.0.7.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.7.Final/resteasy-jaxrs-5.0.7.Final-all.zip
       download_text: resteasy-jaxrs-5.0.7.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.7.Final/userguide/html_single/index.html
@@ -151,6 +193,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/5.0.6.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.6.Final/resteasy-jaxrs-5.0.6.Final-all.zip
       download_text: resteasy-jaxrs-5.0.6.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.6.Final/userguide/html_single/index.html
@@ -165,6 +211,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/5.0.5.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.5.Final/resteasy-jaxrs-5.0.5.Final-all.zip
       download_text: resteasy-jaxrs-5.0.5.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.5.Final/userguide/html_single/index.html
@@ -179,6 +229,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/5.0.4.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.4.Final/resteasy-jaxrs-5.0.4.Final-all.zip
       download_text: resteasy-jaxrs-5.0.4.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.4.Final/userguide/html_single/index.html
@@ -193,6 +247,10 @@
       release_notes: https://github.com/resteasy/resteasy/releases/tag/5.0.3.Final
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.3.Final/resteasy-jaxrs-5.0.3.Final-all.zip
       download_text: resteasy-jaxrs-5.0.3.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.3.Final/userguide/html_single/index.html
@@ -207,6 +265,10 @@
       release_notes: https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310560&version=12378530
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.2.Final/resteasy-jaxrs-5.0.2.Final-all.zip
       download_text: resteasy-jaxrs-5.0.2.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.2.Final/userguide/html_single/index.html
@@ -221,6 +283,10 @@
       release_notes: https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12310560&version=12377149
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.1.Final/resteasy-jaxrs-5.0.1.Final-all.zip
       download_text: resteasy-jaxrs-5.0.1.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.1.Final/userguide/html_single/index.html
@@ -235,6 +301,10 @@
       release_notes: https://issues.redhat.com/issues/?jql=project%20%3D%20RESTEASY%20AND%20fixVersion%20in%20(5.0.0.Alpha1%2C%205.0.0.Beta1%2C%205.0.0.Beta2%2C%205.0.0.Beta3%2C%205.0.0.Final)%20ORDER%20BY%20fixVersion%20DESC%2C%20type%20DESC
       download_link: https://github.com/resteasy/resteasy/releases/download/5.0.0.Final/resteasy-jaxrs-5.0.0.Final-all.zip
       download_text: resteasy-jaxrs-5.0.0.Final-all.zip
+      jakarta_rest_spec:
+        version: 2.1
+        link: https://jakarta.ee/specifications/restful-ws/2.1/restful-ws-spec-2.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/2.1/apidocs
       documentation:
         examples: https://github.com/resteasy/resteasy-examples/releases/tag/4.2.0.Final
         single_page: https://docs.jboss.org/resteasy/docs/5.0.0.Final/userguide/html_single/index.html

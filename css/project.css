@@ -2098,5 +2098,18 @@ div.share-page {
 	width: 16px;
 }
 
+.release-container {
+	margin-top: 3px;
+}
+
+.release {
+	border-top: 1px solid black;
+	margin-top: 15px;
+	padding: 10px;
+}
+.release li {
+	list-style-type: circle;
+}
+
 
 

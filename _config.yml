@@ -16,10 +16,13 @@ exclude:
   - "README.md"
 
 gems:
+  - jekyll-asciidoc
   - jekyll-paginate
   - jekyll-feed
-plugins:
-  - jekyll-paginate
+
+asciidoctor:
+  base_dir: :docdir
+  safe: unsafe
 
 # Pagination
 paginate: 15
