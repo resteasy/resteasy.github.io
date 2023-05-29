@@ -31,7 +31,7 @@ gRPC shares with CORBA the concept of a programming language independent
 *Interface Definition Language* (IDL) that can be translated into code
 in any language for which a compiler exists. gRPC is built on top of
 https://developers.google.com/protocol-buffers[protobuf], a data
-definiton framework, also from Google, which has an IDL and a precisely
+definition framework, also from Google, which has an IDL and a precisely
 defined wire format. For example,
 
 ----
@@ -154,7 +154,7 @@ something like:
        org.greet.Greet_proto.Greeting response = blockingStub.greet(gs);
        String s = response.getS();
        ...
-    }       
+    }
 ----
 
 There are also
@@ -172,6 +172,7 @@ create a class extending `GreetServiceImplBase` with implementing
 methods. A simple example is
 
 ----
+    @Override
     public void greet(org.greet.Greet_proto.gString request, StreamObserver<org.greet.Greet_proto.Greeting> responseObserver) {
        String name = request.getValue();
        org.greet.Greet_proto.Greeting greeting = org.greet.Greet_proto.Greeting.newBuilder().setS("hello, " + name).build();
@@ -190,7 +191,7 @@ The definition of `Any` is
     message Any {
        string type_url = 1;
        bytes value = 2;
-    }   
+    }
 ----
 
 The `value` field has built-in type `bytes`, which "May contain any
@@ -244,7 +245,7 @@ Then, the `Any` can be unpacked as follows:
     } else if (any.getTypeUrl().endsWith("org.greet.gInteger")) {
        gInteger gi = any.unpack(gInteger.class);
        System.out.println("gi: " + gi);
-    }   
+    }
 ----
 
 == Connecting a gRPC client to a Jakarta REST server
@@ -276,8 +277,7 @@ examination, since a resource method could return a
 `jakarta.ws.rs.core.Response`, where the type of the actual entity
 depends on the behavior of the method. Technically, it's a
 non-computable problem. There is a mechanism for manually specifying
-addtional classes, which we will discuss in <<building_bridge,Building the bridge
-project>>.
+additional classes, which we will discuss in <<Building the bridge project>>.
 
 Given `org.greet.Greeting`
 
@@ -290,7 +290,7 @@ Given `org.greet.Greeting`
        public Greeting(String s) {
           this.s = s;
        }
-    }   
+    }
 ----
 
 and `org.greet.Greeter`
@@ -422,8 +422,8 @@ org_greet___Greeting
 for future use. In the example, "/greet gString org_greet___Greeting GET sync" means:
 
 ** the path to the greet() method is "/greet"
-** the type of the entity parameter is gString
-** the type of the response entity is org_greet___Greeting
+** the type of the entity parameter is `gString`
+** the type of the response entity is `org_greet___Greeting`
 ** the HTTP verb on the resource method is GET
 ** the resource method is synchronous
 . The `GeneralEntityMessage`
@@ -437,14 +437,16 @@ can accomodate all of those. Also, consider the element
 
 ----
    oneof messageType {
-      gString gString_field = 42;
+      gString gString_field = 38;
+      FormMap form_field = 39;
    }
 ----
 
 `oneof` is a protobuf construct that allows a field to be populated with a
 value whose type is one of the types listed in the
 `oneof` list. There's only one rpc method here, so there's only one type
-in the list. But suppose there were another rpc method with the comment
+in the list (other than the `FormMap` field for form data, which isn't used here).
+But suppose there were another rpc method with the comment
 
 ----
 // /float gFloat gInteger GET sync
@@ -454,9 +456,10 @@ Then the `oneof` field would look like
 
 ----
     oneof messageType {
-      gString gString_field = 42;
-      gFloat gFloat_field = 43;
-   }        
+      gString gString_field = 38;
+      gFloat gFloat_field = 39;
+      FormMap form_field = 40;
+   }
 ----
 
 This way, resource methods with a `String`
@@ -550,7 +553,7 @@ Note the following:
 . The new message type `org_greet___GeneralGreeting` is generated.
 . A second message type option is added to the oneof field in `GeneralReturnMessage`.
 
-Especially, note the field `greeting___super` in
+Especially, note the field `greeting\___super` in
 `org_greet___GeneralGreeting`. The syntax "___super" indicates that
 the content of that field represents, in Java terms, the parent class
 `org.greet.Greeting`. The classes in grpc-bridge that subsequently
@@ -581,6 +584,7 @@ methods in `GreetServiceGrpc` that need to be overridden. For example,
 will be overridden by
 
 ----
+    @java.lang.Override
     public void greet(org.greet.Greet_proto.GeneralEntityMessage param, StreamObserver<org.greet.Greet_proto.GeneralReturnMessage> responseObserver) {
        HttpServletRequest request = null;
        try {
@@ -630,14 +634,14 @@ Note that the sequence
 
 ----
               org.greet.Greeting (Java class)
-                      -> (translated by JavaToProtobufGenerator) -> 
+                      -> (translated by JavaToProtobufGenerator) ->
                       -> org_greet___Greeting (protobuf message)
-                      -> (translated by protoc) -> 
+                      -> (translated by protoc) ->
                       -> org.greet.Greet_proto.org_greet___Greeting (Java class)
 ----
 
 turns the Java class `org.greet.Greeting` into a second Java class
-`org.greet.Greet_proto.org_greet___Greeting` by way of the protobuf
+`org.greet.Greet_proto.org_greet\___Greeting` by way of the protobuf
 message type `org_greet___Greeting`. For clarity, we refer to
 `org.greet.Greet_proto.org_greet___Greeting` as the *javabuf* version
 of `org.greet.Greeting`.
@@ -691,7 +695,7 @@ example, that can be accomplished in a web.xml file as follows:
        </servlet-class>
     </servlet>
 
-    <!-- 
+    <!--
        The intention is that GreetMessageBodyReaderWriter (with the help of GreetJavabufTranslator)
        will handle all reading and writing of data objects. Therefore, we
 
@@ -750,8 +754,8 @@ One area in which gRPC has richer semantics than Jakarta REST is
 streaming, where gRPC supports streaming in two directions, client to
 server and server to client, while Jakarta REST supports streaming only
 from server to client. In particular, Jakarta REST adopts a version of
-the *Server Sent Events* (SSE) specification (
-https://html.spec.whatwg.org/multipage/server-sent-events.html) to
+the *Server Sent Events* (SSE) specification
+(https://html.spec.whatwg.org/multipage/server-sent-events.html) to
 describe server to client streaming. RESTEasy's support of SSE is
 discussed in Section "Server-Sent Events (SSE)" of the https://resteasy.dev/docs/[RESTEasy User Guide].
 
@@ -798,10 +802,10 @@ message org_jboss_resteasy_grpc_runtime_sse___SseEvent {
 
 ----
 // stream gEmpty org_jboss_resteasy_grpc_runtime_sse___SseEvent GET sse
-  rpc sseGreet (GeneralEntityMessage) returns (stream org_jboss_resteasy_grpc_runtime_sse___SseEvent);                 
+  rpc sseGreet (GeneralEntityMessage) returns (stream org_jboss_resteasy_grpc_runtime_sse___SseEvent);
 ----
 
-Note that `returns (stream org_jboss_resteasy_grpc_runtime_sse___SseEvent)` indicates that the call returns a stream of
+Note that `returns (stream org_jboss_resteasy_grpc_runtime_sse\___SseEvent)` indicates that the call returns a stream of
 `org_jboss_resteasy_grpc_runtime_sse___SseEvent` objects.
 
 The overriding method in `GreetServiceGrpcImpl` changes to handle
@@ -871,7 +875,7 @@ Note, in particular, the treatment of the `data` field. The class
 `java.lang.Object`. The corresponding field in the definition of
 `org_jboss_resteasy_grpc_runtime_sse___SseEvent` in Greet.proto has type
 `google.protobuf.Any`, which translates to `com.google.protobuf.Any` in
-Greet_proto. Note that the method `Any.pack()` has signature
+`Greet_proto`. Note that the method `Any.pack()` has signature
 
 ----
     public static <T extends com.google.protobuf.Message> Any pack(T message, java.lang.String typeUrlPrefix);
@@ -882,7 +886,7 @@ is handled by `GreetJavabufTranslator`, which implies that the type of
 the field must be one processed by `JavaToProtobufGenerator`. If it is
 not discovered automatically, it can be passed into
 `JavaToProtobufGenerator` with the "classes" parameter, described in
-<<building_bridge,Building the bridge project>>.
+<<Building the bridge project>>.
 
 === Other uses of `google.protobuf.Any`
 
@@ -954,7 +958,7 @@ client side:
        System.out.println(any.unpack(gString.class));
     } catch (StatusRuntimeException e) {
        //
-    } 
+    }
 ----
 
 Another case in which we can't statically determine the return type is
@@ -987,8 +991,8 @@ Similar unpacking would happen on the client side.
 There are a lot of moving parts in the generation of the classes that
 make up the gRPC to Jakarta REST intermediary layer, so we've gathered
 the details together into a maven archetype in the
-*gRPCtoJakartaREST-archetype* github project (
-https://github.com/resteasy/gRPCtoJakartaREST-archetype).
+*gRPCtoJakartaREST-archetype* github project
+(https://github.com/resteasy/gRPCtoJakartaREST-archetype).
 
 gRPCtoJakartaREST-archetype starts with a Jakarta REST maven project,
 called the *target project*, and creates a *bridge project*, which
@@ -1058,26 +1062,26 @@ project plus the intermediary layer. The other files are
 
 * beans.xml: empty file
 * web.xml: implements the Jakarta REST provider removal described
-above (See <<translating_java_classes,Translating Java classes>>.)
+above (See <<Translating Java classes>>.)
 * buildjar: a bash script that produces a JAR file
 * deployjar: a bash script that deploys the JAR built by buildjar to a
-maven repository (See (<<output_products,Output products>>.)
+maven repository (See <<Output products>>.)
 
 Once the new project is created, the pom.xml can be used to copy the
 Java classes from the target project and generate the intermediary
 classes:
 
 ----
-    mvn clean install 
+    mvn clean install
 ----
 
 There are also some optional parameters:
 
 * classes: additional classes not detected by syntactic scanning
 * release.type: deploy as a snapshot or otherwise. Defaults to
-"snapshot". (See (<<output_products,Output products>>.)
+"snapshot". (See (<<Output products>>.)
 * inWildFly: the generated WAR will be run in WildFly. Defaults to
-"true". (See <<output_products,Output products>>.)
+"true". (See <<Output products>>.)
 
 The syntax for the "classes" parameter is
 
@@ -1093,7 +1097,7 @@ where
 For example,
 
 ----
-    mvn -Dclasses=/home/bob/greet/src/java/main:org.greet.Extra clean install 
+    mvn -Dclasses=/home/bob/greet/src/java/main:org.greet.Extra clean install
 ----
 
 When the project is built, the layout is as follows:
@@ -1121,7 +1125,7 @@ When the project is built, the layout is as follows:
     |     |  +- Greet_proto.java
     |  +- grpc-java
     |     +- org.greet
-    |        +- Greet_Server.java 
+    |        +- Greet_Server.java
     |        +- GreetJavabufTranslator.java
     |        +- GreetMessageBodyReaderWriter.java
     |        +- GreetServiceGrpc.java
@@ -1135,7 +1139,7 @@ When the project is built, the layout is as follows:
 
 * The intermediary layer classes discussed above are in
 target/generated-sources/protobuf/grpc-java.
-* We'll discuss `Greet_Server` below in <<using_war,Using the generated WAR>>
+* We'll discuss `Greet_Server` below in <<Using the generated WAR>>
 * For any of the files &lt;prefix&gt;.proto,
 &lt;prefix&gt;JavabufTranslator.java,
 &lt;prefix&gt;MessageBodyReaderWriter.java, or
@@ -1184,8 +1188,7 @@ subsystem https://github.com/wildfly-extras/wildfly-grpc-feature-pack,
 then `GreetServiceGrpcImpl` will be recognized and registered with the
 gRPC runtime.
 
-Once `GreetServiceGrpcImpl` is registered, a gRPC client can send
-requests, but there's one more thing to do to set up the intermediary
+Once `GreetServiceGrpcImpl` is registered, there's one more thing to do to set up the intermediary
 layer. The overriding methods in `GreetServiceGrpcImpl` need to be able
 to dispatch the request to the appropriate servlet. A Jakarta REST
 request to `dev.resteasy.grpc.server.Greet_Server` in the bridge
@@ -1210,7 +1213,7 @@ WildFly with the grpc subsystem,
 
 will initiate the gRPC server runtime.
 
-Alternatively, the step can be done programmatically, as in `org.jboss.restesy.test.grpc.AbstractGrpcToJakartaRESTTest`
+The step can also be done programmatically, as in `org.jboss.restesy.test.grpc.AbstractGrpcToJakartaRESTTest`
 in the resteasy-grpc-testsuite in resteasy-grpc:
 
 ----
@@ -1239,7 +1242,7 @@ The bridge project is meant to be an extension of the target project.
 Now, the main reason for installing a pom.xml file in the bridge project
 is to capture the sequence of events necessary to create the various
 classes in the intermediary layer. But it may be necessary to merge into
-it pieces of the target project pom.xml, dependencies, for example, in
+it pieces of the target project's pom.xml, dependencies, for example, in
 order to capture the construction of the target project.
 
 One function of the bridge pom.xml is to copy the classes from the
@@ -1249,19 +1252,19 @@ They could be copied manually, or the bridge pom.xml could be extended.
 
 === Compile time
 
-We have already discussed, in <<SSE,SSE>> and <<other_uses_Any,Other uses of google.protobuf.Any>>,
+We have already discussed, in <<SSE,SSE>> and <<Other uses of `google.protobuf.Any`>>,
 situations in which it is not possible to determine
 statically all classes that are sent over the network. For example, if a
 resource method returns `Response`, it may not be possible to determine
 the type of the returned entity. That means that, when
 `JavaToProtobufGenerator` scans for classes, it may not find all of
 those used, in which case the "classes" command line argument,
-described in <<building_bridge,Building the bridge project>> can be used
+described in <<Building the bridge project>>, can be used
 to supply those that are not detected.
 
-Also, we mentioned in <<building_bridge,Building the bridge project>>
+Also, we mentioned in <<Building the bridge project>>
 that running maven to build the bridge project results in copying Java
-classes from the target project. It should be noted that if other files
+classes from the target project. If other files
 are needed, that would need to be handled separately.
 
 === Servlet environment
@@ -1282,7 +1285,7 @@ RESTEasy supports servlets, and, accordingly, grpc-bridge creates a
 servlet environment for Jakarta REST resources to execute in, including
 the four mandated servlet types.
 
-Note that <<using_war,Using the generated WAR>> discusses a step
+Note that <<Using the generated WAR>> discusses a step
 involving a Jakarta REST client call that must be taken before gRPC
 calls can be made. It is responsible not only for storing the servlet,
 but it also results in storing references to a `ServletContext` and
@@ -1327,3 +1330,4 @@ by the client. On the other hand, the information in
 
 which would normally come from the network connection, must be supplied
 explicitly as part of the invocation.
+
