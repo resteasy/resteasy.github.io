@@ -331,39 +331,39 @@ and `org.greet.Greeter`
       string s = 1;
     }
 
-    message gInteger   {int32  value = 2;}
-    message gFloat     {float  value = 3;}
-    message gCharacter {string value = 4;}
-    message gByte      {int32  value = 5;}
-    message gLong      {int64  value = 6;}
-    message gString    {string value = 7;}
-    message gBoolean   {bool   value = 8;}
-    message gDouble    {double value = 9;}
-    message gShort     {int32  value = 10;}
+    message gInteger   {int32  value = 1;}
+    message gFloat     {float  value = 1;}
+    message gCharacter {string value = 1;}
+    message gByte      {int32  value = 1;}
+    message gLong      {int64  value = 1;}
+    message gString    {string value = 1;}
+    message gBoolean   {bool   value = 1;}
+    message gDouble    {double value = 1;}
+    message gShort     {int32  value = 1;}
 
     message gHeader {
-       repeated string values = 11;
+       repeated string values = 1;
     }
 
     message gCookie {
-       string name = 12;
-       string value = 13;
-       int32  version = 14;
-       string path = 15;
-       string domain = 16;
+       string name = 1;
+       string value = 2;
+       int32  version = 3;
+       string path = 4;
+       string domain = 5;
     }
 
     message gNewCookie {
-       string name = 17;
-       string value = 18;
-       int32  version = 19;
-       string path = 20;
-       string domain = 21;
-       string comment = 22;
-       int32 maxAge = 23;
-       google.protobuf.Timestamp expiry = 24;
-       bool secure = 25;
-       bool httpOnly = 26;
+       string name = 1;
+       string value = 2;
+       int32  version = 3;
+       string path = 4;
+       string domain = 5;
+       string comment = 6;
+       int32 maxAge = 7;
+       google.protobuf.Timestamp expiry = 8;
+       bool secure = 9;
+       bool httpOnly = 10;
 
        enum SameSite {
           NONE   = 0;
@@ -371,41 +371,42 @@ and `org.greet.Greeter`
           STRICT = 2;
        }
 
-       SameSite sameSite = 27;
+       SameSite sameSite = 11;
     }
 
     message ServletInfo {
-       string characterEncoding = 28;
-       string clientAddress = 29;
-       string clientHost = 30;
-       int32  clientPort = 31;
+       string characterEncoding = 1;
+       string clientAddress = 2;
+       string clientHost = 3;
+       int32  clientPort = 4;
     }
 
     message FormValues {
-       repeated string formValues_field = 32;
+       repeated string formValues_field = 1;
     }
 
     message FormMap {
-       map<string, FormValues> formMap_field = 33;
+       map<string, FormValues> formMap_field = 1;
     }
 
     message GeneralEntityMessage {
-       ServletInfo servletInfo = 34;
-       string URL = 35;
-       map<string, gHeader> headers = 36;
-       repeated gCookie cookies = 37;
+       ServletInfo servletInfo = 1;
+       string URL = 2;
+       map<string, gHeader> headers = 3;
+       repeated gCookie cookies = 4;
+       string httpMethod = 5;
        oneof messageType {
-          gString gString_field = 38;
-          FormMap form_field = 39;
+          gString gString_field = 6;
+          FormMap form_field = 7;
        }
     }
 
     message GeneralReturnMessage {
-       map<string, gHeader> headers = 40;
-       repeated gNewCookie cookies = 41;
-       gInteger status = 42;
+       map<string, gHeader> headers = 1;
+       repeated gNewCookie cookies = 2;
+       gInteger status = 3;
        oneof messageType {
-          org_greet___Greeting org_greet___Greeting_field = 43;
+          org_greet___Greeting org_greet___Greeting_field = 4;
        }
     }
 ----
@@ -437,8 +438,8 @@ can accomodate all of those. Also, consider the element
 
 ----
    oneof messageType {
-      gString gString_field = 38;
-      FormMap form_field = 39;
+      gString gString_field = 5;
+      FormMap form_field = 6;
    }
 ----
 
@@ -456,9 +457,9 @@ Then the `oneof` field would look like
 
 ----
     oneof messageType {
-      gString gString_field = 38;
-      gFloat gFloat_field = 39;
-      FormMap form_field = 40;
+      gString gString_field = 5;
+      gFloat gFloat_field = 6;
+      FormMap form_field = 7;
    }
 ----
 
@@ -532,17 +533,19 @@ Greet.proto:
     }
     ...
     message org_greet___GeneralGreeting { // 2
-      string salute = 2;
-      org_greet___Greeting greeting___super = 3;
+      string salute = 1;
+      org_greet___Greeting greeting___super = 2;
     }
     ...
     message GeneralReturnMessage {
-       map<string, gHeader> headers = 42;
-       repeated gNewCookie cookies = 43;
-       gInteger status = 44;
+       map<string, gHeader> headers = 1;
+       repeated gNewCookie cookies = 2;
+       gInteger status = 3;
+       repeated gCookie cookies = 4;
+       string httpMethod = 5;
        oneof messageType { // 3
-          org_greet___Greeting org_greet___Greeting_field = 45;
-          org_greet___GeneralGreeting org_greet___GeneralGreeting_field = 46;
+          org_greet___Greeting org_greet___Greeting_field = 6;
+          org_greet___GeneralGreeting org_greet___GeneralGreeting_field = 7;
        }
     }
 ----
@@ -935,9 +938,9 @@ becomes
 
 ----
     oneof messageType {
-        org_greet___Greeting org_greet___Greeting_field = 44;
-        org_greet___GeneralGreeting org_greet___GeneralGreeting_field = 45;
-        google.protobuf.Any google_protobuf_Any_field = 46;
+        org_greet___Greeting org_greet___Greeting_field = 4;
+        org_greet___GeneralGreeting org_greet___GeneralGreeting_field = 5;
+        google.protobuf.Any google_protobuf_Any_field = 6;
     }
 ----
 
@@ -1012,14 +1015,14 @@ generate the initial state of the bridge project, run
     mvn archetype:generate -B \
        -DarchetypeGroupId=dev.resteasy.grpc \
        -DarchetypeArtifactId=gRPCtoJakartaREST-archetype \
-       -DarchetypeVersion=1.0.0.Alpha1 \
+       -DarchetypeVersion=1.0.0.Alpha5 \
        -DgroupId=org.greet \
        -DartifactId=greet \
        -Dversion=0.0.1-SNAPSHOT \
        -Dgenerate-prefix=Greet \
        -Dgenerate-package=org.greet \
        -Dresteasy-version=6.2.4.Final \
-       -Dgrpc-bridge-version=1.0.0.Alpha1
+       -Dgrpc-bridge-version=1.0.0.Alpha2
 ----
 
 The following parameters need to be supplied:
@@ -1170,7 +1173,7 @@ These presumably need to be modified. Maven repository configuration is
 beyond the scope of this document.
 
 Depending on the environment to which it will be deployed, the WAR's
-WEB-INF/lib directory can contain only grpc-bridge-runtime-1.0.0.Alpha1.jar
+WEB-INF/lib directory can contain only grpc-bridge-runtime-1.0.0.Alpha2.jar
 or it can be populated with all of the protobuf, gRPC,
 and other JARs necessary for the intermediary classes to run. For
 example, if the WAR is to be deployed to an instance of WildFly running
@@ -1178,7 +1181,7 @@ with the gRPC subsystem
 https://github.com/wildfly-extras/wildfly-grpc-feature-pack, then it
 should be built with parameter "inWildFly" set to "true" (or
 anything other than "false"), which will result in a WEB/lib
-directory with just grpc-bridge-runtime-1.0.0.Alpha1.jar. Setting it to "false"
+directory with just grpc-bridge-runtime-1.0.0.Alpha2.jar. Setting it to "false"
 will populate WEB-INF/lib appropriately.
 
 == Using the generated WAR
@@ -1305,11 +1308,11 @@ out any information needed for a given computation. Recall that
 
 ----
     message GeneralEntityMessage {
-       ServletInfo servletInfo = 45;
-       string URL = 46;
-       map<string, gHeader> headers = 47;
-       repeated gCookie cookies = 48;
-       string httpMethod = 49;
+       ServletInfo servletInfo = 1;
+       string URL = 2;
+       map<string, gHeader> headers = 3;
+       repeated gCookie cookies = 4;
+       string httpMethod = 5;
        oneof messageType {
        ...
        }
@@ -1321,10 +1324,10 @@ by the client. On the other hand, the information in
 
 ----
     message ServletInfo {
-       string characterEncoding = 39;
-       string clientAddress = 40;
-       string clientHost = 41;
-       int32  clientPort = 42;
+       string characterEncoding = 1;
+       string clientAddress = 2;
+       string clientHost = 3;
+       int32  clientPort = 4;
     }
 ----
 
