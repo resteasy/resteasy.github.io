@@ -250,7 +250,7 @@ the protobuf compiler together with its gRPC plugin to create the client and ser
 outputs.
 
 The protobuf compiler itself generates a class like `example.grpc.Greet_proto`, which has an inner class
-for each [^message type]. For example,
+for each [^messageType]. For example,
 
 ```java
    public static final class dev_resteasy_example_grpc_greet___Greeting extends
@@ -511,6 +511,6 @@ has a discussion about the example.
 
 ## Notes
 
-[^message type]: Note that if "option java\_multiple_files = true;" appears at the beginning of the protobuf description, each message type is represented as a separate class.
+[^messageType]: Note that if "option java\_multiple_files = true;" appears at the beginning of the protobuf description, each message type is represented as a separate class.
 
 [^GreetingTest]: The reason we don't treat `GreetingTest` as a Java class is that it depends on classes in the intermediary layer, which don't exist until the bridge project is built.
