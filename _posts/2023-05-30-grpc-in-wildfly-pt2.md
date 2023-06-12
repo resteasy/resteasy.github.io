@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "gRPC and WildFly - Part II"
-subtitle:   "Exposing Jakarta RESTFul Web Services to gRPC"
-date:       2023-05-30
+title:      "gRPC and WildFly - Part II: Exposing Jakarta RESTFul Web Services to gRPC"
+subtitle:   ""
+date:       2023-06-11
 author:     Ron Sigal
 ---
 
@@ -517,5 +517,4 @@ option java_multiple_files = true;
 ```
 appears at the beginning of the protobuf description, each message type is represented as a separate class.
 
-[^GreetingTest]: The reason we don't treat `GreetingTest` as a Java class is that it depends on classes in the
-intermediary layer, which don't exist until the bridge project is built.
+[^GreetingTest]: The reason we don't treat `GreetingTest` as a Java class is that it depends on classes in the intermediary layer, which don't exist until the bridge project is built.
