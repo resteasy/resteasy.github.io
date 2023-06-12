@@ -511,10 +511,6 @@ has a discussion about the example.
 
 ## Notes
 
-[^message type]: Note that if
-```
-option java_multiple_files = true;
-```
-appears at the beginning of the protobuf description, each message type is represented as a separate class.
+[^message type]: Note that if "option java\_multiple_files = true;" appears at the beginning of the protobuf description, each message type is represented as a separate class.
 
 [^GreetingTest]: The reason we don't treat `GreetingTest` as a Java class is that it depends on classes in the intermediary layer, which don't exist until the bridge project is built.
