@@ -6,7 +6,7 @@ date:       2023-05-30
 author:     Ron Sigal
 ---
 
-In Part I of this two part series ([**gRPC and WildFly - Part I: Supporting gRPC in WildFly**](https://www.wildfly.org/)),
+In Part I of this two part series ([**gRPC and WildFly - Part I: Supporting gRPC in WildFly**](https://www.wildfly.org/news/2023/05/22/grpc-subsystem/)),
 we discussed WildFly's grpc subsystem, which supports [gRPC](https://grpc.io/) services. Here, we introduce the
 RESTEasy [**resteasy-grpc**](https://github.com/resteasy/resteasy-grpc) project, which allows gRPC clients
 to communicate with [**Jakarta RESTFul Web Services**](https://jakarta.ee/specifications/restful-ws/).
