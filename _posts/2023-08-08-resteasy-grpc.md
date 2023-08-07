@@ -9,7 +9,7 @@ author:     Wei Nan Li
 
 `resteasy-grpc`[^resteasy-grpc] is a project that can help you to generate a bridge project that can wrap the REST service APIs into relative gRPC APIs. The `resteasy-grpc` generated project will wrap your REST project into the final bridge project, and provide a gRPC service by using the standard gRPC server by default, and redirect the gRPC service calls into the backend servlet based REST services internally, which means you need to have a servlet container so the backend REST services are online.
 
-In this article, I’ll show you how to deploy the bridge project into WildFly. The reason to use WildFly is because it has a gRPC subsystem, and it is also a servlet container out of box, so it’s very convinient to deploy the bridge project into it. Now let’s go to the details.
+In this article, I’ll show you how to deploy the bridge project into WildFly. The reason to use WildFly is that it has a gRPC subsystem, and it is also a servlet container out of box, so it’s very convenient to deploy the bridge project into it. Now let’s go to the details.
 
 The first step is to clone the `resteasy-examples`[^resteasy-examples] project:
 
