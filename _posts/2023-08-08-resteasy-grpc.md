@@ -50,7 +50,19 @@ $ mvn install -DskipTests
 [INFO] ------------------------------------------------------------------------
 ```
 
-Now we have built the example project and installed the `grpcToRest.example-1.0.1.Final-SNAPSHOT.war` locally. According to the `README`[^example-readme] of the example project, now we can start to build the bridge project, and it needs the following command to do so:
+Now we have built the example project and installed the `grpcToRest.example-1.0.1.Final-SNAPSHOT.war` locally. According to the `README`[^example-readme] of the example project, now we can start to build the bridge project. To build the bridge project, we need to change our working directory outside the example project, and better to find a blank directory to do the project generation. In my local environment, I created an empty directory to do this:
+
+```bash
+➤ pwd
+/Users/weli/works
+weli@192:~/works
+➤ mkdir play-grpc
+weli@192:~/works
+➤ cd play-grpc/
+weli@192:~/w/play-grpc
+```
+
+As the command output shown above, I created a 'play-grpc' directory and entered the directory. Then I run the following command to generate the bridge project:
 
 ```bash
 $ mvn archetype:generate -B \
@@ -70,7 +82,7 @@ The above command uses the archetype provides by this project:
 
 - [resteasy/gRPCtoJakartaREST-archetype: Archetype for building a gRPC to JAX-RS bridge](https://github.com/resteasy/gRPCtoJakartaREST-archetype)
 
-And it will generate the bridge project according to the above example project, because we have set the GAV of the built example project in above command, and it will automatically use the local installed example project WAR file and parse the classes inside to generate the bridge project. The output of the above command is shown in below:
+And it will generate the bridge project according to the above example project, because we have set the GAV of the built example project in above command, and it will automatically copy the Java sources files from the local installed example project WAR file and parse the classes inside to generate the bridge project. The output of the above command is shown in below:
 
 ```bash
 [INFO] ----------------------------------------------------------------------------
