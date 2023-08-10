@@ -319,7 +319,7 @@ handshake-timeout=undefined                    max-connection-idle=undefined    
 initial-flow-control-window=undefined          max-inbound-message-size=undefined             session-timeout=undefined
 keep-alive-time=undefined                      max-inbound-metadata-size=undefined            shutdown-timeout=3
 keep-alive-timeout=undefined                   permit-keep-alive-time=undefined               ssl-context-name=undefined
-key-manager-name=                              permit-keep-alive-without-calls=undefined      start-tls=undefined
+key-manager-name=undefined                              permit-keep-alive-without-calls=undefined      start-tls=undefined
 max-concurrent-calls-per-connection=undefined  protocol-provider=undefined                    trust-manager-name=undefined
 max-connection-age=undefined                   server-host=localhost
 ```
@@ -327,17 +327,10 @@ max-connection-age=undefined                   server-host=localhost
 From the above command output we can see the settings(attributes) of the `grpc` subsystem. We can see the gRPC `server-port` is `9555`. In addition, one of the settings is:
 
 ```
-key-manager-name=
+key-manager-name=undefined
 ```
 
-This means the `key-manager` is not set in the `grpc` subsystem, which means it will use `plaintext` to do the gRPC communication. We can confirm this setting is running the following command:
-
-```bash
-[standalone@localhost:9990 /] /subsystem=grpc:write-attribute(name=key-manager-name, value="")
-{"outcome" => "success"}
-``` 
-
-The above command will ensure the above attribute is set properly. After the `grpc` subsystem is set properly, we now need to enable the Servlet context of this sample project together with the `grpc` context. To do so, we need to send a request to the server:
+This means the `key-manager` is not set in the `grpc` subsystem, which means it will use `plaintext` to do the gRPC communication by default. After checking the `grpc` subsystem settings, we now need to enable the Servlet context of this sample project together with the `grpc` context. To do so, we need to send a request to the server:
 
 ```bash
 ➤ curl http://localhost:8080/grpcToRest.example.grpc-1.0.1.Final-SNAPSHOT/grpcToJakartaRest/grpcserver/context
