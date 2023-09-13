@@ -376,8 +376,7 @@ Above is the overall introduction to the currently RESTEasy gRPC feature and the
 
 [^resteasy-examples]: [resteasy/resteasy-examples: RESTEasy examples](https://github.com/resteasy/resteasy-examples)
 
-[^example-readme]: https://github.com/resteasy/resteasy-examples/blob/main/grpc-bridge-example/README.md
-[grpc-bridge-example/README.md](https://github.com/resteasy/resteasy-examples/blob/main/grpc-bridge-example/README.md)
+[^example-readme]: [grpc-bridge-example/README.md](https://github.com/resteasy/resteasy-examples/blob/main/grpc-bridge-example/README.md)
 
 [^galleon]: [wildfly/galleon](https://github.com/wildfly/galleon)
 
