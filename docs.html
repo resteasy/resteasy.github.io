@@ -24,6 +24,9 @@ permalink: /docs/
                 {% if detail.documentation.link %}
                 <li><a href="{{ detail.documentation.link }}" target="_blank">Documentation</a></li>
                 {% endif %}
+                {% if detail.documentation.java_doc %}
+                <li><a href="{{ detail.documentation.java_doc }}" target="_blank">JavaDoc</a></li>
+                {% endif %}
                 {% if detail.download_link %}
                 <li><a href="{{ detail.download_link }}" target="_blank">Download</a></li>
                 {% endif %}
