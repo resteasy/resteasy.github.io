@@ -2,11 +2,11 @@
 layout:     post
 title:      "resteasy-grpc: Handling arrays"
 subtitle:   ""
-date:       2024-01-05
+date:       2024-01-23
 author:     Ron Sigal
 ---
 
-Release 1.0.0.Alpha3 of resteasy-grpc has a new feature for handling arbitrary arrays. Although protobuf comes
+Release 1.0.0.Alpha5 of resteasy-grpc has a new feature for handling arbitrary arrays. Although protobuf comes
 with a representation of one dimension arrays, e.g.
 
 ```
