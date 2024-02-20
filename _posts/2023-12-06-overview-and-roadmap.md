@@ -6,6 +6,20 @@ date:       December 6, 2023 11:11:11 PDT
 author:     James R. Perkins
 ---
 
+**UPDATE 2024-02-19:**
+Jakarta REST is in the process of possibly doing a [Jakarta REST 3.2](https://www.eclipse.org/lists/rest-dev/msg00206.html) 
+version instead of a 4.0 version for Jakarta EE 11. What a 3.2 version would include is adding the `@Deprecated` 
+annotation to the `@Context` and `@Suspended` annotations instead of simply removing them. We find this to be a good 
+plan so users are aware of these changes and migration can be done in a more incremental approach.
+
+The current plan for RESTEasy is to implement whichever version of the specification the Jakarta REST Specification
+Committee decides on. In all likelihood this will result in RESTEasy switch back to a requirement of Java SE 17 instead
+of Java SE 21.
+
+Once further details are known, this post will be updated with the new plans.
+
+----
+
 As we look to 2024 I'd like to give an overview of the current RESTEasy Roadmap. Please note at this time there are not
 specific timeframes for some of these tasks. We are reliant on the [Jakarta REST 4.0](https://jakarta.ee/specifications/restful-ws/4.0/)
 going final before we can do any final releases.
