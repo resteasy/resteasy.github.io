@@ -1,6 +1,43 @@
+- group: 7.0.x
+  supported: true
+  detail:
+    - version: 7.0.0.Alpha2
+      date: 2024-05-21
+      license: ASL v2
+      source: https://github.com/resteasy/resteasy/releases/download/7.0.0.Alpha2/resteasy-7.0.0.Alpha2-src.zip
+      size: 38.5 MB
+      release_notes: https://github.com/resteasy/resteasy/releases/tag/7.0.0.Alpha2
+      download_link: https://github.com/resteasy/resteasy/releases/download/7.0.0.Alpha2/resteasy-7.0.0.Alpha2-all.zip
+      download_text: resteasy-7.0.0.Alpha2-all.zip
+      jakarta_rest_spec:
+        version: 4.0
+        link: https://jakarta.ee/specifications/restful-ws/4.0/jakarta-restful-ws-spec-4.0.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/4.0/apidocs
+      documentation:
+        examples: https://github.com/resteasy/resteasy-examples/
+        link: https://docs.jboss.org/resteasy/docs/7.0.0.Alpha2/userguide/
+        pdf: https://docs.jboss.org/resteasy/docs/7.0.0.Alpha2/userguide/resteasy-reference-guide.pdf
+        java_doc: https://docs.jboss.org/resteasy/docs/7.0.0.Alpha2/javadocs/
 - group: 6.2.x
   supported: true
   detail:
+    - version: 6.2.9.Final
+      date: 2024-05-21
+      license: ASL v2
+      source: https://github.com/resteasy/resteasy/releases/download/6.2.9.Final/resteasy-6.2.9.Final-src.zip
+      size: 39.0 MB
+      release_notes: https://github.com/resteasy/resteasy/releases/tag/6.2.9.Final
+      download_link: https://github.com/resteasy/resteasy/releases/download/6.2.9.Final/resteasy-6.2.9.Final-all.zip
+      download_text: resteasy-6.2.9.Final-all.zip
+      jakarta_rest_spec:
+        version: 3.1
+        link: https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1.html
+        java_doc: https://jakarta.ee/specifications/restful-ws/3.1/apidocs
+      documentation:
+        examples: https://github.com/resteasy/resteasy-examples/
+        link: https://docs.jboss.org/resteasy/docs/6.2.9.Final/userguide/
+        pdf: https://docs.jboss.org/resteasy/docs/6.2.9.Final/userguide/resteasy-reference-guide.pdf
+        java_doc: https://docs.jboss.org/resteasy/docs/6.2.9.Final/javadocs/
     - version: 6.2.8.Final
       date: 2024-03-22
       license: ASL v2
