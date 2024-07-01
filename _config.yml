@@ -1,7 +1,7 @@
 # Site settings
 title: RESTEasy
 email: jperkins@redhat.com
-url: "https://resteasy.dev"
+url: "https://docs.resteasy.dev"
 description: "RESTEasy is a fully certified and portable implementation of the Jakarta RESTful Web Services specification"
 meta_author: RESTEasy
 # Build settings
