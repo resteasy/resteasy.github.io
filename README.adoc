@@ -1,0 +1,3 @@
+= RESTEasy Documentation
+
+This site hosts the documentation for https://resteasy.dev at https://docs.resteasy.dev.
