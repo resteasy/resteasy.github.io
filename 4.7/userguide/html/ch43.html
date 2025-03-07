@@ -1,0 +1,106 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 43. Securing JAX-RS and RESTEasy</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch42.html" title="Chapter 42. Server-side Mock Framework"/><link rel="next" href="ch44.html" title="Chapter 44. JSON Web Signature and Encryption (JOSE-JWT)"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch42.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch44.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Securing_JAX-RS_and_RESTeasy"><div class="titlepage"><div><div><h1 class="title">Chapter 43. Securing JAX-RS and RESTEasy</h1></div></div></div>
+
+
+<p>
+
+Because RESTEasy is deployed as a servlet, you must use standard web.xml constraints to enable authentication and authorization.  
+</p>
+<p>
+
+Unfortunately, web.xml constraints do not mesh very well with JAX-RS in some situations.  The problem is that web.xml URL pattern matching is very very limited.  URL patterns in web.xml only support simple wildcards, so JAX-RS resources like:
+</p>
+<p>
+
+</p><pre><code class="no-highlight">/{pathparam1}/foo/bar/{pathparam2} </code></pre><p>
+</p>
+<p>
+
+Cannot be mapped as a web.xml URL pattern like:
+</p>
+<p>
+
+</p><pre><code class="no-highlight">/*/foo/bar/*</code></pre><p>
+</p>
+<p>
+
+To get around this problem you will need to use the security annotations defined below on your JAX-RS methods.  You will still need to set up some general security constraint elements in web.xml to turn on authentication.
+</p>
+<p>
+
+
+</p>
+<p>
+
+RESTEasy JAX-RS supports the @RolesAllowed, @PermitAll and @DenyAll annotations on JAX-RS methods.   By default though, RESTEasy does not recognize these annotations.  You have to 
+configure RESTEasy to turn on role-based security by setting the appropriate parameter.  NOTE!!!  Do not turn on this switch if you are using EJBs.  The EJB container will provide this
+functionality instead of RESTEasy. To configure this switch as a context-param, do this:
+
+</p>
+<pre><code class="no-highlight">
+
+&lt;web-app&gt;
+...
+   &lt;context-param&gt;
+      &lt;param-name&gt;resteasy.role.based.security&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+   &lt;/context-param&gt;
+&lt;/web-app&gt;
+</code></pre>
+
+<p>See <a class="xref" href="ch03.html#microprofile_config" title="3.4. Configuration">Section 3.4, “Configuration”</a> for more information about application configuration. </p>
+
+<p>There is a bit of quirkiness with this approach.   You will have to declare all roles used within the RESTEasy JAX-RS war file that you are using in your JAX-RS classes and set up a security constraint that permits all of these roles access to every URL handled by the JAX-RS runtime.  You'll just have to trust that RESTEasy JAX-RS authorizes properly.
+</p>
+<p>
+
+How does RESTEasy do authorization?  Well, its really simple.  It just sees if a method is annotated with @RolesAllowed and then just does HttpServletRequest.isUserInRole.  If one of the @RolesAllowed passes, then allow the request, otherwise, a response is sent back with a 401 (Unauthorized) response code.
+</p>
+<p>
+
+So, here's an example of a modified RESTEasy WAR file.  You'll notice that every role declared is allowed access to every URL controlled by the RESTEasy servlet.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+
+&lt;web-app&gt;
+
+   &lt;context-param&gt;
+      &lt;param-name&gt;resteasy.role.based.security&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;security-constraint&gt;
+      &lt;web-resource-collection&gt;
+         &lt;web-resource-name&gt;Resteasy&lt;/web-resource-name&gt;
+         &lt;url-pattern&gt;/security&lt;/url-pattern&gt;
+      &lt;/web-resource-collection&gt;
+       &lt;auth-constraint&gt;
+         &lt;role-name&gt;admin&lt;/role-name&gt;
+         &lt;role-name&gt;user&lt;/role-name&gt;
+      &lt;/auth-constraint&gt;
+  &lt;/security-constraint&gt;
+
+   &lt;login-config&gt;
+      &lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+      &lt;realm-name&gt;Test&lt;/realm-name&gt;
+   &lt;/login-config&gt;
+
+   &lt;security-role&gt;
+      &lt;role-name&gt;admin&lt;/role-name&gt;
+   &lt;/security-role&gt;
+   &lt;security-role&gt;
+      &lt;role-name&gt;user&lt;/role-name&gt;
+   &lt;/security-role&gt;
+
+   ...
+&lt;/web-app&gt;
+
+
+</code></pre><p>
+</p>
+<p>
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch42.html"><strong>Prev</strong>Chapter 42. Server-side Mock Framework</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch44.html"><strong>Next</strong>Chapter 44. JSON Web Signature and Encryption (JO...</a></li></ul></footer></body></html>

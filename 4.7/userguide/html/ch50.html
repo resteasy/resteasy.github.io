@@ -1,0 +1,188 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 50. Guice 3.0 Integration</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch49.html" title="Chapter 49. CDI Integration"/><link rel="next" href="ch51.html" title="Chapter 51. RESTEasy Client API"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch49.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch51.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Guice1"><div class="titlepage"><div><div><h1 class="title">Chapter 50. Guice 3.0 Integration</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="section"><a href="ch50.html#d5e3465">50.1. Request Scope</a></span></li><li><span class="section"><a href="ch50.html#d5e3469">50.2. Binding JAX-RS utilities</a></span></li><li><span class="section"><a href="ch50.html#d5e3472">50.3. Configuring Stage</a></span></li><li><span class="section"><a href="ch50.html#d5e3476">50.4. Custom Injector creation</a></span></li></ul></div>
+    
+    <p>RESTEasy has some simple integration with Guice 3.0.  RESTEasy will scan the binding types for a Guice Module
+        for @Path and @Provider annotations.  It will register these bindings with RESTEasy.  The guice-hello
+    project that comes in the RESTEasy examples/ directory gives a nice example of this.</p>
+<pre><code class="no-highlight">
+@Path("hello")
+public class HelloResource
+{
+   @GET
+   @Path("{name}")
+   public String hello(@PathParam("name") final String name) {
+      return "Hello " + name;
+   }
+}
+</code></pre>
+    <p>First you start off by specifying a JAX-RS resource class.  The HelloResource is just that.  Next you
+    create a Guice Module class that defines all your bindings:</p>
+<pre><code class="no-highlight">
+import com.google.inject.Module;
+import com.google.inject.Binder;
+
+public class HelloModule implements Module
+{
+    public void configure(final Binder binder)
+    {
+       binder.bind(HelloResource.class);
+    }
+}
+</code></pre>
+    <p>You put all these classes somewhere within your WAR WEB-INF/classes or in a JAR within WEB-INF/lib.  Then
+    you need to create your web.xml file.  You need to use the GuiceResteasyBootstrapServletContextListener as
+    follows</p>
+<pre><code class="no-highlight">
+
+&lt;web-app&gt;
+    &lt;display-name&gt;Guice Hello&lt;/display-name&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.guice.modules&lt;/param-name&gt;
+        &lt;param-value&gt;org.jboss.resteasy.examples.guice.hello.HelloModule&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;listener&gt;
+        &lt;listener-class&gt;
+            org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener
+        &lt;/listener-class&gt;
+    &lt;/listener&gt;
+
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;Resteasy&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        &lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;Resteasy&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+
+</code></pre>
+    <p>GuiceResteasyBootstrapServletContextListener is a subclass of ResteasyBootstrap, so you can use
+    any other RESTEasy configuration option within your web.xml file.  Also notice that there is a
+    resteasy.guice.modules context-param.  This can take a comma delimited list of class names that
+    are Guice Modules.</p>
+    <section class="section" id="d5e3465"><div class="titlepage"><div><div><h2 class="title">50.1. Request Scope</h2></div></div></div>
+      
+      <p>
+        Add the RequestScopeModule to your modules to allow objects to be scoped to the HTTP request by adding
+        the @RequestScoped annotation to your fields in resource classes. All the objects injectable via the @Context annotation are 
+        also injectable, except ServletConfig and ServletContext.
+        Note that RequestScopeModule will already be added if any of your modules extends com.google.inject.servlet.ServletModule.
+        In such cases you should not add it again to avoid injector creation errors.
+      </p>
+<pre><code class="no-highlight">
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
+
+import org.jboss.resteasy.plugins.guice.RequestScoped;
+
+public class MyClass
+{
+    @Inject @RequestScoped @Context
+    private HttpRequest request;
+}
+
+</code></pre>
+    </section>
+    <section class="section" id="d5e3469"><div class="titlepage"><div><div><h2 class="title">50.2. Binding JAX-RS utilities</h2></div></div></div>
+        
+        <p>
+            Add the JaxrsModule to bind javax.ws.rs.ext.RuntimeDelegate, javax.ws.rs.core.Response.ResponseBuilder, javax.ws.rs.core.UriBuilder, javax.ws.rs.core.Variant.VariantListBuilder and org.jboss.resteasy.client.ClientExecutor.
+        </p>
+    </section>
+    <section class="section" id="d5e3472"><div class="titlepage"><div><div><h2 class="title">50.3. Configuring Stage</h2></div></div></div>
+        
+        <p>
+            You can configure the stage Guice uses to deploy your modules by specific a context param, resteasy.guice.stage.
+            If this value is not specified, RESTEasy uses whatever Guice's default is.
+        </p>
+<pre><code class="no-highlight">
+
+&lt;web-app&gt;
+    &lt;display-name&gt;Guice Hello&lt;/display-name&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.guice.modules&lt;/param-name&gt;
+        &lt;param-value&gt;org.jboss.resteasy.examples.guice.hello.HelloModule&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.guice.stage&lt;/param-name&gt;
+        &lt;param-value&gt;PRODUCTION&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;listener&gt;
+        &lt;listener-class&gt;
+            org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener
+        &lt;/listener-class&gt;
+    &lt;/listener&gt;
+
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;Resteasy&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        &lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;Resteasy&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+
+</code></pre>        
+    </section>
+    <section class="section" id="d5e3476"><div class="titlepage"><div><div><h2 class="title">50.4. Custom Injector creation</h2></div></div></div>
+      
+      <p>
+        GuiceResteasyBootstrapServletContextListener can be extended to allow more flexibility in the way the Injector and Modules
+        are created.  Three methods can be overridden: getModules(), withInjector() and getStage(). Register your subclass as the
+        listener in the web.xml.
+      </p>
+      <p>
+        Override getModules() when you need to pass arguments to your modules' constructor or perform more complex operations.
+      </p>
+      <p>
+        Override withInjector(Injector) when you need to interact with the Injector after it has been created.
+      </p>
+      <p>
+        Override getStage(ServletContext) to set the Stage yourself.
+      </p>
+<pre><code class="no-highlight">
+
+&lt;web-app&gt;
+    &lt;!-- other tags omitted --&gt;
+    &lt;listener&gt;
+      &lt;listener-class&gt;
+         org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener
+      &lt;/listener-class&gt;
+    &lt;/listener&gt;
+&lt;/web-app&gt;
+
+public class MyServletContextListener extends GuiceResteasyBootstrapServletContextListener
+{
+
+    @Override
+    protected List&lt;? extends Module&gt; getModules(ServletContext context)
+    {
+        return Arrays.asList(new JpaPersistModule("consulting_hours"), new MyModule());
+    }
+    
+    @Override
+    public void withInjector(Injector injector)
+    {
+        injector.getInstance(PersistService.class).start();
+    }
+}
+
+</code></pre>        
+    </section>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch49.html"><strong>Prev</strong>Chapter 49. CDI Integration</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch51.html"><strong>Next</strong>Chapter 51. RESTEasy Client API</a></li></ul></footer></body></html>

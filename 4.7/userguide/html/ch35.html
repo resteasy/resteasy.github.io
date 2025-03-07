@@ -1,0 +1,186 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 35. RESTEasy Caching Features</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch34.html" title="Chapter 34. Content-Range Support"/><link rel="next" href="ch36.html" title="Chapter 36. Filters and Interceptors"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch34.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch36.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Cache_NoCache_CacheControl"><div class="titlepage"><div><div><h1 class="title">Chapter 35. RESTEasy Caching Features</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="sect1"><a href="ch35.html#Cache_Annotation">35.1. @Cache and @NoCache Annotations</a></span></li><li><span class="sect1"><a href="ch35.html#client_cache">35.2. Client "Browser" Cache</a></span></li><li><span class="sect1"><a href="ch35.html#server_cache">35.3. Local Server-Side Response Cache</a></span></li><li><span class="sect1"><a href="ch35.html#Http_Precondition">35.4. HTTP preconditions</a></span></li></ul></div>
+   
+   <p>
+     RESTEasy provides numerous annotations and facilities to support HTTP caching semantics.  Annotations to make setting Cache-Control
+     headers easier and both server-side and client-side in-memory caches are available.
+   </p>
+  <section class="sect1" id="Cache_Annotation"><div class="titlepage"><div><div><h2 class="title">35.1. @Cache and @NoCache Annotations</h2></div></div></div>
+  
+   <p>
+      RESTEasy provides an extension to JAX-RS that allows you to automatically set Cache-Control headers on a successful
+      GET request.  It can only be used on @GET annotated methods.  A successful @GET request is any request
+      that returns 200 OK response.
+   </p>
+   <pre><code class="no-highlight">
+package org.jboss.resteasy.annotations.cache;
+
+public @interface Cache
+{
+   int maxAge() default -1;
+   int sMaxAge() default -1;
+   boolean noStore() default false;
+   boolean noTransform() default false;
+   boolean mustRevalidate() default false;
+   boolean proxyRevalidate() default false;
+   boolean isPrivate() default false;
+}
+
+public @interface NoCache
+{
+   String[] fields() default {};
+}
+
+   </code></pre>
+   <p>
+      While @Cache builds a complex Cache-Control header, @NoCache is a simplified notation to say that you don't
+      want anything cached; i.e. Cache-Control: nocache.
+   </p>
+   <p>
+      These annotations can be put on the resource class or interface and specifies a default cache value for each
+      @GET resource method.  Or they can be put individually on each @GET resource method.
+   </p>
+   </section>
+   <section class="sect1" id="client_cache"><div class="titlepage"><div><div><h2 class="title">35.2. Client "Browser" Cache</h2></div></div></div>
+     
+     <p>
+        RESTEasy has the ability to set up a client-side, browser-like, cache.  You can use it with the Client Proxy Framework, or with 
+        ordinary requests.  This cache looks for Cache-Control headers sent back with a server response.  If the Cache-Control headers specify
+       that the client is allowed to cache the response, Resteasy caches it within local memory.  The cache obeys max-age requirements 
+       and will also automatically do HTTP 1.1 cache revalidation if either or both the Last-Modified and/or ETag headers are sent back with the
+       original response.  See the HTTP 1.1 specification for details on how Cache-Control or cache revalidation works.
+     </p>
+     <p>It is very simple to enable caching.  Here's an example of using the client cache with the Client Proxy Framework</p>
+<pre><code class="no-highlight">
+@Path("/orders")
+public interface OrderServiceClient {
+
+   @Path("{id}")
+   @GET
+   @Produces("application/xml")
+   public Order getOrder(@PathParam("id") String id);
+}
+</code></pre>
+
+     <p>To create a proxy for this interface and enable caching for that proxy requires only a few simple steps
+     in which the <code class="classname">BrowserCacheFeature</code> is registered:</p>
+    
+<pre><code class="no-highlight">
+ResteasyWebTarget target = (ResteasyWebTarget) ClientBuilder.newClient().target("http://localhost:8081");
+BrowserCacheFeature cacheFeature = new BrowserCacheFeature();
+OrderServiceClient orderService = target.register(cacheFeature).proxy(OrderServiceClient.class);
+</code></pre>
+
+     <p>
+     <code class="classname">BrowserCacheFeature</code> will create a Resteasy
+     <code class="classname">LightweightBrowserCache</code> by default. It is also possible to configure
+     the cache, or install a completely different cache implementation:
+     </p>
+   
+<pre><code class="no-highlight">
+ResteasyWebTarget target = (ResteasyWebTarget) ClientBuilder.newClient().target("http://localhost:8081");
+LightweightBrowserCache cache = new LightweightBrowserCache();
+cache.setMaxBytes(20);
+BrowserCacheFeature cacheFeature = new BrowserCacheFeature();
+cacheFeature.setCache(cache);
+OrderServiceClient orderService = target.register(cacheFeature).proxy(OrderServiceClient.class); 
+</code></pre>
+
+   <p>If you are using the standard JAX-RS client framework to make invocations rather than the
+   proxy framework, it is just as easy:</p>
+
+<pre><code class="no-highlight">
+ResteasyWebTarget target = (ResteasyWebTarget) ClientBuilder.newClient().target("http://localhost:8081/orders/{id}");
+BrowserCacheFeature cacheFeature = new BrowserCacheFeature();
+target.register(cacheFeature);
+String rtn = target.resolveTemplate("id", "1").request().get(String.class);
+</code></pre>
+
+   <p>The LightweightBrowserCache, by default, has a maximum 2 megabytes of caching space.  You can change this programmatically by callings
+         its setMaxBytes() method.   If the cache gets full, the cache completely wipes itself of all cached data.  This may seem
+         a bit draconian, but the cache was written to avoid unnecessary synchronizations in a concurrent environment where the cache is 
+         shared between multiple threads.  If you desire a more complex caching solution or if you want to plug in a thirdparty cache
+         please contact our resteasy-developers list and discuss it with the community.
+   </p>
+   </section>
+   <section class="sect1" id="server_cache"><div class="titlepage"><div><div><h2 class="title">35.3. Local Server-Side Response Cache</h2></div></div></div>
+      
+      <p>RESTEasy has a server-side cache that can sit in front of your JAX-RS services.
+          It automatically caches marshalled responses from HTTP GET JAX-RS invocations if, and only if your
+          JAX-RS resource method sets a Cache-Control header.  When a GET comes in, the RESTEasy Server Cache checks
+          to see if the URI is stored in the cache.  If it does, it returns the already marshalled response without
+          invoking your JAX-RS method.  Each cache entry has a max age to whatever is specified in the Cache-Control
+          header of the initial request.  The cache also will automatically generate an ETag using an MD5 hash on the
+          response body.  This allows the client to do HTTP 1.1 cache revalidation with the IF-NONE-MATCH header.
+          The cache is also smart enough to perform revalidation if there is no initial cache hit, but the jax-rs
+          method still returns a body that has the same ETag.
+      </p>
+       <p>
+         The cache is also automatically invalidated for a particular URI that has
+           PUT, POST, or DELETE invoked on it.  You can also obtain a reference to the cache by injecting a
+           org.jboss.resteasy.plugins.cache.ServerCache
+           via the @Context annotation
+       </p>
+<pre><code class="no-highlight">
+
+    @Context
+    ServerCache cache;
+
+    @GET
+    public String get(@Context ServerCache cache) {...}
+
+</code></pre>
+      <p>To set up the server-side cache you must register an instance of org.jboss.resteasy.plugins.cache.server.ServerCacheFeature
+          via your Application getSingletons() or getClasses() methods.  The underlying cache is Infinispan.  By default,
+          RESTEasy will create an Infinispan cache for you.  Alternatively, you can create and pass in an instance
+          of your cache to the ServerCacheFeature constructor.  You can also configure Infinispan by specifying
+          various parameters.  First, if you are using Maven you must depend on the resteasy-cache-core artifact:</p>
+<pre><code class="no-highlight">
+
+&lt;dependency&gt;
+   &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+   &lt;artifactId&gt;resteasy-cache-core&lt;/artifactId&gt;
+   &lt;version&gt;4.7.10.Final&lt;/version&gt;
+&lt;/dependency&gt;
+
+</code></pre>
+      <p>The next thing you should probably do is set up the Infinispan configuration. In your web.xml, it would look like</p>
+<pre><code class="no-highlight">
+
+&lt;web-app&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;server.request.cache.infinispan.config.file&lt;/param-name&gt;
+        &lt;param-value&gt;infinispan.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;server.request.cache.infinispan.cache.name&lt;/param-name&gt;
+        &lt;param-value&gt;MyCache&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+&lt;/web-app&gt;
+
+</code></pre>
+   <p>
+       server.request.cache.infinispan.config.file can either be a classpath or a file path. server.request.cache.infinispan.cache.name
+       is the name of the cache you want to reference that is declared in the config file.
+   </p>
+   
+   <p>See <a class="xref" href="ch03.html#microprofile_config" title="3.4. Configuration">Section 3.4, “Configuration”</a> for more information about application configuration. </p>
+   
+   </section>
+   <section class="sect1" id="Http_Precondition"><div class="titlepage"><div><div><h2 class="title">35.4. HTTP preconditions</h2></div></div></div>
+        
+        <p>
+            JAX-RS provides an API for evaluating HTTP preconditions based on <code class="literal">"If-Match"</code>, <code class="literal">"If-None-Match"</code>, <code class="literal">"If-Modified-Since"</code> and <code class="literal">"If-Unmodified-Since"</code> headers.
+        </p>
+        <pre><code class="no-highlight">
+            Response.ResponseBuilder rb = request.evaluatePreconditions(lastModified, etag);
+        </code></pre>
+        <p>
+            By default RESTEasy will return status code 304 (Not modified) or 412 (Precondition failed) if any of conditions fails.
+            However it is not compliant with RFC 7232 which states that headers <code class="literal">"If-Match"</code>, <code class="literal">"If-None-Match"</code> MUST have higher precedence.
+            You can enable RFC 7232 compatible mode by setting the parameter <code class="literal">resteasy.rfc7232preconditions</code> to <code class="literal">true</code>.
+            See <a class="xref" href="ch03.html#microprofile_config" title="3.4. Configuration">Section 3.4, “Configuration”</a> for more information about application configuration.
+        </p>
+   </section>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch34.html"><strong>Prev</strong>Chapter 34. Content-Range Support</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch36.html"><strong>Next</strong>Chapter 36. Filters and Interceptors</a></li></ul></footer></body></html>

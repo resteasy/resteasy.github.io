@@ -1,0 +1,145 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 39. Asynchronous Injection</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch38.html" title="Chapter 38. Asynchronous Job Service"/><link rel="next" href="ch40.html" title="Chapter 40. Reactive programming support"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch38.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch40.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Async_Injection"><div class="titlepage"><div><div><h1 class="title">Chapter 39. Asynchronous Injection</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="sect1"><a href="ch39.html#ContextInjector_Interface">39.1. org.jboss.resteasy.spi.ContextInjector Interface</a></span></li><li><span class="sect1"><a href="ch39.html#Single_foo_example">39.2. Single&lt;Foo&gt; Example</a></span></li><li><span class="sect1"><a href="ch39.html#injectory_with_annotations_example">39.3. Async Injector With Annotations Example</a></span></li></ul></div>
+    
+    <p>
+        Pluggable Asynchronous Injection, also referred to as Asynch Injection, is a
+        feature that allows users to create custom injectable asynchronous types.
+        For example it is now possible to declare an injector for <code class="classname">Single&lt;Foo&gt;</code>
+        and inject it into an endpoint as a class variable or as a method parameter using
+        <code class="classname">@Context Foo</code>.  The response will be made asynchronous automatically and
+        the resource method will only be invoked once the <code class="classname">Single&lt;Foo&gt;</code> object is
+        resolved to <code class="classname">Foo</code>.  Resolution is done in a non-blocking manner.
+    </p>
+    <p>
+        <span class="bold"><strong>Note.</strong></span>
+        Asynch injection is only attempted at points where asynchronous injection is
+        permitted, such as on resource creation and resource method invocation. It
+        is not enabled at points where the API does not allow for suspending the
+        request, for example on <code class="classname">ResourceContext.getResource(Foo.class)</code>.
+    </p>
+    <section class="sect1" id="ContextInjector_Interface"><div class="titlepage"><div><div><h2 class="title">39.1. org.jboss.resteasy.spi.ContextInjector Interface</h2></div></div></div>
+        
+        <p>
+            The <code class="classname">org.jboss.resteasy.spi.ContextInjector</code> interface must be implemented
+            on any custom asynch injector object.  The implementation class must be
+            tagged with the <code class="classname">@Provider</code> annotation.
+        </p>
+        <pre><code class="no-highlight">
+/**
+ * @param &lt;WrappedType&gt; A class that wraps a data type or data object
+ *                            (e.g. Single&lt;Foo&gt;)
+ * @param &lt;UnwrappedType&gt; The data type or data object declared in the
+ *                              WrappedType (e.g. Foo)
+*/
+public interface ContextInjector&lt;WrappedType, UnwrappedType&gt; {
+/**
+ * This interface allows users to create custom injectable asynchronous types.
+ *
+ * Asynch injection is only attempted at points where asynchronous injection is
+ * permitted, such as on resource creation and resource method invocation. It
+ * is not enabled at points where the API does not allow for suspending the
+ * request
+ *
+ * @param rawType
+ * @param genericType
+ * @param annotations The annotation list is useful to parametrize the injection.
+ * @return
+ */
+ public WrappedType resolve(
+            Class&lt;? extends WrappedType&gt; rawType,
+            Type genericType,
+            Annotation[] annotations);
+  }
+        </code></pre>
+   </section>
+    <section class="sect1" id="Single_foo_example"><div class="titlepage"><div><div><h2 class="title">39.2. Single&lt;Foo&gt; Example</h2></div></div></div>
+    
+        <pre><code class="no-highlight">
+package my.test;
+
+public class Foo {
+   private String value = "PRE-SET-VALUE";
+
+   public void setValue(String s) {
+      this.value = s;
+   }
+
+   public String getValue() {
+      return this.value;
+   }
+}
+        </code></pre>
+        <pre><code class="no-highlight">
+package my.test.asyc.resources;
+
+import io.reactivex.Single;
+import javax.ws.rs.ext.Provider;
+import org.jboss.resteasy.spi.ContextInjector;
+import my.test.Foo;
+
+@Provider
+public class FooAsychInjectorProvider implements
+            ContextInjector&lt;Single&lt;Foo&gt;,Foo&gt; {
+
+   public Single&lt;Foo&gt; resolve(Class&lt;? extends Single&lt;Foo&gt;&gt; rawType,
+            Type genericType,
+            Annotation[] annotations)
+   {
+      Foo value = new Foo();
+      return Single.just(value.setValue("made it"));
+   }
+}
+        </code></pre>
+    </section>
+    <section class="sect1" id="injectory_with_annotations_example"><div class="titlepage"><div><div><h2 class="title">39.3. Async Injector With Annotations Example</h2></div></div></div>
+    
+        <p>
+            A convenience interface to provide annotation parameter designators
+        </p>
+    <pre><code class="no-highlight">
+@Retention(RUNTIME)
+@Target({ FIELD, METHOD, PARAMETER })
+public @interface AsyncInjectionPrimitiveInjectorSpecifier
+{
+   public enum Type {
+      VALUE, NULL, NO_RESULT;
+   }
+
+   Type value() default Type.VALUE;
+}
+    </code></pre>
+        <pre><code class="no-highlight">
+
+@Provider
+public class AsyncInjectionFloatInjector implements
+            ContextInjector&lt;CompletionStage&lt;Float&gt;, Float&gt;
+{
+
+   @Override
+   public CompletionStage&lt;Float&gt; resolve(
+      Class&lt;? extends CompletionStage&lt;Float&gt;&gt; rawType,
+            Type genericType,
+            Annotation[] annotations)
+    {
+       for (Annotation annotation : annotations)
+       {
+           if(annotation.annotationType() ==
+              AsyncInjectionPrimitiveInjectorSpecifier.class) {
+             AsyncInjectionPrimitiveInjectorSpecifier.Type value =
+               ((AsyncInjectionPrimitiveInjectorSpecifier)annotation).value();
+             switch(value) {
+               case NO_RESULT:
+                  return null;
+               case NULL:
+                  return CompletableFuture.completedFuture(null);
+               case VALUE:
+                  return CompletableFuture.completedFuture(4.2f);
+            }
+            break;
+          }
+       }
+       return CompletableFuture.completedFuture(4.2f);
+    }
+}
+        </code></pre>
+    </section>
+ </section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch38.html"><strong>Prev</strong>Chapter 38. Asynchronous Job Service</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch40.html"><strong>Next</strong>Chapter 40. Reactive programming support</a></li></ul></footer></body></html>

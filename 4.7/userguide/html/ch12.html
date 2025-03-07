@@ -1,0 +1,120 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 12. @Form</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch11.html" title="Chapter 11. @FormParam"/><link rel="next" href="ch13.html" title="Chapter 13. Improved @…Param annotations"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch11.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch13.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_Form"><div class="titlepage"><div><div><h1 class="title">Chapter 12. @Form</h1></div></div></div>
+
+
+<p>
+
+This is a RESTEasy specific annotation that allows you to re-use any @*Param annotation within an injected class.  RESTEasy will instantiate the class and inject values into any annotated @*Param or @Context property.  This is useful if you have a lot of parameters on your method and you want to condense them into a value object.
+</p>
+<p>
+
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+public class MyForm {
+
+    @FormParam("stuff")
+    private int stuff;
+
+    @HeaderParam("myHeader")
+    private String header;
+
+    @PathParam("foo")
+    public void setFoo(String foo) {...}
+}
+
+
+@POST
+@Path("/myservice")
+public void post(@Form MyForm form) {...}
+</code></pre><p>
+</p>
+<p>
+
+When somebody posts to /myservice, RESTEasy will instantiate an instance of MyForm and inject the form parameter "stuff" into the "stuff" field, the header "myheader" into the header field, and call the setFoo method with the path param variable of "foo".
+</p>
+<p>
+
+</p>
+<p>
+Also, @Form has some expanded @FormParam features.  If you specify a prefix within the Form param, this will prepend a prefix to any form parameter lookup.  For example,
+    let's say you have one Address class, but want to reference invoice and shipping addresses from the same set of form parameters:
+</p>
+<pre><code class="no-highlight">
+public static class Person
+{
+    @FormParam("name")
+    private String name;
+
+    @Form(prefix = "invoice")
+    private Address invoice;
+
+    @Form(prefix = "shipping")
+    private Address shipping;
+}
+
+public static class Address
+{
+    @FormParam("street")
+    private String street;
+}
+
+@Path("person")
+public static class MyResource
+{
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String post(@Form Person p)
+    {
+        return p.toString();
+    }
+}
+</code></pre>
+    <p>
+        In this example, the client could send the following form parameters:
+    </p>
+<pre><code class="no-highlight">
+name=bill
+invoice.street=xxx
+shipping.street=yyy
+</code></pre>
+    <p>
+        The Person.invoice and Person.shipping fields would be populated appropriately. Also, prefix mappings also support lists and maps:
+    </p>
+<pre><code class="no-highlight">
+public static class Person {
+    @Form(prefix="telephoneNumbers") List&lt;TelephoneNumber&gt; telephoneNumbers;
+    @Form(prefix="address") Map&lt;String, Address&gt; addresses;
+}
+
+public static class TelephoneNumber {
+    @FormParam("countryCode") private String countryCode;
+    @FormParam("number") private String number;
+}
+
+public static class Address {
+    @FormParam("street") private String street;
+    @FormParam("houseNumber") private String houseNumber;
+}
+
+@Path("person")
+public static class MyResource {
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void post (@Form Person p) {} 
+</code></pre>
+    <p>The following form params could be submitted and the Person.telephoneNumbers and Person.addresses fields would be populated appropriately</p>
+<pre><code class="no-highlight">
+request.addFormHeader("telephoneNumbers[0].countryCode", "31");
+request.addFormHeader("telephoneNumbers[0].number", "0612345678");
+request.addFormHeader("telephoneNumbers[1].countryCode", "91");
+request.addFormHeader("telephoneNumbers[1].number", "9717738723");
+request.addFormHeader("address[INVOICE].street", "Main Street");
+request.addFormHeader("address[INVOICE].houseNumber", "2");
+request.addFormHeader("address[SHIPPING].street", "Square One");
+request.addFormHeader("address[SHIPPING].houseNumber", "13");
+</code></pre>
+
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch11.html"><strong>Prev</strong>Chapter 11. @FormParam</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch13.html"><strong>Next</strong>Chapter 13. Improved @…Param annotations</a></li></ul></footer></body></html>

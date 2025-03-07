@@ -1,0 +1,187 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 20. JAX-RS Content Negotiation</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch19.html" title="Chapter 19. Resources metadata configuration"/><link rel="next" href="ch21.html" title="Chapter 21. Content Marshalling/Providers"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch19.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch21.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="JAX-RS_Content_Negotiation"><div class="titlepage"><div><div><h1 class="title">Chapter 20. JAX-RS Content Negotiation</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="sect1"><a href="ch20.html#media_mappings">20.1. URL-based negotiation</a></span></li><li><span class="sect1"><a href="ch20.html#param_media_mappings">20.2. Query String Parameter-based negotiation</a></span></li></ul></div>
+   
+
+   <p>
+
+      The HTTP protocol has built in content negotiation headers that allow the client and server to specify what
+      content they are transferring and what content they would prefer to get. The server declares content preferences
+      via the @Produces and @Consumes headers.
+   </p>
+   <p>
+
+
+      @Consumes is an array of media types that a particular resource or resource method consumes. For example:
+   </p>
+   <p>
+
+</p><pre><code class="no-highlight">
+@Consumes("text/*")
+@Path("/library")
+public class Library {
+
+    @POST
+    public String stringBook(String book) {...}
+
+    @Consumes("text/xml")
+    @POST
+    public String jaxbBook(Book book) {...}
+}
+</code></pre><p>
+   </p>
+   <p>
+
+      When a client makes a request, JAX-RS first finds all methods that match the path, then, it sorts things based on
+      the content-type header sent by the client.
+      So, if a client sent:
+   </p>
+   <p>
+
+</p><pre><code class="no-highlight">
+POST /library
+Content-Type: text/plain
+
+This is a nice book
+</code></pre><p>
+   </p>
+   <p>
+
+      The stringBook() method would be invoked because it matches to the default "text/*" media type. Now, if
+      the client instead sends XML:
+   </p>
+   <p>
+
+</p><pre><code class="no-highlight">
+POST /library
+Content-Type: text/xml
+
+&lt;book name="EJB 3.0" author="Bill Burke"/&gt;
+</code></pre><p>
+   </p>
+   <p>
+
+      The jaxbBook() method would be invoked.
+   </p>
+   <p>
+
+
+      The @Produces is used to map a client request and match it up to the client's Accept header. The Accept HTTP
+      header is sent by the client and defines the media types the client prefers to receive from the server.
+   </p>
+   <p>
+
+
+</p><pre><code class="no-highlight">
+@Produces("text/*")
+@Path("/library")
+public class Library {
+
+@GET
+@Produces("application/json")
+public String getJSON() {...}
+
+@GET
+public String get() {...}
+</code></pre><p>
+   </p>
+   <p>
+
+      So, if the client sends:
+   </p>
+   <p>
+
+</p><pre><code class="no-highlight">
+GET /library
+Accept: application/json
+</code></pre><p>
+   </p>
+   <p>
+
+      The getJSON() method would be invoked.
+   </p>
+   <p>
+
+
+      @Consumes and @Produces can list multiple media types that they support. The client's Accept header can also send
+      multiple types it might like to receive. More specific media types are chosen first. The client Accept header or
+      @Produces @Consumes can also specify weighted preferences that are used to match up requests with resource
+      methods. This is best explained by RFC 2616 section 14.1 . RESTEasy supports this complex way of doing content
+      negotiation.
+   </p>
+   <p>
+
+
+   </p>
+   <p>
+
+      A variant in JAX-RS is a combination of media type, content-language, and content encoding as well as etags, last
+      modified headers, and other preconditions. This is a more complex form of content negotiation that is done
+      programmatically by the application developer using the javax.ws.rs.Variant, VarianListBuilder, and Request
+      objects. Request is injected via @Context. Read the javadoc for more info on these.
+   </p>
+<section class="sect1" id="media_mappings"><div class="titlepage"><div><div><h2 class="title">20.1. URL-based negotiation</h2></div></div></div>
+
+<p>
+Some clients, like browsers, cannot use the Accept and Accept-Language headers to negotiation the representation's media type
+or language.  RESTEasy allows you to map file name suffixes like (.xml, .txt, .en, .fr) to media types and languages.  These file name suffixes
+take the place and override any Accept header sent by the client.  You configure this using the resteasy.media.type.mappings and resteasy.language.mappings
+parameters. If configured within your web.xml, it would look like:
+</p>
+<pre><code class="no-highlight">
+&lt;web-app&gt;
+    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.media.type.mappings&lt;/param-name&gt;
+        &lt;param-value&gt;html : text/html, json : application/json, xml : application/xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+   &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.language.mappings&lt;/param-name&gt;
+        &lt;param-value&gt;en : en-US, es : es, fr : fr&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   ...
+&lt;/web-app&gt;
+</code></pre>
+
+<p>See <a class="xref" href="ch03.html#microprofile_config" title="3.4. Configuration">Section 3.4, “Configuration”</a> for more information about application configuration. </p>
+
+<p>
+Mappings are a comma delimited list of suffix/mediatype or suffix/language mappings.  Each mapping is delimited by a ':'.  So, if you invoked GET /foo/bar.xml.en, this would be equivalent to invoking the following request:
+</p>
+<pre><code class="no-highlight">
+GET /foo/bar
+Accept: application/xml
+Accept-Language: en-US
+</code></pre>
+<p>
+The mapped file suffixes are stripped from the target URL path before the request is dispatched to a corresponding JAX-RS resource.
+</p>
+</section>
+
+<section class="sect1" id="param_media_mappings"><div class="titlepage"><div><div><h2 class="title">20.2. Query String Parameter-based negotiation</h2></div></div></div>
+
+<p>
+RESTEasy can do content negotiation based in a parameter in query string. To enable this, the parameter resteasy.media.type.param.mapping
+can be configured. In web.xml, it would look like the following:
+</p>
+<pre><code class="no-highlight">
+&lt;web-app&gt;
+    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;resteasy.media.type.param.mapping&lt;/param-name&gt;
+        &lt;param-value&gt;someName&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    ...
+&lt;/web-app&gt;
+</code></pre>
+
+<p>See <a class="xref" href="ch03.html#microprofile_config" title="3.4. Configuration">Section 3.4, “Configuration”</a> for more information about application configuration. </p>
+
+<p>The param-value is the name of the query string parameter that RESTEasy will use in the place of the Accept header.</p>
+<p>Invoking http://service.foo.com/resouce?someName=application/xml, will give the application/xml media type the highest priority in the content negotiation.</p>
+<p>In cases where the request contains both the parameter and the Accept header, the parameter will be more relevant.</p>
+<p>It is possible to left the param-value empty, what will cause the processor to look for a parameter named 'accept'.</p>
+</section>
+
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch19.html"><strong>Prev</strong>Chapter 19. Resources metadata configuration</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch21.html"><strong>Next</strong>Chapter 21. Content Marshalling/Providers</a></li></ul></footer></body></html>
