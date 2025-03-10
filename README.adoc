@@ -1,3 +1,38 @@
 = RESTEasy Documentation
 
-This site hosts the documentation for https://resteasy.dev at https://docs.resteasy.dev.
+This site hosts the documentation for https://resteasy.dev[RESTEasy] at https://docs.resteasy.dev.
+
+== Update Process
+
+1. To update the documentation you need to copy the current X.X version directory and copy it to the version of the current
+release. For example:
++
+[source,bash]
+----
+mv -r ./6.2 ./archive/6.2.11.Final
+----
+
+2. Re-create the directory for the documentation:
++
+[source,bash]
+----
+mkdir 6.2
+----
+
+3. Copy the new documentation to the directory.
++
+[source,bash]
+----
+cp -r ~/tmp/resteasy-releases/resteasy-6.2.12.Final/docs/* ./6.2
+----
+
+4. Commit the changes.
++
+[source,bash]
+----
+git add 6.2
+git commit -s -a -m "Archive 6.2.11.Final documentation and add 6.2.12.Final documentation."
+----
+
+Repeat these steps for each version that needs to be updated.
+
