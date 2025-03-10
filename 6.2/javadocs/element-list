@@ -3,6 +3,8 @@ dev.resteasy.client.util.authentication.basic
 dev.resteasy.client.util.authentication.digest
 dev.resteasy.client.util.common
 dev.resteasy.client.util.logging
+dev.resteasy.cloud.tests
+dev.resteasy.cloud.tests.client
 dev.resteasy.embedded.server
 org.jboss.resteasy.annotations
 org.jboss.resteasy.annotations.cache
@@ -134,7 +136,6 @@ org.jboss.resteasy.tracing.providers.jsonb
 org.jboss.resteasy.util
 org.jboss.resteasy.util.snapshot
 org.jboss.resteasy.utils
-org.jboss.resteasy.utils.maven
 org.jboss.resteasy.wadl
 org.jboss.resteasy.wadl.i18n
 org.jboss.resteasy.wadl.jaxb
