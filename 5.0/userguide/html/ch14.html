@@ -1,0 +1,65 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 14. Optional parameter types</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch13.html" title="Chapter 13. Improved @…Param annotations"/><link rel="next" href="ch15.html" title="Chapter 15. @DefaultValue"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch13.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch15.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_OptionalParam"><div class="titlepage"><div><div><h1 class="title">Chapter 14. Optional parameter types</h1></div></div></div>
+    
+    <p>RESTEasy offers a mechanism to support a series of <code class="code">java.util.Optional</code> types as a wrapper object types. This
+        will give users the ability to use optional typed parameters, and eliminate all null checks by using methods
+        like <code class="code">Optional.orElse()</code>.
+    </p>
+    <p>Here is the sample:</p>
+    <pre><code class="no-highlight">@Path("/double")
+@GET
+public String optDouble(@QueryParam("value") OptionalDouble value) {
+    return Double.toString(value.orElse(4242.0));
+}
+</code></pre>
+    <p>
+        From the above sample code we can see that the <code class="code">OptionalDouble</code> can be used as parameter type, and when users
+        don't provide a value in <code class="code">@QueryParam</code>, then the default value will be returned.
+    </p>
+    <p>
+        Here is the list of supported optional parameter types:
+        </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+                <p>@QueryParam</p>
+            </li><li class="listitem">
+                <p>@FormParam</p>
+            </li><li class="listitem">
+                <p>@MatrixParam</p>
+            </li><li class="listitem">
+                <p>@HeaderParam</p>
+            </li><li class="listitem">
+                <p>@CookieParam</p>
+            </li></ul></div><p>
+    </p>
+    <p>
+        As the list shown above, those parameter types support the Java-provided <code class="code">Optional</code> types. Please note that the <code class="code">@PathParam</code> is an exception for which <code class="code">Optional</code> is not available. The reason is that <code class="code">Optional</code> for the <code class="code">@PathParam</code> use case would just be a NO-OP, since an element of the path cannot be omitted.
+    </p>
+
+    <p>
+      The <code class="code">Optional</code> types can also be used as type of the fields of a <code class="code">@BeanParam</code>'s class.
+    </p>
+
+    <p>Here is an example of endpoint with a <code class="code">@BeanParam</code>:</p>
+
+    <pre><code class="no-highlight">@Path("/double")
+@GET
+public String optDouble(@BeanParam Bean bean) {
+    return Double.toString(bean.value.orElse(4242.0));
+}</code></pre>
+
+  <p>The corresponding class <code class="code">Bean</code>:</p>
+
+  <pre><code class="no-highlight">public class Bean {
+    @QueryParam("value")
+    OptionalDouble value;
+}</code></pre>
+
+  <p> Finally, the <code class="code">Optional</code> types can be used directly as type of the fields of a Jakarta RESTful Web Services resource class.</p>
+
+  <p>Here is an example of a Jakarta RESTful Web Services resource class with an <code class="code">Optional</code> type:</p>
+
+  <pre><code class="no-highlight">@RequestScoped
+public class OptionalResource {
+    @QueryParam("value")
+    Optional&lt;String&gt; value;
+    ...
+}</code></pre>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch13.html"><strong>Prev</strong>Chapter 13. Improved @…Param annotations</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch15.html"><strong>Next</strong>Chapter 15. @DefaultValue</a></li></ul></footer></body></html>

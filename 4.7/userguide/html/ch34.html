@@ -1,0 +1,26 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 34. Content-Range Support</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch33.html" title="Chapter 33. CORS"/><link rel="next" href="ch35.html" title="Chapter 35. RESTEasy Caching Features"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch33.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch35.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="ContentRange"><div class="titlepage"><div><div><h1 class="title">Chapter 34. Content-Range Support</h1></div></div></div>
+   
+   <p>
+      RESTEasy supports <code class="literal">Range</code> requests for <code class="literal">java.io.File</code> response entities.
+   </p>
+      <pre><code class="no-highlight">
+   @Path("/")
+   public class Resource {
+      @GET
+      @Path("file")
+      @Produces("text/plain")
+      public File getFile()
+      {
+         return file;
+      }
+   }
+
+      Response response = client.target(generateURL("/file")).request()
+              .header("Range", "1-4").get();
+      Assert.assertEquals(response.getStatus(), 206);
+      Assert.assertEquals(4, response.getLength());
+      System.out.println("Content-Range: " + response.getHeaderString("Content-Range"));
+
+
+      </code></pre>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch33.html"><strong>Prev</strong>Chapter 33. CORS</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch35.html"><strong>Next</strong>Chapter 35. RESTEasy Caching Features</a></li></ul></footer></body></html>

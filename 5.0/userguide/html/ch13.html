@@ -1,0 +1,55 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 13. Improved @…Param annotations</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch12.html" title="Chapter 12. @Form"/><link rel="next" href="ch14.html" title="Chapter 14. Optional parameter types"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch12.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch14.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_NewParam"><div class="titlepage"><div><div><h1 class="title">Chapter 13. Improved <code class="code">@…Param</code> annotations</h1></div></div></div>
+
+
+<p>
+With the addition of parameter names in the bytecode since Java 8, it is no longer necessary to require users to specify parameter names
+in the following annotations: <a class="link" href="ch05.html" title="Chapter 5. @PathParam"><code class="code">@PathParam</code></a>, 
+<a class="link" href="ch06.html" title="Chapter 6. @QueryParam"><code class="code">@QueryParam</code></a>, <a class="link" href="ch11.html" title="Chapter 11. @FormParam"><code class="code">@FormParam</code></a>,
+<a class="link" href="ch10.html" title="Chapter 10. @CookieParam"><code class="code">@CookieParam</code></a>, <a class="link" href="ch07.html" title="Chapter 7. @HeaderParam"><code class="code">@HeaderParam</code></a>
+and <a class="link" href="ch09.html" title="Chapter 9. @MatrixParam"><code class="code">@MatrixParam</code></a>. In order to benefit from this feature, you have to switch to new annotations
+with the same name, in a different package, which have an optional value parameter. To use this, follow these steps:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">Import the <code class="code">org.jboss.resteasy.annotations.jaxrs</code> package to replace annotations from the Jakarta RESTful Web Services spec.</li><li class="listitem">Tell your build system to record method parameter names in the bytecode.</li><li class="listitem">Remove the annotation value if the name matches the name of the annotated variable.</li></ul></div>
+<p>
+Note that you can omit the annotation name for annotated method parameters as well as annotated fields or JavaBean properties.
+</p>
+<p>
+For Maven users, recording method parameter names in the bytecode can be enabled by setting the <code class="code">maven.compiler.parameters</code> 
+to <code class="code">true</code>:
+</p>
+<pre><code class="no-highlight">
+    &lt;properties&gt;
+        &lt;maven.compiler.parameters&gt;true&lt;/maven.compiler.parameters&gt;
+    &lt;/properties&gt;
+</code></pre>
+<p>Usage:</p>
+<pre><code class="no-highlight">
+import org.jboss.resteasy.annotations.jaxrs.*;
+
+@Path("/library")
+public class Library {
+
+   @GET
+   @Path("/book/{isbn}")
+   public String getBook(@PathParam String isbn) {
+      // search my database and get a string representation and return it
+   }
+}
+</code></pre>
+
+<p>If your annotated variable does not have the same name as the path parameter, you can still
+specify the name:</p>
+<pre><code class="no-highlight">
+import org.jboss.resteasy.annotations.jaxrs.*;
+
+@Path("/library")
+public class Library {
+
+   @GET
+   @Path("/book/{isbn}")
+   public String getBook(@PathParam("isbn") String id) {
+      // search my database and get a string representation and return it
+   }
+}
+</code></pre>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch12.html"><strong>Prev</strong>Chapter 12. @Form</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch14.html"><strong>Next</strong>Chapter 14. Optional parameter types</a></li></ul></footer></body></html>

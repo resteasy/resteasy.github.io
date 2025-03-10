@@ -1,0 +1,164 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 49. CDI Integration</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch48.html" title="Chapter 48. Spring Integration"/><link rel="next" href="ch50.html" title="Chapter 50. Guice 3.0 Integration"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch48.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch50.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="CDI"><div class="titlepage"><div><div><h1 class="title">Chapter 49. CDI Integration</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="section"><a href="ch49.html#d5e3425">49.1. Using CDI beans as JAX-RS components</a></span></li><li><span class="section"><a href="ch49.html#d5e3432">49.2. Default scopes</a></span></li><li><span class="section"><a href="ch49.html#d5e3444">49.3. Configuration within WildFly</a></span></li><li><span class="section"><a href="ch49.html#d5e3447">49.4. Configuration with different distributions</a></span></li></ul></div>
+    
+    <p>This module provides integration with JSR-299 (Contexts and
+        Dependency Injection for the Java EE platform)
+    </p>
+    <section class="section" id="d5e3425"><div class="titlepage"><div><div><h2 class="title">49.1. Using CDI beans as JAX-RS components</h2></div></div></div>
+        
+        <p>
+            Both the JAX-RS and CDI specifications introduce their own
+            component
+            model. On the one hand, every class placed in a CDI archive that
+            fulfills a set of basic constraints is implicitly a CDI bean. On
+            the
+            other hand, explicit decoration of your Java class with
+            <code class="code">@Path</code>
+            or
+            <code class="code">@Provider</code>
+            is required for it to become a JAX-RS component.
+            Without the
+            integration code, annotating a class suitable for being a CDI bean
+            with
+            JAX-RS annotations leads into a faulty result (JAX-RS component
+            not managed by CDI)
+            The
+            resteasy-cdi module is a bridge that
+            allows
+            RESTEasy
+            to work with class
+            instances obtained from the CDI
+            container.
+        </p>
+        <p>
+            During a
+            web
+            service
+            invocation, resteasy-cdi asks the CDI
+            container
+            for the
+            managed
+            instance
+            of a JAX-RS component. Then, this
+            instance is
+            passed
+            to
+            RESTEasy.
+            If a
+            managed instance is not available for
+            some
+            reason (the
+            class is
+            placed
+            in a jar which is not a bean deployment
+            archive),
+            RESTEasy
+            falls back to
+            instantiating the class itself.
+        </p>
+        <p>
+            As a result, CDI services like injection, lifecycle management,
+            events, decoration and interceptor bindings can be used in JAX-RS
+            components.
+        </p>
+    </section>
+    <section class="section" id="d5e3432"><div class="titlepage"><div><div><h2 class="title">49.2. Default scopes</h2></div></div></div>
+        
+        <p>
+            A CDI bean that does not explicitly define a scope is
+            <code class="code">@Dependent</code>
+            scoped by default.
+            This pseudo scope means that the bean adapts to the
+            lifecycle of
+            the bean it is
+            injected into. Normal scopes (request,
+            session,
+            application) are more suitable for JAX-RS components as they
+            designate component's lifecycle boundaries explicitly. Therefore, the
+            resteasy-cdi
+            module alters the default
+            scoping in
+            the following way:
+        </p>
+        <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+                <p>
+                    If a JAX-RS root resource does not define a scope
+                    explicitly,
+                    it is
+                    bound to the Request scope.
+                </p>
+            </li><li class="listitem">
+                <p>
+                    If a JAX-RS Provider or
+                    <code class="code">javax.ws.rs.Application</code>
+                    subclass
+                    does not define a scope explicitly, it is bound to the
+                    Application
+                    scope.
+                </p>
+            </li></ul></div>
+        <div style="margin-left: 0.5in; margin-right: 0.5in;" class="warning"><h2>Warning</h2>
+            <p>
+                Since the scope of all beans that do not declare a scope is
+                modified by resteasy-cdi, this affects session beans as well. As a
+                result, a conflict occurs if the scope of a stateless session bean
+                or singleton is changed automatically as the spec prohibits these
+                components to
+                be @RequestScoped.
+                Therefore, you
+                need to explicitly
+                define a scope
+                when using stateless session
+                beans or singletons. This
+                requirement is likely to
+                be removed in
+                future releases.
+            </p>
+        </div>
+    </section>
+    <section class="section" id="d5e3444"><div class="titlepage"><div><div><h2 class="title">49.3. Configuration within WildFly</h2></div></div></div>
+        
+        <p>
+            CDI integration is provided with no additional configuration with WildFly.
+        </p>
+    </section>
+    <section class="section" id="d5e3447"><div class="titlepage"><div><div><h2 class="title">49.4. Configuration with different distributions</h2></div></div></div>
+        
+        <p>
+            Provided you have an
+            existing RESTEasy application, all that needs to
+            be done is to
+            add the
+            resteasy-cdi jar into your project's
+            <code class="code">WEB-INF/lib</code>
+            directory.
+            When using
+            maven, this can be achieve by defining the
+            following
+            dependency.
+            </p><pre><code class="no-highlight">&lt;dependency&gt;
+	&lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+	&lt;artifactId&gt;resteasy-cdi&lt;/artifactId&gt;
+	&lt;version&gt;${project.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><p>
+        </p>
+        <p>
+            Furthermore, when running a pre-Servlet 3 container, the
+            following context parameter needs to be specified in web.xml. (This
+            is done
+            automatically via web-fragment in a Servlet 3 environment)
+        </p>
+        <pre><code class="language-xml">&lt;context-param&gt;
+	&lt;param-name&gt;resteasy.injector.factory&lt;/param-name&gt;
+	&lt;param-value&gt;org.jboss.resteasy.cdi.CdiInjectorFactory&lt;/param-value&gt;
+&lt;/context-param&gt;</code></pre>
+        <p>
+            When deploying an application to a Servlet container that does not
+            support CDI out of the box
+            (Tomcat, Jetty, Google App Engine), a CDI implementation needs to be
+            added first.
+            <a class="ulink" href="http://docs.jboss.org/weld/reference/latest/en-US/html/environments.html">Weld-servlet module
+            </a>
+            can be used for this purpose.
+        </p>
+    </section>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch48.html"><strong>Prev</strong>Chapter 48. Spring Integration</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch50.html"><strong>Next</strong>Chapter 50. Guice 3.0 Integration</a></li></ul></footer></body></html>

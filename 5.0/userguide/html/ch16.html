@@ -1,0 +1,104 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 16. @Encoded and encoding</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch15.html" title="Chapter 15. @DefaultValue"/><link rel="next" href="ch17.html" title="Chapter 17. @Context"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch15.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch17.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_Encoded_and_encoding"><div class="titlepage"><div><div><h1 class="title">Chapter 16. @Encoded and encoding</h1></div></div></div>
+
+
+<p>
+
+Jakarta RESTful Web Services allows you to get encoded or decoded @*Params and specify path definitions and parameter names using encoded or decoded strings.
+</p>
+<p>
+
+
+</p>
+<p>
+
+The @javax.ws.rs.Encoded annotation can be used on a class, method, or param.  By default, inject @PathParam and @QueryParams are decoded.  By additionally adding the @Encoded annotation, the value of these params will be provided in encoded form.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@Path("/")
+public class MyResource {
+
+    @Path("/{param}")
+    @GET
+    public String get(@PathParam("param") @Encoded String param) {...}
+}
+</code></pre><p>
+</p>
+<p>
+
+In the above example, the value of the @PathParam injected into the param of the get() method will be URL encoded.  Adding the @Encoded annotation as a paramater annotation triggers this affect.
+</p>
+<p>
+
+You may also use the @Encoded annotation on the entire method and any combination of @QueryParam or @PathParam's values will be encoded.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@Path("/")
+public class MyResource {
+  
+    @Path("/{param}")
+    @GET
+    @Encoded
+    public String get(@QueryParam("foo") String foo, @PathParam("param") String param) {}
+}
+</code></pre><p>
+</p>
+<p>
+
+In the above example, the values of the "foo" query param and "param" path param will be injected as encoded values.
+</p>
+<p>
+
+You can also set the default to be encoded for the entire class.
+</p><pre><code class="no-highlight">
+@Path("/")
+@Encoded
+public class ClassEncoded {
+  
+    @GET
+    public String get(@QueryParam("foo") String foo) {}
+}
+</code></pre><p>
+</p>
+<p>
+
+
+</p>
+<p>
+
+The @Path annotation has an attribute called encode.  Controls whether the literal part of the supplied value (those characters that are not part of a template variable) are URL encoded. If true, any characters in the URI template that are not valid URI character will be automatically encoded. If false then all characters must be valid URI characters.  By default this is set to true.  If you want to encoded the characters yourself, you may.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@Path(value="hello%20world", encode=false)
+</code></pre><p>
+</p>
+<p>
+
+
+</p>
+<p>
+
+Much like @Path.encode(), this controls whether the specified query param name should be encoded by the container before it tries to find the query param in the request.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@QueryParam(value="hello%20world", encode=false)
+</code></pre><p>
+</p>
+<p>
+
+</p>
+<p>
+
+</p>
+<p>
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch15.html"><strong>Prev</strong>Chapter 15. @DefaultValue</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch17.html"><strong>Next</strong>Chapter 17. @Context</a></li></ul></footer></body></html>

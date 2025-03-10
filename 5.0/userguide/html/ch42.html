@@ -1,0 +1,39 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 42. Server-side Mock Framework</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch41.html" title="Chapter 41. Embedded Containers"/><link rel="next" href="ch43.html" title="Chapter 43. Securing Jakarta RESTful Web Services and RESTEasy"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch41.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch43.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="RESTEasy_Server-side_Mock_Framework"><div class="titlepage"><div><div><h1 class="title">Chapter 42. Server-side Mock Framework</h1></div></div></div>
+
+
+<p>
+
+Although RESTEasy has an Embeddable Container, you may not be comfortable with the idea of starting and stopping a web server within unit tests (in reality, the embedded container starts in milli seconds), or you might not like the idea of using Apache HTTP Client or java.net.URL to test your code.  RESTEasy provides a mock framework so that you can invoke on your resource directly.
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+import org.jboss.resteasy.mock.*;
+...
+
+      Dispatcher dispatcher = MockDispatcherFactory.createDispatcher();
+
+      POJOResourceFactory noDefaults = new POJOResourceFactory(LocatingResource.class);
+      dispatcher.getRegistry().addResourceFactory(noDefaults);
+
+      {
+         MockHttpRequest request = MockHttpRequest.get("/locating/basic");
+         MockHttpResponse response = new MockHttpResponse();
+
+         dispatcher.invoke(request, response);
+
+
+         Assert.assertEquals(HttpServletResponse.SC_OK, response.getStatus());
+         Assert.assertEquals("basic", response.getContentAsString());
+      }
+</code></pre><p>
+</p>
+<p>
+
+See the RESTEasy Javadoc for all the ease-of-use methods associated with MockHttpRequest, and MockHttpResponse.
+</p>
+<p>
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch41.html"><strong>Prev</strong>Chapter 41. Embedded Containers</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch43.html"><strong>Next</strong>Chapter 43. Securing Jakarta RESTful Web Services...</a></li></ul></footer></body></html>

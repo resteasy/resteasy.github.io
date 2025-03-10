@@ -1,0 +1,97 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 44. JSON Web Signature and Encryption (JOSE-JWT)</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch43.html" title="Chapter 43. Securing JAX-RS and RESTEasy"/><link rel="next" href="ch45.html" title="Chapter 45. Doseta Digital Signature Framework"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch43.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch45.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="d5e3012"><div class="titlepage"><div><div><h1 class="title">Chapter 44. JSON Web Signature and Encryption (JOSE-JWT)</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="section"><a href="ch44.html#d5e3015">44.1. JSON Web Signature (JWS)</a></span></li><li><span class="section"><a href="ch44.html#d5e3021">44.2. JSON Web Encryption (JWE)</a></span></li></ul></div>
+  
+
+  <p>JSON Web Signature and Encryption (JOSE JWT) is a new specification that can be used to
+        encode content as a string and either digitally sign or encrypt it. I won't go over the spec
+        here Do a Google search on it if you're interested</p>
+
+  <section class="section" id="d5e3015"><div class="titlepage"><div><div><h2 class="title">44.1. JSON Web Signature (JWS)</h2></div></div></div>
+      
+      <p>To digitally sign content using JWS, use the <code class="literal">org.jboss.resteasy.jose.jws.JWSBuilder</code> class.
+          To unpack and verify a JWS, use the <code class="literal">org.jboss.resteasy.jose.jws.JWSInput</code> class. (TODO, write
+          more doco here!)
+      Here's an example:</p>
+      <pre><code class="no-highlight">
+          
+   @Test
+   public void testRSAWithContentType() throws Exception
+   {
+      KeyPair keyPair = KeyPairGenerator.getInstance("RSA").generateKeyPair();
+
+      String encoded = new JWSBuilder()
+              .contentType(MediaType.TEXT_PLAIN_TYPE)
+              .content("Hello World", MediaType.TEXT_PLAIN_TYPE)
+              .rsa256(keyPair.getPrivate());
+
+      System.out.println(encoded);
+
+      JWSInput input = new JWSInput(encoded, ResteasyProviderFactory.getInstance());
+      System.out.println(input.getHeader());
+      String msg = (String)input.readContent(String.class);
+      Assert.assertEquals("Hello World", msg);
+      Assert.assertTrue(RSAProvider.verify(input, keyPair.getPublic()));
+
+   }
+
+      </code></pre>
+  </section>
+    <section class="section" id="d5e3021"><div class="titlepage"><div><div><h2 class="title">44.2. JSON Web Encryption (JWE)</h2></div></div></div>
+        
+        <p>To encrypt content using JWE, use the <code class="literal">org.jboss.resteasy.jose.jwe.JWEBuilder</code> class.
+            To decrypt content using JWE, use the <code class="literal">org.jboss.resteasy.jose.jwe.JWEInput</code> class. (TODO, write
+            more doco here!)
+            Here's an example:</p>
+        <pre><code class="no-highlight">
+            
+   @Test
+   public void testRSA() throws Exception
+   {
+      KeyPair keyPair = KeyPairGenerator.getInstance("RSA").generateKeyPair();
+
+      String content = "Live long and prosper.";
+
+      {
+      String encoded = new JWEBuilder().contentBytes(content.getBytes()).RSA1_5((RSAPublicKey)keyPair.getPublic());
+      System.out.println("encoded: " + encoded);
+      byte[] raw = new JWEInput(encoded).decrypt((RSAPrivateKey)keyPair.getPrivate()).getRawContent();
+      String from = new String(raw);
+      Assert.assertEquals(content, from);
+      }
+      {
+         String encoded = new JWEBuilder().contentBytes(content.getBytes()).RSA_OAEP((RSAPublicKey)keyPair.getPublic());
+         System.out.println("encoded: " + encoded);
+         byte[] raw = new JWEInput(encoded).decrypt((RSAPrivateKey)keyPair.getPrivate()).getRawContent();
+         String from = new String(raw);
+         Assert.assertEquals(content, from);
+      }
+      {
+         String encoded = new JWEBuilder().contentBytes(content.getBytes()).A128CBC_HS256().RSA1_5((RSAPublicKey)keyPair.getPublic());
+         System.out.println("encoded: " + encoded);
+         byte[] raw = new JWEInput(encoded).decrypt((RSAPrivateKey)keyPair.getPrivate()).getRawContent();
+         String from = new String(raw);
+         Assert.assertEquals(content, from);
+      }
+      {
+         String encoded = new JWEBuilder().contentBytes(content.getBytes()).A128CBC_HS256().RSA_OAEP((RSAPublicKey)keyPair.getPublic());
+         System.out.println("encoded: " + encoded);
+         byte[] raw = new JWEInput(encoded).decrypt((RSAPrivateKey)keyPair.getPrivate()).getRawContent();
+         String from = new String(raw);
+         Assert.assertEquals(content, from);
+      }
+   }
+
+   @Test
+   public void testDirect() throws Exception
+   {
+      String content = "Live long and prosper.";
+      String encoded = new JWEBuilder().contentBytes(content.getBytes()).dir("geheim");
+      System.out.println("encoded: " + encoded);
+      byte[] raw = new JWEInput(encoded).decrypt("geheim").getRawContent();
+      String from = new String(raw);
+      Assert.assertEquals(content, from);
+
+   }
+        </code></pre>
+    </section>
+
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch43.html"><strong>Prev</strong>Chapter 43. Securing JAX-RS and RESTEasy</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch45.html"><strong>Next</strong>Chapter 45. Doseta Digital Signature Framework</a></li></ul></footer></body></html>

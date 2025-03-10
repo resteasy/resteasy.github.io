@@ -1,0 +1,74 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 31. Configuring Individual Jakarta RESTful Web Services Resource Beans</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch30.html" title="Chapter 30. Exception Handling"/><link rel="next" href="ch32.html" title="Chapter 32. Content encoding"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch30.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch32.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Configuring_Individual_Jakarta_REST_Resource_Beans"><div class="titlepage"><div><div><h1 class="title">Chapter 31. Configuring Individual Jakarta RESTful Web Services Resource Beans</h1></div></div></div>
+
+
+<p>
+
+
+</p>
+<p>
+
+If you are scanning your path for Jakarta RESTful Web Services annotated resource beans, your beans will be registered in per-request mode.  This means an instance will be created per HTTP request served.  Generally, you will need information from your environment.  If you are running within a servlet container using the WAR-file distribution, in 1.0.0.Beta-2 and lower, you can only use the JNDI lookups to obtain references to Jakarta EE resources and configuration information.  In this case, define your Jakarta EE configuration (i.e. ejb-ref, env-entry, persistence-context-ref, etc...) within web.xml of the resteasy WAR file.  Then within your code do jndi lookups in the java:comp namespace.  For example:
+</p>
+<p>
+
+web.xml
+</p><pre><code class="no-highlight">
+
+&lt;ejb-ref&gt;
+  &lt;ejb-ref-name&gt;ejb/foo&lt;/ejb-ref-name&gt;
+  ...
+&lt;/ejb-ref&gt;
+
+</code></pre><p>
+</p>
+<p>
+
+resource code:
+</p><pre><code class="no-highlight">
+@Path("/")
+public class MyBean {
+
+   public Object getSomethingFromJndi() {
+      new InitialContext.lookup("java:comp/ejb/foo");
+   }
+...
+}
+</code></pre><p>
+</p>
+<p>
+
+
+</p>
+<p>
+
+You can also manually configure and register your beans through the Registry.  To do this in a WAR-based deployment, you need to write a specific ServletContextListener to do this.  Within the listener, you can obtain a reference to the registry as follows:
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+
+public class MyManualConfig implements ServletContextListener
+{
+   public void contextInitialized(ServletContextEvent event)
+   {
+
+      Registry registry = (Registry) event.getServletContext().getAttribute(Registry.class.getName());
+
+   }
+...
+}
+
+</code></pre><p>
+</p>
+<p>
+
+Please also take a look at our Spring Integration as well as the Embedded Container's Spring Integration
+</p>
+<p>
+
+</p>
+<p>
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch30.html"><strong>Prev</strong>Chapter 30. Exception Handling</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch32.html"><strong>Next</strong>Chapter 32. Content encoding</a></li></ul></footer></body></html>

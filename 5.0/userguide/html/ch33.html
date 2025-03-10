@@ -1,0 +1,12 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 33. CORS</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch32.html" title="Chapter 32. Content encoding"/><link rel="next" href="ch34.html" title="Chapter 34. Content-Range Support"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch32.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch34.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="d5e2303"><div class="titlepage"><div><div><h1 class="title">Chapter 33. CORS</h1></div></div></div>
+    
+    <p>
+        RESTEasy has a <code class="literal">ContainerRequestFilter</code> that can be used to handle CORS preflight and actual requests.
+        <code class="literal">org.jboss.resteasy.plugins.interceptors.CorsFilter</code>.  You must allocate this and register it
+        as a singleton provider from your Application class.  See the javadoc or its various settings.
+    </p>
+<pre><code class="no-highlight">
+CorsFilter filter = new CorsFilter();
+filter.getAllowedOrigins().add("http://localhost");
+</code></pre>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch32.html"><strong>Prev</strong>Chapter 32. Content encoding</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch34.html"><strong>Next</strong>Chapter 34. Content-Range Support</a></li></ul></footer></body></html>
