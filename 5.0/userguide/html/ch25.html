@@ -1,0 +1,20 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 25. JSON Support via Jakarta EE JSON-P API</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch24.html" title="Chapter 24. JSON Support via Jackson"/><link rel="next" href="ch26.html" title="Chapter 26. Multipart Providers"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch24.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch26.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="json-p"><div class="titlepage"><div><div><h1 class="title">Chapter 25. JSON Support via Jakarta EE JSON-P API</h1></div></div></div>
+    
+    <p>No, this is not the JSONP you are thinking of! JSON-P is a Jakarta EE parsing API.
+        Horrible name for
+        a new JSON parsing API!  What were they thinking?  Anyways, RESTEasy has
+        a provider for it.  If you are using WildFly, it is required by Jakarta EE so you will have it automatically bundled.
+        Otherwise, use this maven dependency.
+    </p>
+    <pre><code class="no-highlight">
+&lt;dependency&gt;
+   &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+   &lt;artifactId&gt;resteasy-json-p-provider&lt;/artifactId&gt;
+   &lt;version&gt;5.0.10.Final&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+    <p>
+        It has built in support for JsonObject, JsonArray, and JsonStructure as request or response entities.  It should
+        not conflict with Jackson if you have that in your path too.
+    </p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch24.html"><strong>Prev</strong>Chapter 24. JSON Support via Jackson</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch26.html"><strong>Next</strong>Chapter 26. Multipart Providers</a></li></ul></footer></body></html>

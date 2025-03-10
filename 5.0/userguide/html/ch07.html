@@ -1,0 +1,121 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 7. @HeaderParam</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch06.html" title="Chapter 6. @QueryParam"/><link rel="next" href="ch08.html" title="Chapter 8. Linking resources"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch06.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch08.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_HeaderParam"><div class="titlepage"><div><div><h1 class="title">Chapter 7. @HeaderParam</h1></div></div></div><div class="toc"><ul class="toc"><li><span class="section"><a href="ch07.html#d5e653">7.1. <code class="classname">HeaderDelegate</code>s</a></span></li></ul></div>
+
+
+<div style="margin-left: 0.5in; margin-right: 0.5in;" class="note"><h2>Note</h2>
+   <p>
+      RESTEasy <a class="link" href="ch13.html" title="Chapter 13. Improved @…Param annotations">supports <code class="code">@HeaderParam</code> annotations with no parameter name.</a>.
+   </p>
+</div>
+
+<p>
+
+The @HeaderParam annotation allows you to map a request HTTP header to your method invocation.
+</p>
+<p>
+
+GET /books?num=5
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@GET
+public String getBooks(@HeaderParam("From") String from) {
+...
+}
+</code></pre><p>
+</p>
+<p>
+
+Like PathParam, your parameter type can be an String, primitive, or class that has a String constructor or static valueOf() method.  For example, MediaType has a valueOf() method and you could do:
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@PUT
+public void put(@HeaderParam("Content-Type") MediaType contentType, ...)
+</code></pre><p>
+</p>
+<p>
+
+</p>
+<p>
+
+
+</p>
+
+<section class="section" id="d5e653"><div class="titlepage"><div><div><h2 class="title">7.1. <code class="classname">HeaderDelegate</code>s</h2></div></div></div>
+
+
+<p>
+In addition to the usual methods for translating parameters to and from strings, parameters annotated
+with <code class="classname">@HeaderParam</code> have another option: implementations of 
+<code class="classname">RuntimeDelegate$HeaderDelegate</code>:
+</p>
+
+<pre><code class="no-highlight">
+    /**
+     * Defines the contract for a delegate that is responsible for
+     * converting between the String form of a HTTP header and
+     * the corresponding Jakarta RESTful Web Services type {@code T}.
+     *
+     * @param &lt;T&gt; a Jakarta RESTful Web Services type that corresponds to the value of a HTTP header.
+     */
+    public static interface HeaderDelegate&lt;T&gt; {
+
+        /**
+         * Parse the supplied value and create an instance of {@code T}.
+         *
+         * @param value the string value.
+         * @return the newly created instance of {@code T}.
+         * @throws IllegalArgumentException if the supplied string cannot be
+         *                                  parsed or is {@code null}.
+         */
+        public T fromString(String value);
+
+        /**
+         * Convert the supplied value to a String.
+         *
+         * @param value the value of type {@code T}.
+         * @return a String representation of the value.
+         * @throws IllegalArgumentException if the supplied object cannot be
+         *                                  serialized or is {@code null}.
+         */
+        public String toString(T value);
+    }
+</code></pre>
+
+<p>
+<code class="classname">HeaderDelegate</code> is similar to <code class="classname">ParamConverter</code>, but it is not
+very convenient to register a <code class="classname">HeaderDelegate</code> since, unlike, for example,
+<code class="classname">ParamConverterProvider</code>, it is not treated by the Jakarta RESTful Web Services specification as a provider.
+The class <code class="classname">javax.ws.rs.core.Configurable</code>, which is subclassed by, for example,
+<code class="classname">org.jboss.resteasy.spi.ResteasyProviderFactory</code> has methods like
+</p>
+
+<pre><code class="no-highlight">
+    /**
+     * Register a class of a custom Jakarta RESTful Web Services component (such as an extension provider or
+     * a {@link javax.ws.rs.core.Feature feature} meta-provider) to be instantiated
+     * and used in the scope of this configurable context.
+     *
+     * ...
+     *
+     * @param componentClass Jakarta RESTful Web Services component class to be configured in the scope of this
+     *                       configurable context.
+     * @return the updated configurable context.
+     */
+    public C register(Class&lt;?&gt; componentClass);
+</code></pre>
+
+<p>
+but it is not clear that they are applicable to <code class="classname">HeaderDelegate</code>s.
+</p>
+
+<p>
+RESTEasy approaches this problem by allowing <code class="classname">HeaderDelegate</code>s to be annotated
+with <code class="classname">@Provider</code>. Not only will <code class="methodname">ResteasyProviderFactory.register()</code>
+process <code class="classname">HeaderDelegate</code>s, but another useful consequence is that
+<code class="classname">HeaderDelegate</code>s can be discovered automatically at runtime.
+</p>
+</section>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch06.html"><strong>Prev</strong>Chapter 6. @QueryParam</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch08.html"><strong>Next</strong>Chapter 8. Linking resources</a></li></ul></footer></body></html>

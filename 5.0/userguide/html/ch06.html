@@ -1,0 +1,38 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 6. @QueryParam</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch05.html" title="Chapter 5. @PathParam"/><link rel="next" href="ch07.html" title="Chapter 7. @HeaderParam"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch05.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch07.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="_QueryParam"><div class="titlepage"><div><div><h1 class="title">Chapter 6. @QueryParam</h1></div></div></div>
+
+
+<div style="margin-left: 0.5in; margin-right: 0.5in;" class="note"><h2>Note</h2>
+   <p>
+      RESTEasy <a class="link" href="ch13.html" title="Chapter 13. Improved @…Param annotations">supports <code class="code">@QueryParam</code> annotations with no parameter name.</a>.
+   </p>
+</div>
+
+<p>
+
+The @QueryParam annotation allows you to map a URI query string parameter or url form encoded parameter to your method invocation.
+</p>
+<p>
+
+GET /books?num=5
+</p>
+<p>
+
+</p><pre><code class="no-highlight">
+@GET
+public String getBooks(@QueryParam("num") int num) {
+...
+}
+</code></pre><p>
+</p>
+<p>
+
+Currently since RESTEasy is built on top of a Servlet, it does not distinguish between URI query strings or url form encoded parameters. Like PathParam, your parameter type can be an String, primitive, or class that has a String constructor or static valueOf() method.
+</p>
+<p>
+
+</p>
+<p>
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch05.html"><strong>Prev</strong>Chapter 5. @PathParam</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch07.html"><strong>Next</strong>Chapter 7. @HeaderParam</a></li></ul></footer></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 57. Maven and RESTEasy</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch56.html" title="Chapter 56. Internationalization and Localization"/><link rel="next" href="ch58.html" title="Chapter 58. Migration from older versions"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch56.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch58.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Maven_and_RESTEasy"><div class="titlepage"><div><div><h1 class="title">Chapter 57. Maven and RESTEasy</h1></div></div></div>
+   
+   <p>
+JBoss's Maven Repository is at:
+      https://repository.jboss.org/nexus/content/groups/public/
+   </p>
+   <p>
+
+     RESTEasy is modularized into 20 plus components.  Each component is accessible as a Maven
+     artifact.  As a convenience RESTEasy provides a BOM containing the complete set of components
+     with the appropriate versions for the "stack".
+   </p>
+   <p>
+     It is recommended to declare the BOM in your POM file, that way you will always
+     be sure to get the correct version of the artifacts.  In addition, you will not need
+     to declare the version of each RESTEasy artifact called out in the dependencies section.
+   </p>
+   <p>
+     Declare the BOM file in the dependencyManagement section of the POM file like this.
+     Note that Maven version 2.0.9 or higher is required to process BOM files.
+   </p>
+  <pre><code class="no-highlight">
+    
+    &lt;dependencyManagement&gt;
+      &lt;dependencies&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+          &lt;artifactId&gt;resteasy-bom&lt;/artifactId&gt;
+          &lt;version&gt;${version.resteasy}&lt;/version&gt;
+          &lt;type&gt;pom&lt;/type&gt;
+          &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+      &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+  
+  </code></pre>
+   <p>
+     Declare the specific RESTEasy artifacts you require in the dependencies section of the
+     POM file like this.
+   </p>
+  <pre><code class="no-highlight">
+    
+     &lt;dependencies&gt;
+       &lt;dependency&gt;
+          &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+          &lt;artifactId&gt;resteasy-client&lt;/artifactId&gt;
+       &lt;/dependency&gt;
+        ....
+   &lt;/dependencies&gt;
+  
+  </code></pre>
+   <p>
+     It is possible to reference a RESTEasy artifact version not in the current BOM
+     by specifying a version in the dependency itself.
+   </p>
+  <pre><code class="no-highlight">
+    
+     &lt;dependencies&gt;
+       &lt;dependency&gt;
+          &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;
+          &lt;artifactId&gt;resteasy-client&lt;/artifactId&gt;
+          &lt;version&gt;${version.some.other}&lt;version&gt;
+       &lt;/dependency&gt;
+        ....
+   &lt;/dependencies&gt;
+  
+  </code></pre>
+   
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch56.html"><strong>Prev</strong>Chapter 56. Internationalization and Localization</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch58.html"><strong>Next</strong>Chapter 58. Migration from older versions</a></li></ul></footer></body></html>

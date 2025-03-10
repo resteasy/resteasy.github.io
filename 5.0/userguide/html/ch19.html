@@ -1,0 +1,110 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 19. Resources metadata configuration</title><link rel="stylesheet" type="text/css" href="docbook.css"/><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"/><link rel="prev" href="ch18.html" title="Chapter 18. Jakarta RESTful Web Services Resource Locators and Sub Resources"/><link rel="next" href="ch20.html" title="Chapter 20. Jakarta RESTful Web Services Content Negotiation"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><header><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch18.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch20.html"><strong>Next</strong></a></li></ul></header><section class="chapter" id="Resources_Metadata"><div class="titlepage"><div><div><h1 class="title">Chapter 19. Resources metadata configuration</h1></div></div></div>
+
+
+<p>
+When processing Jakarta RESTful Web Services deployments, RESTEasy relies on <span class="emphasis"><em>ResourceBuilder</em></span> to create metadata for each Jakarta RESTful Web Services resource. Such metadata is defined using the metadata SPI in package <span class="emphasis"><em>org.jboss.resteasy.spi.metadata</em></span>, in particular the <span class="emphasis"><em>ResourceClass</em></span> interface:
+</p><pre><code class="no-highlight">
+package org.jboss.resteasy.spi.metadata;
+
+public interface ResourceClass
+{
+  String getPath();
+
+  Class&lt;?&gt; getClazz();
+
+  ResourceConstructor getConstructor();
+
+  FieldParameter[] getFields();
+
+  SetterParameter[] getSetters();
+
+  ResourceMethod[] getResourceMethods();
+
+  ResourceLocator[] getResourceLocators();
+}
+</code></pre><p>
+
+Among the other classes and interfaces defining metadata SPI, the following interfaces are worth a mention here:
+
+</p><pre><code class="no-highlight">
+public interface ResourceConstructor
+{
+  ResourceClass getResourceClass();
+
+  Constructor getConstructor();
+
+  ConstructorParameter[] getParams();
+}
+
+public interface ResourceMethod extends ResourceLocator
+{
+  Set&lt;String&gt; getHttpMethods();
+
+  MediaType[] getProduces();
+
+  MediaType[] getConsumes();
+
+  boolean isAsynchronous();
+
+  void markAsynchronous();
+}
+
+public interface ResourceLocator
+{
+  ResourceClass getResourceClass();
+
+  Class&lt;?&gt; getReturnType();
+
+  Type getGenericReturnType();
+
+  Method getMethod();
+
+  Method getAnnotatedMethod();
+
+  MethodParameter[] getParams();
+
+  String getFullpath();
+
+  String getPath();
+
+}
+</code></pre><p>
+</p>
+
+<p>
+Now, the interesting point is that RESTEasy allows tuning the metadata generation by providing implementations of the <span class="emphasis"><em>ResourceClassProcessor</em></span> interface:
+</p><pre><code class="no-highlight">
+package org.jboss.resteasy.spi.metadata;
+
+public interface ResourceClassProcessor
+{
+
+  /**
+   * Allows the implementation of this method to modify the resource metadata represented by
+   * the supplied {@link ResourceClass} instance. Implementation will typically create
+   * wrappers which modify only certain aspects of the metadata.
+   *
+   * @param clazz The original metadata
+   * @return the (potentially modified) metadata (never null)
+   */
+  ResourceClass process(ResourceClass clazz);
+
+}
+</code></pre><p>
+
+The processors are meant to be, and are resolved as, regular Jakarta RESTful Web Services annotated providers. They allow for wrapping resource metadata classes with custom versions that can be used for various advanced scenarios like
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+adding additional resource method/locators to the resource
+</li><li class="listitem">
+altering the http methods
+</li><li class="listitem">
+altering the @Produces / @Consumes media types
+</li><li class="listitem">
+...
+</li></ul></div><p>
+
+
+
+
+</p>
+</section><script type="text/javascript" src="highlight.js/highlight.pack.js"> </script><script type="text/javascript">hljs.initHighlightingOnLoad();</script><footer><ul class="docnav"><li class="previous"><a accesskey="p" href="ch18.html"><strong>Prev</strong>Chapter 18. Jakarta RESTful Web Services Resource...</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch20.html"><strong>Next</strong>Chapter 20. Jakarta RESTful Web Services Content ...</a></li></ul></footer></body></html>
