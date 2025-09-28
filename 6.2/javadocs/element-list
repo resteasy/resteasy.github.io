@@ -3,8 +3,6 @@ dev.resteasy.client.util.authentication.basic
 dev.resteasy.client.util.authentication.digest
 dev.resteasy.client.util.common
 dev.resteasy.client.util.logging
-dev.resteasy.cloud.tests
-dev.resteasy.cloud.tests.client
 dev.resteasy.embedded.server
 org.jboss.resteasy.annotations
 org.jboss.resteasy.annotations.cache
@@ -45,6 +43,15 @@ org.jboss.resteasy.core.request
 org.jboss.resteasy.core.scanner
 org.jboss.resteasy.core.se
 org.jboss.resteasy.crypto
+org.jboss.resteasy.embedded.test.core.basic
+org.jboss.resteasy.embedded.test.core.basic.resource
+org.jboss.resteasy.embedded.test.core.interceptors
+org.jboss.resteasy.embedded.test.core.interceptors.resource
+org.jboss.resteasy.embedded.test.core.validate
+org.jboss.resteasy.embedded.test.interceptor
+org.jboss.resteasy.embedded.test.interceptor.resource
+org.jboss.resteasy.embedded.test.providers.custom
+org.jboss.resteasy.embedded.test.providers.custom.resource
 org.jboss.resteasy.extension.systemproperties
 org.jboss.resteasy.extension.systemproperties.client
 org.jboss.resteasy.extension.systemproperties.container
