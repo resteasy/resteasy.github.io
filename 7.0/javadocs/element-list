@@ -3,6 +3,8 @@ dev.resteasy.client.util.authentication.basic
 dev.resteasy.client.util.authentication.digest
 dev.resteasy.client.util.common
 dev.resteasy.client.util.logging
+dev.resteasy.cloud.tests
+dev.resteasy.cloud.tests.client
 dev.resteasy.embedded.server
 org.jboss.resteasy.annotations
 org.jboss.resteasy.annotations.cache

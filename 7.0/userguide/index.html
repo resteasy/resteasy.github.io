@@ -529,8 +529,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div id="header">
 <h1><span class="image"><img src="images/resteasy_logo_200x.png" alt="RESTEasy"></span></h1>
 <div class="details">
-<span id="revnumber">version 7.0.0.Final,</span>
-<span id="revdate">2025-09-27</span>
+<span id="revnumber">version 7.0.1.Final,</span>
+<span id="revdate">2025-12-10</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -868,7 +868,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This version, 7.0.0.Final, of RESTEasy supports <a href="https://jakarta.ee/specifications/restful-ws/4.0/jakarta-restful-ws-spec-4.0" target="_blank" rel="noopener">Jakarta RESTful Web Services 4.0</a>.
+This version, 7.0.1.Final, of RESTEasy supports <a href="https://jakarta.ee/specifications/restful-ws/4.0/jakarta-restful-ws-spec-4.0" target="_blank" rel="noopener">Jakarta RESTful Web Services 4.0</a>.
 </td>
 </tr>
 </table>
@@ -1184,7 +1184,7 @@ See <a href="#_standalone_resteasy">Deploying to other servlet containers</a> fo
                     <span class="tag">&lt;/channel&gt;</span>
                     <span class="tag">&lt;channel&gt;</span>
                         <span class="tag">&lt;manifest&gt;</span>
-                            <span class="tag">&lt;groupId&gt;</span>dev.resteasy.channels<span class="tag">&lt;/groupId&gt;</span>
+                            <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy.channels<span class="tag">&lt;/groupId&gt;</span>
                             <span class="tag">&lt;artifactId&gt;</span>resteasy-7.0<span class="tag">&lt;/artifactId&gt;</span>
                         <span class="tag">&lt;/manifest&gt;</span>
                     <span class="tag">&lt;/channel&gt;</span>
@@ -1194,6 +1194,19 @@ See <a href="#_standalone_resteasy">Deploying to other servlet containers</a> fo
     <span class="tag">&lt;/executions&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please note for versions 6.2.15.Final and 7.0.1.Final the <code>groupId</code> for the channel has changed from
+<code>dev.resteasy.channels</code> to <code>org.jboss.resteasy.channels</code>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1273,17 +1286,17 @@ We strongly suggest that you use Maven to build your WAR files as RESTEasy is sp
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-core<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jaxb-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1292,7 +1305,7 @@ We strongly suggest that you use Maven to build your WAR files as RESTEasy is sp
 </div>
 <div class="paragraph">
 <p>If not using Maven, include the necessary jars by hand.
-If downloading RESTEasy (from <a href="https://resteasy.dev/downloads.html" class="bare">https://resteasy.dev/downloads.html</a>, for example) you will get a file, resteasy-7.0.0.Final-all.zip.
+If downloading RESTEasy (from <a href="https://resteasy.dev/downloads.html" class="bare">https://resteasy.dev/downloads.html</a>, for example) you will get a file, resteasy-7.0.1.Final-all.zip.
 Unzip the file. The resulting directory will contain a lib/ directory that contains the libraries needed by RESTEasy.
 Copy these, as needed, into your /WEB-INF/lib directory.
 Place your Jakarta RESTful Web Services annotated class resources and providers within one or more jars within /WEB-INF/lib or your raw class files within /WEB-INF/classes.</p>
@@ -1312,7 +1325,7 @@ Add this artifact dependency to your project&#8217;s pom.xml file so the JAR fil
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-servlet-initializer<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1911,7 +1924,7 @@ value returned by <code>ConfigurationFactory.priority()</code>. Smaller numbers 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy.document.secure.processing.feature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Impose security constraints in processing org.w3c.dom.Document documents and Jakarta XML Binding object representations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Impose security constraints in processing org.w3c.dom.Document documents and Jakarta XML Binding object representations. When enabled, sets <code>XMLConstants.FEATURE_SECURE_PROCESSING</code> which applies JVM limits including <code>jdk.xml.entityExpansionLimit</code> (2,500 in Java 24+, 64,000 in earlier versions), <code>jdk.xml.totalEntitySizeLimit</code> (50,000,000), and other XML processing restrictions. See <a href="https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html" class="bare">https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy.document.secure.disableDTDs</p></td>
@@ -1999,6 +2012,12 @@ value returned by <code>ConfigurationFactory.priority()</code>. Smaller numbers 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.resteasy.entity.memory.threshold</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5MB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The threshold to use for the amount of data to store in memory for entities.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.resteasy.entity.file.buffer.size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8192</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The size of the buffer used when writing the entity to a file. This can be disabled by setting a value of less than 1.
+If disabled, ensure a larger value is set in <code>-XX:MaxDirectMemorySize</code> JVM argument for large entities.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.resteasy.entity.file.threshold</code></p></td>
@@ -2116,7 +2135,7 @@ resteasy-core and resteasy-client. You can access them by way of maven:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -2637,7 +2656,7 @@ For example, you can have Atom links for the root response entity, and also for 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.jboss.resteasy</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy-links</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0.Final</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1.Final</p></td>
 </tr>
 </tbody>
 </table>
@@ -4420,25 +4439,41 @@ It can be configured to replace external entities by values defined in the DTD b
 This behavior can be changed by setting the parameter <code>resteasy.document.secure.disableDTDs</code> to "false".</p>
 </div>
 <div class="paragraph">
-<p>Documents are also subject to Denial of Service Attacks when buffers are overrun by large entities or too many attributes.
-For example, if a DTD defined the following entities</p>
+<p>Documents are also subject to Denial of Service (DoS) Attacks when buffers are overrun by large entities or too many attributes.
+This is known as the "Billion Laughs" or "XML Bomb" attack. For example, if a DTD defined the following entities:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>!ENTITY foo 'foo'
-!ENTITY foo1 'foo;foo;foo;foo;foo;foo;foo;foo;foo;foo;'
-!ENTITY foo2 'foo1;foo1;foo1;foo1;foo1;foo1;foo1;foo1;foo1;foo1;'
-!ENTITY foo3 'foo2;foo2;foo2;foo2;foo2;foo2;foo2;foo2;foo2;foo2;'
-!ENTITY foo4 'foo3;foo3;foo3;foo3;foo3;foo3;foo3;foo3;foo3;foo3;'
-!ENTITY foo5 'foo4;foo4;foo4;foo4;foo4;foo4;foo4;foo4;foo4;foo4;'
-!ENTITY foo6 'foo5;foo5;foo5;foo5;foo5;foo5;foo5;foo5;foo5;foo5;'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="doctype">&lt;!ENTITY foo &quot;foo&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo1 &quot;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&amp;foo;&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo2 &quot;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&amp;foo1;&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo3 &quot;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&amp;foo2;&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo4 &quot;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&amp;foo3;&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo5 &quot;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&amp;foo4;&quot;&gt;</span>
+<span class="doctype">&lt;!ENTITY foo6 &quot;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&amp;foo5;&quot;&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>then the expansion of foo6;  would result in 1,000,000 foos.
-By default, RESTEasy will limit the number of expansions and the number of attributes per entity.
-The exact behavior depends on the underlying parser.
-The limits can be turned off by setting the parameter <code>resteasy.document.secure.processing.feature</code> to "false".</p>
+<p>then the expansion of <code>&foo6;</code> would result in 1,000,000 "foo" strings, consuming significant memory from a small XML input.</p>
+</div>
+<div class="paragraph">
+<p>By default, RESTEasy enables <code>XMLConstants.FEATURE_SECURE_PROCESSING</code> which limits the number of entity expansions,
+total entity size, element depth, and number of attributes per entity. The parameter
+<code>resteasy.document.secure.processing.feature</code> controls this behavior (default is <code>true</code>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On Java 24+, the default entity expansion limit was reduced from 64,000 to 2,500 for improved security.
+If you encounter <code>SAXParseException</code> errors related to entity expansion limits, see the
+<a href="#xml_entity_expansion_limits">JAXB providers section</a> for details on how to handle this change.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -5321,6 +5356,125 @@ The same parameter, <code>resteasy.document.expand.entity.references</code></p>
 The parameters <code>resteasy.document.secure.disableDTDs</code> and <code>resteasy.document.secure.processing.feature</code> discussed there,
 and their default values, also apply to the representation of Jakarta XML Binding objects.</p>
 </div>
+<div class="sect3">
+<h4 id="xml_entity_expansion_limits"><a class="anchor" href="#xml_entity_expansion_limits"></a>22.9.1. XML Entity Expansion Limits</h4>
+<div class="paragraph">
+<p>When <code>resteasy.document.secure.processing.feature=true</code> (the default), <code>XMLConstants.FEATURE_SECURE_PROCESSING</code>
+is enabled, which enforces JVM-level XML processing limits.</p>
+</div>
+<div class="sect4">
+<h5 id="_what_feature_secure_processing_protects_against"><a class="anchor" href="#_what_feature_secure_processing_protects_against"></a>What FEATURE_SECURE_PROCESSING Protects Against</h5>
+<div class="paragraph">
+<p><code>FEATURE_SECURE_PROCESSING</code> protects against XML-based Denial of Service (DoS) attacks, particularly:</p>
+</div>
+<div class="paragraph">
+<p><strong>Billion Laughs Attack (XML Bomb)</strong>: Exponential entity expansion where a small XML document (&lt; 1 KB)
+can expand to gigabytes in memory, causing OutOfMemoryError and server crashes. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="doctype">&lt;!DOCTYPE root [
+  &lt;!ENTITY lol &quot;lol&quot;&gt;</span>
+  <span class="doctype">&lt;!ENTITY lol1 &quot;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&quot;&gt;</span>
+  <span class="doctype">&lt;!ENTITY lol2 &quot;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&quot;&gt;</span>
+  <span class="doctype">&lt;!ENTITY lol3 &quot;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&quot;&gt;</span>
+<span class="doctype">]&gt;</span>
+<span class="tag">&lt;root&gt;</span><span class="entity">&amp;lol3;</span><span class="tag">&lt;/root&gt;</span>  <span class="comment">&lt;!-- Expands to 1,000 &quot;lol&quot; strings --&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Without limits, this pattern can continue (lol4, lol5, etc.) creating billions of expansions from a tiny input document.</p>
+</div>
+<div class="paragraph">
+<p><strong>Quadratic Blowup Attack</strong>: Using large entity definitions referenced many times, causing excessive
+memory consumption even without exponential expansion.</p>
+</div>
+<div class="paragraph">
+<p><strong>Deep Nesting Attacks</strong>: Extremely deep element nesting that can cause stack overflow errors.</p>
+</div>
+<div class="paragraph">
+<p><strong>Attribute Overflow</strong>: Elements with hundreds or thousands of attributes that slow parsing.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code>resteasy.document.expand.entity.references</code> setting controls <strong>external</strong> entity
+expansion (XXE protection - reading files or making network requests), while <code>resteasy.document.secure.processing.feature</code>
+controls <strong>internal</strong> entity expansion limits (DoS protection). Both work together for comprehensive XML security.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On Java 24+, the <code>jdk.xml.entityExpansionLimit</code> may be enforced as a JVM-level security policy
+even when <code>resteasy.document.secure.processing.feature=false</code>. The exact behavior depends on the JVM
+implementation and security configuration. Setting the JVM property is the most reliable way to adjust
+this limit if needed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you encounter <code>SAXParseException</code> with "entity expansion limit" on Java 24+, you can:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Recommended</strong>: Reduce entity usage in your XML documents to stay under 2,500 expansions</p>
+</li>
+<li>
+<p><strong>Alternative</strong>: Increase the JVM limit (security tradeoff):</p>
+<div class="listingblock">
+<div class="content">
+<pre>-Djdk.xml.entityExpansionLimit=10000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This property should be set as a JVM argument when starting your application server.</p>
+</div>
+</li>
+<li>
+<p><strong>Not recommended</strong>: Disable secure processing (may not bypass JVM-level limits on Java 24+):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;context-param&gt;</span>
+    <span class="tag">&lt;param-name&gt;</span>resteasy.document.secure.processing.feature<span class="tag">&lt;/param-name&gt;</span>
+    <span class="tag">&lt;param-value&gt;</span>false<span class="tag">&lt;/param-value&gt;</span>
+<span class="tag">&lt;/context-param&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Disabling this feature exposes your application to XML entity expansion attacks and may not
+bypass the <code>jdk.xml.entityExpansionLimit</code> on Java 24+. Use only for testing or when you have other
+security controls in place.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more information: <a href="https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html" class="bare">https://docs.oracle.com/en/java/javase/25/security/java-api-xml-processing-jaxp-security-guide.html</a></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5496,7 +5650,7 @@ a <code>jakarta.ws.rs.ext.ContextResolver</code> for the <code>ObjectMapper</cod
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -5811,7 +5965,7 @@ RESTEasy&#8217;s provider is provided by default in WildFly. If using another se
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>resteasy-json-p-provider<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -6584,6 +6738,13 @@ Config compatible value.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">512MB is equivalent to 512 Megabytes</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.resteasy.entity.file.buffer.size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The size of the buffer used when writing the entity to a file. This can be disabled by setting a value of less than 1.
+If disabled, ensure a larger value is set in <code>-XX:MaxDirectMemorySize</code> JVM argument for large entities.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8192</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1 would disable the buffer, a value of 16384 processes the entities and writes them to the file 16384 bytes at a time.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.resteasy.entity.file.threshold</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The threshold to use for the amount of data that can be stored in a file for entities. If the threshold is reached an
   <code>IllegalStateException</code> will be thrown. A value of -1 means no limit.</p></td>
@@ -6995,7 +7156,7 @@ For example, add the RESTEasy Jackson2 Provider into the project&#8217;s depende
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -11332,7 +11493,7 @@ The <code>HttpContext</code> attributes are available by injecting an <code>org.
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jdk-http<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -11948,7 +12109,7 @@ It also allows the user to plug in their own mechanism to discover keys.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-crypto<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -12376,7 +12537,7 @@ RESTEasy allows you to easily encrypt and/or sign an email message using the S/M
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-crypto<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -13206,12 +13367,12 @@ The Spring context configuration data is used to wire Spring into Undertow.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow-spring<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -16412,17 +16573,17 @@ To use RESTEasy Undertow Container together with WADL support, add these three c
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-wadl<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-wadl-undertow-connector<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
@@ -16549,7 +16710,7 @@ To enable the tracing feature, add the following dependency in your project:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-tracing-api<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -16711,7 +16872,7 @@ The first choice is to use the jackson2 provider:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -16723,7 +16884,7 @@ The first choice is to use the jackson2 provider:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-json-binding-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -17725,7 +17886,7 @@ Note that Maven version 3.9.0 or higher is required to process BOM files.</p>
         <span class="tag">&lt;dependency&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>resteasy-bom<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
             <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
         <span class="tag">&lt;/dependency&gt;</span>
@@ -17755,7 +17916,7 @@ Note that Maven version 3.9.0 or higher is required to process BOM files.</p>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>7.0.0.Final<span class="tag">&lt;version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>7.0.1.Final<span class="tag">&lt;version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
@@ -18195,8 +18356,8 @@ ResteayClientBuilder builder = (ResteasyClientBuilder)ClientBuilder.newBuilder()
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 7.0.0.Final<br>
-Last updated 2025-09-26 15:11:08 -0700
+Version 7.0.1.Final<br>
+Last updated 2025-12-10 06:29:28 -0800
 </div>
 </div>
 </body>
