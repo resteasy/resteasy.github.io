@@ -529,8 +529,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div id="header">
 <h1><span class="image"><img src="images/resteasy_logo_200x.png" alt="RESTEasy"></span></h1>
 <div class="details">
-<span id="revnumber">version 6.2.15.Final,</span>
-<span id="revdate">2025-12-10</span>
+<span id="revnumber">version 6.2.16.Final,</span>
+<span id="revdate">2026-04-15</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -766,7 +766,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_applicationpkcs7_signature">50.4. application/pkcs7-signature</a></li>
 </ul>
 </li>
-<li><a href="#_resteasy_enterprise_bean_integration">51. Jakarta Enterprise Beans Integration</a></li>
+<li><a href="#_resteasy_enterprise_bean_integration">51. Jakarta Enterprise Beans Integration</a>
+<ul class="sectlevel2">
+<li><a href="#_automatic_discovery_via_cdi_recommended">51.1. Automatic Discovery via CDI (Recommended)</a></li>
+<li><a href="#_manual_jndi_registration_legacy">51.2. Manual JNDI Registration (Legacy)</a></li>
+</ul>
+</li>
 <li><a href="#_resteasy_spring_integration">52. Spring Integration</a>
 <ul class="sectlevel2">
 <li><a href="#_integration_overview">52.1. Overview</a></li>
@@ -783,8 +788,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel2">
 <li><a href="#_using_cdi_beans_as_jakarta_restful_web_services_components">53.1. Using CDI beans as Jakarta RESTful Web Services components</a></li>
 <li><a href="#_default_scopes">53.2. Default scopes</a></li>
-<li><a href="#_configuration_within_wildfly">53.3. Configuration within WildFly</a></li>
-<li><a href="#_configuration_with_different_distributions">53.4. Configuration with different distributions</a></li>
+<li><a href="#_constructor_injection">53.3. Constructor Injection</a></li>
+<li><a href="#_configuration_within_wildfly">53.4. Configuration within WildFly</a></li>
+<li><a href="#_configuration_with_different_distributions">53.5. Configuration with different distributions</a></li>
 </ul>
 </li>
 <li><a href="#_resteasy_client_framework">54. RESTEasy Client API</a>
@@ -868,7 +874,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This version, 6.2.15.Final, of RESTEasy supports <a href="https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1" target="_blank" rel="noopener">Jakarta RESTful Web Services 3.1</a>.
+This version, 6.2.16.Final, of RESTEasy supports <a href="https://jakarta.ee/specifications/restful-ws/3.1/jakarta-restful-ws-spec-3.1" target="_blank" rel="noopener">Jakarta RESTful Web Services 3.1</a>.
 </td>
 </tr>
 </table>
@@ -1272,17 +1278,17 @@ We strongly suggest that you use Maven to build your WAR files as RESTEasy is sp
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-core<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jaxb-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1291,7 +1297,7 @@ We strongly suggest that you use Maven to build your WAR files as RESTEasy is sp
 </div>
 <div class="paragraph">
 <p>If not using Maven, include the necessary jars by hand.
-If downloading RESTEasy (from <a href="https://resteasy.dev/downloads.html" class="bare">https://resteasy.dev/downloads.html</a>, for example) you will get a file, resteasy-6.2.15.Final-all.zip.
+If downloading RESTEasy (from <a href="https://resteasy.dev/downloads.html" class="bare">https://resteasy.dev/downloads.html</a>, for example) you will get a file, resteasy-6.2.16.Final-all.zip.
 Unzip the file. The resulting directory will contain a lib/ directory that contains the libraries needed by RESTEasy.
 Copy these, as needed, into your /WEB-INF/lib directory.
 Place your Jakarta RESTful Web Services annotated class resources and providers within one or more jars within /WEB-INF/lib or your raw class files within /WEB-INF/classes.</p>
@@ -1311,7 +1317,7 @@ Add this artifact dependency to your project&#8217;s pom.xml file so the JAR fil
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-servlet-initializer<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -1971,8 +1977,9 @@ value returned by <code>ConfigurationFactory.priority()</code>. Smaller numbers 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy.patchfilter.legacy</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Setting this value to false, the jsonp provider will be activated to provide PatchFilter for Json patch or Json Merge
-  patch functionalities. The default is true; the Jackson provider will be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Deprecated</strong>: Use <code>resteasy.preferJacksonOverJsonB</code> instead. When set to <code>false</code>, the Jakarta JSON Processing
+  provider is used for PATCH filter processing. When set to <code>true</code>, the Jackson provider is used. This parameter will
+  be removed in a future release.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy.original.webapplicationexception.behavior</p></td>
@@ -2121,7 +2128,7 @@ resteasy-core and resteasy-client. You can access them by way of maven:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -2642,7 +2649,7 @@ For example, you can have Atom links for the root response entity, and also for 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.jboss.resteasy</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">resteasy-links</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.15.Final</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.16.Final</p></td>
 </tr>
 </tbody>
 </table>
@@ -5501,7 +5508,7 @@ a <code>jakarta.ws.rs.ext.ContextResolver</code> for the <code>ObjectMapper</cod
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -5816,7 +5823,7 @@ RESTEasy&#8217;s provider is provided by default in WildFly. If using another se
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>resteasy-json-p-provider<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -7007,7 +7014,7 @@ For example, add the RESTEasy Jackson2 Provider into the project&#8217;s depende
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -11344,7 +11351,7 @@ The <code>HttpContext</code> attributes are available by injecting an <code>org.
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jdk-http<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -11960,7 +11967,7 @@ It also allows the user to plug in their own mechanism to discover keys.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-crypto<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -12388,7 +12395,7 @@ RESTEasy allows you to easily encrypt and/or sign an email message using the S/M
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-crypto<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -12614,63 +12621,84 @@ Just change the @Produces or @Consumes to that media type to send back that form
 <h2 id="_resteasy_enterprise_bean_integration"><a class="anchor" href="#_resteasy_enterprise_bean_integration"></a>51. Jakarta Enterprise Beans Integration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>RESTEasy currently only has simple integration with Jakarta Enterprise Beans. To make a bean a Jakarta RESTful Web Services resource, an SLSB&#8217;s
-<code>@Remote</code> or <code>@Local</code> interface must be annotated with Jakarta RESTful Web Services annotations. Also, the application&#8217;s beans must be
-configured in web.xml.</p>
+<p>RESTEasy provides tight integration with Jakarta Enterprise Beans (EJB) components. This allows you to use standard Jakarta REST
+annotations directly on your Session Beans, leveraging EJB features like transaction management and security.</p>
+</div>
+<div class="sect2">
+<h3 id="_automatic_discovery_via_cdi_recommended"><a class="anchor" href="#_automatic_discovery_via_cdi_recommended"></a>51.1. Automatic Discovery via CDI (Recommended)</h3>
+<div class="paragraph">
+<p>In accordance with the Jakarta REST specification (Section 11.2.4), RESTEasy automatically discovers and registers EJBs
+that use Jakarta REST annotations.</p>
+</div>
+<div class="sect3">
+<h4 id="_1_standard_configuration"><a class="anchor" href="#_1_standard_configuration"></a>51.1.1. 1. Standard Configuration</h4>
+<div class="paragraph">
+<p>The specification mandates that Resource class annotations (such as <code>@Path</code>) MUST be applied to the EJB implementation
+class, while method annotations (such as <code>@GET</code>, <code>@POST</code>, <code>@Produces</code>) can remain on the Local Interface.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example: The Standard Pattern</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Local</span>
-<span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/Library</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// 1. The Local Interface defines the business contract</span>
+<span class="annotation">@Local</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">Library</span> {
-
-   <span class="annotation">@GET</span>
-   <span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/books/{isbn}</span><span class="delimiter">&quot;</span></span>)
-   <span class="predefined-type">String</span> getBook(<span class="annotation">@PathParam</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">isbn</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> isbn);
+    <span class="comment">// JAX-RS method annotations can go here (preferred) or on the class</span>
+    <span class="annotation">@GET</span>
+    <span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/books/{isbn}</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> getBook(<span class="annotation">@PathParam</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">isbn</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> isbn);
 }
 
+<span class="comment">// 2. The Implementation Class defines the Resource Path</span>
 <span class="annotation">@Stateless</span>
+<span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/library</span><span class="delimiter">&quot;</span></span>) <span class="comment">// Resource-level annotations MUST be here</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">LibraryBean</span> <span class="directive">implements</span> Library {
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getBook(<span class="predefined-type">String</span> isbn) {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Book: </span><span class="delimiter">&quot;</span></span> + isbn;
+    }
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_2_view_resolution_and_multiple_interfaces"><a class="anchor" href="#_2_view_resolution_and_multiple_interfaces"></a>51.1.2. 2. View Resolution and Multiple Interfaces</h4>
 <div class="paragraph">
-<p>Next, in RESTEasy&#8217;s web.xml file manually register the bean with RESTEasy using the <code>resteasy.jndi.resources</code> context-param</p>
+<p>RESTEasy&#8217;s CDI integration automatically determines the correct EJB View (Interface) to use for the JAX-RS resource lookup.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Single Interface:</strong> If your EJB implements a single <code>@Local</code> interface, RESTEasy will automatically proxy requests through that interface. No additional configuration is required.</p>
+</li>
+<li>
+<p><strong>Multiple Interfaces:</strong> If your EJB implements multiple interfaces, RESTEasy will attempt to use the first interface it discovers.</p>
+</li>
+<li>
+<p><strong>Warning:</strong> If your JAX-RS methods are split across multiple interfaces, or if the "first discovered" interface does not contain the JAX-RS methods, the lookup may fail or result in 404s.</p>
+</li>
+<li>
+<p><strong>Solution:</strong> In complex multi-interface scenarios, it is recommended to consolidate your JAX-RS methods into a single interface or use <code>@LocalBean</code> to expose the class view directly, ensuring all methods are accessible via a single type.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manual_jndi_registration_legacy"><a class="anchor" href="#_manual_jndi_registration_legacy"></a>51.2. Manual JNDI Registration (Legacy)</h3>
+<div class="paragraph">
+<p>If you are strictly avoiding CDI, you can manually register EJBs in <code>web.xml</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;web-app&gt;</span>
-   <span class="tag">&lt;display-name&gt;</span>Example EJB<span class="tag">&lt;/display-name&gt;</span>
-   <span class="tag">&lt;context-param&gt;</span>
-      <span class="tag">&lt;param-name&gt;</span>resteasy.jndi.resources<span class="tag">&lt;/param-name&gt;</span>
-      <span class="tag">&lt;param-value&gt;</span>LibraryBean/local<span class="tag">&lt;/param-value&gt;</span>
-   <span class="tag">&lt;/context-param&gt;</span>
-<span class="tag">&lt;/web-app&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;context-param&gt;</span>
+    <span class="tag">&lt;param-name&gt;</span>resteasy.jndi.resources<span class="tag">&lt;/param-name&gt;</span>
+    <span class="tag">&lt;param-value&gt;</span>java:global/myApp/myEjbModule/LibraryBean!com.example.Library<span class="tag">&lt;/param-value&gt;</span>
+<span class="tag">&lt;/context-param&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>This is the only portable way RESTEasy offers Jakarta Enterprise Beans integration.
-Future versions of RESTEasy will have tighter integration with Wildfly, thus eliminating manual registrations or modifications to web.xml.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;re using RESTEasy with an EAR and Jakarta Enterprise Beans, a good structure to have is:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>my-ear.ear
-|------myejb.jar
-|------resteasy-jaxrs.war
-       |
-       ----WEB-INF/web.xml
-       ----WEB-INF/lib (nothing)
-|------lib/
-       |
-       ----All RESTEasy jar files</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>From the distribution, remove all libraries from <code>WEB-INF/lib</code> and place them in a common EAR lib or place the RESTEasy
-jar dependencies in the application server&#8217;s system classpath.</p>
 </div>
 </div>
 </div>
@@ -13218,12 +13246,12 @@ The Spring context configuration data is used to wire Spring into Undertow.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow-spring<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -13527,13 +13555,93 @@ This requirement is likely to be removed in future releases.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration_within_wildfly"><a class="anchor" href="#_configuration_within_wildfly"></a>53.3. Configuration within WildFly</h3>
+<h3 id="_constructor_injection"><a class="anchor" href="#_constructor_injection"></a>53.3. Constructor Injection</h3>
+<div class="paragraph">
+<p>CDI resources support constructor injection without requiring a public no-arg constructor.
+According to the CDI specification, normal scoped beans (such as <code>@RequestScoped</code> and <code>@ApplicationScoped</code>) require a non-private constructor with no parameters for proxy creation.
+This constructor can be <code>public</code>, <code>protected</code>, or package-private (default access).</p>
+</div>
+<div class="paragraph">
+<p>RESTEasy supports combining a non-public no-arg constructor (for CDI proxy creation) with an <code>@Inject</code>-annotated constructor for dependency injection.
+This allows you to hide the no-arg constructor since it should only be used internally by CDI for proxy generation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/example</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@RequestScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResource</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> ExampleService service;
+
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> UriInfo uriInfo;
+
+    <span class="comment">// Package-private no-arg constructor for CDI proxy generation</span>
+    <span class="comment">// This constructor is never called directly - only used by CDI for creating the proxy subclass</span>
+    ExampleResource() {
+        <span class="local-variable">this</span>.service = <span class="predefined-constant">null</span>;
+    }
+
+    <span class="comment">// Public constructor with CDI dependency injection</span>
+    <span class="comment">// This is the constructor CDI actually uses to create the bean instance</span>
+    <span class="annotation">@Inject</span>
+    <span class="directive">public</span> ExampleResource(ExampleService service) {
+        <span class="local-variable">this</span>.service = service;
+    }
+
+    <span class="annotation">@GET</span>
+    <span class="annotation">@Produces</span>(MediaType.TEXT_PLAIN)
+    <span class="directive">public</span> <span class="predefined-type">String</span> getMessage() {
+        <span class="keyword">return</span> service.getMessage();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This pattern provides several benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Encapsulation</strong>: The no-arg constructor is hidden (package-private or protected), making it clear that it shouldn&#8217;t be called directly.</p>
+</li>
+<li>
+<p><strong>Required dependencies are explicit</strong>: The <code>@Inject</code> constructor clearly shows which dependencies are required for the resource to function.</p>
+</li>
+<li>
+<p><strong>CDI handles all instantiation</strong>: RESTEasy delegates resource creation entirely to CDI, allowing full use of CDI features including interceptors and decorators.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For normal scoped beans (<code>@RequestScoped</code>, <code>@ApplicationScoped</code>, etc.), CDI creates a client proxy that extends your bean class.
+The proxy requires a non-private no-arg constructor to call <code>super()</code>.
+The <code>@Inject</code> constructor is used by CDI when creating the actual bean instance behind the proxy.</p>
+</div>
+<div class="paragraph">
+<p>Resources can use <code>public</code>, <code>protected</code>, or package-private no-arg constructors.
+Using <code>protected</code> or package-private constructors follows CDI best practices by hiding implementation details.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_within_wildfly"><a class="anchor" href="#_configuration_within_wildfly"></a>53.4. Configuration within WildFly</h3>
 <div class="paragraph">
 <p>CDI integration is provided with no additional configuration with WildFly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration_with_different_distributions"><a class="anchor" href="#_configuration_with_different_distributions"></a>53.4. Configuration with different distributions</h3>
+<h3 id="_configuration_with_different_distributions"><a class="anchor" href="#_configuration_with_different_distributions"></a>53.5. Configuration with different distributions</h3>
 <div class="paragraph">
 <p>Provided there is an existing RESTEasy application, all that needs to be done is to add the resteasy-cdi jar into the project&#8217;s <code>WEB-INF/lib</code> directory.
 When using maven, this can be achieved by defining the following dependency.</p>
@@ -16424,17 +16532,17 @@ To use RESTEasy Undertow Container together with WADL support, add these three c
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-wadl<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-wadl-undertow-connector<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-undertow<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
@@ -16561,7 +16669,7 @@ To enable the tracing feature, add the following dependency in your project:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-tracing-api<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -16723,7 +16831,7 @@ The first choice is to use the jackson2 provider:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-jackson2-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -16735,7 +16843,7 @@ The first choice is to use the jackson2 provider:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>resteasy-json-binding-provider<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -17737,7 +17845,7 @@ Note that Maven version 3.9.0 or higher is required to process BOM files.</p>
         <span class="tag">&lt;dependency&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>resteasy-bom<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
             <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
         <span class="tag">&lt;/dependency&gt;</span>
@@ -17767,7 +17875,7 @@ Note that Maven version 3.9.0 or higher is required to process BOM files.</p>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.jboss.resteasy<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>resteasy-client<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>6.2.15.Final<span class="tag">&lt;version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>6.2.16.Final<span class="tag">&lt;version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
@@ -18207,8 +18315,8 @@ ResteayClientBuilder builder = (ResteasyClientBuilder)ClientBuilder.newBuilder()
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 6.2.15.Final<br>
-Last updated 2025-12-10 10:36:44 -0800
+Version 6.2.16.Final<br>
+Last updated 2026-04-15 10:07:48 -0700
 </div>
 </div>
 </body>
