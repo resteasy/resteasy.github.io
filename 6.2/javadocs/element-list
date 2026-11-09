@@ -31,7 +31,6 @@ org.jboss.resteasy.client.jaxrs.engines.jetty
 module:org.jboss.resteasy.core
 org.jboss.resteasy.core
 org.jboss.resteasy.core.concurrent
-org.jboss.resteasy.core.extractors
 org.jboss.resteasy.core.interception.jaxrs
 org.jboss.resteasy.core.messagebody
 org.jboss.resteasy.core.providerfactory
